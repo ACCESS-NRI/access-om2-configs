@@ -4,7 +4,7 @@
     truntime0 = 0
     runtime=126144000
     dt_cpl=10800
-    dt_atm=3600
+    dt_atm=10800
     dataset = 'jra55'
     runtype = 'NY'
     caltype = 0
