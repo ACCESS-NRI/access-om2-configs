@@ -5,7 +5,7 @@ walltime: 5:00:00
 jobname: 025deg_jra55_ryf
 ncpus: 1936
 
-shortpath: /short/e14
+shortpath: /short/x77
 
 # Model configuration
 model: access-om2
@@ -17,14 +17,14 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: fms_ACCESS-OM_030fb1f2.x
+      exe: fms_ACCESS-OM_61841471.x
       input: mom_025deg
       timestep: 1800
       ncpus: 1455
 
     - name: ice
       model: cice5
-      exe: cice_auscom_1440x1080_480p_fe730022.exe
+      exe: cice_auscom_1440x1080_480p_c612c0dd.exe
       input: cice_025deg
       timestep: 1800
       ncpus: 480
