@@ -35,11 +35,8 @@
  $END
 ###########################################################################
  $RUNTIME
-# This gives you the total simulated time for this run in seconds 
-#
-#   86400    ! 1  day
-# 2678400    ! 31 days
-# 31536000   ! 365 days
+# This gives you the total simulated time for this run in seconds
+# NOTE: ACCESSOM2 does not use this. It is set programatically.
  126144000
  $END
 ###########################################################################
@@ -61,7 +58,7 @@
  $NLOGPRT
 # Index of printing level in output file cplout: 0 = no printing
 #  1 = main routines and field names when treated, 2 = complete output
- 2 
+ 0
  $END
 ###########################################################################
 # $CALTYPE
