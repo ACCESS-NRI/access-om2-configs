@@ -37,7 +37,7 @@
  $RUNTIME
 # This gives you the total simulated time for this run in seconds
 # NOTE: ACCESSOM2 does not use this. It is set programatically.
- 126144000
+ 864000
  $END
 ###########################################################################
 # $INIDATE
