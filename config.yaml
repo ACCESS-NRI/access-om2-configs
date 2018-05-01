@@ -1,6 +1,6 @@
 # PBS configuration
 queue: normal
-project: e14
+project: x77
 walltime: 5:00:00
 jobname: 025deg_jra55_ryf
 ncpus: 1936
@@ -9,42 +9,26 @@ shortpath: /short/x77
 
 # Model configuration
 model: access-om2
+input: common_025deg_jra55
 submodels:
     - name: atmosphere
-      model: matm
-      exe: matm_jra55_2c6add9f.exe
+      model: yatm
+      exe: yatm_05526590.exe
+      input: yatm_025deg
       ncpus: 1
 
     - name: ocean
       model: mom
-      exe: fms_ACCESS-OM_282c6f63.x
+      exe: fms_ACCESS-OM_cee52557.x
       input: mom_025deg
-      timestep: 1800
       ncpus: 1455
 
     - name: ice
       model: cice5
-      exe: cice_auscom_1440x1080_480p_c612c0dd.exe
+      exe: cice_auscom_1440x1080_480p_5e3585f1.exe
       input: cice_025deg
-      timestep: 1800
       ncpus: 480
 
-    - name: coupler
-      model: oasis
-      input: oasis_jra55_to_025deg
-      timestep: 1800
-      ncpus: 0
-
-calendar:
-    runtime:
-        years: 1
-        months: 0
-        days: 0
-
-    start:
-        year: 1
-        month: 1
-        days: 1
 
 # Misc
 stacksize: unlimited
