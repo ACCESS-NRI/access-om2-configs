@@ -380,15 +380,6 @@
     use_this_module = .true.
 /
 &ocean_solo_nml
-    calendar = 'NOLEAP'
-    date_init = 1, 1, 1, 0, 0, 0
-    days = 0
-    dt_cpld = 5400
-    hours = 0
-    minutes = 0
-    months = 0
-    seconds = 0
-    years = 2
 /
 &ocean_sponges_eta_nml
     use_this_module = .false.
