@@ -13,19 +13,19 @@ input: common_025deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: yatm_9940934e.exe
+      exe: yatm_fc6c55b7.exe
       input: yatm_025deg
       ncpus: 1
 
     - name: ocean
       model: mom
-      exe: fms_ACCESS-OM_0c633dbe.x
+      exe: fms_ACCESS-OM_c35ad471.x
       input: mom_025deg
       ncpus: 1455
 
     - name: ice
       model: cice5
-      exe: cice_auscom_1440x1080_480p_274b9619.exe
+      exe: cice_auscom_1440x1080_480p_ab6ba104.exe
       input: cice_025deg
       ncpus: 480
 
