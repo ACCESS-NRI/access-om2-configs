@@ -20,7 +20,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: fms_ACCESS-OM_4135f906.x
+      exe: fms_ACCESS-OM_f2b61629.x
       input: mom_1deg
       ncpus: 216
 
