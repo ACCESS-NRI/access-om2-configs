@@ -14,7 +14,7 @@ submodels:
     - name: atmosphere
       model: yatm
       exe: /short/public/access-om2/bin/yatm_d4a9c5f2d.exe
-      input: /short/public/access-om2/input_46fb3d3b/yatm_1deg
+      input: /short/public/access-om2/input_46fb3d3b/yatm_025deg
       ncpus: 1
 
     - name: ocean
