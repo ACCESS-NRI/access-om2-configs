@@ -3,7 +3,6 @@
     chk_i2o_fields = .false.
     chk_o2i_fields = .false.
     do_ice_once = .false.
-    dt_cpl = 5400
     fixmeltt = .false.
     frazil_factor = 1.0
     iceform_adj_salt = .false.
@@ -198,7 +197,6 @@
     barotropic_split = 80
     cmip_units = .true.
     debug = .false.
-    dt_ocean = 5400
     io_layout = 4, 3
     layout = 16, 15
     surface_height_split = 1
