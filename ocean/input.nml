@@ -15,6 +15,11 @@
             neutral = .true.
 /
 
+&mpp_io_nml
+    deflate_level = 5
+    shuffle = 1
+/
+
  &ocean_adv_vel_diag_nml
       diag_step=4320
       verbose_cfl=.true.
@@ -74,8 +79,6 @@
 
  &ocean_bih_tracer_nml
     use_this_module=.false.
-    vel_micom = 0.001
-    tracer_mix_micom=.true.
 /
 
  &ocean_bihcst_friction_nml
@@ -96,7 +99,7 @@
       equatorial_zonal=.false.
       bottom_5point=.false.
       ncar_boundary_scaling=.true.
-      ncar_boundary_scaling_read=.true.
+      ncar_boundary_scaling_read=.false.
       ncar_rescale_power=2
       ncar_vconst_4=2.e-8
       ncar_vconst_5=5
@@ -108,8 +111,6 @@
 
  &ocean_convect_nml
       use_this_module=.false.
-      convect_full_scalar=.true.
-      convect_full_vector=.false.
 /
 
  &ocean_coriolis_nml
@@ -120,8 +121,8 @@
  &ocean_density_nml
       potrho_min=1028.0
       potrho_max=1038.0
-      neutralrho_min=1028.0
-      neutralrho_max=1038.0
+      neutralrho_min=1020.0
+      neutralrho_max=1030.0
       layer_nk=80
       eos_linear=.false.
       eos_preteos10=.true. 
@@ -177,12 +178,10 @@
 
  &ocean_lapgen_friction_nml
 	use_this_module=.false.
-	k_smag_iso=2.0
 /
 
  &ocean_mixdownslope_nml
 	use_this_module=.false.
-	debug_this_module=.false.
 /
 
  &ocean_model_nml
@@ -200,7 +199,7 @@
  &ocean_momentum_source_nml
       use_this_module=.true.
       use_rayleigh_damp_table=.true.
-	  rayleigh_damp_exp_from_bottom=.false.
+      rayleigh_damp_exp_from_bottom=.false.
 /
 
  &ocean_nphysicsA_nml
@@ -232,8 +231,6 @@
 /
 
  &ocean_nphysics_util_nml
-	smax=0.002
-	swidth=0.002
 	aredi=600.0
 	agm=100.0
 	aredi_equal_agm=.false.
@@ -280,17 +277,10 @@
 
  &ocean_overflow_OFP_nml
        use_this_module=.false.
-       debug_this_module=.false.
-       frac_exchange_src=1.0        
-       max_vol_trans_ofp=10.e6
-       do_mass_ofp=.true.
-       diag_step=4320
-       do_entrainment_para_ofp=.false.
 /
 
  &ocean_overflow_nml
       use_this_module=.false.
-      debug_this_module=.false.
 /
 
  &ocean_passive_nml
@@ -311,8 +301,8 @@
       river_insertion_thickness=40.0
       river_diffusion_thickness=0.0
       river_diffusivity=0.0
-      river_diffuse_salt=.false.
-      river_diffuse_temp=.false.
+      river_diffuse_salt=.true.
+      river_diffuse_temp=.true.
 /
 
  &ocean_riverspread_nml
@@ -355,9 +345,6 @@
 
  &ocean_shortwave_csiro_nml
       use_this_module=.false.
-      read_depth=.true.
-      zmax_pen=7000 
-      debug_this_module=.false.
 /
 
  &ocean_shortwave_gfdl_nml
@@ -383,21 +370,6 @@
 
  &ocean_sigma_transport_nml
       use_this_module=.false.
-      sigma_diffusion_on=.true.
-      sigma_advection_on=.false.
-      sigma_advection_sgs_only=.false.
-      sigma_just_in_bottom_cell=.true.
-      tmask_sigma_on=.false.
-      sigma_diffusivity_ratio=1.e-6
-      tracer_mix_micom=.true.
-      vel_micom=0.05
-      sigma_umax=0.01
-      smooth_sigma_thickness=.true.
-      smooth_sigma_velocity=.true.
-      smooth_velmicom=0.2
-      thickness_sigma_layer= 100.0
-      thickness_sigma_max  = 100.0
-      thickness_sigma_min  = 100.0
 /
 
  &ocean_sponges_eta_nml
@@ -406,7 +378,6 @@
 
  &ocean_sponges_tracer_nml
     use_this_module=.false.
-	damp_coeff_3d = .FALSE.
 /
 
  &ocean_sponges_velocity_nml
@@ -440,10 +411,10 @@
  /
 
  &ocean_tempsalt_nml
-	  debug_this_module=.false.
-      temperature_variable='potential_temp'
+      debug_this_module=.false.
+      temperature_variable='conservative_temp'
       pottemp_2nd_iteration=.true.
-	  pottemp_equal_contemp=.true.
+      pottemp_equal_contemp=.true.
       t_min=-20.0
       t_max = 55.0
       s_min = 0.0
@@ -457,10 +428,8 @@
  &ocean_thickness_nml
       debug_this_module=.false.
       debug_this_module_detail=.false.
-      thickness_dzt_min_init=10.0
-      thickness_dzt_min=2.0
       thickness_method='energetic'
-	  rescale_mass_to_get_ht_mod=.false.
+      rescale_mass_to_get_ht_mod=.false.
 /
 
  &ocean_time_filter_nml
@@ -511,7 +480,7 @@
 	truncate_verbose=.true.
 	truncate_velocity_value=2.0
 	adams_bashforth_third=.true.
-	max_cgint=1.5
+	max_cgint=1.0
 	zero_tendency=.false.
 	zero_tendency_implicit=.false.
 	zero_tendency_explicit_a=.false.
@@ -605,8 +574,6 @@
 /
 
  &surface_flux_nml
-            ncar_ocean_flux = .true.
-	    raoult_sat_vap = .true.
 /
 
  &xgrid_nml
