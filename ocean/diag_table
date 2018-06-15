@@ -28,14 +28,13 @@ MOM5 JRA-RYF
 # Prognostic fields:
 # 3d fields
 "ocean_model","temp","temp",            "ocean","all",.true.,"none",2
+"ocean_model","pot_temp","pot_temp",    "ocean","all",.true.,"none",2
 "ocean_model","salt","salt",            "ocean","all",.true.,"none",2
 "ocean_model","age_global","age_global","ocean","all",.true.,"none",2
 "ocean_model","u","u",                  "ocean","all",.true.,"none",2
 "ocean_model","v","v",                  "ocean","all",.true.,"none",2
 "ocean_model","wt","wt",                "ocean","all",.true.,"none",2
 "ocean_model","dzt","dzt",              "ocean","all",.true.,"none",2
-"ocean_model","press","press",  "ocean","all",.true.,"none",2
-"ocean_model","rho","rho",  "ocean","all",.true.,"none",2
 "ocean_model","pot_rho_0","pot_rho_0",  "ocean","all",.true.,"none",2
 "ocean_model","pot_rho_2","pot_rho_2",  "ocean","all",.true.,"none",2
 "ocean_model","tx_trans","tx_trans",    "ocean","all",.true.,"none",2
@@ -68,8 +67,6 @@ MOM5 JRA-RYF
 "ocean_model","bmf_v","bmf_v",                     "ocean_month","all",.true.,"none",2
 "ocean_model","tx_trans_int_z","tx_trans_int_z",   "ocean_month","all",.true.,"none",2
 "ocean_model","ty_trans_int_z","ty_trans_int_z",   "ocean_month","all",.true.,"none",2
-"ocean_model","pbot_t","pbot_t",                   "ocean_month","all",.true.,"none",2
- 
 
 # timeseries - 1D scalar variables
 "ocean_model","ke_tot","ke_tot", "ocean_scalar","all",.true.,"none",2
