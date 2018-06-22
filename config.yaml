@@ -26,7 +26,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: /short/public/access-om2/bin/cice_auscom_1440x1080_480p_631d125e.exe
+      exe: /short/public/access-om2/bin/cice_auscom_1440x1080_480p_df982d28.exe
       input: /short/public/access-om2/input_2f3648a7/cice_025deg
       ncpus: 393
 
