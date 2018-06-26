@@ -2,7 +2,7 @@
 queue: normalbw
 project: x77
 walltime: 6:00:00
-jobname: 1deg_jra55_ryf
+jobname: 1deg_jra55_iaf
 ncpus: 252
 mem: 500GB
 
@@ -15,7 +15,7 @@ input: /short/public/access-om2/input_2f3648a7/common_1deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /short/public/access-om2/bin/yatm_c873c27a.exe
+      exe: /short/public/access-om2/bin/yatm_c2868e5b.exe
       input: /short/public/access-om2/input_2f3648a7/yatm_1deg
       ncpus: 1
 
