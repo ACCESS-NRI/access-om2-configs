@@ -4,8 +4,8 @@
 &end
 
 &date_manager_nml
-    forcing_start_date = '1900-01-01T00:00:00'
-    forcing_end_date = '1901-01-01T00:00:00'
+    forcing_start_date = '1958-01-01T00:00:00'
+    forcing_end_date = '2018-01-01T00:00:00'
 
     ! Runtime for a single segment/job/submit, format is years, months, seconds,
     ! two of which must be zero.
