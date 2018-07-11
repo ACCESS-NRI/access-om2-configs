@@ -36,6 +36,7 @@ submodels:
 
 
 # Misc
+runlog: False
 stacksize: unlimited
 collate_walltime: 1:00:00
 collate_queue: express
