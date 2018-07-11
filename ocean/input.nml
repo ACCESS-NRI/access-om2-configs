@@ -3,7 +3,6 @@
     chk_i2o_fields = .false.
     chk_o2i_fields = .false.
     do_ice_once = .false.
-    dt_cpl = 300
     fixmeltt = .false.
     frazil_factor = 1.0
     iceform_adj_salt = .false.
@@ -24,13 +23,14 @@
 /
 
 &fms_io_nml
+    checksum_required=.false.
     fileset_write = 'multi'
     threading_read = 'multi'
     threading_write = 'multi'
 /
 
 &fms_nml
-    clock_grain = 'LOOP'
+    clock_grain = 'ROUTINE'
     domains_stack_size = 115200
 /
 
@@ -63,7 +63,7 @@
 /
 
 &ocean_advection_velocity_nml
-    max_advection_velocity = 0.5
+    max_advection_velocity = 0.3
 /
 
 &ocean_albedo_nml
@@ -217,8 +217,7 @@
     barotropic_split = 80
     cmip_units = .true.
     debug = .false.
-    dt_ocean = 300
-    io_layout = 10, 15
+    io_layout = 5, 5
     layout = 80, 75
     surface_height_split = 1
     time_tendency = 'twolevel'
@@ -344,6 +343,7 @@
     calvingspread = .false.
     do_bitwise_exact_sum = .false.
     do_flux_correction = .false.
+    ocean_ice_salt_limit = 0.006
     land_model_heat_fluxes = .false.
     max_delta_salinity_restore = 0.5
     max_ice_thickness = 0.0

@@ -13,4 +13,4 @@ GDATADIR=/ERROR/SET/GDATADIR/IN/sync_output_to_gdata.sh
 
 mkdir -p ${GDATADIR}
 cd archive
-rsync --ignore-existing --exclude "*.nc.*" -av --safe-links --no-g output* ${GDATADIR}
+rsync --ignore-existing --exclude "*.nc.*" --exclude "*ocean_*_3hourly*" --exclude "*iceh_03h*" -vrltoD --safe-links output* ${GDATADIR}

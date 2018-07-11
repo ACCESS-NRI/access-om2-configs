@@ -1,6 +1,4 @@
 &coupling_nml
-    dt_cpl_ai=10800
-    dt_cpl_io=300
     pop_icediag = .true.
     ice_pressure_on = .true.
     ice_fwflux = .true.
