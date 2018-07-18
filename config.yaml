@@ -13,7 +13,7 @@ input: /short/public/access-om2/input_38570c62/common_01deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /short/public/access-om2/bin/yatm_b0ca92ac.exe
+      exe: /short/public/access-om2/bin/yatm_af01d117.exe
       input: /short/public/access-om2/input_38570c62/yatm_01deg
       ncpus: 1
 
