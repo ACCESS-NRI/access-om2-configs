@@ -15,19 +15,19 @@ input: /short/public/access-om2/input_38570c62/common_1deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /short/public/access-om2/bin/yatm_af01d117.exe
+      exe: /short/public/access-om2/bin/yatm_946efa33.exe
       input: /short/public/access-om2/input_38570c62/yatm_1deg
       ncpus: 1
 
     - name: ocean
       model: mom
-      exe: /short/public/access-om2/bin/fms_ACCESS-OM_99168b44.x
+      exe: /short/public/access-om2/bin/fms_ACCESS-OM_ad24e8a4.x
       input: /short/public/access-om2/input_38570c62/mom_1deg
       ncpus: 216
 
     - name: ice
       model: cice5
-      exe: /short/public/access-om2/bin/cice_auscom_360x300_24p_0981e598.exe
+      exe: /short/public/access-om2/bin/cice_auscom_360x300_24p_ea7dd176.exe
       input: /short/public/access-om2/input_38570c62/cice_1deg
       ncpus: 24
 
