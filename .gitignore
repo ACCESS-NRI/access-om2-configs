@@ -1,6 +1,6 @@
 archive
 work
-access-om2.err
-access-om2.out
+./access-om2.err
+./access-om2.out
 .DS_Store
 ._.DS_Store
