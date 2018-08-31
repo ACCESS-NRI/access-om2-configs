@@ -19,7 +19,7 @@
   , dumpfreq       = 'y'
   , dumpfreq_n     = 1
   , dump_last      = .true.
-  , diagfreq       = 24
+  , diagfreq       = 960
   , diag_type      = 'file'
   , diag_file      = 'ice_diag.d'
   , print_global   = .false.
