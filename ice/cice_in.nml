@@ -48,9 +48,9 @@
 /
 
 &domain_nml
-    nprocs = 2000
+    nprocs = 1385
   , processor_shape   = 'square-ice'
-  , distribution_type = 'cartesian'
+  , distribution_type = 'roundrobin'
   , distribution_wght = 'latitude'
   , ew_boundary_type  = 'cyclic'
   , ns_boundary_type  = 'tripole'
