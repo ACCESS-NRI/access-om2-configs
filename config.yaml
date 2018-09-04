@@ -19,7 +19,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /short/public/access-om2/bin/fms_ACCESS-OM_4d60fad0.x
+      exe: /short/public/access-om2/bin/fms_ACCESS-OM_afe80bfd.x
       input: /short/public/access-om2/input_38570c62/mom_01deg
       ncpus: 4358
 
