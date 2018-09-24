@@ -1,7 +1,7 @@
 # PBS configuration
 queue: normal
-project: g40
-walltime: 4:00:00
+project: x77
+walltime: 1:00:00
 jobname: 025_jra_iaf
 ncpus: 1824
 
@@ -40,4 +40,4 @@ collate_flags: -n4 -z -m -r
 collate_mem: 30GB
 mpirun: --mca orte_base_help_aggregate 0
 qsub_flags: -lother=hyperthread -W umask=027
-postscript: sync_output_to_gdata.sh
+# postscript: sync_output_to_gdata.sh
