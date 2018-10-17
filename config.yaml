@@ -4,8 +4,6 @@ walltime: 1:00:00
 jobname: 1deg_jra55_iaf
 ncpus: 252
 
-laboratory: /short/v45/aph502/tmp/lab
-
 # Model configuration
 name: common
 model: access-om2
