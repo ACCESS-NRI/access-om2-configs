@@ -1,8 +1,10 @@
 # PBS configuration
-queue: normalbw
+queue: expressbw
 walltime: 1:00:00
 jobname: 1deg_jra55_iaf
 ncpus: 252
+
+laboratory: /short/v45/aph502/tmp/lab
 
 # Model configuration
 name: common
@@ -32,6 +34,7 @@ platform:
     nodemem: 128
 
 # Misc
+collate: true
 stacksize: unlimited
 collate_walltime: 1:00:00
 collate_exe: /short/public/access-om2/bin/mppnccombine
