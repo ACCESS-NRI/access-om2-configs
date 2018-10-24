@@ -178,6 +178,7 @@
 
 &icefields_nml
     f_tmask        = .true.
+  , f_blkmask      = .true.
   , f_tarea        = .true.
   , f_uarea        = .true.
   , f_dxt          = .true.
@@ -193,15 +194,18 @@
   , f_VGRDs        = .false.
   , f_VGRDb        = .false.
   , f_bounds       = .false.
-  , f_sice         = 'm' 
+  , f_aice         = 'm' 
   , f_hi           = 'm'
   , f_hs           = 'm' 
   , f_Tsfc         = 'm' 
-  , f_aice         = 'm' 
+  , f_sice         = 'm' 
   , f_uvel         = 'm' 
   , f_vvel         = 'm' 
+  , f_uatm         = 'x' 
+  , f_vatm         = 'x' 
   , f_fswdn        = 'm' 
   , f_flwdn        = 'm'
+  , f_snowfrac     = 'x'
   , f_snow         = 'x' 
   , f_snow_ai      = 'm' 
   , f_rain         = 'x' 
@@ -212,11 +216,18 @@
   , f_vocn         = 'm' 
   , f_frzmlt       = 'm'
   , f_fswfac       = 'm'
+  , f_fswint_ai    = 'm'
   , f_fswabs       = 'x' 
   , f_fswabs_ai    = 'm' 
   , f_albsni       = 'm' 
   , f_alvdr        = 'x'
   , f_alidr        = 'x'
+  , f_alvdf        = 'x'
+  , f_alidf        = 'x'
+  , f_alvdr_ai     = 'x'
+  , f_alidr_ai     = 'x'
+  , f_alvdf_ai     = 'x'
+  , f_alidf_ai     = 'x'
   , f_albice       = 'm'
   , f_albsno       = 'm'
   , f_albpnd       = 'x'
@@ -225,6 +236,7 @@
   , f_flat_ai      = 'm' 
   , f_fsens        = 'x' 
   , f_fsens_ai     = 'm' 
+  , f_fswup        = 'x' 
   , f_flwup        = 'x' 
   , f_flwup_ai     = 'm' 
   , f_evap         = 'x' 
@@ -270,6 +282,8 @@
   , f_dvidtd       = 'm' 
   , f_daidtt       = 'm'
   , f_daidtd       = 'm' 
+  , f_dagedtt      = 'm'
+  , f_dagedtd      = 'm' 
   , f_mlt_onset    = 'm'
   , f_frz_onset    = 'm'
   , f_hisnap       = 'x'
@@ -280,6 +294,9 @@
   , f_FY           = 'x'
   , f_aicen        = 'm'
   , f_vicen        = 'm'
+  , f_vsnon        = 'x'
+  , f_snowfracn    = 'x'
+  , f_keffn_top    = 'x'
   , f_Tinz         = 'x'
   , f_Sinz         = 'x'
   , f_Tsnz         = 'x'
@@ -287,6 +304,7 @@
   , f_fcondtopn_ai = 'm'
   , f_fmelttn_ai   = 'm'
   , f_flatn_ai     = 'm'
+  , f_fsensn_ai     = 'x'
 /
 
 &icefields_mechred_nml
