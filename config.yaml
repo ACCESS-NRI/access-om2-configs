@@ -7,24 +7,24 @@ ncpus: 252
 # Model configuration
 name: common
 model: access-om2
-input: /short/public/access-om2/input_2407a7bc/common_1deg_jra55
+input: /short/public/access-om2/input_eee21b65/common_1deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /short/public/access-om2/bin/yatm_037e4b61.exe
-      input: /short/public/access-om2/input_2407a7bc/yatm_1deg
+      exe: /short/public/access-om2/bin/yatm_ec5d0874.exe
+      input: /short/public/access-om2/input_eee21b65/yatm_1deg
       ncpus: 1
 
     - name: ocean
       model: mom
-      exe: /short/public/access-om2/bin/fms_ACCESS-OM_304fe837.x
-      input: /short/public/access-om2/input_2407a7bc/mom_1deg
+      exe: /short/public/access-om2/bin/fms_ACCESS-OM_5f703166.x
+      input: /short/public/access-om2/input_eee21b65/mom_1deg
       ncpus: 216
 
     - name: ice
       model: cice5
-      exe: /short/public/access-om2/bin/cice_auscom_360x300_24p_5a56b59a.exe
-      input: /short/public/access-om2/input_2407a7bc/cice_1deg
+      exe: /short/public/access-om2/bin/cice_auscom_360x300_24p_c8c295fc.exe
+      input: /short/public/access-om2/input_eee21b65/cice_1deg
       ncpus: 24
 
 platform:
