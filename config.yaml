@@ -1,12 +1,8 @@
 # PBS configuration
 queue: normalbw
-project: x77
 walltime: 1:00:00
 jobname: 1deg_jra55_iaf
 ncpus: 252
-mem: 500GB
-
-shortpath: /short/x77
 
 # Model configuration
 name: common
@@ -33,14 +29,12 @@ submodels:
 
 platform:
     nodesize: 28
+    nodemem: 128
 
 # Misc
-runlog: False
+collate: true
 stacksize: unlimited
 collate_walltime: 1:00:00
-collate_queue: express
-collate_ncpus: 1
-collate_flags: -n4 -z -m -r
-mpirun: --mca orte_base_help_aggregate 0
+collate_exe: /short/public/access-om2/bin/mppnccombine
 qsub_flags: -lother=hyperthread -W umask=027
 # postscript: sync_output_to_gdata.sh
