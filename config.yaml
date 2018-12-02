@@ -9,24 +9,24 @@ shortpath: /short/x77
 # Model configuration
 name: common
 model: access-om2
-input: /short/public/access-om2/input_eee21b65/common_01deg_jra55
+input: /short/public/access-om2/input_337f4505/common_01deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /short/public/access-om2/bin/yatm_ec5d0874.exe
-      input: /short/public/access-om2/input_eee21b65/yatm_01deg
+      exe: /short/public/access-om2/bin/yatm_347e0018.exe
+      input: /short/public/access-om2/input_337f4505/yatm_01deg
       ncpus: 1
 
     - name: ocean
       model: mom
-      exe: /short/public/access-om2/bin/fms_ACCESS-OM_5f703166.x
-      input: /short/public/access-om2/input_eee21b65/mom_01deg
+      exe: /short/public/access-om2/bin/fms_ACCESS-OM_7c8bb961.x
+      input: /short/public/access-om2/input_337f4505/mom_01deg
       ncpus: 4358
 
     - name: ice
       model: cice5
-      exe: /short/public/access-om2/bin/cice_auscom_3600x2700_432p_c8c295fc.exe
-      input: /short/public/access-om2/input_eee21b65/cice_01deg
+      exe: /short/public/access-om2/bin/cice_auscom_3600x2700_432p_a3632111.exe
+      input: /short/public/access-om2/input_337f4505/cice_01deg
       ncpus: 1385
 
 # Collation
