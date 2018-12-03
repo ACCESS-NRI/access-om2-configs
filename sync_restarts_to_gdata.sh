@@ -8,6 +8,6 @@
 
 source sync_output_to_gdata.sh # to define GDATADIR and cd archive
 
-# rsync --ignore-existing -vrltoD --safe-links restart??[05]* ${GDATADIR}
-rsync --ignore-existing -vrltoD --safe-links restart* ${GDATADIR}
-# rsync --ignore-existing -vrltoD --safe-links restart387* ${GDATADIR}  # restart in which topography was changed
+
+rsync -vrltoD --safe-links restart* ${GDATADIR}
+
