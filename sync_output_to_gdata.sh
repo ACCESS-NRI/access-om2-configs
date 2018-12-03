@@ -13,4 +13,4 @@ GDATADIR=/g/data3/hh5/tmp/cosima/access-om2-025/025deg_jra55v13_iaf
 
 mkdir -p ${GDATADIR}
 cd archive
-rsync --ignore-existing --exclude "*.nc.*" -av --safe-links --no-g output* ${GDATADIR}
+rsync --exclude "*.nc.*" -av --safe-links --no-g output* ${GDATADIR}
