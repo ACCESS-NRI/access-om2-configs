@@ -8,5 +8,5 @@
 
 source sync_output_to_gdata.sh # to define GDATADIR and cd archive
 
-# rsync --ignore-existing -av --safe-links --no-g restart??[05]* ${GDATADIR}
-rsync --ignore-existing -av --safe-links --no-g restart* ${GDATADIR}
+
+rsync -av --safe-links --no-g restart* ${GDATADIR}
