@@ -9,7 +9,7 @@
     icemlt_factor = 1.0
     kmxice = 5
     pop_icediag = .true.
-    redsea_gulfbay_sfix = .true.
+    redsea_gulfbay_sfix = .false.
     sign_stflx = 1.0
     tmelt = -0.216
     use_ioaice = .true.
@@ -331,14 +331,14 @@
     do_bitwise_exact_sum = .true.
     do_flux_correction = .false.
     land_model_heat_fluxes = .false.
-    max_delta_salinity_restore = 0.5
+    max_delta_salinity_restore = -0.5
     max_ice_thickness = 0.0
     read_restore_mask = .false.
     restore_mask_gfdl = .false.
     runoff_salinity = 0.0
     salt_correction_scale = 0.0
     salt_restore_as_salt_flux = .true.
-    salt_restore_tscale = 60.0
+    salt_restore_tscale = 21.28
     salt_restore_under_ice = .true.
     temp_restore_tscale = -10.0
     use_full_patm_for_sea_level = .false.
@@ -508,13 +508,13 @@
     use_diff_cbt_table = .false.
     vert_diff_back_via_max = .true.
     vert_mix_scheme = 'kpp_mom4p1'
+    j09_diffusivity = .true.
+    j09_bgmin = 1.0e-6
+    j09_bgmax = 0.5e-5
+    j09_lat = 20.0
 /
 &ocean_vert_pp_nml
 /
-!&bg_diff_lat_dependence_nml
-!    lat_low_bgdiff=20.
-!    bg_diff_eq=1.0e-6
-!/
 &ocean_vert_tidal_nml
     background_diffusivity = 0.0
     background_viscosity = 0.0001
