@@ -98,8 +98,8 @@
   , krdg_partic     = 1
   , krdg_redist     = 1
   , mu_rdg          = 3
-  , cosw            = 0.96
-  , sinw            = 0.28
+  , cosw            = 1.0
+  , sinw            = 0.0
   , dragio          = 0.00536
   , iceruf          = 0.0005
 /
@@ -174,6 +174,7 @@
   , trestore        =  0
   , restore_ice     = .false.
   , ustar_min       = 0.0005
+  , tfrz_option     = 'linear_salt'
 /
 
 &icefields_nml
