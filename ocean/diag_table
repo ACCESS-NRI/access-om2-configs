@@ -1,5 +1,5 @@
 ACCESS-OM2-01
-1 1 1 0 0 0
+1900 1 1 0 0 0
 
 # MOM diag table format is defined here:
 # https://github.com/mom-ocean/MOM5/blob/master/src/shared/diag_manager/diag_table.F90
