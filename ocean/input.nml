@@ -451,7 +451,7 @@
     t_max_limit = 32.0
     t_min = -20.0
     t_min_limit = -5.0
-    temperature_variable = 'potential_temp'
+    temperature_variable = 'conservative_temp'
 /
 
 &ocean_thickness_nml
