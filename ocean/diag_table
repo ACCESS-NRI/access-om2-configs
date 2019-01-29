@@ -6,38 +6,16 @@ ACCESS-OM2-01
 # and available diagnostics are listed here:
 # https://raw.githubusercontent.com/OceansAus/access-om2/master/MOM_diags.txt
 
+# This diag_table is intended as a minimal diag_table for the RYF spinup.
+# Note that 3D fields are specified as 3-monthly, which restricts the 
+# possible options for simulation length
+
 # output files
-"ocean_daily_30m",   1,  "days",   1, "days", "time",
-"ocean_daily",      1,  "days",   1, "days", "time",
 "ocean_month",      1,  "months", 1, "days", "time",
-"ocean",            1,  "months", 1, "days", "time",
+"ocean",            3,  "months", 1, "days", "time",
 "ocean_snapshot",   1,  "months", 1, "days", "time",
 "ocean_grid",      -1,  "months", 1, "days", "time",
 "ocean_scalar",     1,  "months", 1, "days", "time",
-
-# For Chris Chapman: Water Mass Transformation Diagnostics for tropical and subtropical Indian Ocean
-"indian_ocean_west",     1,  "months", 1, "days", "time",
-"indian_ocean_east",     1,  "months", 1, "days", "time",
-
-# For showcase movie
-# "ocean_temp_3hourly",    3,  "hours",  1, "days", "time",
-# "ocean_salt_3hourly",    3,  "hours",  1, "days", "time",
-# "ocean_pot_rho_2_3hourly",    3,  "hours",  1, "days", "time",
-# "ocean_speed_3hourly",    3,  "hours",  1, "days", "time",
-
-# Adele's diags for Ruth, June 2018 -- 3D daily output of uhrho_et, vhrho_nt, temp, salt and rho_dzt, south of 55S -- just need 2 years of RYF
-# "southern_ocean_daily_temp",  24,  "hours", 1, "days", "time",
-# "southern_ocean_daily_salt",  24,  "hours", 1, "days", "time",
-# "southern_ocean_daily_uhrho_et",  24,  "hours", 1, "days", "time",
-# "southern_ocean_daily_vhrho_nt",  24,  "hours", 1, "days", "time",
-# "southern_ocean_daily_rho_dzt",  24,  "hours", 1, "days", "time",
-
-# Daily 3d prognostic variables: T,S,U,V,W
-"ocean_daily_3d_temp",  1,  "days", 1, "days", "time",
-"ocean_daily_3d_salt",  1,  "days", 1, "days", "time",
-"ocean_daily_3d_u",  1,  "days", 1, "days", "time",
-"ocean_daily_3d_v",  1,  "days", 1, "days", "time",
-"ocean_daily_3d_wt",  1,  "days", 1, "days", "time",
 
 # Save ocean grid data once and for all
 "ocean_model","geolon_t","geolon_t", "ocean_grid","all",.false.,"none",2
@@ -82,26 +60,9 @@ ACCESS-OM2-01
 "ocean_model","speed","speed",    "ocean","all",.true.,"none",2
 "ocean_model","vert_pv","vert_pv",    "ocean","all",.true.,"none",2
 "ocean_model","aiso_bih","aiso_bih",    "ocean","all",.true.,"none",2
-# for Adele:
-# "ocean_model","uhrho_et","uhrho_et",    "ocean","all",.true.,"none",2
-# "ocean_model","vhrho_nt","vhrho_nt",    "ocean","all",.true.,"none",2
-
-# 3d fields - daily output
-"ocean_model","temp","temp","ocean_daily_3d_temp","all",.true.,"none",2
-"ocean_model","salt","salt","ocean_daily_3d_salt","all",.true.,"none",2
-"ocean_model","u","u","ocean_daily_3d_u","all",.true.,"none",2
-"ocean_model","v","v","ocean_daily_3d_v","all",.true.,"none",2
-"ocean_model","wt","wt","ocean_daily_3d_wt","all",.true.,"none",2
 
 # 3d fields - snapshots at end of each month
 "ocean_model","vorticity_z","vorticity_z","ocean_snapshot","all",.false.,"none",2
-
-# 2d fields - daily output
-"ocean_model","eta_t","eta_t",                     "ocean_daily","all",.true.,"none",2
-"ocean_model","surface_temp","surface_temp",     "ocean_daily","all",.true.,"none",2
-"ocean_model","mld","mld",     "ocean_daily","all",.true.,"none",2
-# put 2d regional subsets of 3d fields in a separate file
-"ocean_model","vorticity_z","vorticity_z",     "ocean_daily_30m","all",.true.,"-280,80,-81.125,90,26,31",2
 
 # 2d fields - monthly output
 "ocean_model","sea_level_sq","sea_levelsq",        "ocean_month","all",.true.,"none",2
@@ -141,8 +102,6 @@ ACCESS-OM2-01
 "ocean_model","temp_xflux_adv_int_z","temp_xflux_adv_int_z",                   "ocean_month","all",.true.,"none",2
 "ocean_model","temp_yflux_submeso_int_z","temp_yflux_submeso_int_z",                   "ocean_month","all",.true.,"none",2
 "ocean_model","temp_xflux_submeso_int_z","temp_xflux_submeso_int_z",                   "ocean_month","all",.true.,"none",2
-# see https://github.com/OceansAus/ACCESS-OM2-1-025-010deg-report/pull/13#issuecomment-424594587
-
 
 # timeseries - 1D scalar variables
 "ocean_model","ke_tot","ke_tot", "ocean_scalar","all",.true.,"none",2
@@ -179,40 +138,3 @@ ACCESS-OM2-01
 "ocean_model","total_ocean_calving_melt_heat","total_ocean_calving_melt_heat","ocean_scalar","all",.true.,"none",2
 "ocean_model","total_ocean_sens_heat","total_ocean_sens_heat"                ,"ocean_scalar","all",.true.,"none",2
 
-# 3-hourly output
-# "ocean_model","temp","temp",            "ocean_temp_3hourly","all",.true.,"none",2
-# "ocean_model","salt","salt",            "ocean_salt_3hourly","all",.true.,"none",2
-# "ocean_model","pot_rho_2","pot_rho_2",  "ocean_pot_rho_2_3hourly","all",.true.,"none",2
-# "ocean_model","speed","speed",          "ocean_speed_3hourly","all",.true.,"none",2
-
-# Adele's diags for Ruth, June 2018 -- 3D daily output of uhrho_et, vhrho_nt, temp, salt and rho_dzt, south of 55S -- just need 2 years of RYF
-# "ocean_model","temp","temp","southern_ocean_daily_temp","all",.true.,"-280,80,-80,-55,-1,-1",2
-# "ocean_model","salt","salt","southern_ocean_daily_salt","all",.true.,"-280,80,-80,-55,-1,-1",2
-# "ocean_model","uhrho_et","uhrho_et","southern_ocean_daily_uhrho_et","all",.true.,"-280,80,-80,-55,-1,-1",2
-# "ocean_model","vhrho_nt","vhrho_nt","southern_ocean_daily_vhrho_nt","all",.true.,"-280,80,-80,-55,-1,-1",2
-# "ocean_model","rho_dzt","rho_dzt","southern_ocean_daily_rho_dzt","all",.true.,"-280,80,-80,-55,-1,-1",2
-
-# For Chris Chapman: Water Mass Transformation Diagnostics for tropical and subtropical Indian Ocean,
-# 20E-160E and 50S-EQ. But model longitude range is -280E -- +80E, so join is in Indian Ocean.
-# So need two regions: longitude +20 -- +80 and -280 -- -200
-"ocean_model","salt_vdiffuse_impl","salt_vdiffuse_impl","indian_ocean_west","all",.true.,"20,80,-50,0,0,600",2
-"ocean_model","salt_vdiffuse_diff_cbt","salt_vdiffuse_diff_cbt","indian_ocean_west","all",.true.,"20,80,-50,0,0,600",2
-"ocean_model","salt_advection","salt_advection","indian_ocean_west","all",.true.,"20,80,-50,0,0,600",2
-#"ocean_model","salt_vdiffuse_k33","salt_vdiffuse_k33","indian_ocean_west","all",.true.,"20,80,-50,0,0,600",2
-"ocean_model","salt_submeso","salt_submeso","indian_ocean_west","all",.true.,"20,80,-50,0,0,600",2
-"ocean_model","temp_vdiffuse_impl","temp_vdiffuse_impl","indian_ocean_west","all",.true.,"20,80,-50,0,0,600",2
-"ocean_model","temp_vdiffuse_diff_cbt","temp_vdiffuse_diff_cbt","indian_ocean_west","all",.true.,"20,80,-50,0,0,600",2
-"ocean_model","temp_advection","temp_advection","indian_ocean_west","all",.true.,"20,80,-50,0,0,600",2
-#"ocean_model","temp_vdiffuse_k33","temp_vdiffuse_k33","indian_ocean_west","all",.true.,"20,80,-50,0,0,600",2
-"ocean_model","temp_submeso","temp_submeso","indian_ocean_west","all",.true.,"20,80,-50,0,0,600",2
-#
-"ocean_model","salt_vdiffuse_impl","salt_vdiffuse_impl","indian_ocean_east","all",.true.,"-280,-200,-50,0,0,600",2
-"ocean_model","salt_vdiffuse_diff_cbt","salt_vdiffuse_diff_cbt","indian_ocean_east","all",.true.,"-280,-200,-50,0,0,600",2
-"ocean_model","salt_advection","salt_advection","indian_ocean_east","all",.true.,"-280,-200,-50,0,0,600",2
-#"ocean_model","salt_vdiffuse_k33","salt_vdiffuse_k33","indian_ocean_east","all",.true.,"-280,-200,-50,0,0,600",2
-"ocean_model","salt_submeso","salt_submeso","indian_ocean_east","all",.true.,"-280,-200,-50,0,0,600",2
-"ocean_model","temp_vdiffuse_impl","temp_vdiffuse_impl","indian_ocean_east","all",.true.,"-280,-200,-50,0,0,600",2
-"ocean_model","temp_vdiffuse_diff_cbt","temp_vdiffuse_diff_cbt","indian_ocean_east","all",.true.,"-280,-200,-50,0,0,600",2
-"ocean_model","temp_advection","temp_advection","indian_ocean_east","all",.true.,"-280,-200,-50,0,0,600",2
-#"ocean_model","temp_vdiffuse_k33","temp_vdiffuse_k33","indian_ocean_east","all",.true.,"-280,-200,-50,0,0,600",2
-"ocean_model","temp_submeso","temp_submeso","indian_ocean_east","all",.true.,"-280,-200,-50,0,0,600",2
