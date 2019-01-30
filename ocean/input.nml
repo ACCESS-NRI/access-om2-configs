@@ -550,6 +550,10 @@
     use_diff_cbt_table = .false.
     vert_diff_back_via_max = .true.
     vert_mix_scheme = 'kpp_mom4p1'
+    j09_diffusivity = .true.
+    j09_bgmin = 1.0e-6
+    j09_bgmax = 1.0e-6
+    j09_lat = 20.0
 /
 
 &ocean_vert_pp_nml
