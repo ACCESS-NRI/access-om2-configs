@@ -1,5 +1,5 @@
 ACCESS-OM2-01
-1900 1 1 0 0 0
+1 1 1 0 0 0
 
 # MOM diag table format is defined here:
 # https://github.com/mom-ocean/MOM5/blob/master/src/shared/diag_manager/diag_table.F90
@@ -43,7 +43,7 @@ ACCESS-OM2-01
 "ocean_model","drag_coeff","drag_coeff","ocean_grid","all",.false.,"none",2
 #==========================================================================
 
-# 3d fields - monthly averages
+# 3d fields
 "ocean_model","temp","temp",            "ocean","all",.true.,"none",2
 "ocean_model","salt","salt",            "ocean","all",.true.,"none",2
 "ocean_model","age_global","age_global","ocean","all",.true.,"none",2
@@ -67,7 +67,9 @@ ACCESS-OM2-01
 "ocean_model","buoyfreq2_wt","buoyfreq2_wt",    "ocean","all",.true.,"none",2
 "ocean_model","speed","speed",    "ocean","all",.true.,"none",2
 "ocean_model","vert_pv","vert_pv",    "ocean","all",.true.,"none",2
-"ocean_model","aiso_bih","aiso_bih",    "ocean","all",.true.,"none",2
+# for Adele:
+# "ocean_model","uhrho_et","uhrho_et",    "ocean","all",.true.,"none",2
+# "ocean_model","vhrho_nt","vhrho_nt",    "ocean","all",.true.,"none",2
 
 # 2d & 3d fields - snapshots at end of each run
 "ocean_model","eta_t","eta_t","ocean_snapshot","all",.false.,"none",2
@@ -80,6 +82,8 @@ ACCESS-OM2-01
 "ocean_model","mld","mld",     "ocean_daily","all",.true.,"none",2
 
 # 2d fields - monthly output
+"ocean_model","sea_level","sea_level",             "ocean_month","all",.true.,"none",2
+"ocean_model","eta_t","eta_t",                     "ocean_month","all",.true.,"none",2
 "ocean_model","sea_level_sq","sea_levelsq",        "ocean_month","all",.true.,"none",2
 "ocean_model","surface_temp","surface_temp",     "ocean_month","all",.true.,"none",2
 "ocean_model","surface_salt","surface_salt",     "ocean_month","all",.true.,"none",2
@@ -114,9 +118,7 @@ ACCESS-OM2-01
 "ocean_model","ty_trans_int_z","ty_trans_int_z",   "ocean_month","all",.true.,"none",2
 "ocean_model","pbot_t","pbot_t",                   "ocean_month","all",.true.,"none",2
 "ocean_model","temp_yflux_adv_int_z","temp_yflux_adv_int_z",                   "ocean_month","all",.true.,"none",2
-"ocean_model","temp_xflux_adv_int_z","temp_xflux_adv_int_z",                   "ocean_month","all",.true.,"none",2
-"ocean_model","temp_yflux_submeso_int_z","temp_yflux_submeso_int_z",                   "ocean_month","all",.true.,"none",2
-"ocean_model","temp_xflux_submeso_int_z","temp_xflux_submeso_int_z",                   "ocean_month","all",.true.,"none",2
+ 
 
 # timeseries - 1D scalar variables
 "ocean_model","ke_tot","ke_tot", "ocean_scalar","all",.true.,"none",2
@@ -165,3 +167,4 @@ ACCESS-OM2-01
 #"ocean_model","uhrho_et","uhrho_et","southern_ocean_daily_uhrho_et","all",.true.,"-280,80,-80,-55,-1,-1",2
 #"ocean_model","vhrho_nt","vhrho_nt","southern_ocean_daily_vhrho_nt","all",.true.,"-280,80,-80,-55,-1,-1",2
 #"ocean_model","rho_dzt","rho_dzt","southern_ocean_daily_rho_dzt","all",.true.,"-280,80,-80,-55,-1,-1",2
+
