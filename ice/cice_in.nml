@@ -5,14 +5,13 @@
   , istep0         = 0
   , dt             = 300
   , npt            = 6480
-  , ndtd           = 3
+  , ndtd           = 2
   , runtype        = 'initial'
   , ice_ic         = 'default'
   , restart        = .false.
   , restart_ext    = .false.
   , use_restart_time = .true.
   , restart_format = 'nc'
-  , lcdf64         = .true.
   , restart_dir    = './RESTART/'
   , restart_file   = 'iced'
   , pointer_file   = './RESTART/ice.restart_file'
@@ -50,7 +49,7 @@
 &domain_nml
     nprocs = 1385
   , processor_shape   = 'square-ice'
-  , distribution_type = 'roundrobin'
+  , distribution_type = 'sectrobin'
   , distribution_wght = 'latitude'
   , ew_boundary_type  = 'cyclic'
   , ns_boundary_type  = 'tripole'

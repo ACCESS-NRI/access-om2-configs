@@ -4,9 +4,9 @@
 &runoff_nml
     remap_weights_file = 'INPUT/rmp_jrar_to_cict_CONSERV.nc'
     num_runoff_caps = 4
-    runoff_caps =       0.03, 0.001, 0.003,  0.003
-    runoff_caps_is =       0,  3470,   180,    300
+    runoff_caps =       0.03, 0.003, 0.003,  0.003
+    runoff_caps_is =       0,  3420,   180,    300
     runoff_caps_ie = 1000000,  3530,   240,    560
     runoff_caps_js =       0,  2270,  2670,   2260
-    runoff_caps_je = 1000000,  2650, 99999,   2470
+    runoff_caps_je = 1000000,  2680, 99999,   2470
 &end

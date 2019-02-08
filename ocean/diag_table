@@ -6,16 +6,24 @@ ACCESS-OM2-01
 # and available diagnostics are listed here:
 # https://raw.githubusercontent.com/OceansAus/access-om2/master/MOM_diags.txt
 
-# This diag_table is intended as a minimal diag_table for the RYF spinup.
-# Note that 3D fields are specified as 3-monthly, which restricts the 
-# possible options for simulation length
-
 # output files
+"ocean_daily",      1,  "days",   1, "days", "time",
 "ocean_month",      1,  "months", 1, "days", "time",
-"ocean",            3,  "months", 1, "days", "time",
+"ocean",            1,  "months", 1, "days", "time",
 "ocean_snapshot",   1,  "months", 1, "days", "time",
 "ocean_grid",      -1,  "months", 1, "days", "time",
 "ocean_scalar",     1,  "months", 1, "days", "time",
+# "ocean_temp_3hourly",    3,  "hours",  1, "days", "time",
+# "ocean_salt_3hourly",    3,  "hours",  1, "days", "time",
+# "ocean_pot_rho_2_3hourly",    3,  "hours",  1, "days", "time",
+# "ocean_speed_3hourly",    3,  "hours",  1, "days", "time",
+
+# Adele's diags for Ruth, June 2018 -- 3D daily output of uhrho_et, vhrho_nt, temp, salt and rho_dzt, south of 55S -- just need 2 years of RYF
+#"southern_ocean_daily_temp",  24,  "hours", 1, "days", "time",
+#"southern_ocean_daily_salt",  24,  "hours", 1, "days", "time",
+#"southern_ocean_daily_uhrho_et",  24,  "hours", 1, "days", "time",
+#"southern_ocean_daily_vhrho_nt",  24,  "hours", 1, "days", "time",
+#"southern_ocean_daily_rho_dzt",  24,  "hours", 1, "days", "time",
 
 # Save ocean grid data once and for all
 "ocean_model","geolon_t","geolon_t", "ocean_grid","all",.false.,"none",2
@@ -61,8 +69,15 @@ ACCESS-OM2-01
 "ocean_model","vert_pv","vert_pv",    "ocean","all",.true.,"none",2
 "ocean_model","aiso_bih","aiso_bih",    "ocean","all",.true.,"none",2
 
-# 3d fields - snapshots at end of each month
-"ocean_model","vorticity_z","vorticity_z","ocean_snapshot","all",.false.,"none",2
+# 2d & 3d fields - snapshots at end of each run
+"ocean_model","eta_t","eta_t","ocean_snapshot","all",.false.,"none",2
+"ocean_model","u","u","ocean_snapshot","all",.false.,"none",2
+"ocean_model","v","v","ocean_snapshot","all",.false.,"none",2
+
+# 2d fields - daily output
+"ocean_model","eta_t","eta_t",                     "ocean_daily","all",.true.,"none",2
+"ocean_model","surface_temp","surface_temp",     "ocean_daily","all",.true.,"none",2
+"ocean_model","mld","mld",     "ocean_daily","all",.true.,"none",2
 
 # 2d fields - monthly output
 "ocean_model","sea_level_sq","sea_levelsq",        "ocean_month","all",.true.,"none",2
@@ -138,3 +153,15 @@ ACCESS-OM2-01
 "ocean_model","total_ocean_calving_melt_heat","total_ocean_calving_melt_heat","ocean_scalar","all",.true.,"none",2
 "ocean_model","total_ocean_sens_heat","total_ocean_sens_heat"                ,"ocean_scalar","all",.true.,"none",2
 
+# 3-hourly output
+# "ocean_model","temp","temp",            "ocean_temp_3hourly","all",.true.,"none",2
+# "ocean_model","salt","salt",            "ocean_salt_3hourly","all",.true.,"none",2
+# "ocean_model","pot_rho_2","pot_rho_2",  "ocean_pot_rho_2_3hourly","all",.true.,"none",2
+# "ocean_model","speed","speed",          "ocean_speed_3hourly","all",.true.,"none",2
+
+# Adele's diags for Ruth, June 2018 -- 3D daily output of uhrho_et, vhrho_nt, temp, salt and rho_dzt, south of 55S -- just need 2 years of RYF
+#"ocean_model","temp","temp","southern_ocean_daily_temp","all",.true.,"-280,80,-80,-55,-1,-1",2
+#"ocean_model","salt","salt","southern_ocean_daily_salt","all",.true.,"-280,80,-80,-55,-1,-1",2
+#"ocean_model","uhrho_et","uhrho_et","southern_ocean_daily_uhrho_et","all",.true.,"-280,80,-80,-55,-1,-1",2
+#"ocean_model","vhrho_nt","vhrho_nt","southern_ocean_daily_vhrho_nt","all",.true.,"-280,80,-80,-55,-1,-1",2
+#"ocean_model","rho_dzt","rho_dzt","southern_ocean_daily_rho_dzt","all",.true.,"-280,80,-80,-55,-1,-1",2
