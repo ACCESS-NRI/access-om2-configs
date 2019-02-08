@@ -1,7 +1,7 @@
 # PBS configuration
 queue: normal
 project: e14
-walltime: 1:00:00
+walltime: 5:00:00
 jobname: 01deg_jra55_ryf
 ncpus: 5744
 shortpath: /short/x77
@@ -40,7 +40,7 @@ collate_queue: expressbw
 collate_flags: -n4 -z -m
 
 # Misc
-runlog: True
+runlog: False
 stacksize: unlimited
 mpirun: --mca pml yalla -x MXM_LOG_FILE=$PBS_JOBFS/mxm.log
 qsub_flags: -lother=hyperthread -W umask=027
