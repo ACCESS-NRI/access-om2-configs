@@ -40,7 +40,7 @@ collate_queue: expressbw
 collate_flags: -n4 -z -m
 
 # Misc
-runlog: False
+runlog: True
 stacksize: unlimited
 mpirun: --mca pml yalla -x MXM_LOG_FILE=$PBS_JOBFS/mxm.log
 qsub_flags: -lother=hyperthread -W umask=027
