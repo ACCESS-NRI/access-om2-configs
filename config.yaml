@@ -42,6 +42,7 @@ collate_flags: -n4 -z -m
 # Misc
 runlog: True
 stacksize: unlimited
+restart_freq: 1  # use tidy_restarts.py instead
 mpirun: --mca pml yalla -x MXM_LOG_FILE=$PBS_JOBFS/mxm.log
 qsub_flags: -lother=hyperthread -W umask=027
 # for normalbw
