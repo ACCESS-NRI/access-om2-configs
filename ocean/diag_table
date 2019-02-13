@@ -13,7 +13,6 @@ ACCESS-OM2-01
 # output files
 "ocean_month",      1,  "months", 1, "days", "time",
 "ocean",            3,  "months", 1, "days", "time",
-"ocean_snapshot",   1,  "months", 1, "days", "time",
 "ocean_grid",      -1,  "months", 1, "days", "time",
 "ocean_scalar",     1,  "months", 1, "days", "time",
 
@@ -59,10 +58,6 @@ ACCESS-OM2-01
 "ocean_model","buoyfreq2_wt","buoyfreq2_wt",    "ocean","all",.true.,"none",2
 "ocean_model","speed","speed",    "ocean","all",.true.,"none",2
 "ocean_model","vert_pv","vert_pv",    "ocean","all",.true.,"none",2
-"ocean_model","aiso_bih","aiso_bih",    "ocean","all",.true.,"none",2
-
-# 3d fields - snapshots at end of each month
-"ocean_model","vorticity_z","vorticity_z","ocean_snapshot","all",.false.,"none",2
 
 # 2d fields - monthly output
 "ocean_model","sea_level_sq","sea_levelsq",        "ocean_month","all",.true.,"none",2
