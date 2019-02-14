@@ -36,6 +36,7 @@ ACCESS-OM2-01
 
 # 3d fields - monthly averages
 "ocean_model","temp","temp",            "ocean","all",.true.,"none",2
+"ocean_model","pot_temp","pot_temp",    "ocean","all",.true.,"none",2
 "ocean_model","salt","salt",            "ocean","all",.true.,"none",2
 "ocean_model","age_global","age_global","ocean","all",.true.,"none",2
 "ocean_model","u","u",                  "ocean","all",.true.,"none",2
