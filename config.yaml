@@ -25,9 +25,9 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: /short/public/access-om2/bin/cice_auscom_3600x2700_432p_1247c51_libaccessom2_b77aecd.exe
+      exe: /short/public/access-om2/bin/cice_auscom_3600x2700_1392p_657f6ad_libaccessom2_b77aecd.exe
       input: /short/public/access-om2/input_08022019/cice_01deg
-      ncpus: 1385
+      ncpus: 1392
 
 # Collation
 collate: true
