@@ -12,7 +12,6 @@
   , restart_ext    = .false.
   , use_restart_time = .true.
   , restart_format = 'nc'
-  , lcdf64         = .true.
   , restart_dir    = './RESTART/'
   , restart_file   = 'iced'
   , pointer_file   = './RESTART/ice.restart_file'
