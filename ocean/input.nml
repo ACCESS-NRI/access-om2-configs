@@ -414,7 +414,6 @@
       debug_this_module=.false.
       temperature_variable='conservative_temp'
       pottemp_2nd_iteration=.true.
-      pottemp_equal_contemp=.true.
       t_min=-20.0
       t_max = 55.0
       s_min = 0.0
