@@ -442,7 +442,6 @@
 &ocean_tempsalt_nml
     debug_this_module = .false.
     pottemp_2nd_iteration = .true.
-    pottemp_equal_contemp = .true.
     s_max = 70.0
     s_max_limit = 42.0
     s_min = 0.0
