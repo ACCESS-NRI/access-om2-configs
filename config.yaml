@@ -1,12 +1,12 @@
 # PBS configuration
-queue: normalbw
+queue: expressbw
 project: v45
-walltime: 4:00:00
+walltime: 1:00:00
 jobname: 1deg_jra55_iaf
 ncpus: 252
 mem: 500GB
 
-shortpath: /short/v45
+shortpath: /short/x77
 
 # Model configuration
 name: common
@@ -27,7 +27,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: /short/public/access-om2/bin/cice_auscom_360x300_24p_fa99a02_libaccessom2_b77aecd.exe
+      exe: cice_auscom_360x300_24p.exe
       input: /short/public/access-om2/input_08022019/cice_1deg
       ncpus: 24
 
