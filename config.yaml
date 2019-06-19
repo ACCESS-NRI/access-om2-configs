@@ -45,7 +45,7 @@ runlog: true
 stacksize: unlimited
 collate:
    walltime: 1:00:00
-   queue:copyq
+   queue: copyq
    mem: 4GB
 
 qsub_flags: -lother=hyperthread -W umask=027
