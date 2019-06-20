@@ -44,6 +44,7 @@ submodels:
 runlog: true
 stacksize: unlimited
 collate:
+   exe: /short/public/access-om2/bin/mppnccombine
    walltime: 1:00:00
    queue: copyq
    mem: 4GB
