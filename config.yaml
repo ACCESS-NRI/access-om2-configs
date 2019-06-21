@@ -4,7 +4,7 @@ project: v45
 walltime: 5:00:00
 jobname: 01deg_jra55_ryf
 ncpus: 5180
-shortpath: /short/v45
+shortpath: /short/x77
 
 # Model configuration
 name: common
