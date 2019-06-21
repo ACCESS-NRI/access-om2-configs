@@ -3,7 +3,7 @@ MOM5 JRA-RYF
 
 #output files
 "ocean_month",      1,  "months", 1, "days", "time",
-"ocean",            12,  "months", 1, "days", "time",
+"ocean",            1,  "months", 1, "days", "time",
 "ocean_grid",      -1,  "months", 1, "days", "time",
 "ocean_scalar",     1,  "months", 1, "days", "time",
 
