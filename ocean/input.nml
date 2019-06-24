@@ -151,8 +151,8 @@
     eos_linear = .false.
     eos_preteos10 = .true.
     layer_nk = 80
-    neutralrho_max = 1030.0
-    neutralrho_min = 1020.0
+    neutralrho_max = 1038.0
+    neutralrho_min = 1028.0
     potrho_max = 1038.0
     potrho_min = 1028.0
 /
