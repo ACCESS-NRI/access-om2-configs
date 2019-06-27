@@ -86,7 +86,7 @@ ACCESS-OM2-01
 "ocean_model","sfc_hflux_from_runoff","sfc_hflux_from_runoff", "ocean_month","all",.true.,"none",2
 "ocean_model","sfc_hflux_coupler","sfc_hflux_coupler"                          ,"ocean_month","all",.true.,"none",2
 "ocean_model","sfc_hflux_pme","sfc_hflux_pme", "ocean_month","all",.true.,"none",2
-"ocean_model","frazil_3d","frazil_3d", "ocean_month","all",.true.,"none",2
+"ocean_model","frazil_3d_int_z","frazil_3d_int_z", "ocean_month","all",.true.,"none",2
 "ocean_model","tau_x","tau_x",                     "ocean_month","all",.true.,"none",2
 "ocean_model","tau_y","tau_y",                     "ocean_month","all",.true.,"none",2
 #"ocean_model","bmf_u","bmf_u",                     "ocean_month","all",.true.,"none",2
