@@ -48,4 +48,4 @@ platform:
    nodesize: 28
 mpi:
     module: openmpi/1.10.2
-postscript: sync_output_to_gdata.sh
+#postscript: sync_output_to_gdata.sh

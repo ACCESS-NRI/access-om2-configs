@@ -9,7 +9,7 @@
 # Set this directory to something in /g/data3/hh5/tmp/cosima/
 # Make a unique path for your set of runs.
 # DOUBLE-CHECK IT IS UNIQUE SO YOU DON'T OVERWRITE EXISTING OUTPUT!
-GDATADIR=/g/data3/hh5/tmp/cosima/access-om2-01/01deg_jra55v13_ryf9091
+GDATADIR=/ERROR/SET/GDATADIR/IN/sync_output_to_gdata.sh
 
 mkdir -p ${GDATADIR}
 cd archive
