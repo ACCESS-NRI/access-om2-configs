@@ -30,12 +30,12 @@ submodels:
       ncpus: 799
 
 # Collation
-collate: true
-collate_walltime: 10:00:00
-collate_mem: 128GB
-collate_ncpus: 4
-collate_queue: expressbw
-collate_flags: -n4 -z -m
+collate:
+  walltime: 10:00:00
+  mem: 128GB
+  ncpus: 4
+  queue: expressbw
+  flags: -n4 -z -m
 
 # Misc
 runlog: True
