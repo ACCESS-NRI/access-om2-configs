@@ -35,7 +35,7 @@ collate:
   mem: 128GB
   ncpus: 4
   queue: expressbw
-  flags: -n4 -z -m
+  exe: /short/public/access-om2/bin/mppnccombine
 
 # Misc
 runlog: True
