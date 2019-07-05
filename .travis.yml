@@ -1,0 +1,22 @@
+language: python
+
+python:
+    - '3.6'
+
+git:
+    depth: 3
+    quiet: true
+
+install:
+    - pip install pytest pyyaml
+
+env:
+  global:
+    - CCONF_DIR=${TRAVIS_BUILD_DIR}
+
+before_script:
+    - git clone https://github.com/COSIMA/cleanconfig.git
+
+script:
+    - (cd cleanconfig && pytest -s test.py)
+    - pytest -s cleanconfig/test_shell_paths.py
