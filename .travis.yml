@@ -18,4 +18,5 @@ before_script:
     - git clone https://github.com/COSIMA/cleanconfig.git
 
 script:
-    - (cd cleanconfig && pytest test.py)
+    - (cd cleanconfig && pytest -s test.py)
+    - pytest -s cleanconfig/test_shell_paths.py
