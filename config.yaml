@@ -1,10 +1,10 @@
 # PBS configuration
 queue: normalbw
-project: v45
+# project: v45
 walltime: 5:00:00
 jobname: 01deg_jra55_ryf
 ncpus: 5180
-shortpath: /short/v45
+# shortpath: /short/v45
 
 # Model configuration
 name: common
@@ -30,12 +30,12 @@ submodels:
       ncpus: 799
 
 # Collation
-collate: true
-collate_walltime: 10:00:00
-collate_mem: 128GB
-collate_ncpus: 4
-collate_queue: expressbw
-collate_flags: -n4 -z -m
+collate:
+  walltime: 10:00:00
+  mem: 128GB
+  ncpus: 4
+  queue: expressbw
+  exe: /short/public/access-om2/bin/mppnccombine
 
 # Misc
 runlog: True
