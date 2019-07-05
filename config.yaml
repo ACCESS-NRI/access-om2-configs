@@ -7,11 +7,7 @@ walltime: 1:00:00
 jobname: 1deg_jra55_iaf
 ncpus: 252
 mem: 500GB
-
 queue: normalbw
-# Following two lines required for broadwell queues
-platform:
-    nodesize: 28
 
 # Force payu to always find, and save, files in this short project 
 # directory
@@ -50,6 +46,9 @@ collate:
    mem: 4GB
 
 qsub_flags: -lother=hyperthread -W umask=027
+# Following two lines required for broadwell queues
+platform:
+    nodesize: 28
 
 # DANGER! Do not uncomment this without checking the script is synching 
 # to the correct location!
