@@ -4,7 +4,7 @@
 #PBS -l wd
 #PBS -l walltime=1:00:00,mem=2GB
 #PBS -P v45
-#PBS -N sync_output_to_gdata
+#PBS -N output_to_gdata
 
 # Set this directory to something in /g/data3/hh5/tmp/cosima/
 # Make a unique path for your set of runs.
