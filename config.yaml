@@ -2,7 +2,7 @@
 queue: normal
 # project: v45
 walltime: 5:00:00
-jobname: 025_jra_iaf
+jobname: 025_jra55_iaf
 ncpus: 1824
 # shortpath: /short/v45
 
