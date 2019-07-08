@@ -1,10 +1,9 @@
 archive
 work
-./access-om2.err
-./access-om2.out
-01deg_jra55_r_c.e*
-01deg_jra55_r_c.o*
-01deg_jra55_ryf.e*
-01deg_jra55_ryf.o*
+access-om2.err
+access-om2.out
+*deg_jra55_*.[eo][0-9]+
+output_to_gdata.[eo][0-9]+
+restarts_to_gdata.[eo][0-9]+
 .DS_Store
 ._.DS_Store
