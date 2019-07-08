@@ -1,11 +1,10 @@
 # PBS configuration
 queue: normal
-project: x77
+# project: v45
 walltime: 5:00:00
 jobname: 025_jra_iaf
 ncpus: 1824
-
-shortpath: /short/v45
+# shortpath: /short/v45
 
 # Model configuration
 name: common
@@ -30,15 +29,16 @@ submodels:
       input: /short/public/access-om2/input_08022019/cice_025deg
       ncpus: 361
 
+# Collation
+collate:
+  walltime: 1:00:00
+  mem: 30GB
+  ncpus: 4
+  queue: express
+  exe: /short/public/access-om2/bin/mppnccombine
 
 # Misc
 stacksize: unlimited
-collate: True
-collate_walltime: 2:00:00
-collate_queue: express
-collate_ncpus: 1
-collate_flags: -n4 -z -m -r
-collate_mem: 30GB
 mpirun: --mca orte_base_help_aggregate 0
 qsub_flags: -lother=hyperthread -W umask=027
 # postscript: sync_output_to_gdata.sh
