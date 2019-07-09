@@ -1,5 +1,11 @@
-MOM5 JRA-RYF
-1 1 1 0 0 0
+ACCESS-OM2-025
+1900 1 1 0 0 0
+
+# The MOM diag_table format is defined here:
+# https://github.com/mom-ocean/MOM5/blob/master/src/shared/diag_manager/diag_table.F90
+# and some of the available diagnostics are listed here:
+# https://raw.githubusercontent.com/COSIMA/access-om2/master/MOM_diags.txt
+# https://github.com/COSIMA/access-om2/wiki/Technical-documentation#MOM5-diagnostics-list
 
 #output files
 "ocean_month",      1,  "months", 1, "days", "time",
