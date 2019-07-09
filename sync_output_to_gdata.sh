@@ -13,4 +13,6 @@ GDATADIR=/ERROR/SET/GDATADIR/IN/sync_output_to_gdata.sh
 
 mkdir -p ${GDATADIR}
 cd archive
-rsync --exclude "*.nc.*" -av --safe-links --no-g output* ${GDATADIR}
+rsync --exclude "*.nc.*" --exclude "ocean_daily_3d_*" --exclude "*ocean_*_3hourly*" --exclude "*iceh_03h*" -vrltoD --safe-links output* ${GDATADIR}
+rsync -vrltoD --safe-links error_logs ${GDATADIR}
+rsync -vrltoD --safe-links pbs_logs ${GDATADIR}
