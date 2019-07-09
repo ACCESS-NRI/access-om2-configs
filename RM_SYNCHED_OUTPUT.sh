@@ -6,6 +6,10 @@
 #PBS -P v45
 #PBS -N RM_SYNCHED_OUTPUT
 
+# This script will sync output to g/data and then remove from archive everything that was successfully synced.
+# It should be run interactively.
+# It doesn't sync or remove restarts.
+
 # NB: from
 # https://download.samba.org/pub/rsync/rsync.html
 # --remove-source-files
