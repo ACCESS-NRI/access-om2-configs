@@ -36,7 +36,7 @@
 /
 
  &diag_manager_nml
-      debug_diag_manager=.true.
+      debug_diag_manager=.false.
       issue_oor_warnings=.true.
 /
 
