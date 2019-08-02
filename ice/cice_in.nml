@@ -33,6 +33,7 @@
   , hist_avg       = .true.
   , history_dir    = './OUTPUT/'
   , history_file   = 'iceh'
+  , history_deflate_level = 1
   , write_ic       = .false.
   , incond_dir     = './OUTPUT/'
   , incond_file    = 'iceh_ic'
