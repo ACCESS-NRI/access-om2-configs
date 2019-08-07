@@ -175,6 +175,7 @@
   , restore_ice     = .false.
   , ustar_min       = 0.0005
   , tfrz_option     = 'linear_salt'
+  , highfreq        = .true.
 /
 
 &icefields_nml
