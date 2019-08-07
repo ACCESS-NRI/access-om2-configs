@@ -175,6 +175,7 @@
   , trestore        =  0
   , restore_ice     = .false.
   , ustar_min       = 0.0005
+  , highfreq        = .true.
 /
 
 &icefields_nml
