@@ -123,7 +123,7 @@
     equatorial_zonal = .false.
     k_smag_aniso = 0.0
     k_smag_iso = 2.0
-    ncar_boundary_scaling = .true.
+    ncar_boundary_scaling = .false.
     ncar_boundary_scaling_read = .false.
     ncar_rescale_power = 2
     ncar_vconst_4 = 2e-08
@@ -260,7 +260,7 @@
     agm_closure_upper_depth = 100.0
     aredi = 600.0
     aredi_equal_agm = .false.
-    drhodz_mom4p1 = .false.
+    drhodz_mom4p1 = .true.
     drhodz_smooth_horz = .false.
     drhodz_smooth_vert = .false.
     rossby_radius_max = 100000.0
@@ -380,7 +380,7 @@
     optics_morel_antoine = .false.
     read_chl = .true.
     use_this_module = .true.
-    zmax_pen = 300.0
+    zmax_pen = 1.0e6
 /
 
 &ocean_shortwave_jerlov_nml
