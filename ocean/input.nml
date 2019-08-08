@@ -363,7 +363,7 @@
     optics_morel_antoine = .false.
     read_chl = .true.
     use_this_module = .true.
-    zmax_pen = 300.0
+    zmax_pen = 1.0e6
 /
 &ocean_shortwave_jerlov_nml
     use_this_module = .false.
