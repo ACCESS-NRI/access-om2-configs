@@ -98,7 +98,7 @@
       visc_crit_scale=1.0
       equatorial_zonal=.false.
       bottom_5point=.false.
-      ncar_boundary_scaling=.true.
+      ncar_boundary_scaling=.false.
       ncar_boundary_scaling_read=.false.
       ncar_rescale_power=2
       ncar_vconst_4=2.e-8
@@ -234,7 +234,7 @@
 	aredi=600.0
 	agm=100.0
 	aredi_equal_agm=.false.
-	drhodz_mom4p1=.false.
+	drhodz_mom4p1=.true.
 	drhodz_smooth_horz=.false.
 	drhodz_smooth_vert=.false.
 	tracer_mix_micom=.false.
@@ -353,7 +353,7 @@
       optics_morel_antoine = .false.
       optics_manizza=.true.
       read_chl=.true.
-      zmax_pen=300.0
+      zmax_pen=1.0e6
       enforce_sw_frac=.true.
 /
 
