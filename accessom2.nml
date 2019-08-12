@@ -1,6 +1,6 @@
 &accessom2_nml
     log_level = 'DEBUG'
-    ice_ocean_timestep = 1800
+    ice_ocean_timestep = 1350
 &end
 
 &date_manager_nml
