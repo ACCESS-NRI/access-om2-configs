@@ -1,5 +1,5 @@
 {
-  "description": "JRA55-do V1.3 RYF 1990-91 forcing",
+  "description": "JRA55-do V1.3 IAF forcing",
   "inputs": [
     {
       "filename": "/g/data1/ua8/JRA55-do/latest/rsds.{{year}}.nc",
