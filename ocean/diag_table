@@ -59,7 +59,7 @@ ACCESS-OM2-01
 #"ocean_model","speed","speed",    "ocean","all",.true.,"none",2
 #"ocean_model","vert_pv","vert_pv",    "ocean","all",.true.,"none",2
 
-# 2d fields - monthly output
+# 2d fields
 "ocean_model","sea_level","sea_level",        "ocean_month","all",.true.,"none",2
 "ocean_model","sea_level_sq","sea_levelsq",        "ocean_month","all",.true.,"none",2
 "ocean_model","surface_temp","surface_temp",     "ocean_month","all",.true.,"none",2
