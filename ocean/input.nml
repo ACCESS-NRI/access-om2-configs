@@ -211,7 +211,25 @@
 /
 
  &ocean_nphysicsC_nml
-      use_this_module=.false.
+    use_this_module=.true.
+    do_neutral_diffusion=.true.
+    do_gm_skewsion=.true.
+    gm_skewsion_modes=.false.
+    gm_skewsion_bvproblem=.true.
+    number_bc_modes=2
+    bvp_bc_mode=2
+    bvp_speed=0.0
+    bvp_min_speed=0.1
+    smooth_psi=.true.
+    regularize_psi=.false.
+    smax_psi=0.01
+    epsln_bv_freq=1.e-12
+    bv_freq_smooth_vert=.true.
+    debug_this_module=.false.
+    turb_blayer_min=50.0
+    neutral_physics_limit=.true.
+    neutral_eddy_depth=.true.
+    tmask_neutral_on=.true.
 /
 
  &ocean_nphysics_new_nml
@@ -219,11 +237,11 @@
 /
 
  &ocean_nphysics_nml
-	use_this_module=.false.
+	use_this_module=.true.
 	debug_this_module=.false.
 	use_nphysicsA=.false.
 	use_nphysicsB=.false.
-	use_nphysicsC=.false.
+	use_nphysicsC=.true.
 /
 
  &ocean_nphysics_util_new_nml
@@ -231,8 +249,10 @@
 /
 
  &ocean_nphysics_util_nml
-	aredi=600.0
-	agm=100.0
+    nphysics_util_zero_init=.true.
+	aredi=200.0
+	aredi_diffusivity_grid_scaling=.true.
+	agm=200.0
 	aredi_equal_agm=.false.
 	drhodz_mom4p1=.true.
 	drhodz_smooth_horz=.false.
@@ -241,18 +261,28 @@
 	vel_micom=0.0
 	agm_closure=.true.
 	agm_closure_scaling=0.07
-	agm_closure_min=100.0
-	agm_closure_max=600.0
+    agm_closure_grid_scaling=.true.
+	agm_closure_min=1.0
+	agm_closure_max=200.0
 	agm_closure_length_fixed=.false.
 	agm_closure_length_rossby=.false.
 	agm_closure_length_bczone=.false.
 	agm_closure_baroclinic=.true.
-	agm_closure_length=50.e3
+    agm_closure_eden_greatbatch=.false.
+    agm_closure_eden_gamma=0.0
+    agm_closure_eady_smooth_vert=.true.
+    agm_closure_eady_smooth_horz=.true.
+    agm_closure_eady_cap=.true.
+    agm_closure_eady_ave_mixed=.true.
+    agm_smooth_space=.false.
+    agm_smooth_time=.false.
+    agm_damping_time=45.0
+	agm_closure_length=20.e3
 	agm_closure_buoy_freq=.004
 	agm_closure_upper_depth=100.0
 	agm_closure_lower_depth=2000.0
 	rossby_radius_max=100e3
-	rossby_radius_min=15e3
+	rossby_radius_min=10e3
 /
 
  &ocean_obc_nml
@@ -317,7 +347,7 @@
       use_waterflux=.true.
       land_model_heat_fluxes=.false.
       temp_restore_tscale=-10.0
-      salt_restore_tscale=60.0
+      salt_restore_tscale=21.28
       salt_restore_under_ice=.true.
       salt_restore_as_salt_flux=.true.
       read_restore_mask=.false.
