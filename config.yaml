@@ -10,24 +10,24 @@ mem: 500GB
 # Model configuration
 name: common
 model: access-om2
-input: /short/public/access-om2/input_08022019/common_1deg_jra55
+input: /short/public/access-om2/input_236a3011/common_1deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
       exe: /short/public/access-om2/bin/yatm_b6caeab.exe
-      input: /short/public/access-om2/input_08022019/yatm_1deg
+      input: /short/public/access-om2/input_236a3011/yatm_1deg
       ncpus: 1
 
     - name: ocean
       model: mom
       exe: /short/public/access-om2/bin/fms_ACCESS-OM_50dc61e_libaccessom2_b6caeab.x
-      input: /short/public/access-om2/input_08022019/mom_1deg
+      input: /short/public/access-om2/input_236a3011/mom_1deg
       ncpus: 216
 
     - name: ice
       model: cice5
       exe: /short/public/access-om2/bin/cice_auscom_360x300_24p_47650cc_libaccessom2_b6caeab.exe
-      input: /short/public/access-om2/input_08022019/cice_1deg
+      input: /short/public/access-om2/input_236a3011/cice_1deg
       ncpus: 24
 
 # Collation
