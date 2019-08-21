@@ -1,7 +1,7 @@
 # PBS configuration
 # If submitting to a different project to your default uncomment line below 
 # and change project code as appropriate
-# project: w35
+# project: v45
 
 walltime: 1:00:00
 jobname: 1deg_jra55_iaf
@@ -42,7 +42,6 @@ stacksize: unlimited
 collate:
    exe: /short/public/access-om2/bin/mppnccombine
    walltime: 1:00:00
-   queue: copyq
    mem: 4GB
 
 qsub_flags: -lother=hyperthread -W umask=027
