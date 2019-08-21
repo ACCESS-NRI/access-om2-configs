@@ -435,6 +435,7 @@
 &ocean_time_filter_nml
 /
 &ocean_topog_nml
+    min_thickness = 1.0e-3
 /
 &ocean_tracer_advect_nml
     debug_this_module = .false.
