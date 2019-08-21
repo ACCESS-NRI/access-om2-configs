@@ -466,7 +466,7 @@
 /
 
  &ocean_topog_nml
-
+     min_thickness = 1.0e-3
 /
 
  &ocean_tracer_advect_nml
