@@ -31,6 +31,7 @@
   , histfreq       = 'd','m','x','x','x'
   , histfreq_n     = 1, 1, 1, 1, 1
   , hist_avg       = .true.
+  , history_deflate_level = 1
   , history_dir    = './OUTPUT/'
   , history_file   = 'iceh'
   , write_ic       = .false.
