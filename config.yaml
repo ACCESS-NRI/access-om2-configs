@@ -40,9 +40,12 @@ submodels:
 runlog: true
 stacksize: unlimited
 collate:
-   exe: /short/public/access-om2/bin/mppnccombine
-   walltime: 1:00:00
-   mem: 4GB
+  walltime: 1:00:00
+  mem: 30GB
+  ncpus: 4
+  queue: express
+  restart: True
+  exe: /short/public/access-om2/bin/mppnccombine
 
 qsub_flags: -lother=hyperthread -W umask=027
 # Following two lines required for broadwell queues
