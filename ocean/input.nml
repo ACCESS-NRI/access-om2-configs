@@ -51,7 +51,7 @@
 /
 
 &mpp_io_nml
-    deflate_level = 5
+    deflate_level = -1
     shuffle = 1
 /
 
