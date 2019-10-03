@@ -35,6 +35,7 @@ collate:
   mem: 30GB
   ncpus: 4
   queue: express
+  restart: True
   exe: /short/public/access-om2/bin/mppnccombine
 
 # Misc
