@@ -1,9 +1,16 @@
 # PBS configuration
+# If submitting to a different project to your default uncomment line below 
+# and change project code as appropriate
+# project: w35
 queue: express
-walltime: 4:00:00
+walltime: 3:00:00
 jobname: 1deg_jra55_ryf
 ncpus: 252
 mem: 500GB
+
+# Force payu to always find, and save, files in this short (or scratch) project directory
+# shortpath: /scratch/w35
+
 # Model configuration
 name: common
 model: access-om2
@@ -11,7 +18,7 @@ input: /g/data4/ik11/inputs/access-om2/input_236a3011/common_1deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data4/ik11/inputs/access-om2/bin/yatm_17bed6f.exe
+      exe: /g/data4/ik11/inputs/access-om2/bin/yatm_1bb8904.exe
       input: 
             - /g/data4/ik11/inputs/access-om2/input_236a3011/yatm_1deg
             - /g/data1a/ua8/JRA55-do/RYF/v1-3/
@@ -19,13 +26,13 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data4/ik11/inputs/access-om2/bin/fms_ACCESS-OM_66a3e59_libaccessom2_17bed6f.x
+      exe: /g/data4/ik11/inputs/access-om2/bin/fms_ACCESS-OM_97e3429_libaccessom2_1bb8904.x
       input: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg
       ncpus: 216
 
     - name: ice
       model: cice5
-      exe: /g/data4/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_b37ea14_libaccessom2_17bed6f.exe
+      exe: /g/data4/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_b37ea14_libaccessom2_1bb8904.exe
       input: /g/data4/ik11/inputs/access-om2/input_236a3011/cice_1deg
       ncpus: 24
 
@@ -38,10 +45,13 @@ collate:
   exe: /g/data4/ik11/inputs/access-om2/bin/mppnccombine
 
 # Misc
-runlog: True
+runlog: true
 stacksize: unlimited
-mpirun: --mca orte_base_help_aggregate 0
 qsub_flags: -lother=hyperthread -W umask=027
+# set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
     nodesize: 48
+
+# DANGER! Do not uncomment this without checking the script is synching 
+# to the correct location!
 # postscript: sync_output_to_gdata.sh
