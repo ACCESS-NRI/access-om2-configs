@@ -45,7 +45,7 @@ collate:
 runlog: true
 stacksize: unlimited
 restart_freq: 1  # use tidy_restarts.py instead
-mpirun: --mca pml yalla -x MXM_LOG_FILE=$PBS_JOBFS/mxm.log
+# mpirun: --mca pml yalla -x MXM_LOG_FILE=$PBS_JOBFS/mxm.log
 qsub_flags: -lother=hyperthread -W umask=027
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
