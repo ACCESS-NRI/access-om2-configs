@@ -1,33 +1,36 @@
 # PBS configuration
-queue: normalbw
-# project: v45
+# If submitting to a different project to your default uncomment line below 
+# and change project code as appropriate
+# project: w35
+queue: normal
 walltime: 5:00:00
 jobname: 01deg_jra55_ryf
-ncpus: 5180  ## for normalbw
-# ncpus: 5168   ## for normal
-# shortpath: /short/v45
+ncpus: 5180
+
+# Force payu to always find, and save, files in this short (or scratch) project directory
+# shortpath: /scratch/w35
 
 # Model configuration
 name: common
 model: access-om2
-input: /short/public/access-om2/input_08022019/common_01deg_jra55
+input: /g/data4/ik11/inputs/access-om2/input_08022019/common_01deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /short/public/access-om2/bin/yatm_b6caeab.exe
-      input: /short/public/access-om2/input_08022019/yatm_01deg
+      exe: /g/data4/ik11/inputs/access-om2/bin/yatm_1bb8904.exe
+      input: /g/data4/ik11/inputs/access-om2/input_08022019/yatm_01deg
       ncpus: 1
 
     - name: ocean
       model: mom
-      exe: /short/public/access-om2/bin/fms_ACCESS-OM_50dc61e_libaccessom2_b6caeab.x
-      input: /short/public/access-om2/input_08022019/mom_01deg
+      exe: /g/data4/ik11/inputs/access-om2/bin/fms_ACCESS-OM_97e3429_libaccessom2_1bb8904.x
+      input: /g/data4/ik11/inputs/access-om2/input_08022019/mom_01deg
       ncpus: 4358
 
     - name: ice
       model: cice5
-      exe: /short/public/access-om2/bin/cice_auscom_3600x2700_722p_47650cc_libaccessom2_b6caeab.exe
-      input: /short/public/access-om2/input_08022019/cice_01deg
+      exe: /g/data4/ik11/inputs/access-om2/bin/cice_auscom_3600x2700_722p_b37ea14_libaccessom2_1bb8904.exe
+      input: /g/data4/ik11/inputs/access-om2/input_08022019/cice_01deg
       ncpus: 799
 
 # Collation
@@ -35,21 +38,21 @@ collate:
   walltime: 10:00:00
   mem: 128GB
   ncpus: 4
-  queue: expressbw
-  restart: True
-  exe: /short/public/access-om2/bin/mppnccombine
+  queue: express
+  exe: /g/data4/ik11/inputs/access-om2/bin/mppnccombine
 
 # Misc
-runlog: True
+runlog: true
 stacksize: unlimited
 restart_freq: 1  # use tidy_restarts.py instead
-mpirun: --mca pml yalla -x MXM_LOG_FILE=$PBS_JOBFS/mxm.log
+# mpirun: --mca pml yalla -x MXM_LOG_FILE=$PBS_JOBFS/mxm.log
 qsub_flags: -lother=hyperthread -W umask=027
-# for normalbw
+# set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
-   nodesize: 28
+    nodesize: 48
 mpi:
-    module: openmpi/1.10.2
+    module: openmpi/4.0.1
 
-# DANGER! Do not uncomment this without checking the script is synching to the correct location!
+# DANGER! Do not uncomment this without checking the script is synching 
+# to the correct location!
 # postscript: sync_output_to_gdata.sh
