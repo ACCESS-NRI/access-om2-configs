@@ -13,24 +13,24 @@ ncpus: 5180
 # Model configuration
 name: common
 model: access-om2
-input: /g/data4/ik11/inputs/access-om2/input_08022019/common_01deg_jra55
+input: /g/data4/ik11/inputs/access-om2/input_rc/common_01deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
       exe: /g/data4/ik11/inputs/access-om2/bin/yatm_1bb8904.exe
-      input: /g/data4/ik11/inputs/access-om2/input_08022019/yatm_01deg
+      input: /g/data4/ik11/inputs/access-om2/input_rc/yatm_01deg
       ncpus: 1
 
     - name: ocean
       model: mom
       exe: /g/data4/ik11/inputs/access-om2/bin/fms_ACCESS-OM_97e3429_libaccessom2_1bb8904.x
-      input: /g/data4/ik11/inputs/access-om2/input_08022019/mom_01deg
+      input: /g/data4/ik11/inputs/access-om2/input_rc/mom_01deg
       ncpus: 4358
 
     - name: ice
       model: cice5
       exe: /g/data4/ik11/inputs/access-om2/bin/cice_auscom_3600x2700_722p_b37ea14_libaccessom2_1bb8904.exe
-      input: /g/data4/ik11/inputs/access-om2/input_08022019/cice_01deg
+      input: /g/data4/ik11/inputs/access-om2/input_rc/cice_01deg
       ncpus: 799
 
 # Collation
