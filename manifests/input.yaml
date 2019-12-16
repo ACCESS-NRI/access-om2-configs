@@ -1,0 +1,349 @@
+format: yamanifest
+version: 1.0
+---
+work/INPUT/rmp_jra55_cice_conserve.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/common_1deg_jra55/rmp_jra55_cice_conserve.nc
+  hashes:
+    binhash: 67c1bf5bd80f5b0809560e037dec88b9
+    md5: 79885c8149d65a55d093244935f62360
+work/INPUT/rmp_jra55_cice_smooth.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/common_1deg_jra55/rmp_jra55_cice_smooth.nc
+  hashes:
+    binhash: f6421cbcbda8b0f664f9bda94ce9c17c
+    md5: aa91ea2e3cdef04f58ed5db8f8d7de6d
+work/atmosphere/INPUT/RYF.q_10.1984_1985.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.q_10.1984_1985.nc
+  hashes:
+    binhash: a432e60dba8ab1e48c131dd33dc313c7
+    md5: 094907fe5509f8c6d07d7072a3099c77
+work/atmosphere/INPUT/RYF.q_10.1990_1991.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.q_10.1990_1991.nc
+  hashes:
+    binhash: b465b59faf27f197fef8aeaa92d5c51d
+    md5: 2aa040c5f4639003dbc4f019c445bf33
+work/atmosphere/INPUT/RYF.q_10.2003_2004.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.q_10.2003_2004.nc
+  hashes:
+    binhash: 594a66d1d956bef3f0e162e17ae0fd2e
+    md5: 53064f44de424f2bcf0c1987c0c94938
+work/atmosphere/INPUT/RYF.rain.1984_1985.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.rain.1984_1985.nc
+  hashes:
+    binhash: 382cda23802a351761b465c148477926
+    md5: b5e75395fda05e26932f50ec3dd31a61
+work/atmosphere/INPUT/RYF.rain.1990_1991.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.rain.1990_1991.nc
+  hashes:
+    binhash: 2430fbcc2b921011d1a39048b5028ae6
+    md5: 98a063f5f9326645f41498e2a4282c0b
+work/atmosphere/INPUT/RYF.rain.2003_2004.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.rain.2003_2004.nc
+  hashes:
+    binhash: e73609c598ff4b6911a9feaeefef53c0
+    md5: 94fb0e7c2319e266bade29cf559df3e8
+work/atmosphere/INPUT/RYF.rlds.1984_1985.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.rlds.1984_1985.nc
+  hashes:
+    binhash: 733a3d8e1275b56c959a0fc2b26ce07b
+    md5: 0dfb74c54f26fb203a9fa5cb85d18e9f
+work/atmosphere/INPUT/RYF.rlds.1990_1991.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.rlds.1990_1991.nc
+  hashes:
+    binhash: e9f4cc5013dd86bdf70a0c5a9b6221be
+    md5: b1fb56a065c06a9488c7534c0a6fefbe
+work/atmosphere/INPUT/RYF.rlds.2003_2004.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.rlds.2003_2004.nc
+  hashes:
+    binhash: 88c701ae867bbf3917b3af42f62efa50
+    md5: 76e690c42146325bb566c994c1ec3910
+work/atmosphere/INPUT/RYF.rsds.1984_1985.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.rsds.1984_1985.nc
+  hashes:
+    binhash: f878baf1d647e850980a458a61c7f30c
+    md5: 47715b42745c016a3f363def133fa0a0
+work/atmosphere/INPUT/RYF.rsds.1990_1991.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.rsds.1990_1991.nc
+  hashes:
+    binhash: c9c12cbef0ada0d29fe1f864e526f65c
+    md5: 2d4cb0f10338dc090880233564dd5f4a
+work/atmosphere/INPUT/RYF.rsds.2003_2004.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.rsds.2003_2004.nc
+  hashes:
+    binhash: 04e45f06ae49a8555ce41536917f5468
+    md5: 3abda0630790f98d6459f7224d14614d
+work/atmosphere/INPUT/RYF.runoff_all.1984_1985.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.runoff_all.1984_1985.nc
+  hashes:
+    binhash: 21eeac4e8ed834b19e89ec371bd69ac7
+    md5: 6a88bf00cef5f7902d872a45dcea44d4
+work/atmosphere/INPUT/RYF.runoff_all.1990_1991.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.runoff_all.1990_1991.nc
+  hashes:
+    binhash: bc61cc1bace24811cda860684deeb586
+    md5: 7ce1f8aee9e06611936c2bdf3b69f3f0
+work/atmosphere/INPUT/RYF.runoff_all.2003_2004.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.runoff_all.2003_2004.nc
+  hashes:
+    binhash: ff1c44868909d40d611912a98c0a8f43
+    md5: 55c0ccf8f5e006ce18e221404e19eb65
+work/atmosphere/INPUT/RYF.slp.1984_1985.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.slp.1984_1985.nc
+  hashes:
+    binhash: f7fa74b0b045d450a9ad128052fd9ab4
+    md5: 58a44a44ccd93e10ae9de26ee70d1f45
+work/atmosphere/INPUT/RYF.slp.1990_1991.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.slp.1990_1991.nc
+  hashes:
+    binhash: 784be894a5b4a29fcb9e2cb4b7d987bd
+    md5: d1e10cceb1dd42c298d73b46c2fbf511
+work/atmosphere/INPUT/RYF.slp.2003_2004.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.slp.2003_2004.nc
+  hashes:
+    binhash: 07c5426033ae02d657f71b1d4189cdfa
+    md5: 3c08ed89da9936446e055d4b9b3f3306
+work/atmosphere/INPUT/RYF.snow.1984_1985.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.snow.1984_1985.nc
+  hashes:
+    binhash: 8d768c3ddb11a6401f5800bbaf238894
+    md5: 5eb6f11e1163689e6c668dc608f73c71
+work/atmosphere/INPUT/RYF.snow.1990_1991.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.snow.1990_1991.nc
+  hashes:
+    binhash: 8b982abddf374d5721f923808a0c9608
+    md5: 38a51a0d5a6897206ae91ea05f1998d5
+work/atmosphere/INPUT/RYF.snow.2003_2004.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.snow.2003_2004.nc
+  hashes:
+    binhash: f255713078b6a147eae255ef1e585be5
+    md5: f6d9d2709c363a7ffb10158af091cf41
+work/atmosphere/INPUT/RYF.t_10.1984_1985.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.t_10.1984_1985.nc
+  hashes:
+    binhash: 42e26f64a121112ffff5a6d27c8f58b1
+    md5: ef99e4dc7912142cd26b9c67fdc49161
+work/atmosphere/INPUT/RYF.t_10.1990_1991.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.t_10.1990_1991.nc
+  hashes:
+    binhash: f0845bf87748e4e494e1025ddece3a5d
+    md5: f4dbd5d509a3c3479df66ae398310ace
+work/atmosphere/INPUT/RYF.t_10.2003_2004.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.t_10.2003_2004.nc
+  hashes:
+    binhash: df848da85ec34a7570b23924adb9af6b
+    md5: 5c752aa45a8038dc025acd272bafa25a
+work/atmosphere/INPUT/RYF.u_10.1984_1985.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.u_10.1984_1985.nc
+  hashes:
+    binhash: 804eff5c700555da834b968dec9243b6
+    md5: ff6e32522eeddd775da71cb19858247e
+work/atmosphere/INPUT/RYF.u_10.1990_1991.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.u_10.1990_1991.nc
+  hashes:
+    binhash: b373e1ab54ef89a5ec478d793d8e8482
+    md5: 99a3975202c1db658b0e69ab134c5263
+work/atmosphere/INPUT/RYF.u_10.2003_2004.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.u_10.2003_2004.nc
+  hashes:
+    binhash: 0eaf67a40aead945600800f13bc982bd
+    md5: b815c0882971859b190151dafb5cce8f
+work/atmosphere/INPUT/RYF.v_10.1984_1985.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.v_10.1984_1985.nc
+  hashes:
+    binhash: 22dcb8943225207908a807b4a50d8312
+    md5: a48f2c7efd11e328ac246f4c22adad21
+work/atmosphere/INPUT/RYF.v_10.1990_1991.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.v_10.1990_1991.nc
+  hashes:
+    binhash: f1aa09e46060cec9e6d0b845564bef71
+    md5: 88f10317d163542a6d1b6d21686c89a9
+work/atmosphere/INPUT/RYF.v_10.2003_2004.nc:
+  fullpath: /g/data1a/ua8/JRA55-do/RYF/v1-3/RYF.v_10.2003_2004.nc
+  hashes:
+    binhash: d4ab1c739180d9653a51954ddee0767e
+    md5: 4e93d297b872db1fc14665048b6a5e1c
+work/atmosphere/INPUT/ncar_precip.0001.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/yatm_1deg/ncar_precip.0001.nc
+  hashes:
+    binhash: 7aa17263c4d1b83ace0e6a631272eb7a
+    md5: 502be1947e13269dedff21d34e34a543
+work/atmosphere/INPUT/ncar_rad.0001.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/yatm_1deg/ncar_rad.0001.nc
+  hashes:
+    binhash: 2a40d7b173ae746b1b1d8b67c4cf7e80
+    md5: 4d3d3e3d26f9d558411847d4f34579c8
+work/atmosphere/INPUT/q_10.0001.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/yatm_1deg/q_10.0001.nc
+  hashes:
+    binhash: 6a695ee13231ff0816ace4fd2609242a
+    md5: d9f27d865c8e86a5f5bc2576b3805c52
+work/atmosphere/INPUT/rmp_corr_to_cict_CONSERV.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/yatm_1deg/rmp_corr_to_cict_CONSERV.nc
+  hashes:
+    binhash: c8f9aeeed7740f65e83213cc4cc94ca9
+    md5: f080a1a3bc639639bcc183d5759bce12
+work/atmosphere/INPUT/rmp_daitren_runoff_MOM1_conserve2nd.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/yatm_1deg/rmp_daitren_runoff_MOM1_conserve2nd.nc
+  hashes:
+    binhash: 0d7fbb1cd7081de94ada3181e78110b0
+    md5: fd63d086dbede3c6e9795c750a3263e2
+work/atmosphere/INPUT/rmp_jra55_runoff_cice_conserve.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/yatm_1deg/rmp_jra55_runoff_cice_conserve.nc
+  hashes:
+    binhash: 858a4646b1bdb7dac5fdb6c2bd275e8a
+    md5: 4ea275ecdee40694db28c7bfb5d275f0
+work/atmosphere/INPUT/rmp_jrar_to_cict_CONSERV.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/yatm_1deg/rmp_jrar_to_cict_CONSERV.nc
+  hashes:
+    binhash: 65e7855288148d5e977badea1e8d0a5c
+    md5: 10f0b5ea6b8102a03ad1140e5163a0f7
+work/atmosphere/INPUT/runoff.daitren.clim.10FEB2011.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/yatm_1deg/runoff.daitren.clim.10FEB2011.nc
+  hashes:
+    binhash: ba68462c23b7ca7c9f1f418fa59dcfda
+    md5: 2471c5665be8b49f004dada041341817
+work/atmosphere/INPUT/slp.0001.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/yatm_1deg/slp.0001.nc
+  hashes:
+    binhash: 61c0f5237ec1c22fea6af9b91f047c96
+    md5: 743b0941d76feef69d1f12acce8050e7
+work/atmosphere/INPUT/t_10.0001.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/yatm_1deg/t_10.0001.nc
+  hashes:
+    binhash: e67a47f108a6269c591c207da5b8f4f1
+    md5: cc8a4863da3f6cfb209a607caaf0f085
+work/atmosphere/INPUT/u_10.0001.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/yatm_1deg/u_10.0001.nc
+  hashes:
+    binhash: b2d6ad3036fe4cd7142977c222827aaa
+    md5: e4073e81a24d10352157284d438e4c83
+work/atmosphere/INPUT/v_10.0001.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/yatm_1deg/v_10.0001.nc
+  hashes:
+    binhash: a0e341211d26a817ed039bbf3decb063
+    md5: 96914ca8a353bdc40ea0d3cba4350f16
+work/ice/RESTART/grid.nc:
+  copy: true
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/cice_1deg/grid.nc
+  hashes:
+    binhash: 74620c19f4503d4dae351b24e02b79e7
+    md5: 1213e346055ee073fe33dc12578d99c6
+work/ice/RESTART/i2o.nc:
+  copy: true
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/cice_1deg/i2o.nc
+  hashes:
+    binhash: 4d9c02ce417d36e2e724aec1e619d116
+    md5: 3cfa47e47eac96788dda622a9d0b176a
+work/ice/RESTART/kmt.nc:
+  copy: true
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/cice_1deg/kmt.nc
+  hashes:
+    binhash: 8ae1aa8eadb151db7794c5e6fd9b2e1c
+    md5: a5a7b4be90ec06044588b623d555c4ad
+work/ice/RESTART/monthly_sstsss.nc:
+  copy: true
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/cice_1deg/monthly_sstsss.nc
+  hashes:
+    binhash: af12fa116cad37b1208376f98ddaa08c
+    md5: 323d4c605f83f4d7d3126da70153c2ed
+work/ice/RESTART/o2i.nc:
+  copy: true
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/cice_1deg/o2i.nc
+  hashes:
+    binhash: 2e89778bfe92a3b0c41721c3dfe84871
+    md5: 3498246dcd7da40d3b8c6b4a908b260f
+work/ice/RESTART/u_star.nc:
+  copy: true
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/cice_1deg/u_star.nc
+  hashes:
+    binhash: 29bf2f18c57caafb8d499e4a534d2afe
+    md5: 68cf0ef92576f96ef085cd7f243d0c39
+work/ocean/INPUT/basin_mask.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/basin_mask.nc
+  hashes:
+    binhash: 5a77cae16b1a6c7d5042a1abbdfd8fda
+    md5: 20fd8740f24ca95c7c086343077e9c0d
+work/ocean/INPUT/chl.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/chl.nc
+  hashes:
+    binhash: c1f8d6d3e4000ac41159f1413a373cf6
+    md5: a7aa5bcf4a3b9fa8102edd3b6b67c3a2
+work/ocean/INPUT/geothermal_heating.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/geothermal_heating.nc
+  hashes:
+    binhash: 2d04abc82a3df5b9f43d6d0cc495d053
+    md5: 381cb231d8d059576adca0c2bea9c030
+work/ocean/INPUT/grid_spec.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/grid_spec.nc
+  hashes:
+    binhash: afeb8a676f0d829ebe248ee707e5c08b
+    md5: 027d2f8fb1eda3ef1cf0a3f520a217f7
+work/ocean/INPUT/mask_table.24.16x15:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/mask_table.24.16x15
+  hashes:
+    binhash: 60297e9f316c78a4570201d4c8404a61
+    md5: 2203b38758fb2b56a145ef16b7872af9
+work/ocean/INPUT/ocean_hgrid.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/ocean_hgrid.nc
+  hashes:
+    binhash: 1f1755cd82099150fa70927585368836
+    md5: 51f58be0f4ea6da2cb438a893f95c689
+work/ocean/INPUT/ocean_mask.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/ocean_mask.nc
+  hashes:
+    binhash: b5422ec543d44e369f3c42ce180638ee
+    md5: 1d9dfb140919f355037f72bc89f15db0
+work/ocean/INPUT/ocean_mask_table:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/ocean_mask_table
+  hashes:
+    binhash: c0a5f59e52818b729e122afe1f706baf
+    md5: 2203b38758fb2b56a145ef16b7872af9
+work/ocean/INPUT/ocean_mosaic.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/ocean_mosaic.nc
+  hashes:
+    binhash: 33713867c5816891b45d936897ef67d3
+    md5: cb42e630ee31d3686156fcbdc2f9d07c
+work/ocean/INPUT/ocean_temp_salt.res.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/ocean_temp_salt.res.nc
+  hashes:
+    binhash: 1c88f650aae9ae9fad0bf65ff0f34417
+    md5: c9814c04b393cf73fe3d16daf5d421af
+work/ocean/INPUT/ocean_vgrid.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/ocean_vgrid.nc
+  hashes:
+    binhash: aa922e4af9bdf6deedfecb81efcee14d
+    md5: 6eebf039362b6572eaad5477740236bf
+work/ocean/INPUT/roughness_amp.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/roughness_amp.nc
+  hashes:
+    binhash: 5eea2353c6fe3213aa919ef71a0a92e0
+    md5: 185dadeb53da2de75b47c53fd7085f89
+work/ocean/INPUT/roughness_cdbot.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/roughness_cdbot.nc
+  hashes:
+    binhash: cb42646c5d09ae4a09abfe89d610e7b9
+    md5: b50f0595f3ebc872cbcf5f3223115643
+work/ocean/INPUT/salt_sfc_restore.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/salt_sfc_restore.nc
+  hashes:
+    binhash: 1611eb28494b657838c8b5543410e679
+    md5: d95d45424492bad16d647c104e78b442
+work/ocean/INPUT/ssw_atten_depth.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/ssw_atten_depth.nc
+  hashes:
+    binhash: 9c2178dc209cfe84dce1b81be793cead
+    md5: 6142db126b8d2c8d8f4b6fb0e05d60c5
+work/ocean/INPUT/temp_sfc_restore.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/temp_sfc_restore.nc
+  hashes:
+    binhash: 3f65be76fc6b5b3830632e35cc2c1373
+    md5: e5f54b9a2392f660f0b3774802f2a84c
+work/ocean/INPUT/tideamp.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/tideamp.nc
+  hashes:
+    binhash: 4c3394bb168774fb4362826996c74bcb
+    md5: b2840af757d9b7b40207f33f1fc84c5c
+work/ocean/INPUT/topog.nc:
+  fullpath: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg/topog.nc
+  hashes:
+    binhash: 86a9468fa56d6b3c5612c919618efab3
+    md5: f01ddc02cfe21d8db99c2976e9fcc828
