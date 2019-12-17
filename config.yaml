@@ -19,7 +19,7 @@ submodels:
       model: yatm
       exe: /g/data4/ik11/inputs/access-om2/bin/yatm_1bb8904.exe
       input: 
-            - /g/data4/ik11/inputs/access-om2/input_08022019/yatm_01deg
+            - /g/data4/ik11/inputs/access-om2/input_rc/yatm_01deg
             - /g/data1a/ua8/JRA55-do/RYF/v1-3/
       ncpus: 1
 
