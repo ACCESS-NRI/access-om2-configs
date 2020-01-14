@@ -62,4 +62,4 @@ platform:
     nodesize: 48
 
 # DANGER! Do not uncomment this without checking the script is synching to the correct location!
-# postscript: sync_output_to_gdata.sh
+# postscript: sync_to_gdata.sh
