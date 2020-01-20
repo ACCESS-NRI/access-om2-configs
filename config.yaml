@@ -52,8 +52,6 @@ qsub_flags: -lother=hyperthread -W umask=027
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
     nodesize: 48
-mpi:
-    module: openmpi/4.0.1
 
 # payu bug workaround for gadi - see https://github.com/payu-org/payu/issues/215
 qsub_flags: -l storage=gdata/hh5+gdata/qv56+gdata/ik11+gdata/ua8
