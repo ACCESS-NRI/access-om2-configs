@@ -17,7 +17,7 @@ input: /g/data4/ik11/inputs/access-om2/input_rc/common_01deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data4/ik11/inputs/access-om2/bin/yatm_1bb8904.exe
+      exe: /g/data4/ik11/inputs/access-om2/bin/yatm_575fb04.exe
       input: 
             - /g/data4/ik11/inputs/access-om2/input_rc/yatm_01deg
             - /g/data1a/ua8/JRA55-do/RYF/v1-3/
@@ -25,13 +25,13 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data4/ik11/inputs/access-om2/bin/fms_ACCESS-OM_97e3429_libaccessom2_1bb8904.x
+      exe: /g/data4/ik11/inputs/access-om2/bin/fms_ACCESS-OM_4a2f211_libaccessom2_575fb04.x
       input: /g/data4/ik11/inputs/access-om2/input_rc/mom_01deg
       ncpus: 4358
 
     - name: ice
       model: cice5
-      exe: /g/data4/ik11/inputs/access-om2/bin/cice_auscom_3600x2700_722p_d3e8bdf_libaccessom2_1bb8904.exe
+      exe: /g/data4/ik11/inputs/access-om2/bin/cice_auscom_3600x2700_722p_365bdc1_libaccessom2_575fb04.exe
       input: /g/data4/ik11/inputs/access-om2/input_rc/cice_01deg
       ncpus: 799
 
@@ -52,8 +52,9 @@ qsub_flags: -lother=hyperthread -W umask=027
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
     nodesize: 48
-mpi:
-    module: openmpi/4.0.1
+
+# payu bug workaround for gadi - see https://github.com/payu-org/payu/issues/215
+qsub_flags: -l storage=gdata/hh5+gdata/qv56+gdata/ik11+gdata/ua8
 
 # DANGER! Do not uncomment this without checking the script is synching 
 # to the correct location!
