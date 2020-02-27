@@ -13,26 +13,26 @@ ncpus: 5180
 # Model configuration
 name: common
 model: access-om2
-input: /g/data4/ik11/inputs/access-om2/input_rc/common_01deg_jra55
+input: /g/data/ik11/inputs/access-om2/input_rc/common_01deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data4/ik11/inputs/access-om2/bin/yatm_575fb04.exe
+      exe: /g/data/ik11/inputs/access-om2/bin/yatm_575fb04.exe
       input: 
-            - /g/data4/ik11/inputs/access-om2/input_rc/yatm_01deg
-            - /g/data1a/ua8/JRA55-do/RYF/v1-3/
+            - /g/data/ik11/inputs/access-om2/input_rc/yatm_01deg
+            - /g/data/ua8/JRA55-do/RYF/v1-3/
       ncpus: 1
 
     - name: ocean
       model: mom
-      exe: /g/data4/ik11/inputs/access-om2/bin/fms_ACCESS-OM_4a2f211_libaccessom2_575fb04.x
-      input: /g/data4/ik11/inputs/access-om2/input_rc/mom_01deg
+      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM_4a2f211_libaccessom2_575fb04.x
+      input: /g/data/ik11/inputs/access-om2/input_rc/mom_01deg
       ncpus: 4358
 
     - name: ice
       model: cice5
-      exe: /g/data4/ik11/inputs/access-om2/bin/cice_auscom_3600x2700_722p_365bdc1_libaccessom2_575fb04.exe
-      input: /g/data4/ik11/inputs/access-om2/input_rc/cice_01deg
+      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_3600x2700_722p_365bdc1_libaccessom2_575fb04.exe
+      input: /g/data/ik11/inputs/access-om2/input_rc/cice_01deg
       ncpus: 799
 
 # Collation
@@ -41,7 +41,7 @@ collate:
   mem: 128GB
   ncpus: 4
   queue: express
-  exe: /g/data4/ik11/inputs/access-om2/bin/mppnccombine
+  exe: /g/data/ik11/inputs/access-om2/bin/mppnccombine
 
 # Misc
 runlog: true
