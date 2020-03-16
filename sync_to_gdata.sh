@@ -7,7 +7,7 @@
 #PBS -l storage=gdata/hh5+scratch/v45
 #PBS -N sync
 
-# Set this directory to something in /g/data3/hh5/tmp/cosima/
+# Set this directory to something in /g/data/hh5/tmp/cosima/
 # Make a unique path for your set of runs. Must be an absolute path.
 # DOUBLE-CHECK IT IS UNIQUE SO YOU DON'T OVERWRITE EXISTING OUTPUT!
 GDATADIR=/ERROR/SET/GDATADIR/IN/sync_to_gdata.sh
