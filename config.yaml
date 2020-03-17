@@ -56,7 +56,7 @@ collate:
 # Misc
 runlog: true
 stacksize: unlimited
-qsub_flags: -lother=hyperthread -W umask=027
+qsub_flags: -W umask=027
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
     nodesize: 48
