@@ -4,13 +4,15 @@
 #PBS -l wd
 #PBS -l walltime=4:00:00,mem=4GB
 #PBS -P v45
-#PBS -l storage=gdata/hh5+scratch/v45
+#PBS -l storage=gdata/hh5+gdata/ik11+scratch/v45
 #PBS -N sync
 
-# Set this directory to something in /g/data/hh5/tmp/cosima/
-# Make a unique path for your set of runs. Must be an absolute path.
-# DOUBLE-CHECK IT IS UNIQUE SO YOU DON'T OVERWRITE EXISTING OUTPUT!
-GDATADIR=/ERROR/SET/GDATADIR/IN/sync_to_gdata.sh
+# Set SYNCDIR to the path you want your data copied to.
+# This must be a unique absolute path for your set of runs.
+# If you want to share your data, use SYNCDIR=/g/data/ik11/outputs/<your expt name>
+# but first add an experiment description - see /g/data/ik11/outputs/README
+# DOUBLE-CHECK SYNCDIR PATH IS UNIQUE SO YOU DON'T OVERWRITE EXISTING OUTPUT!
+SYNCDIR=/ERROR/SET/SYNCDIR/IN/sync_data.sh
 
 exitcode=0
 help=false
@@ -55,9 +57,9 @@ while [ $# -ge 1 ]; do
 done
 
 if [ $exitcode != "0" -o $help == true ]; then
-    echo $0": rsync model run outputs (and optionally restarts) to /g/data"
+    echo $0": rsync model run outputs (and optionally restarts) to another location."
     echo "  Must be invoked from a control directory."
-    echo "  "$0" should be edited to set GDATADIR."
+    echo "  "$0" should be edited to set SYNCDIR."
     echo "  Default will rsync all output directories, leaving local copies intact."
     echo "  Also rsyncs error_logs and pbs_logs."
     echo "  Also updates git-runlog, a git clone of the control directory (whose git history documents all changes in the run)."
@@ -69,31 +71,31 @@ if [ $exitcode != "0" -o $help == true ]; then
 fi
 
 sourcepath="$PWD"
-mkdir -p ${GDATADIR} || exit 1
+mkdir -p ${SYNCDIR} || exit 1
 cd archive || exit 1
 
 if [ $restarts == true ]; then
     # only sync/remove restarts
-    rsync -vrltoD --safe-links restart* ${GDATADIR}
+    rsync -vrltoD --safe-links restart* ${SYNCDIR}
     if [ $rmlocal == true ]; then
         # Now do removals. Don't remove final local copy, so we can continue run.
-        rsync --remove-source-files --exclude `\ls -1d restart[0-9][0-9][0-9] | tail -1` -vrltoD --safe-links restart* ${GDATADIR}
+        rsync --remove-source-files --exclude `\ls -1d restart[0-9][0-9][0-9] | tail -1` -vrltoD --safe-links restart* ${SYNCDIR}
     fi
 else
     # default - only sync/remove outputs
-    rsync --exclude "*.nc.*" --exclude "ocean_daily_3d_*" --exclude "*ocean_*_3hourly*" --exclude "*iceh_03h*" -vrltoD --safe-links output* ${GDATADIR}
+    rsync --exclude "*.nc.*" --exclude "ocean_daily_3d_*" --exclude "*ocean_*_3hourly*" --exclude "*iceh_03h*" -vrltoD --safe-links output* ${SYNCDIR}
     if [ $rmlocal == true ]; then
         # Now do removals. Don't remove final local copy, so we can continue run.
-        rsync --remove-source-files --exclude `\ls -1d output[0-9][0-9][0-9] | tail -1` --exclude "*.nc.*" --exclude "ocean_daily_3d_*" --exclude "*ocean_*_3hourly*" --exclude "*iceh_03h*" -vrltoD --safe-links output* ${GDATADIR}
+        rsync --remove-source-files --exclude `\ls -1d output[0-9][0-9][0-9] | tail -1` --exclude "*.nc.*" --exclude "ocean_daily_3d_*" --exclude "*ocean_*_3hourly*" --exclude "*iceh_03h*" -vrltoD --safe-links output* ${SYNCDIR}
     fi
 fi
 
 # Also sync error and PBS logs
-rsync -vrltoD --safe-links error_logs ${GDATADIR}
-rsync -vrltoD --safe-links pbs_logs ${GDATADIR}
+rsync -vrltoD --safe-links error_logs ${SYNCDIR}
+rsync -vrltoD --safe-links pbs_logs ${SYNCDIR}
 
-# create/update a clone of the run history in ${GDATADIR}/git-runlog
-cd ${GDATADIR} || exit 1
+# create/update a clone of the run history in ${SYNCDIR}/git-runlog
+cd ${SYNCDIR} || exit 1
 ls git-runlog || git clone $sourcepath git-runlog
 cd git-runlog
 git pull
