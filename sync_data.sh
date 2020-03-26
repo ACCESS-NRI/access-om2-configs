@@ -9,7 +9,7 @@
 
 # Set SYNCDIR to the path you want your data copied to.
 # This must be a unique absolute path for your set of runs.
-# If you want to share your data, use SYNCDIR=/g/data/ik11/outputs/<your expt name>
+# To share your data, sync to a subdirectory in /g/data/ik11/outputs/
 # but first add an experiment description - see /g/data/ik11/outputs/README
 # DOUBLE-CHECK SYNCDIR PATH IS UNIQUE SO YOU DON'T OVERWRITE EXISTING OUTPUT!
 SYNCDIR=/ERROR/SET/SYNCDIR/IN/sync_data.sh
