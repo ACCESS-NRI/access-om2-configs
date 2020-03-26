@@ -2,7 +2,7 @@
 # If submitting to a different project to your default uncomment line below 
 # and change project code as appropriate
 # project: w35
-queue: express
+queue: normal
 walltime: 3:00:00
 jobname: 1deg_jra55_iaf
 ncpus: 252
