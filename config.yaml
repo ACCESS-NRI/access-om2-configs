@@ -18,7 +18,7 @@ input: /g/data4/ik11/inputs/access-om2/input_236a3011/common_1deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data4/ik11/inputs/access-om2/bin/yatm_c30e907f.exe
+      exe: /g/data4/ik11/inputs/access-om2/bin/yatm_4198e150.exe
       input: 
             - /g/data4/ik11/inputs/access-om2/input_236a3011/yatm_1deg
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-3/atmos/3hr/rsds/gn/v20180412/rsds
@@ -35,13 +35,13 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data4/ik11/inputs/access-om2/bin/fms_ACCESS-OM_75e267c0_libaccessom2_c30e907f.x
+      exe: /g/data4/ik11/inputs/access-om2/bin/fms_ACCESS-OM_e837d05d_libaccessom2_4198e150.x
       input: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_1deg
       ncpus: 216
 
     - name: ice
       model: cice5
-      exe: /g/data4/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_e151c8bc_libaccessom2_c30e907f.exe
+      exe: /g/data4/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_597e4561_libaccessom2_4198e150.exe
       input: /g/data4/ik11/inputs/access-om2/input_236a3011/cice_1deg
       ncpus: 24
 
@@ -54,7 +54,7 @@ collate:
   exe: /g/data4/ik11/inputs/access-om2/bin/mppnccombine
 
 # Misc
-runlog: true
+runlog: false
 stacksize: unlimited
 qsub_flags: -lother=hyperthread -W umask=027
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
