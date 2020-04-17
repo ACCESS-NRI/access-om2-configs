@@ -13,13 +13,13 @@ ncpus: 1824
 # Model configuration
 name: common
 model: access-om2
-input: /g/data4/ik11/inputs/access-om2/input_236a3011/common_025deg_jra55
+input: /g/data/ik11/inputs/access-om2/input_236a3011/common_025deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data4/ik11/inputs/access-om2/bin/yatm_4198e150.exe
+      exe: /g/data/ik11/inputs/access-om2/bin/yatm_4198e150.exe
       input: 
-            - /g/data4/ik11/inputs/access-om2/input_236a3011/yatm_025deg
+            - /g/data/ik11/inputs/access-om2/input_236a3011/yatm_025deg
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-3/atmos/3hr/rsds/gn/v20180412/rsds
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-3/atmos/3hr/rlds/gn/v20180412/rlds
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-3/atmos/3hr/prra/gn/v20180412/prra
@@ -34,14 +34,14 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data4/ik11/inputs/access-om2/bin/fms_ACCESS-OM_e837d05d_libaccessom2_4198e150.x
-      input: /g/data4/ik11/inputs/access-om2/input_236a3011/mom_025deg
+      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM_e837d05d_libaccessom2_4198e150.x
+      input: /g/data/ik11/inputs/access-om2/input_236a3011/mom_025deg
       ncpus: 1455
 
     - name: ice
       model: cice5
-      exe: /g/data4/ik11/inputs/access-om2/bin/cice_auscom_1440x1080_480p_597e4561_libaccessom2_4198e150.exe
-      input: /g/data4/ik11/inputs/access-om2/input_236a3011/cice_025deg
+      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_1440x1080_480p_597e4561_libaccessom2_4198e150.exe
+      input: /g/data/ik11/inputs/access-om2/input_236a3011/cice_025deg
       ncpus: 361
 
 # Collation
@@ -50,7 +50,7 @@ collate:
   mem: 30GB
   ncpus: 4
   queue: express
-  exe: /g/data4/ik11/inputs/access-om2/bin/mppnccombine
+  exe: /g/data/ik11/inputs/access-om2/bin/mppnccombine
 
 # Misc
 runlog: true
