@@ -54,7 +54,7 @@ collate:
   exe: /g/data4/ik11/inputs/access-om2/bin/mppnccombine
 
 # Misc
-runlog: false
+runlog: true
 stacksize: unlimited
 qsub_flags: -lother=hyperthread -W umask=027
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
