@@ -4,7 +4,7 @@
 # project: w35
 queue: normal
 walltime: 5:00:00
-jobname: 025_jra55_iaf
+jobname: 025deg_jra55_iaf
 ncpus: 1824
 
 # Force payu to always find, and save, files in this short (or scratch) project directory
