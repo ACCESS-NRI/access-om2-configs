@@ -53,9 +53,6 @@ qsub_flags: -W umask=027
 platform:
     nodesize: 48
 
-# payu bug workaround for gadi - see https://github.com/payu-org/payu/issues/215
-qsub_flags: -l storage=gdata/hh5+gdata/qv56+gdata/ik11+gdata/ua8
-
 # DANGER! Do not uncomment this without checking the script is synching 
 # to the correct location!
 # postscript: sync_output_to_gdata.sh
