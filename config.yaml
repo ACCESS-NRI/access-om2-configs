@@ -8,7 +8,7 @@ jobname: 1deg_jra55_ryf
 ncpus: 252
 mem: 500GB
 
-# Force payu to always find, and save, files in this short (or scratch) project directory
+# Force payu to always find, and save, files in this scratch project directory
 # shortpath: /scratch/w35
 
 # Model configuration
@@ -19,9 +19,9 @@ submodels:
     - name: atmosphere
       model: yatm
       exe: /g/data/ik11/inputs/access-om2/bin/yatm_4198e150.exe
-      input: 
+      input:
             - /g/data/ik11/inputs/access-om2/input_236a3011/yatm_1deg
-            - /g/data/ua8/JRA55-do/RYF/v1-3/
+            - /g/data/ik11/inputs/JRA-55/RYF/v1-4
       ncpus: 1
 
     - name: ocean
