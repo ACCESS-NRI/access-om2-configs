@@ -2,7 +2,7 @@
 # If submitting to a different project to your default uncomment line below 
 # and change project code as appropriate
 # project: w35
-queue: express
+queue: normal
 walltime: 3:00:00
 jobname: 1deg_jra55_ryf
 ncpus: 252
@@ -18,7 +18,7 @@ input: /g/data/ik11/inputs/access-om2/input_236a3011/common_1deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data/ik11/inputs/access-om2/bin/yatm_4198e15.exe
+      exe: /g/data/ik11/inputs/access-om2/bin/yatm_4198e150.exe
       input: 
             - /g/data/ik11/inputs/access-om2/input_236a3011/yatm_1deg
             - /g/data/ua8/JRA55-do/RYF/v1-3/
@@ -26,13 +26,13 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM_e837d05_libaccessom2_4198e15.x
+      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM_e837d05d_libaccessom2_4198e150.x
       input: /g/data/ik11/inputs/access-om2/input_236a3011/mom_1deg
       ncpus: 216
 
     - name: ice
       model: cice5
-      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_4592d05_libaccessom2_4198e15.exe
+      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_597e4561_libaccessom2_4198e150.exe
       input: /g/data/ik11/inputs/access-om2/input_236a3011/cice_1deg
       ncpus: 24
 
@@ -47,13 +47,10 @@ collate:
 # Misc
 runlog: true
 stacksize: unlimited
-qsub_flags: -lother=hyperthread -W umask=027
+qsub_flags: -W umask=027
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
     nodesize: 48
-
-# payu bug workaround for gadi - see https://github.com/payu-org/payu/issues/215
-qsub_flags: -l storage=gdata/hh5+gdata/qv56+gdata/ik11+gdata/ua8
 
 # DANGER! Do not uncomment this without checking the script is synching 
 # to the correct location!
