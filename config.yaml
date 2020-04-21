@@ -8,7 +8,7 @@ jobname: 1deg_jra55_iaf
 ncpus: 252
 mem: 500GB
 
-# Force payu to always find, and save, files in this short (or scratch) project directory
+# Force payu to always find, and save, files in this scratch project directory
 # shortpath: /scratch/w35
 
 # Model configuration
