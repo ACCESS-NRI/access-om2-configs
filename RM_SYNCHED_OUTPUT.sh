@@ -4,6 +4,7 @@
 #PBS -l wd
 #PBS -l walltime=1:00:00,mem=2GB
 #PBS -P v45
+#PBS -l storage=gdata/hh5+gdata/ik11+scratch/v45
 #PBS -N RM_SYNCHED_OUTPUT
 
 # This script will sync output to g/data and then remove from archive everything that was successfully synced.

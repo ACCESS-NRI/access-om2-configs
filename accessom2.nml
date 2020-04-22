@@ -1,6 +1,6 @@
 &accessom2_nml
     log_level = 'DEBUG'
-    ice_ocean_timestep = 900
+    ice_ocean_timestep = 5400
 &end
 
 &date_manager_nml
@@ -9,5 +9,5 @@
 
     ! Runtime for a single segment/job/submit, format is years, months, seconds,
     ! two of which must be zero.
-    restart_period = 1, 0, 0
+    restart_period = 5, 0, 0
 &end
