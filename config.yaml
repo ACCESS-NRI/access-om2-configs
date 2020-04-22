@@ -17,7 +17,7 @@ input: /g/data/ik11/inputs/access-om2/input_08022019/common_01deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data/ik11/inputs/access-om2/bin/yatm_4198e15.exe
+      exe: /g/data/ik11/inputs/access-om2/bin/yatm_4198e150.exe
       input: 
             - /g/data/ik11/inputs/access-om2/input_08022019/yatm_01deg
             - /g/data/ua8/JRA55-do/RYF/v1-3/
@@ -25,13 +25,13 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM_e837d05_libaccessom2_4198e15.x
+      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM_e837d05d_libaccessom2_4198e150.x
       input: /g/data/ik11/inputs/access-om2/input_08022019/mom_01deg
       ncpus: 4358
 
     - name: ice
       model: cice5
-      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_3600x2700_722p_4592d05_libaccessom2_4198e15.exe
+      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_3600x2700_722p_597e4561_libaccessom2_4198e150.exe
       input: /g/data/ik11/inputs/access-om2/input_08022019/cice_01deg
       ncpus: 799
 
@@ -48,13 +48,10 @@ runlog: true
 stacksize: unlimited
 restart_freq: 1  # use tidy_restarts.py instead
 # mpirun: --mca pml yalla -x MXM_LOG_FILE=$PBS_JOBFS/mxm.log
-qsub_flags: -lother=hyperthread -W umask=027
+qsub_flags: -W umask=027
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
     nodesize: 48
-
-# payu bug workaround for gadi - see https://github.com/payu-org/payu/issues/215
-qsub_flags: -l storage=gdata/hh5+gdata/qv56+gdata/ik11+gdata/ua8
 
 # DANGER! Do not uncomment this without checking the script is synching 
 # to the correct location!
