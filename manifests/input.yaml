@@ -388,37 +388,37 @@ work/atmosphere/INPUT/v_10.0001.nc:
     md5: 96914ca8a353bdc40ea0d3cba4350f16
 work/ice/RESTART/grid.nc:
   copy: true
-  fullpath: /g/data/ik11/inputs/access-om2/input_236a3011/cice_1deg/grid.nc
+  fullpath: /g/data/ik11/inputs/access-om2/input_20200422/cice_1deg/grid.nc
   hashes:
     binhash: 74620c19f4503d4dae351b24e02b79e7
     md5: 1213e346055ee073fe33dc12578d99c6
 work/ice/RESTART/i2o.nc:
   copy: true
-  fullpath: /g/data/ik11/inputs/access-om2/input_236a3011/cice_1deg/i2o.nc
+  fullpath: /g/data/ik11/inputs/access-om2/input_20200422/cice_1deg/i2o.nc
   hashes:
-    binhash: 4d9c02ce417d36e2e724aec1e619d116
-    md5: 3cfa47e47eac96788dda622a9d0b176a
+    binhash: 50f8295041fdd5218c87b83f712abc69
+    md5: 02de2c3cecb27ccd89d3185e74858153
 work/ice/RESTART/kmt.nc:
   copy: true
-  fullpath: /g/data/ik11/inputs/access-om2/input_236a3011/cice_1deg/kmt.nc
+  fullpath: /g/data/ik11/inputs/access-om2/input_20200422/cice_1deg/kmt.nc
   hashes:
     binhash: 8ae1aa8eadb151db7794c5e6fd9b2e1c
     md5: a5a7b4be90ec06044588b623d555c4ad
 work/ice/RESTART/monthly_sstsss.nc:
   copy: true
-  fullpath: /g/data/ik11/inputs/access-om2/input_236a3011/cice_1deg/monthly_sstsss.nc
+  fullpath: /g/data/ik11/inputs/access-om2/input_20200422/cice_1deg/monthly_sstsss.nc
   hashes:
     binhash: af12fa116cad37b1208376f98ddaa08c
     md5: 323d4c605f83f4d7d3126da70153c2ed
 work/ice/RESTART/o2i.nc:
   copy: true
-  fullpath: /g/data/ik11/inputs/access-om2/input_236a3011/cice_1deg/o2i.nc
+  fullpath: /g/data/ik11/inputs/access-om2/input_20200422/cice_1deg/o2i.nc
   hashes:
     binhash: 2e89778bfe92a3b0c41721c3dfe84871
     md5: 3498246dcd7da40d3b8c6b4a908b260f
 work/ice/RESTART/u_star.nc:
   copy: true
-  fullpath: /g/data/ik11/inputs/access-om2/input_236a3011/cice_1deg/u_star.nc
+  fullpath: /g/data/ik11/inputs/access-om2/input_20200422/cice_1deg/u_star.nc
   hashes:
     binhash: 29bf2f18c57caafb8d499e4a534d2afe
     md5: 68cf0ef92576f96ef085cd7f243d0c39
