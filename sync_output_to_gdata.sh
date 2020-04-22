@@ -4,7 +4,7 @@
 #PBS -l wd
 #PBS -l walltime=4:00:00,mem=2GB
 #PBS -P v45
-#PBS -l storage=gdata/hh5+scratch/v45
+#PBS -l storage=gdata/hh5+gdata/ik11+scratch/v45
 #PBS -N output_to_gdata
 
 # Set this directory to something in /g/data/ik11/outputs/

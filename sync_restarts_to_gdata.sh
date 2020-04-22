@@ -4,6 +4,7 @@
 #PBS -l wd
 #PBS -l walltime=2:00:00,mem=2GB
 #PBS -P v45
+#PBS -l storage=gdata/hh5+gdata/ik11+scratch/v45
 #PBS -N restarts_to_gdata
 
 source sync_output_to_gdata.sh # to define GDATADIR and cd archive
