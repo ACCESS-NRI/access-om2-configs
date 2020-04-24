@@ -208,7 +208,7 @@ INSTANT
 ##########
 # Field 12 : ice-ocean interface stress (x-direction)
 ##########
-strsu_io u_flux 170 5400 1 i2o.nc IGNORED
+strsu_io u_flux 170 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -216,7 +216,7 @@ INSTANT
 ########## 
 # Field 13 : ice-ocean interface stress (y-direction)
 ##########
-strsv_io v_flux 175 5400 1 i2o.nc IGNORED
+strsv_io v_flux 175 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -224,7 +224,7 @@ INSTANT
 ########## 
 # Field 14 : freshwater flux
 ##########
-rain_io lprec 27 5400 1 i2o.nc IGNORED
+rain_io lprec 27 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -232,7 +232,7 @@ INSTANT
 ##########
 # Field 15 : freshwater flux
 ##########
-snow_io fprec 28 5400 1 i2o.nc IGNORED
+snow_io fprec 28 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -240,7 +240,7 @@ INSTANT
 ########## 
 # Field 16 : salt flux   (no ref no for saltflux yet!)
 ##########
-stflx_io salt_flx 454 5400 1 i2o.nc IGNORED
+stflx_io salt_flx 454 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -248,7 +248,7 @@ INSTANT
 ########## 
 # Field 17 : next heat flux   (heatflux into ocean. '42' not right.)
 ##########
-htflx_io mh_flux 42 5400 1 i2o.nc IGNORED
+htflx_io mh_flux 42 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -256,7 +256,7 @@ INSTANT
 ########## 
 # Field 18 : swflux penetrating through ice into ocean 
 #########
-swflx_io sw_flux 367 5400 1 i2o.nc IGNORED
+swflx_io sw_flux 367 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -264,7 +264,7 @@ INSTANT
 ##########
 # Field 19 : latent heat flux
 ##########
-qflux_io q_flux 452 5400 1 i2o.nc IGNORED
+qflux_io q_flux 452 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -272,7 +272,7 @@ INSTANT
 #########
 # Field 20 : Sensible heat flux
 ##########
-shflx_io t_flux 362 5400 1 i2o.nc IGNORED
+shflx_io t_flux 362 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -280,7 +280,7 @@ INSTANT
 ##########
 # Field 21 : LW radiation flux down
 ##########
-lwflx_io lw_flux 366 5400 1 i2o.nc IGNORED
+lwflx_io lw_flux 366 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -288,7 +288,7 @@ INSTANT
 ##########
 # Field 22 : runoff
 ########## 
-runof_io runof 297 5400 1 i2o.nc IGNORED
+runof_io runof 297 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -296,7 +296,7 @@ INSTANT
 ##########
 # Field 23 : surface pressure
 ########## 
-press_io p 33 5400 1 i2o.nc IGNORED
+press_io p 33 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -304,7 +304,7 @@ INSTANT
 ##########
 # Field 24 : ice concentration
 ########## 
-aice_io aice 44 5400 1 i2o.nc IGNORED
+aice_io aice 44 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS 
@@ -312,7 +312,7 @@ INSTANT
 ##########
 # Field 25 : ice melting waterflux
 ########## 
-melt_io wfimelt 36 5400 1 i2o.nc IGNORED
+melt_io wfimelt 36 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -320,7 +320,7 @@ INSTANT
 ##########
 # Field 26 : ice forming waterflux
 ########## 
-form_io wfiform 36 5400 1 i2o.nc IGNORED
+form_io wfiform 36 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -348,7 +348,7 @@ INSTANT
 ########## 
 # Field 29 : Sea surface temperature (Celsius in MOM4, Kelvin in MOM5)
 ##########
-t_surf sst_i 1 5400 1 o2i.nc IGNORED
+t_surf sst_i 1 1800 1 o2i.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #  
 LOCTRANS
@@ -356,7 +356,7 @@ INSTANT
 ##########
 # Field 30 : Sea surface salinity (psu)
 ##########
-s_surf sss_i 312 5400 1 o2i.nc IGNORED
+s_surf sss_i 312 1800 1 o2i.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -364,7 +364,7 @@ INSTANT
 ##########
 # Field 31 :  'eastward' sea surface water velocity
 ##########
-u_surf ssu_i 181 5400 1 o2i.nc IGNORED
+u_surf ssu_i 181 1800 1 o2i.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -372,16 +372,16 @@ INSTANT
 ##########
 # Field 32 : 'northward' sea surface water velocity
 ##########
-v_surf ssv_i 261 5400 1 o2i.nc IGNORED
+v_surf ssv_i 261 1800 1 o2i.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
 INSTANT
 ##########
-# Field 33 :  frazil ice fromation energy (J/m^2)
+# Field 33 :  frazil ice formation energy (J/m^2)
 #             ('441' is "upward_sea_ice_basal_heat_flux' 'W m-2')
 ##########
-frazil pfmice_i 441 5400 1 o2i.nc IGNORED
+frazil pfmice_i 441 1800 1 o2i.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -390,7 +390,7 @@ INSTANT
 # Field 34 :  sea surface slope _x_ (m/m)
 #             ( '203' is "height" ...)
 ##########
-dssldx sslx_i 203 5400 1 o2i.nc IGNORED
+dssldx sslx_i 203 1800 1 o2i.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -399,7 +399,7 @@ INSTANT
 # Field 35 :  sea surface slope _y_ (m/m)
 #             ( '310' is "sea_surface_elevation")
 ##########
-dssldy ssly_i 310 5400 1 o2i.nc IGNORED
+dssldy ssly_i 310 1800 1 o2i.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
