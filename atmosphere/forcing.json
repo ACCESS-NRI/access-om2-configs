@@ -29,7 +29,8 @@
     {
       "filename": "INPUT/RYF.runoff_all.1990_1991.nc",
       "fieldname": "friver",
-      "cname": "runof_ai"
+      "cname": "runof_ai",
+      "domain": "land"
     },
     {
       "filename": "INPUT/RYF.t_10.1990_1991.nc",
