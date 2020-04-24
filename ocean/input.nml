@@ -35,12 +35,12 @@
 /
 
 &mom_oasis3_interface_nml
-    fields_in = 'u_flux', 'v_flux', 'lprec', 'fprec', 'salt_flx', 'mh_flux',
-                'sw_flux', 'q_flux', 't_flux', 'lw_flux', 'runof', 'p',
-                'aice', 'wfimelt', 'wfiform'
+    fields_in = 'u_flux', 'v_flux', 'lprec', 'fprec', 'salt_flx', 'mh_flux', 'sw_flux',
+                'q_flux', 't_flux', 'lw_flux', 'runof', 'p', 'aice', 'wfimelt',
+                'wfiform', 'licefw', 'liceht'
     fields_out = 't_surf', 's_surf', 'u_surf', 'v_surf', 'dssldx', 'dssldy',
                  'frazil'
-    num_fields_in = 15
+    num_fields_in = 17
     num_fields_out = 7
     send_after_ocean_update = .true.
     send_before_ocean_update = .false.
