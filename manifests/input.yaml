@@ -396,8 +396,8 @@ work/ice/RESTART/i2o.nc:
   copy: true
   fullpath: /g/data/ik11/inputs/access-om2/input_20200422/cice_1deg/i2o.nc
   hashes:
-    binhash: 50f8295041fdd5218c87b83f712abc69
-    md5: 02de2c3cecb27ccd89d3185e74858153
+    binhash: 527d494c80b2a3418645b962fd8706d0
+    md5: c96e06c3c80c0f680545db59ed3349e5
 work/ice/RESTART/kmt.nc:
   copy: true
   fullpath: /g/data/ik11/inputs/access-om2/input_20200422/cice_1deg/kmt.nc
