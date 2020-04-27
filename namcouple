@@ -328,7 +328,7 @@ INSTANT
 ##########
 # Field 27 : land ice waterflux
 ########## 
-licefw_io licefw 36 3600 1 i2o.nc IGNORED
+licefw_io licefw 36 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
@@ -336,7 +336,7 @@ INSTANT
 ##########
 # Field 28 : land ice heatflux
 ########## 
-licefh_io liceht 36 3600 1 i2o.nc IGNORED
+licefh_io liceht 36 1800 1 i2o.nc IGNORED
 cict cict LAG=0 SEQ=+1
 #
 LOCTRANS
