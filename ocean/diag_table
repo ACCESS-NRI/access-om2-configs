@@ -7,15 +7,25 @@ ACCESS-OM2-01
 # https://raw.githubusercontent.com/COSIMA/access-om2/master/MOM_diags.txt
 # https://github.com/COSIMA/access-om2/wiki/Technical-documentation#MOM5-diagnostics-list
 
-# This diag_table is intended as a minimal diag_table for the RYF spinup.
-# Note that 3D fields are specified as 3-monthly, which restricts the 
-# possible options for simulation length
+# This is intended as a minimal diag_table for spinup.
 
 # output files
+"ocean_daily",      1,  "days",   1, "days", "time",
 "ocean_month",      1,  "months", 1, "days", "time",
-"ocean",            3,  "months", 1, "days", "time",
+"ocean",            1,  "months", 1, "days", "time",
 "ocean_grid",      -1,  "months", 1, "days", "time",
 "ocean_scalar",     1,  "months", 1, "days", "time",
+
+# Daily 3d prognostic variables T, S, u, v, and also w (which isn't prognostic)
+#"ocean_daily_3d_temp",  1,  "days", 1, "days", "time",
+#"ocean_daily_3d_salt",  1,  "days", 1, "days", "time",
+#"ocean_daily_3d_u",  1,  "days", 1, "days", "time",
+#"ocean_daily_3d_v",  1,  "days", 1, "days", "time",
+#"ocean_daily_3d_wt",  1,  "days", 1, "days", "time",
+
+## Adele/Ruth's DSW diagnostics
+#"ocean_daily_3d_uhrho_et",  1,  "days", 1, "days", "time",
+#"ocean_daily_3d_vhrho_nt",  1,  "days", 1, "days", "time",
 
 # Save ocean grid data once and for all
 "ocean_model","geolon_t","geolon_t", "ocean_grid","all",.false.,"none",2
@@ -44,7 +54,7 @@ ACCESS-OM2-01
 "ocean_model","v","v",                  "ocean","all",.true.,"none",2
 "ocean_model","wt","wt",                "ocean","all",.true.,"none",2
 "ocean_model","dzt","dzt",              "ocean","all",.true.,"none",2
-"ocean_model","rho","rho",  "ocean","all",.true.,"none",2
+"ocean_model","pot_rho_2","pot_rho_2",  "ocean","all",.true.,"none",2
 "ocean_model","pot_rho_0","pot_rho_0",  "ocean","all",.true.,"none",2
 "ocean_model","tx_trans","tx_trans",    "ocean","all",.true.,"none",2
 "ocean_model","ty_trans","ty_trans",    "ocean","all",.true.,"none",2
@@ -55,9 +65,23 @@ ACCESS-OM2-01
 "ocean_model","temp_xflux_adv","temp_xflux_adv","ocean","all",.true.,"none",2
 "ocean_model","temp_yflux_adv","temp_yflux_adv","ocean","all",.true.,"none",2
 #"ocean_model","diff_cbt_t","diff_cbt_t",    "ocean","all",.true.,"none",2
-#"ocean_model","buoyfreq2_wt","buoyfreq2_wt",    "ocean","all",.true.,"none",2
+"ocean_model","buoyfreq2_wt","buoyfreq2_wt",    "ocean","all",.true.,"none",2
 #"ocean_model","speed","speed",    "ocean","all",.true.,"none",2
-#"ocean_model","vert_pv","vert_pv",    "ocean","all",.true.,"none",2
+"ocean_model","vert_pv","vert_pv",    "ocean","all",.true.,"none",2
+#"ocean_model","bih_fric_u","bih_fric_u",    "ocean","all",.true.,"none",2
+#"ocean_model","bih_fric_v","bih_fric_v",    "ocean","all",.true.,"none",2
+#"ocean_model","u_dot_grad_vert_pv","u_dot_grad_vert_pv","ocean","all",.true.,"none",2
+
+# 3d fields - daily output
+#"ocean_model","temp","temp","ocean_daily_3d_temp","all",.true.,"none",2
+#"ocean_model","salt","salt","ocean_daily_3d_salt","all",.true.,"none",2
+#"ocean_model","u","u","ocean_daily_3d_u","all",.true.,"none",2
+#"ocean_model","v","v","ocean_daily_3d_v","all",.true.,"none",2
+#"ocean_model","wt","wt","ocean_daily_3d_wt","all",.true.,"none",2
+
+# for Adele:
+#"ocean_model","uhrho_et","uhrho_et",    "ocean_daily_3d_uhrho_et","all",.true.,"none",2
+#"ocean_model","vhrho_nt","vhrho_nt",    "ocean_daily_3d_vhrho_nt","all",.true.,"none",2
 
 # 2d fields
 "ocean_model","sea_level","sea_level",        "ocean_month","all",.true.,"none",2
@@ -100,6 +124,19 @@ ACCESS-OM2-01
 #"ocean_model","temp_xflux_adv_int_z","temp_xflux_adv_int_z",                   "ocean_month","all",.true.,"none",2
 #"ocean_model","temp_yflux_submeso_int_z","temp_yflux_submeso_int_z",                   "ocean_month","all",.true.,"none",2
 #"ocean_model","temp_xflux_submeso_int_z","temp_xflux_submeso_int_z",                   "ocean_month","all",.true.,"none",2
+
+# 2d fields - daily output
+"ocean_model","eta_t", "eta_t", "ocean_daily","all",.true.,"none",2
+"ocean_model","surface_temp", "surface_temp", "ocean_daily","all",.true.,"none",2
+"ocean_model","mld", "mld", "ocean_daily","all",.true.,"none",2
+"ocean_model","u_surf", "u_surf", "ocean_daily","all",.true.,"none",2
+"ocean_model","v_surf", "v_surf", "ocean_daily","all",.true.,"none",2
+"ocean_model","sfc_hflux_from_runoff",  "sfc_hflux_from_runoff", "ocean_daily","all",.true.,"none",2
+"ocean_model","sfc_hflux_coupler", "sfc_hflux_coupler", "ocean_daily","all",.true.,"none",2
+"ocean_model","sfc_hflux_pme", "sfc_hflux_pme", "ocean_daily","all",.true.,"none",2
+"ocean_model","frazil_3d_int_z","frazil_3d_int_z", "ocean_daily","all",.true.,"none",2
+"ocean_model","pme_river", "pme_river", "ocean_daily","all",.true.,"none",2
+"ocean_model","surface_salt", "surface_salt", "ocean_daily","all",.true.,"none",2
 
 # timeseries - 1D scalar variables
 "ocean_model","ke_tot","ke_tot", "ocean_scalar","all",.true.,"none",1
