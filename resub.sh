@@ -9,14 +9,14 @@ date >> ${logfile}
 
 # Define errors from which a resubmit is appropriate
 declare -a errors=( 
-                   "Segmentation fault: address not mapped to object",
+                   "Segmentation fault: address not mapped to object"
                    "Transport retry count exceeded"
 		  )
 
 resub=false
 for error in "${errors[@]}"
 do
-  if grep -q ${error} ${outfile}
+  if grep -q "${error}" ${outfile}
   then
      echo "Error found: ${error}" >> ${logfile}
      resub=true
