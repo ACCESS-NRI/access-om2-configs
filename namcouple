@@ -1,5 +1,5 @@
 # This is a typical input file for OASIS 3.0, using netCDF format
-# for restart input files.  Oasis reads this file at run-time. 
+# for restart input files.  Oasis reads this file at run-time.
 #
 # Any line beginning with # is ignored. Blank lines are not allowed.
 #
@@ -49,8 +49,8 @@
 # $END
 ###########################################################################
 # $MODINFO
-# Indicates if a header is encapsulated within the field brick 
-# in binary restart files for all communication techniques, and  
+# Indicates if a header is encapsulated within the field brick
+# in binary restart files for all communication techniques, and
 # for coupling field exchanges for PIPE, SIPC and GMEM.
 # (YES or NOT)
 #  NOT
@@ -81,7 +81,7 @@
 # --- note file cf_name_table.txt does not include all the coupling flds ---
 # --- listed below. so the fld number (367 for swfld etc) may not point  ---
 # --- to the realistic 'longname' of the variable. (may modify this file ---
-# --- to add more fields in the future.) 
+# --- to add more fields in the future.)
 ############################################################################
 #
 #                      ATMOSPHERE  --->>>  ICE
@@ -89,118 +89,94 @@
 ##########
 # Field 01 : swflx down
 ##########
-swfld_ai swfld_i 367 10800 3 a2i.nc EXPORTED
-jrat cict LAG=0 SEQ=+1
+swfld_ai swfld_i -1 -1 1 NA EXPORTED
+NA NA
 P  0  P  0
 #
-LOCTRANS MAPPING SCRIPR
-INSTANT
-../INPUT/rmp_jrat_to_cict_CONSERV.nc dst
-CONSERV LR SCALAR LATLON 10 FRACNNEI FIRST
+MAPPING
+../INPUT/rmp_jra55_cice_1st_conserve.nc dst
 #########
 # Field 02 : lwflx down
 ##########
-lwfld_ai lwfld_i 366 10800 3 a2i.nc EXPORTED
-jrat cict LAG=0 SEQ=+1
+lwfld_ai lwfld_i -1 -1 1 NA EXPORTED
+NA NA
 P  0  P  0
 #
-LOCTRANS MAPPING SCRIPR
-INSTANT
-../INPUT/rmp_jrat_to_cict_CONSERV.nc dst
-CONSERV LR SCALAR LATLON 10 FRACNNEI FIRST
+MAPPING
+../INPUT/rmp_jra55_cice_1st_conserve.nc dst
 ##########
 # Field 03 : rainfall
 ##########
-rain_ai rain_i 26 10800 3 a2i.nc EXPORTED
-jrat cict LAG=0 SEQ=+1
+rain_ai rain_i -1 -1 1 NA EXPORTED
+NA NA
 P  0  P  0
 #
-LOCTRANS MAPPING SCRIPR
-INSTANT
-../INPUT/rmp_jrat_to_cict_CONSERV.nc dst
-CONSERV LR SCALAR LATLON 10 FRACNNEI FIRST
+MAPPING
+../INPUT/rmp_jra55_cice_1st_conserve.nc dst
 ##########
 # Field 04 : snowfall
 ##########
-snow_ai snow_i 26 10800 3 a2i.nc EXPORTED
-jrat cict LAG=0 SEQ=+1
+snow_ai snow_i -1 -1 1 NA EXPORTED
+NA NA
 P  0  P  0
 #
-LOCTRANS MAPPING SCRIPR
-INSTANT
-../INPUT/rmp_jrat_to_cict_CONSERV.nc dst
-CONSERV LR SCALAR LATLON 10 FRACNNEI FIRST
+MAPPING
+../INPUT/rmp_jra55_cice_1st_conserve.nc dst
 ##########
 # Field 05 : surface pressure
 ##########
-press_ai press_i 33 10800 3 a2i.nc EXPORTED
-jrat cict LAG=0 SEQ=+1
+press_ai press_i -1 -1 1 NA EXPORTED
+NA NA
 P  0  P  0
 #
-LOCTRANS MAPPING SCRIPR
-INSTANT
-../INPUT/rmp_jra55_cice_smooth.nc dst
-CONSERV LR SCALAR LATLON 10 FRACNNEI FIRST
+MAPPING
+../INPUT/rmp_jra55_cice_patch.nc dst
 ##########
 # Field 06 : runoff. Runoff is passed on the destination grid.
 ##########
-runof_ai runof_i 297 10800 1 a2i.nc EXPORTED
-cict cict LAG=0 SEQ=+1
-P  0  P  0
-#
-LOCTRANS
-INSTANT
+runof_ai runof_i -2 -1 0 NA IGNORED
+NA NA
 ##########
 # Field 07 : near surface (2m) air temp
 ##########
-tair_ai tair_i 110 10800 3 a2i.nc EXPORTED
-jrat cict LAG=0 SEQ=+1
+tair_ai tair_i -1 -1 1 NA EXPORTED
+NA NA
 P  0  P  0
 #
-LOCTRANS MAPPING SCRIPR
-INSTANT
-../INPUT/rmp_jra55_cice_smooth.nc dst
-CONSERV LR SCALAR LATLON 10 FRACNNEI FIRST
+MAPPING
+../INPUT/rmp_jra55_cice_patch.nc dst
 ##########
 # Field 08 : 2m air humidity
 ##########
-qair_ai qair_i 339 10800 3 a2i.nc EXPORTED
-jrat cict LAG=0 SEQ=+1
+qair_ai qair_i -1 -1 1 NA EXPORTED
+NA NA
 P  0  P  0
 #
-LOCTRANS MAPPING SCRIPR
-INSTANT
-../INPUT/rmp_jra55_cice_smooth.nc dst
-CONSERV LR SCALAR LATLON 10 FRACNNEI FIRST
+MAPPING
+../INPUT/rmp_jra55_cice_patch.nc dst
 ##########
 # Field 09 : 10m wind (u)
 ##########
-uwnd_ai uwnd_i 56 10800 2 a2i.nc EXPORTED
-jrat cict LAG=0 SEQ=+1
+uwnd_ai uwnd_i -1 -1 1 NA EXPORTED
+NA NA
 P  0  P  0
 #
-MAPPING SCRIPR
-../INPUT/rmp_jra55_cice_smooth.nc dst
-DISTWGT LR VECTOR LATLON 10 4 vwnd_ai
+MAPPING
+../INPUT/rmp_jra55_cice_patch.nc dst
 ##########
 # Field 10 : 10m wind (v)
 ##########
-vwnd_ai vwnd_i 56 10800 2 a2i.nc EXPORTED
-jrat cict LAG=0 SEQ=+1
+vwnd_ai vwnd_i -1 -1 1 NA EXPORTED
+NA NA
 P  0  P  0
 #
-MAPPING SCRIPR
-../INPUT/rmp_jra55_cice_smooth.nc dst
-DISTWGT LR VECTOR LATLON 10 4 uwnd_ai
+MAPPING
+../INPUT/rmp_jra55_cice_patch.nc dst
 ##########
 # Field 11 : land ice calving flux, like runoff it is passed on the destination grid
 ##########
-licalvf_ai licalvf_i 56 10800 1 a2i.nc EXPORTED
-cict cict LAG=0 SEQ=+1
-P  0  P  0
-#
-LOCTRANS
-INSTANT
+licalvf_ai licalvf_i -1 -1 0 NA IGNORED
+NA NA
 ############################################################################
 #
 #                      ICE --->>> OCEAN
@@ -208,200 +184,125 @@ INSTANT
 ##########
 # Field 12 : ice-ocean interface stress (x-direction)
 ##########
-strsu_io u_flux 170 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
-########## 
+strsu_io u_flux -1 -1 0 i2o.nc IGNORED
+NA NA
+##########
 # Field 13 : ice-ocean interface stress (y-direction)
 ##########
-strsv_io v_flux 175 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
-########## 
+strsv_io v_flux -1 -1 0 i2o.nc IGNORED
+NA NA
+##########
 # Field 14 : freshwater flux
 ##########
-rain_io lprec 27 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+rain_io lprec -1 -1 0 i2o.nc IGNORED
+NA NA
 ##########
 # Field 15 : freshwater flux
 ##########
-snow_io fprec 28 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
-########## 
+snow_io fprec -1 -1 0 i2o.nc IGNORED
+NA NA
+##########
 # Field 16 : salt flux   (no ref no for saltflux yet!)
 ##########
-stflx_io salt_flx 454 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
-########## 
-# Field 17 : next heat flux   (heatflux into ocean. '42' not right.)
+stflx_io salt_flx -1 -1 0 i2o.nc IGNORED
+NA NA
 ##########
-htflx_io mh_flux 42 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
-########## 
-# Field 18 : swflux penetrating through ice into ocean 
+# Field 17 : next heat flux   (heatflux into ocean)
+##########
+htflx_io mh_flux -1 -1 0 i2o.nc IGNORED
+NA NA
+##########
+# Field 18 : swflux penetrating through ice into ocean
 #########
-swflx_io sw_flux 367 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+swflx_io sw_flux -1 -1 0 i2o.nc IGNORED
+NA NA
 ##########
 # Field 19 : latent heat flux
 ##########
-qflux_io q_flux 452 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+qflux_io q_flux -1 -1 0 i2o.nc IGNORED
+NA NA
 #########
 # Field 20 : Sensible heat flux
 ##########
-shflx_io t_flux 362 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+shflx_io t_flux -1 -1 0 i2o.nc IGNORED
+NA NA
 ##########
 # Field 21 : LW radiation flux down
 ##########
-lwflx_io lw_flux 366 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+lwflx_io lw_flux -1 -1 0 i2o.nc IGNORED
+NA NA
 ##########
 # Field 22 : runoff
-########## 
-runof_io runof 297 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+##########
+runof_io runof -1 -1 0 i2o.nc IGNORED
+NA NA
 ##########
 # Field 23 : surface pressure
-########## 
-press_io p 33 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+##########
+press_io p -1 -1 0 i2o.nc IGNORED
+NA NA
 ##########
 # Field 24 : ice concentration
-########## 
-aice_io aice 44 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS 
-INSTANT
+##########
+aice_io aice -1 -1 0 i2o.nc IGNORED
+NA NA
 ##########
 # Field 25 : ice melting waterflux
-########## 
-melt_io wfimelt 36 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
 ##########
-# Field 26 : ice forming waterflux
-########## 
-form_io wfiform 36 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+melt_io wfimelt -1 -1 0 i2o.nc IGNORED
+NA NA
+##########
+# Field 26 : ice forming eaterflux
+##########
+form_io wfiform -1 -1 0 i2o.nc IGNORED
+NA NA
 ##########
 # Field 27 : land ice waterflux
-########## 
-licefw_io licefw 36 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+##########
+licefw_io licefw -1 -1 0 i2o.nc IGNORED
+NA NA
 ##########
 # Field 28 : land ice heatflux
-########## 
-licefh_io liceht 36 300 1 i2o.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+##########
+licefh_io liceht -1 -1 0 i2o.nc IGNORED
+NA NA
 ############################################################################
-# 
+#
 #                      OCEAN --->>> ICE
 #                      ----------------
-########## 
+##########
 # Field 29 : Sea surface temperature (Celsius in MOM4, Kelvin in MOM5)
 ##########
-t_surf sst_i 1 300 1 o2i.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#  
-LOCTRANS
-INSTANT
+t_surf sst_i -1 -1 0 o2i.nc IGNORED
+NA NA
 ##########
 # Field 30 : Sea surface salinity (psu)
 ##########
-s_surf sss_i 312 300 1 o2i.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+s_surf sss_i -1 -1 0 o2i.nc IGNORED
+NA NA
 ##########
 # Field 31 :  'eastward' sea surface water velocity
 ##########
-u_surf ssu_i 181 300 1 o2i.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+u_surf ssu_i -1 -1 0 o2i.nc IGNORED
+NA NA
 ##########
 # Field 32 : 'northward' sea surface water velocity
 ##########
-v_surf ssv_i 261 300 1 o2i.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+v_surf ssv_i -1 -1 0 o2i.nc IGNORED
+NA NA
 ##########
-# Field 33 :  frazil ice formation energy (J/m^2)
-#             ('441' is "upward_sea_ice_basal_heat_flux' 'W m-2')
+# Field 33 :  frazil ice fromation energy (J/m^2)
 ##########
-frazil pfmice_i 441 300 1 o2i.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+frazil pfmice_i -1 -1 0 o2i.nc IGNORED
+NA NA
 ##########
 # Field 34 :  sea surface slope _x_ (m/m)
-#             ( '203' is "height" ...)
 ##########
-dssldx sslx_i 203 300 1 o2i.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+dssldx sslx_i -1 -1 0 o2i.nc IGNORED
+NA NA
 ##########
 # Field 35 :  sea surface slope _y_ (m/m)
-#             ( '310' is "sea_surface_elevation")
 ##########
-dssldy ssly_i 310 300 1 o2i.nc IGNORED
-cict cict LAG=0 SEQ=+1
-#
-LOCTRANS
-INSTANT
+dssldy ssly_i -1 -1 0 o2i.nc IGNORED
+NA NA
  $END
