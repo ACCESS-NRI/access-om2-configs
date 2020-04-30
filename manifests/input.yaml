@@ -1,0 +1,529 @@
+format: yamanifest
+version: 1.0
+---
+work/INPUT/JRA55_MOM1_conserve2nd.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/common_1deg_jra55/JRA55_MOM1_conserve2nd.nc
+  hashes:
+    binhash: 1e898bb683160f7eb91e9e49a8e39160
+    md5: 00be8ec0f1126055b65dc68178ce4eb5
+work/INPUT/JRA55_MOM1_patch.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/common_1deg_jra55/JRA55_MOM1_patch.nc
+  hashes:
+    binhash: b6f946067a63b8944eb1165e17e58196
+    md5: 6c345282e51521828f62b842e58dd734
+work/INPUT/rmp_jra55_cice_1st_conserve.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/common_1deg_jra55/rmp_jra55_cice_1st_conserve.nc
+  hashes:
+    binhash: c581a8a58b807c6dc1c5304c126c80ee
+    md5: 6404d936d4898e5ed31e62b585d630cf
+work/INPUT/rmp_jra55_cice_2nd_conserve.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/common_1deg_jra55/rmp_jra55_cice_2nd_conserve.nc
+  hashes:
+    binhash: b1eae275f3f4f89fd5b6537758563d0b
+    md5: 79885c8149d65a55d093244935f62360
+work/INPUT/rmp_jra55_cice_patch.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/common_1deg_jra55/rmp_jra55_cice_patch.nc
+  hashes:
+    binhash: 1af1de55ea267ced7c966e2991bee5e8
+    md5: aa91ea2e3cdef04f58ed5db8f8d7de6d
+work/atmosphere/INPUT/RYF.friver.1990_1991.nc:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/RYF.friver.1990_1991.nc
+  hashes:
+    binhash: df5b6715e020f563acb65673571a565f
+    md5: fa3a55aeb6706a1b422d096f61a772c1
+work/atmosphere/INPUT/RYF.huss.1990_1991.nc:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/RYF.huss.1990_1991.nc
+  hashes:
+    binhash: 71d6099511ebc8b43f9b86b325ecf3af
+    md5: 6032d514fdfdd2b6a84bdef0a4ac3afe
+work/atmosphere/INPUT/RYF.licalvf.1990_1991.nc:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/RYF.licalvf.1990_1991.nc
+  hashes:
+    binhash: f219ce98f3fcbe6f8ec517740f01aee1
+    md5: 6f927702cbc023cc20d3ddd69695f0a0
+work/atmosphere/INPUT/RYF.prra.1990_1991.nc:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/RYF.prra.1990_1991.nc
+  hashes:
+    binhash: 2754bd49fff02bf5330a086310f1c296
+    md5: ac199086106ec4e41506e6082bccb109
+work/atmosphere/INPUT/RYF.prsn.1990_1991.nc:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/RYF.prsn.1990_1991.nc
+  hashes:
+    binhash: 154a15cde4940309ac5e6fef0d7faba4
+    md5: cd076c877c2c5df61615e04d71ed00e0
+work/atmosphere/INPUT/RYF.psl.1990_1991.nc:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/RYF.psl.1990_1991.nc
+  hashes:
+    binhash: 559b1e3183475cfb94a7f013f4acf8ea
+    md5: 0dfd94a5c3234fd2016dfdd01e84a170
+work/atmosphere/INPUT/RYF.rlds.1990_1991.nc:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/RYF.rlds.1990_1991.nc
+  hashes:
+    binhash: 9512836673a68507bed403ecd859ba38
+    md5: 0ea83e107ec883c3f39a12b60ff50d8e
+work/atmosphere/INPUT/RYF.rsds.1990_1991.nc:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/RYF.rsds.1990_1991.nc
+  hashes:
+    binhash: 7ff7cd79ace33fefe2b9a91ea018ea14
+    md5: b74bf123f1e4557368a61732cf24f1c2
+work/atmosphere/INPUT/RYF.tas.1990_1991.nc:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/RYF.tas.1990_1991.nc
+  hashes:
+    binhash: 8f3c6798cc92a1d0b6573eb44b2a4dd2
+    md5: 06689885f4f2f726b95a2818ab78a20d
+work/atmosphere/INPUT/RYF.uas.1990_1991.nc:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/RYF.uas.1990_1991.nc
+  hashes:
+    binhash: 54ede2172bf85bc861bc64c296a03f8c
+    md5: 107bf9480f55597655d2d283b6f6b4ff
+work/atmosphere/INPUT/RYF.vas.1990_1991.nc:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/RYF.vas.1990_1991.nc
+  hashes:
+    binhash: 17224eecb745b6ce72604b41201c1fe7
+    md5: 88dc8c70338bbc8f5efc48ed0009a99f
+work/atmosphere/INPUT/make_ryf/.git/COMMIT_EDITMSG:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/COMMIT_EDITMSG
+  hashes:
+    binhash: 22ec7701562a961d8119c4af92a98044
+    md5: 9bc314d387974df26448af23836f5f23
+work/atmosphere/INPUT/make_ryf/.git/HEAD:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/HEAD
+  hashes:
+    binhash: 48c6644dd466a8ff8d22fbdda382e22a
+    md5: 2b74885bd597136c4af661a85538b2a3
+work/atmosphere/INPUT/make_ryf/.git/config:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/config
+  hashes:
+    binhash: 32ba9afcc7c19babcb8e23ac58a50942
+    md5: 1a9d093553b1c35f1c0cd0c59d2d6e99
+work/atmosphere/INPUT/make_ryf/.git/description:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/description
+  hashes:
+    binhash: 7ba4bb53d677d14342ad74ab446ba089
+    md5: a0a7c3fff21f2aea3cfa1d0316dd816c
+work/atmosphere/INPUT/make_ryf/.git/hooks/applypatch-msg.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/hooks/applypatch-msg.sample
+  hashes:
+    binhash: 3b216895efccc7547aea2ae4dc166b6e
+    md5: ce562e08d8098926a3862fc6e7905199
+work/atmosphere/INPUT/make_ryf/.git/hooks/commit-msg.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/hooks/commit-msg.sample
+  hashes:
+    binhash: f948c58eec19029dceb9ed75b62a4392
+    md5: 579a3c1e12a1e74a98169175fb913012
+work/atmosphere/INPUT/make_ryf/.git/hooks/fsmonitor-watchman.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/hooks/fsmonitor-watchman.sample
+  hashes:
+    binhash: 73fcd833d7c378d44bb840f5b96aa5c9
+    md5: ecbb0cb5ffb7d773cd5b2407b210cc3b
+work/atmosphere/INPUT/make_ryf/.git/hooks/post-update.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/hooks/post-update.sample
+  hashes:
+    binhash: b5e25cc894ffc74a37de1ecdd0f7a0e7
+    md5: 2b7ea5cee3c49ff53d41e00785eb974c
+work/atmosphere/INPUT/make_ryf/.git/hooks/pre-applypatch.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/hooks/pre-applypatch.sample
+  hashes:
+    binhash: 8f5416624b15c634d82c5231b11878f3
+    md5: 054f9ffb8bfe04a599751cc757226dda
+work/atmosphere/INPUT/make_ryf/.git/hooks/pre-commit.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/hooks/pre-commit.sample
+  hashes:
+    binhash: ee3c7d14c3892e97c9bca369122c99e2
+    md5: e4db8c12ee125a8a085907b757359ef0
+work/atmosphere/INPUT/make_ryf/.git/hooks/pre-push.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/hooks/pre-push.sample
+  hashes:
+    binhash: 10cbe7deb233e1637dc3cbbcae9dfae4
+    md5: 3c5989301dd4b949dfa1f43738a22819
+work/atmosphere/INPUT/make_ryf/.git/hooks/pre-rebase.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/hooks/pre-rebase.sample
+  hashes:
+    binhash: 62646ba3327237e56434a2937d3a62f5
+    md5: 56e45f2bcbc8226d2b4200f7c46371bf
+work/atmosphere/INPUT/make_ryf/.git/hooks/pre-receive.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/hooks/pre-receive.sample
+  hashes:
+    binhash: e2b7b8a65e85a946325eda66581af919
+    md5: 2ad18ec82c20af7b5926ed9cea6aeedd
+work/atmosphere/INPUT/make_ryf/.git/hooks/prepare-commit-msg.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/hooks/prepare-commit-msg.sample
+  hashes:
+    binhash: 5314c8c5f712a74e6c277b2ff0424654
+    md5: 2b5c047bdb474555e1787db32b2d2fc5
+work/atmosphere/INPUT/make_ryf/.git/hooks/update.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/hooks/update.sample
+  hashes:
+    binhash: dfc2c9c3c9b6df59d3e2a959808c97fa
+    md5: 517f14b9239689dff8bda3022ebd9004
+work/atmosphere/INPUT/make_ryf/.git/index:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/index
+  hashes:
+    binhash: 2bc7a4a06c1334b3cbd33d2289dbda9d
+    md5: 68c8591a1fa35f85da1414d762d24ad4
+work/atmosphere/INPUT/make_ryf/.git/info/exclude:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/info/exclude
+  hashes:
+    binhash: 3f129c932e144620dda7cc41c0d29a7e
+    md5: 036208b4a1ab4a235d75c181e685e5a3
+work/atmosphere/INPUT/make_ryf/.git/logs/HEAD:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/logs/HEAD
+  hashes:
+    binhash: b2411f6c7013509c1f9f0ac6d4bc39c9
+    md5: a7d8efd01f14333492f9f69115305239
+work/atmosphere/INPUT/make_ryf/.git/logs/refs/heads/master:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/logs/refs/heads/master
+  hashes:
+    binhash: 83d6be64c4fa84514f7cc30b93ab5047
+    md5: e5e2af9c4413cc0c926715856ab41676
+work/atmosphere/INPUT/make_ryf/.git/logs/refs/heads/v1.4:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/logs/refs/heads/v1.4
+  hashes:
+    binhash: 6c8f4a42c25172c6a51ae17693553adb
+    md5: 3ca821d821cf13e44cd0254b00cc5fab
+work/atmosphere/INPUT/make_ryf/.git/logs/refs/remotes/origin/HEAD:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/logs/refs/remotes/origin/HEAD
+  hashes:
+    binhash: 9d74a8f17fe272c519f62a7d50066a22
+    md5: 7e58b8e299428177c6e675458d1d6cc5
+work/atmosphere/INPUT/make_ryf/.git/logs/refs/remotes/origin/v1.4:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/logs/refs/remotes/origin/v1.4
+  hashes:
+    binhash: 1e6418f84744a6c8e4d5890d33759123
+    md5: 74ede82179bae2d2ac071565cb3862be
+work/atmosphere/INPUT/make_ryf/.git/objects/05/6096c1d1363a92aba5e3b567e28d8f6f019d6a:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/05/6096c1d1363a92aba5e3b567e28d8f6f019d6a
+  hashes:
+    binhash: 1d168fcc29d22dec41fc72342dcfd975
+    md5: 765d575e7a0fe810fc9e39dad72e2605
+work/atmosphere/INPUT/make_ryf/.git/objects/07/1cf138f0b5ae6fb44eb0c8f0269b4860b68ed9:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/07/1cf138f0b5ae6fb44eb0c8f0269b4860b68ed9
+  hashes:
+    binhash: e5b24879336cf02793ba20da48f6e46a
+    md5: dc6f96672cf67190623dd59845fa2546
+work/atmosphere/INPUT/make_ryf/.git/objects/0e/bc4f420caac382f36c87630280712f40254fce:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/0e/bc4f420caac382f36c87630280712f40254fce
+  hashes:
+    binhash: 41dfbd697a96490365efa3e10a5cfc36
+    md5: ba6395a577672e5edcddebc5e27bd696
+work/atmosphere/INPUT/make_ryf/.git/objects/0f/6646600566e4fc694807cd7955448eee8a67a2:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/0f/6646600566e4fc694807cd7955448eee8a67a2
+  hashes:
+    binhash: 529ac47c65b0f76844d8f2c92e2d26f7
+    md5: a034e7b56439c364fe565aabf5a69265
+work/atmosphere/INPUT/make_ryf/.git/objects/2b/6081a96852ad97cdcf715807a7e72108af32d6:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/2b/6081a96852ad97cdcf715807a7e72108af32d6
+  hashes:
+    binhash: 4d8bd02853f416432d43fd701c9c9f80
+    md5: 2ec2965e8c6e2eb9a5059458a6b3cd33
+work/atmosphere/INPUT/make_ryf/.git/objects/40/3ff41c283f110ddfc3275e3a9d6b20ea984979:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/40/3ff41c283f110ddfc3275e3a9d6b20ea984979
+  hashes:
+    binhash: 3890ae8b0bb3198d08668dcae41d7091
+    md5: acc4fb03ebdfc47cb0b0c3d760524982
+work/atmosphere/INPUT/make_ryf/.git/objects/43/0b8fa529f4f00e64be6a40e23b09397d1d9d07:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/43/0b8fa529f4f00e64be6a40e23b09397d1d9d07
+  hashes:
+    binhash: f55f0886f71b20f147ef57e016bb708c
+    md5: 785d069d4724336738214a4b87c32657
+work/atmosphere/INPUT/make_ryf/.git/objects/50/dfb4ba05c4b23f07f6a817c148f37e05ba6ee6:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/50/dfb4ba05c4b23f07f6a817c148f37e05ba6ee6
+  hashes:
+    binhash: 524002ae9dfbe4e38703063d2595f2d8
+    md5: 5ef69a4c8570eb9ff3190608b2989e21
+work/atmosphere/INPUT/make_ryf/.git/objects/56/0472e9f04abcc3e3b5889cf3318f9e5f97b86d:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/56/0472e9f04abcc3e3b5889cf3318f9e5f97b86d
+  hashes:
+    binhash: ad784596e371383e244d94e78b47da08
+    md5: a8ce35896ee7f801e770db44afc3a52d
+work/atmosphere/INPUT/make_ryf/.git/objects/64/e60431df5bea20004eb5d2f31cbe88d69c54e3:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/64/e60431df5bea20004eb5d2f31cbe88d69c54e3
+  hashes:
+    binhash: 9508a4856b1147d1c882f4736e454394
+    md5: 8bfe5ee1f0c775d583b158c889bb9beb
+work/atmosphere/INPUT/make_ryf/.git/objects/81/d801a0b9eb52e2ce03eaa981c67b8e5605b75d:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/81/d801a0b9eb52e2ce03eaa981c67b8e5605b75d
+  hashes:
+    binhash: ae748f41d840124a67ce22d00cd5e3fa
+    md5: 80663129ec7f8205b6729903617f9153
+work/atmosphere/INPUT/make_ryf/.git/objects/8d/83748ce1141857cf92ef03c3ffa63411092a26:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/8d/83748ce1141857cf92ef03c3ffa63411092a26
+  hashes:
+    binhash: 9447706336d56a47e13d03df66a380b4
+    md5: 88b151feded027f42503e9210fe35631
+work/atmosphere/INPUT/make_ryf/.git/objects/90/a21a11854ba82a5726b20649152b14dbc7417a:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/90/a21a11854ba82a5726b20649152b14dbc7417a
+  hashes:
+    binhash: 02c2f83c2ab7076958bb5023aae6e53c
+    md5: 4b88eb1531e7c71cb2130fada33d8aae
+work/atmosphere/INPUT/make_ryf/.git/objects/96/8edae060b7021128442ef0e0bb46db91170fc0:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/96/8edae060b7021128442ef0e0bb46db91170fc0
+  hashes:
+    binhash: 311e70042d7eb763191742d6d4426fea
+    md5: d64e68a497e34bb8fd62e34d7fe0e207
+work/atmosphere/INPUT/make_ryf/.git/objects/a5/372a53c04a1803900200cd482797282eebb932:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/a5/372a53c04a1803900200cd482797282eebb932
+  hashes:
+    binhash: 873afb438c13bcc579d2761919a52ac8
+    md5: 03467eb3328d682457c0402b4926d037
+work/atmosphere/INPUT/make_ryf/.git/objects/c2/afffb8af79ef4bb242f9c948640f50972caf7d:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/c2/afffb8af79ef4bb242f9c948640f50972caf7d
+  hashes:
+    binhash: e7ba75a768e482f173274d553ccdda0a
+    md5: 665bdf5109a80117f53a6508efc20a0d
+work/atmosphere/INPUT/make_ryf/.git/objects/c4/b9772dbad5ac4a4525aa208e5c41e75d85a35a:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/c4/b9772dbad5ac4a4525aa208e5c41e75d85a35a
+  hashes:
+    binhash: b5c36df78f10dfa4dbbdd02fef534d64
+    md5: ea655ea73a2ac9b798bbb625fa7402c6
+work/atmosphere/INPUT/make_ryf/.git/objects/cd/ed1e3e8dea3b9dde61d95abd8c5b5e32b0ece6:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/cd/ed1e3e8dea3b9dde61d95abd8c5b5e32b0ece6
+  hashes:
+    binhash: bb6fc7ae07a042fe2399e8deb29b6ae6
+    md5: c82f36e916191b6acc936179c16b9432
+work/atmosphere/INPUT/make_ryf/.git/objects/d5/41eacae03f3d0d76ad4dd41e25230007019a86:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/d5/41eacae03f3d0d76ad4dd41e25230007019a86
+  hashes:
+    binhash: 958a03810e5baa995695762677e5ef0a
+    md5: d45704b58101a2556a49fbed11d1953f
+work/atmosphere/INPUT/make_ryf/.git/objects/f2/6b62c4ef5faa2f0b9bb0c5425d1c69e4b6c18c:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/f2/6b62c4ef5faa2f0b9bb0c5425d1c69e4b6c18c
+  hashes:
+    binhash: 752f767cbc3ecea4d6047e169854438a
+    md5: 6d9a3140c75ed5cb97c38451ed842762
+work/atmosphere/INPUT/make_ryf/.git/objects/f2/ebd6c1d75f1ed2655f59bbf714ba6ad85e78f2:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/f2/ebd6c1d75f1ed2655f59bbf714ba6ad85e78f2
+  hashes:
+    binhash: d2824ad56dbea5a85e9c76f6f2d62d85
+    md5: a6c97d49df62c477e36ec7f999533d81
+work/atmosphere/INPUT/make_ryf/.git/objects/f5/a2c0cca6397d2d5ea45469197aed7fb61cd7c0:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/f5/a2c0cca6397d2d5ea45469197aed7fb61cd7c0
+  hashes:
+    binhash: 4653e5bd73264e0bc32cbf242028ac27
+    md5: d34c27b6a2d6753baadbe0b7a50590f5
+work/atmosphere/INPUT/make_ryf/.git/objects/fa/d37f503a2d1b196181c5ca0c4007523ba30724:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/objects/fa/d37f503a2d1b196181c5ca0c4007523ba30724
+  hashes:
+    binhash: 7e76497d02ccd56e9be9b73a163e80a1
+    md5: ccebef4e2fc0db0164d0c0f377bde714
+work/atmosphere/INPUT/make_ryf/.git/packed-refs:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/packed-refs
+  hashes:
+    binhash: 52c166e686dd9bb15a935dc5d60944cd
+    md5: 2523a063a2150d7411e37a6eb762647e
+work/atmosphere/INPUT/make_ryf/.git/refs/heads/master:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/refs/heads/master
+  hashes:
+    binhash: 754d988f84a18bb5422b2ccf6a992982
+    md5: 7aaf068f4ff3838020d7b1be8dd8dc34
+work/atmosphere/INPUT/make_ryf/.git/refs/heads/v1.4:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/refs/heads/v1.4
+  hashes:
+    binhash: a28aeec89d1564e8da57e6a81348f8d0
+    md5: f993b8d9186ce1fed2171845dcb203d0
+work/atmosphere/INPUT/make_ryf/.git/refs/remotes/origin/HEAD:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/refs/remotes/origin/HEAD
+  hashes:
+    binhash: 27a02414bfb26d19a15fc5f45f1351d5
+    md5: 73a00957034783b7b5c8294c54cd3e12
+work/atmosphere/INPUT/make_ryf/.git/refs/remotes/origin/v1.4:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/refs/remotes/origin/v1.4
+  hashes:
+    binhash: 0031123e5090964640bf57c84eabc6d7
+    md5: f993b8d9186ce1fed2171845dcb203d0
+work/atmosphere/INPUT/make_ryf/README.md:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/README.md
+  hashes:
+    binhash: baf6d43adf3e2b159cdd302f0da1d01f
+    md5: e871fe9d8c7c439b8a917c40f9d629dd
+work/atmosphere/INPUT/make_ryf/make_ryf.py:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/make_ryf.py
+  hashes:
+    binhash: 9fbb6a9f6bec50ccb2afafecae9a5ff7
+    md5: c5ef2aeff9516ec76c80e76aef08d352
+work/atmosphere/INPUT/ncar_precip.0001.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/yatm_1deg/ncar_precip.0001.nc
+  hashes:
+    binhash: e328c61ff137bcaa07c97a940379519e
+    md5: 502be1947e13269dedff21d34e34a543
+work/atmosphere/INPUT/ncar_rad.0001.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/yatm_1deg/ncar_rad.0001.nc
+  hashes:
+    binhash: ac51aa16461c18af3e0e31d76d988cc1
+    md5: 4d3d3e3d26f9d558411847d4f34579c8
+work/atmosphere/INPUT/q_10.0001.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/yatm_1deg/q_10.0001.nc
+  hashes:
+    binhash: fc99955a2d7230c4caa6d412c812344d
+    md5: d9f27d865c8e86a5f5bc2576b3805c52
+work/atmosphere/INPUT/rmp_corr_to_cict_CONSERV.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/yatm_1deg/rmp_corr_to_cict_CONSERV.nc
+  hashes:
+    binhash: dada4e4ac4029c9c6551fe42fbfefb39
+    md5: f080a1a3bc639639bcc183d5759bce12
+work/atmosphere/INPUT/rmp_daitren_runoff_MOM1_conserve2nd.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/yatm_1deg/rmp_daitren_runoff_MOM1_conserve2nd.nc
+  hashes:
+    binhash: b35d62bd81d3692945d86969a3959b40
+    md5: fd63d086dbede3c6e9795c750a3263e2
+work/atmosphere/INPUT/rmp_jra55_runoff_cice_conserve.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/yatm_1deg/rmp_jra55_runoff_cice_conserve.nc
+  hashes:
+    binhash: 9a61f517188c9fbb874f595b388fa95d
+    md5: 4ea275ecdee40694db28c7bfb5d275f0
+work/atmosphere/INPUT/rmp_jrar_to_cict_CONSERV.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/yatm_1deg/rmp_jrar_to_cict_CONSERV.nc
+  hashes:
+    binhash: 41783dfa9a46d7c1e7a7f3387c6e476e
+    md5: 10f0b5ea6b8102a03ad1140e5163a0f7
+work/atmosphere/INPUT/runoff.daitren.clim.10FEB2011.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/yatm_1deg/runoff.daitren.clim.10FEB2011.nc
+  hashes:
+    binhash: 23e524c55cd8cc9bb75ad5f04275eb30
+    md5: 2471c5665be8b49f004dada041341817
+work/atmosphere/INPUT/slp.0001.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/yatm_1deg/slp.0001.nc
+  hashes:
+    binhash: 2c8ae97b4f9a97dd272a719e11e7d7bc
+    md5: 743b0941d76feef69d1f12acce8050e7
+work/atmosphere/INPUT/t_10.0001.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/yatm_1deg/t_10.0001.nc
+  hashes:
+    binhash: c8030e99600e30fd11214f4e66ae861e
+    md5: cc8a4863da3f6cfb209a607caaf0f085
+work/atmosphere/INPUT/u_10.0001.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/yatm_1deg/u_10.0001.nc
+  hashes:
+    binhash: 8dbce9286bcfe18309add08e383aa3f9
+    md5: e4073e81a24d10352157284d438e4c83
+work/atmosphere/INPUT/v_10.0001.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/yatm_1deg/v_10.0001.nc
+  hashes:
+    binhash: b953ce69b0101e61e820552a30337234
+    md5: 96914ca8a353bdc40ea0d3cba4350f16
+work/ice/RESTART/grid.nc:
+  copy: true
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/cice_1deg/grid.nc
+  hashes:
+    binhash: 6b6c08bc458eed00641f8d5cd5b7ccac
+    md5: 1213e346055ee073fe33dc12578d99c6
+work/ice/RESTART/i2o.nc:
+  copy: true
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/cice_1deg/i2o.nc
+  hashes:
+    binhash: 527d494c80b2a3418645b962fd8706d0
+    md5: c96e06c3c80c0f680545db59ed3349e5
+work/ice/RESTART/kmt.nc:
+  copy: true
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/cice_1deg/kmt.nc
+  hashes:
+    binhash: f04a0c2a4f27bdb8ef32da0ab8ec8a61
+    md5: a5a7b4be90ec06044588b623d555c4ad
+work/ice/RESTART/monthly_sstsss.nc:
+  copy: true
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/cice_1deg/monthly_sstsss.nc
+  hashes:
+    binhash: c73864b41a23b7c9a7e888d6565cc577
+    md5: 323d4c605f83f4d7d3126da70153c2ed
+work/ice/RESTART/o2i.nc:
+  copy: true
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/cice_1deg/o2i.nc
+  hashes:
+    binhash: 304e0d0a02d5d6a95a7ffbb8f8e6871a
+    md5: 3498246dcd7da40d3b8c6b4a908b260f
+work/ice/RESTART/u_star.nc:
+  copy: true
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/cice_1deg/u_star.nc
+  hashes:
+    binhash: fb1becadd07fa9cbbc88a7f47e96d9b4
+    md5: 68cf0ef92576f96ef085cd7f243d0c39
+work/ocean/INPUT/basin_mask.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/basin_mask.nc
+  hashes:
+    binhash: 0432b240a183f391bac96cd5bdbadafa
+    md5: 20fd8740f24ca95c7c086343077e9c0d
+work/ocean/INPUT/chl.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/chl.nc
+  hashes:
+    binhash: 0ddec40146ae7f0fbc1a06da8ad94b9d
+    md5: a7aa5bcf4a3b9fa8102edd3b6b67c3a2
+work/ocean/INPUT/geothermal_heating.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/geothermal_heating.nc
+  hashes:
+    binhash: 4214c902e835d82643f84cbec1a5a65e
+    md5: 381cb231d8d059576adca0c2bea9c030
+work/ocean/INPUT/grid_spec.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/grid_spec.nc
+  hashes:
+    binhash: f3f3d1eb44108483348881f9e862e2ff
+    md5: 027d2f8fb1eda3ef1cf0a3f520a217f7
+work/ocean/INPUT/mask_table.24.16x15:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/mask_table.24.16x15
+  hashes:
+    binhash: 397aac7f65a9508f19de85de61646909
+    md5: 2203b38758fb2b56a145ef16b7872af9
+work/ocean/INPUT/ocean_hgrid.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/ocean_hgrid.nc
+  hashes:
+    binhash: bef3659bf2505b3d1e3167579718fabb
+    md5: 51f58be0f4ea6da2cb438a893f95c689
+work/ocean/INPUT/ocean_mask.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/ocean_mask.nc
+  hashes:
+    binhash: 4cd2ab42c4890a101295bdb151d59abb
+    md5: 1d9dfb140919f355037f72bc89f15db0
+work/ocean/INPUT/ocean_mask_table:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/ocean_mask_table
+  hashes:
+    binhash: 9e95917d763f90bc14e7b470074931f5
+    md5: 2203b38758fb2b56a145ef16b7872af9
+work/ocean/INPUT/ocean_mosaic.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/ocean_mosaic.nc
+  hashes:
+    binhash: 150ae65ecbe60d7d2357a76909635839
+    md5: cb42e630ee31d3686156fcbdc2f9d07c
+work/ocean/INPUT/ocean_temp_salt.res.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/ocean_temp_salt.res.nc
+  hashes:
+    binhash: b836632dc8139d895992fe8b67954681
+    md5: c9814c04b393cf73fe3d16daf5d421af
+work/ocean/INPUT/ocean_vgrid.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/ocean_vgrid.nc
+  hashes:
+    binhash: af2ce0ec0bfcac448a5b1558dc42254a
+    md5: 6eebf039362b6572eaad5477740236bf
+work/ocean/INPUT/roughness_amp.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/roughness_amp.nc
+  hashes:
+    binhash: 6f092a5efcf2131d21e96ff7d4a5a89b
+    md5: 185dadeb53da2de75b47c53fd7085f89
+work/ocean/INPUT/roughness_cdbot.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/roughness_cdbot.nc
+  hashes:
+    binhash: 12a32c9840ab654b5c9bc5ec43929c6f
+    md5: b50f0595f3ebc872cbcf5f3223115643
+work/ocean/INPUT/salt_sfc_restore.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/salt_sfc_restore.nc
+  hashes:
+    binhash: bed136991ec6d0fcc103d00bd36fb8e5
+    md5: b2bd35c44017597ba99b85fb61ed4d72
+work/ocean/INPUT/ssw_atten_depth.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/ssw_atten_depth.nc
+  hashes:
+    binhash: 9f3eeeebbd0756bed573cb7a6fb5fba5
+    md5: 4aa30be87abb6f0f17484b0dc36ff737
+work/ocean/INPUT/temp_sfc_restore.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/temp_sfc_restore.nc
+  hashes:
+    binhash: f7c5a64fe9405e07298f5b991177b53e
+    md5: 36892b884a6da1db25dcc3016c95c0ca
+work/ocean/INPUT/tideamp.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/tideamp.nc
+  hashes:
+    binhash: ec1984c78b79127c907258cf06607ff1
+    md5: b2840af757d9b7b40207f33f1fc84c5c
+work/ocean/INPUT/topog.nc:
+  fullpath: /g/data/ik11/inputs/access-om2/input_rc/mom_1deg/topog.nc
+  hashes:
+    binhash: 022ac4a9232c6f11d977d3337b89d004
+    md5: f01ddc02cfe21d8db99c2976e9fcc828

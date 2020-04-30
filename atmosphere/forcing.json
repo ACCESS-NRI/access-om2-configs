@@ -1,5 +1,5 @@
 {
-  "description": "JRA55-do V1.3 RYF 1990-91 forcing",
+  "description": "JRA55-do V1.4.0 RYF 1990-91 forcing",
   "inputs": [
     {
       "filename": "INPUT/RYF.rsds.1990_1991.nc",
@@ -12,45 +12,51 @@
       "cname": "lwfld_ai"
     },
     {
-      "filename": "INPUT/RYF.rain.1990_1991.nc",
-      "fieldname": "prrn",
+      "filename": "INPUT/RYF.prra.1990_1991.nc",
+      "fieldname": "prra",
       "cname": "rain_ai"
     },
     {
-      "filename": "INPUT/RYF.snow.1990_1991.nc",
+      "filename": "INPUT/RYF.prsn.1990_1991.nc",
       "fieldname": "prsn",
       "cname": "snow_ai"
     },
     {
-      "filename": "INPUT/RYF.slp.1990_1991.nc",
+      "filename": "INPUT/RYF.psl.1990_1991.nc",
       "fieldname": "psl",
       "cname": "press_ai"
     },
     {
-      "filename": "INPUT/RYF.runoff_all.1990_1991.nc",
+      "filename": "INPUT/RYF.friver.1990_1991.nc",
       "fieldname": "friver",
-      "cname": "runof_ai"
+      "cname": "runof_ai",
+      "domain": "land"
     },
     {
-      "filename": "INPUT/RYF.t_10.1990_1991.nc",
-      "fieldname": "tas_10m",
+      "filename": "INPUT/RYF.tas.1990_1991.nc",
+      "fieldname": "tas",
       "cname": "tair_ai"
     },
     {
-      "filename": "INPUT/RYF.q_10.1990_1991.nc",
-      "fieldname": "huss_10m",
+      "filename": "INPUT/RYF.huss.1990_1991.nc",
+      "fieldname": "huss",
       "cname": "qair_ai"
     },
     {
-      "filename": "INPUT/RYF.u_10.1990_1991.nc",
-      "fieldname": "uas_10m",
+      "filename": "INPUT/RYF.uas.1990_1991.nc",
+      "fieldname": "uas",
       "cname": "uwnd_ai"
     },
     {
-      "filename": "INPUT/RYF.v_10.1990_1991.nc",
-      "fieldname": "vas_10m",
+      "filename": "INPUT/RYF.vas.1990_1991.nc",
+      "fieldname": "vas",
       "cname": "vwnd_ai"
+    },
+    {
+      "filename": "INPUT/RYF.licalvf.1990_1991.nc",
+      "fieldname": "licalvf",
+      "cname": "licalvf_ai",
+      "domain": "land"
     }
   ]
 }
-
