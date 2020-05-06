@@ -252,37 +252,22 @@
     nphysics_util_zero_init=.true.
 	aredi=200.0
 	aredi_diffusivity_grid_scaling=.true.
-	agm=200.0
 	aredi_equal_agm=.false.
 	drhodz_mom4p1=.true.
-	drhodz_smooth_horz=.false.
-	drhodz_smooth_vert=.false.
-	tracer_mix_micom=.false.
-	vel_micom=0.0
 	agm_closure=.true.
 	agm_closure_scaling=0.07
     agm_closure_grid_scaling=.true.
 	agm_closure_min=1.0
 	agm_closure_max=200.0
-	agm_closure_length_fixed=.false.
-	agm_closure_length_rossby=.false.
-	agm_closure_length_bczone=.false.
 	agm_closure_baroclinic=.true.
-    agm_closure_eden_greatbatch=.false.
-    agm_closure_eden_gamma=0.0
     agm_closure_eady_smooth_vert=.true.
     agm_closure_eady_smooth_horz=.true.
     agm_closure_eady_cap=.true.
     agm_closure_eady_ave_mixed=.true.
-    agm_smooth_space=.false.
-    agm_smooth_time=.false.
-    agm_damping_time=45.0
 	agm_closure_length=20.e3
 	agm_closure_buoy_freq=.004
 	agm_closure_upper_depth=100.0
 	agm_closure_lower_depth=2000.0
-	rossby_radius_max=100e3
-	rossby_radius_min=10e3
 /
 
  &ocean_obc_nml
