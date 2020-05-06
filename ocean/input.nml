@@ -245,28 +245,6 @@
 /
 
 &ocean_nphysics_util_nml
-    agm = 100.0
-    agm_closure = .true.
-    agm_closure_baroclinic = .true.
-    agm_closure_buoy_freq = 0.004
-    agm_closure_length = 50000.0
-    agm_closure_length_bczone = .false.
-    agm_closure_length_fixed = .false.
-    agm_closure_length_rossby = .false.
-    agm_closure_lower_depth = 2000.0
-    agm_closure_max = 600.0
-    agm_closure_min = 100.0
-    agm_closure_scaling = 0.07
-    agm_closure_upper_depth = 100.0
-    aredi = 600.0
-    aredi_equal_agm = .false.
-    drhodz_mom4p1 = .true.
-    drhodz_smooth_horz = .false.
-    drhodz_smooth_vert = .false.
-    rossby_radius_max = 100000.0
-    rossby_radius_min = 15000.0
-    tracer_mix_micom = .false.
-    vel_micom = 0.0
 /
 
 &ocean_nphysicsa_nml
