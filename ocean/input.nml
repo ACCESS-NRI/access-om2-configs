@@ -23,7 +23,7 @@
 /
 
 &fms_io_nml
-    checksum_required=.false.
+    checksum_required = .false.
     fileset_write = 'multi'
     threading_read = 'multi'
     threading_write = 'multi'
@@ -35,9 +35,9 @@
 /
 
 &mom_oasis3_interface_nml
-    fields_in = 'u_flux', 'v_flux', 'lprec', 'fprec', 'salt_flx', 'mh_flux', 'sw_flux',
-                'q_flux', 't_flux', 'lw_flux', 'runof', 'p', 'aice', 'wfimelt',
-                'wfiform', 'licefw', 'liceht'
+    fields_in = 'u_flux', 'v_flux', 'lprec', 'fprec', 'salt_flx', 'mh_flux',
+                'sw_flux', 'q_flux', 't_flux', 'lw_flux', 'runof', 'p',
+                'aice', 'wfimelt', 'wfiform', 'licefw', 'liceht'
     fields_out = 't_surf', 's_surf', 'u_surf', 'v_surf', 'dssldx', 'dssldy',
                  'frazil'
     num_fields_in = 17
@@ -307,8 +307,8 @@
 /
 
 &ocean_riverspread_nml
-    use_this_module = .false.
     debug_this_module = .false.
+    use_this_module = .false.
 /
 
 &ocean_rough_nml
@@ -321,10 +321,10 @@
     calvingspread = .false.
     do_bitwise_exact_sum = .false.
     do_flux_correction = .false.
-    ocean_ice_salt_limit = 0.006
     land_model_heat_fluxes = .false.
     max_delta_salinity_restore = 0.5
     max_ice_thickness = 0.0
+    ocean_ice_salt_limit = 0.006
     read_restore_mask = .false.
     restore_mask_gfdl = .false.
     runoff_salinity = 0.0
@@ -358,7 +358,7 @@
     optics_morel_antoine = .false.
     read_chl = .true.
     use_this_module = .true.
-    zmax_pen = 1.0e6
+    zmax_pen = 1000000.0
 /
 
 &ocean_shortwave_jerlov_nml
@@ -442,7 +442,7 @@
 /
 
 &ocean_topog_nml
-    min_thickness = 1.0e-3
+    min_thickness = 0.001
 /
 
 &ocean_tracer_advect_nml
@@ -525,13 +525,13 @@
     hwf_diffusivity = .false.
     hwf_min_diffusivity = 2e-06
     hwf_n0_2omega = 20.0
+    j09_bgmax = 1e-06
+    j09_bgmin = 1e-06
+    j09_diffusivity = .true.
+    j09_lat = 20.0
     use_diff_cbt_table = .false.
     vert_diff_back_via_max = .true.
     vert_mix_scheme = 'kpp_mom4p1'
-    j09_diffusivity = .true.
-    j09_bgmin = 1.0e-6
-    j09_bgmax = 1.0e-6
-    j09_lat = 20.0
 /
 
 &ocean_vert_pp_nml
