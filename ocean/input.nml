@@ -14,9 +14,6 @@
     use_ioaice = .true.
 /
 
-&data_override_nml
-/
-
 &diag_manager_nml
     debug_diag_manager = .false.
     issue_oor_warnings = .true.
@@ -130,9 +127,6 @@
     visc_crit_scale = 1.0
 /
 
-&ocean_blob_nml
-/
-
 &ocean_convect_nml
     use_this_module = .false.
 /
@@ -154,9 +148,6 @@
 
 &ocean_domains_nml
     max_tracers = 5
-/
-
-&ocean_drifters_nml
 /
 
 &ocean_form_drag_nml
@@ -225,18 +216,12 @@
     use_this_module = .true.
 /
 
-&ocean_nphysics_new_nml
-/
-
 &ocean_nphysics_nml
     debug_this_module = .false.
     use_nphysicsa = .false.
     use_nphysicsb = .false.
     use_nphysicsc = .true.
     use_this_module = .true.
-/
-
-&ocean_nphysics_util_new_nml
 /
 
 &ocean_nphysics_util_nml
@@ -291,12 +276,6 @@
     use_this_module = .true.
 /
 
-&ocean_obc_nml
-/
-
-&ocean_obs_nml
-/
-
 &ocean_operators_nml
     use_legacy_div_ud = .false.
 /
@@ -315,9 +294,6 @@
 
 &ocean_overflow_ofp_nml
     use_this_module = .false.
-/
-
-&ocean_passive_nml
 /
 
 &ocean_polar_filter_nml
@@ -405,9 +381,6 @@
     use_this_module = .false.
 /
 
-&ocean_solo_nml
-/
-
 &ocean_sponges_eta_nml
     use_this_module = .false.
 /
@@ -467,9 +440,6 @@
     thickness_method = 'energetic'
 /
 
-&ocean_time_filter_nml
-/
-
 &ocean_topog_nml
     min_thickness = 0.001
 /
@@ -497,9 +467,6 @@
     zero_tracer_source = .false.
 /
 
-&ocean_velocity_advect_nml
-/
-
 &ocean_velocity_diag_nml
     debug_this_module = .false.
     diag_step = 4320
@@ -520,20 +487,8 @@
     zero_tendency_implicit = .false.
 /
 
-&ocean_vert_chen_nml
-/
-
-&ocean_vert_const_nml
-/
-
-&ocean_vert_gotm_nml
-/
-
 &ocean_vert_kpp_iow_nml
     use_this_module = .false.
-/
-
-&ocean_vert_kpp_mom4p0_nml
 /
 
 &ocean_vert_kpp_mom4p1_nml
@@ -557,9 +512,6 @@
     use_diff_cbt_table = .false.
     vert_diff_back_via_max = .true.
     vert_mix_scheme = 'kpp_mom4p1'
-/
-
-&ocean_vert_pp_nml
 /
 
 &ocean_vert_tidal_nml
@@ -592,15 +544,6 @@
 
 &ocean_xlandmix_nml
     use_this_module = .false.
-/
-
-&oda_core_nml
-/
-
-&oda_nml
-/
-
-&surface_flux_nml
 /
 
 &xgrid_nml
