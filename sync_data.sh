@@ -74,6 +74,9 @@ sourcepath="$PWD"
 mkdir -p ${SYNCDIR} || exit 1
 cd archive || exit 1
 
+# first delete any cice log files that only have a 105-character header and nothing else
+find output* -size 105c -iname "ice.log.task_*" -delete
+
 if [ $restarts == true ]; then
     # only sync/remove restarts
     rsync -vrltoD --safe-links restart* ${SYNCDIR}
