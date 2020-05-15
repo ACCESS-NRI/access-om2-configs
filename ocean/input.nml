@@ -95,12 +95,9 @@
 
 &ocean_bbc_nml
     bmf_implicit = .true.
-    cdbot = 0.001
     cdbot_hi = 0.007
-    cdbot_roughness_length = .false.
     cdbot_roughness_uamp = .true.
     uresidual = 0.05
-    use_geothermal_heating = .false.
 /
 
 &ocean_bih_friction_nml
