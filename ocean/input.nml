@@ -64,10 +64,6 @@
     max_advection_velocity = 0.3
 /
 
-&ocean_albedo_nml
-    ocean_albedo_option = 2
-/
-
 &ocean_barotropic_nml
     barotropic_halo   = 10
     barotropic_time_stepping_a = .true.
