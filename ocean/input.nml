@@ -44,10 +44,6 @@
     send_before_ocean_update = .false.
 /
 
-&monin_obukhov_nml
-    neutral           = .true.
-/
-
 &mpp_io_nml
     deflate_level     = 5
     shuffle           = 1
