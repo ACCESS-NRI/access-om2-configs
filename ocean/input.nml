@@ -325,7 +325,6 @@
 /
 
 &ocean_pressure_nml
-    zero_pressure_force = .false.
 /
 
 &ocean_rivermix_nml
