@@ -145,9 +145,6 @@ ACCESS-OM2-01
 "ocean-2d-bmf_v-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 3, "months"
 "ocean_model", "bmf_v", "bmf_v", "ocean-2d-bmf_v-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
 
-"ocean-2d-eta_t-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 3, "months"
-"ocean_model", "eta_t", "eta_t", "ocean-2d-eta_t-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
-
 "ocean-2d-evap_heat-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 3, "months"
 "ocean_model", "evap_heat", "evap_heat", "ocean-2d-evap_heat-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
 
@@ -265,9 +262,6 @@ ACCESS-OM2-01
 
 # monthly 2d fields with different reduction methods
 
-"ocean-2d-eta_t-1-monthly-pow02-ym%4yr%2mo", 1, "months", 1, "days", "time", 3, "months"
-"ocean_model", "eta_t", "eta_t", "ocean-2d-eta_t-1-monthly-pow02-ym%4yr%2mo", "all", "pow02", "none", 2
-
 "ocean-2d-mld-1-monthly-max-ym%4yr%2mo", 1, "months", 1, "days", "time", 3, "months"
 "ocean_model", "mld", "mld", "ocean-2d-mld-1-monthly-max-ym%4yr%2mo", "all", "max", "none", 2
 
@@ -277,8 +271,11 @@ ACCESS-OM2-01
 
 # daily 2d fields
 
-"ocean-2d-eta_t-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
-"ocean_model", "eta_t", "eta_t", "ocean-2d-eta_t-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
+"ocean-2d-bottom_temp_max-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
+"ocean_model", "bottom_temp_max", "bottom_temp_max", "ocean-2d-bottom_temp_max-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
+
+"ocean-2d-bottom_temp-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
+"ocean_model", "bottom_temp", "bottom_temp", "ocean-2d-bottom_temp-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
 
 "ocean-2d-frazil_3d_int_z-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "frazil_3d_int_z", "frazil_3d_int_z", "ocean-2d-frazil_3d_int_z-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
@@ -288,6 +285,12 @@ ACCESS-OM2-01
 
 "ocean-2d-pme_river-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "pme_river", "pme_river", "ocean-2d-pme_river-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
+
+"ocean-2d-sea_level_max-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
+"ocean_model", "sea_level_max", "sea_level_max", "ocean-2d-sea_level_max-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
+
+"ocean-2d-sea_level-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
+"ocean_model", "sea_level", "sea_level", "ocean-2d-sea_level-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
 
 "ocean-2d-sfc_hflux_coupler-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "sfc_hflux_coupler", "sfc_hflux_coupler", "ocean-2d-sfc_hflux_coupler-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
@@ -301,6 +304,9 @@ ACCESS-OM2-01
 "ocean-2d-surface_salt-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "surface_salt", "surface_salt", "ocean-2d-surface_salt-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
 
+"ocean-2d-surface_temp_max-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
+"ocean_model", "surface_temp_max", "surface_temp_max", "ocean-2d-surface_temp_max-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
+
 "ocean-2d-surface_temp-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "surface_temp", "surface_temp", "ocean-2d-surface_temp-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
 
@@ -309,6 +315,9 @@ ACCESS-OM2-01
 
 "ocean-2d-v_surf-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "v_surf", "v_surf", "ocean-2d-v_surf-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
+
+"ocean-2d-vorticity_z_surf-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
+"ocean_model", "vorticity_z_surf", "vorticity_z_surf", "ocean-2d-vorticity_z_surf-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
 
 
 # monthly scalar timeseries
