@@ -143,7 +143,7 @@ diag_table:
             # aiso_bih:
             buoyfreq2_wt:
             diff_cbt_t:
-            # dzt:
+            dzt:  # potentially calculable from other fields - https://github.com/COSIMA/access-om2/issues/203#issuecomment-635752170
             pot_rho_0:
             pot_rho_2:
             pot_temp:
