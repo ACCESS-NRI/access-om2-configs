@@ -140,10 +140,10 @@ diag_table:
             output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
         fields:
             age_global:
-            aiso_bih:
+            # aiso_bih:
             buoyfreq2_wt:
             diff_cbt_t:
-            dzt:
+            dzt:  # potentially calculable from other fields - https://github.com/COSIMA/access-om2/issues/203#issuecomment-635752170
             pot_rho_0:
             pot_rho_2:
             pot_temp:
@@ -151,8 +151,13 @@ diag_table:
             temp_xflux_adv:
             temp_yflux_adv:
             temp:
-            tx_trans_rho:
-            tx_trans:
+            # tx_trans_gm:
+            # tx_trans_nrho_submeso:
+            # tx_trans_rho_gm:
+            # tx_trans_rho:
+            # tx_trans_submeso:
+            # tx_trans:
+            # ty_trans_gm:
             ty_trans_nrho_submeso:
             # ty_trans_rho_gm:
             ty_trans_rho:
@@ -161,6 +166,7 @@ diag_table:
             u:
             v:
             vert_pv:
+            # vorticity_z:
             wt:
     'monthly 3d squared fields':  # for calculating EKE etc
         defaults:  # these can be overridden for individual fields below
@@ -220,15 +226,18 @@ diag_table:
             sfc_salt_flux_restore:
             surface_salt:
             surface_temp:
-            sw_heat:
             swflx:
             tau_x:
             tau_y:
             temp_int_rhodz:
             temp_xflux_adv_int_z:
-            temp_xflux_submeso_int_z:
+            # temp_xflux_gm_int_z:
+            temp_xflux_ndiffuse_int_z:
+            # temp_xflux_submeso_int_z:
             temp_yflux_adv_int_z:
-            temp_yflux_submeso_int_z:
+            # temp_yflux_gm_int_z:
+            temp_yflux_ndiffuse_int_z:
+            # temp_yflux_submeso_int_z:
             tx_trans_int_z:
             ty_trans_int_z:
             wfiform:
