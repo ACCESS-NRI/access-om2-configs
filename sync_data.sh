@@ -3,7 +3,6 @@
 #PBS -l ncpus=1
 #PBS -l wd
 #PBS -l walltime=4:00:00,mem=4GB
-#PBS -P v45
 #PBS -l storage=gdata/hh5+gdata/ik11+scratch/v45
 #PBS -N sync
 
@@ -86,10 +85,10 @@ if [ $restarts == true ]; then
     fi
 else
     # default - only sync/remove outputs
-    rsync --exclude "*.nc.*" --exclude "ocean_daily_3d_*" --exclude "*ocean_*_3hourly*" --exclude "*iceh_03h*" -vrltoD --safe-links output* ${SYNCDIR}
+    rsync --exclude "*.nc.*" -vrltoD --safe-links output* ${SYNCDIR}
     if [ $rmlocal == true ]; then
         # Now do removals. Don't remove final local copy, so we can continue run.
-        rsync --remove-source-files --exclude `\ls -1d output[0-9][0-9][0-9] | tail -1` --exclude "*.nc.*" --exclude "ocean_daily_3d_*" --exclude "*ocean_*_3hourly*" --exclude "*iceh_03h*" -vrltoD --safe-links output* ${SYNCDIR}
+        rsync --remove-source-files --exclude `\ls -1d output[0-9][0-9][0-9] | tail -1` --exclude "*.nc.*" -vrltoD --safe-links output* ${SYNCDIR}
     fi
 fi
 
