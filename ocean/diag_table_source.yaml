@@ -200,6 +200,7 @@ diag_table:
             # aredi:
             bmf_u:
             bmf_v:
+            ekman_we:
             evap_heat:
             evap:
             fprec_melt_heat:
@@ -208,8 +209,9 @@ diag_table:
             lprec:
             lw_heat:
             melt:
+            mh_flux:
             mld:
-            # net_sfc_heating:  # disabled - incorrect - see https://github.com/COSIMA/access-om2/issues/139
+            net_sfc_heating:
             pbot_t:
             pme_net:
             pme_river:
@@ -295,7 +297,7 @@ diag_table:
             salt_surface_ave:
             temp_global_ave:
             temp_surface_ave:
-            # total_net_sfc_heating:  # disabled - incorrect - see https://github.com/COSIMA/access-om2/issues/139
+            total_net_sfc_heating:
             total_ocean_calving_heat:
             total_ocean_calving_melt_heat:
             total_ocean_calving:
@@ -310,6 +312,7 @@ diag_table:
             total_ocean_lprec:
             total_ocean_lw_heat:
             total_ocean_melt:
+            total_ocean_mh_flux:
             total_ocean_pme_river:
             total_ocean_river_heat:
             total_ocean_river:
