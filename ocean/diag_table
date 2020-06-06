@@ -320,43 +320,43 @@ ACCESS-OM2-01
 "ocean_model", "vorticity_z_surf", "vorticity_z_surf", "ocean-2d-vorticity_z_surf-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
 
 
-# monthly scalar timeseries
+# daily scalar snapshots
 
-"ocean-scalar-1-monthly-ym%4yr%2mo", 1, "months", 1, "days", "time", 3, "months"
-"ocean_model", "eta_global", "eta_global", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "ke_tot", "ke_tot", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "pe_tot", "pe_tot", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "rhoave", "rhoave", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "salt_global_ave", "salt_global_ave", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "salt_surface_ave", "salt_surface_ave", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "temp_global_ave", "temp_global_ave", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "temp_surface_ave", "temp_surface_ave", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_net_sfc_heating", "total_net_sfc_heating", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_calving_heat", "total_ocean_calving_heat", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_calving_melt_heat", "total_ocean_calving_melt_heat", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_calving", "total_ocean_calving", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_evap_heat", "total_ocean_evap_heat", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_evap", "total_ocean_evap", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_fprec_melt_heat", "total_ocean_fprec_melt_heat", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_fprec", "total_ocean_fprec", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_heat", "total_ocean_heat", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_hflux_coupler", "total_ocean_hflux_coupler", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_hflux_evap", "total_ocean_hflux_evap", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_hflux_prec", "total_ocean_hflux_prec", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_lprec", "total_ocean_lprec", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_lw_heat", "total_ocean_lw_heat", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_melt", "total_ocean_melt", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_mh_flux", "total_ocean_mh_flux", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_pme_river", "total_ocean_pme_river", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_river_heat", "total_ocean_river_heat", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_river", "total_ocean_river", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_runoff_heat", "total_ocean_runoff_heat", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_runoff", "total_ocean_runoff", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_salt", "total_ocean_salt", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_sens_heat", "total_ocean_sens_heat", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_sfc_salt_flux_coupler", "total_ocean_sfc_salt_flux_coupler", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_swflx_vis", "total_ocean_swflx_vis", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "total_ocean_swflx", "total_ocean_swflx", "ocean-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
+"ocean-scalar-1-daily-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
+"ocean_model", "eta_global", "eta_global", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "ke_tot", "ke_tot", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "pe_tot", "pe_tot", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "rhoave", "rhoave", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "salt_global_ave", "salt_global_ave", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "salt_surface_ave", "salt_surface_ave", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "temp_global_ave", "temp_global_ave", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "temp_surface_ave", "temp_surface_ave", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_net_sfc_heating", "total_net_sfc_heating", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_calving_heat", "total_ocean_calving_heat", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_calving_melt_heat", "total_ocean_calving_melt_heat", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_calving", "total_ocean_calving", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_evap_heat", "total_ocean_evap_heat", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_evap", "total_ocean_evap", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_fprec_melt_heat", "total_ocean_fprec_melt_heat", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_fprec", "total_ocean_fprec", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_heat", "total_ocean_heat", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_hflux_coupler", "total_ocean_hflux_coupler", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_hflux_evap", "total_ocean_hflux_evap", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_hflux_prec", "total_ocean_hflux_prec", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_lprec", "total_ocean_lprec", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_lw_heat", "total_ocean_lw_heat", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_melt", "total_ocean_melt", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_mh_flux", "total_ocean_mh_flux", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_pme_river", "total_ocean_pme_river", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_river_heat", "total_ocean_river_heat", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_river", "total_ocean_river", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_runoff_heat", "total_ocean_runoff_heat", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_runoff", "total_ocean_runoff", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_salt", "total_ocean_salt", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_sens_heat", "total_ocean_sens_heat", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_sfc_salt_flux_coupler", "total_ocean_sfc_salt_flux_coupler", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_swflx_vis", "total_ocean_swflx_vis", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_ocean_swflx", "total_ocean_swflx", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
 
 
 # monthly 2d snapshots
