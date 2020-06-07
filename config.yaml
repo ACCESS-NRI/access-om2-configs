@@ -17,7 +17,7 @@ input: /g/data/ik11/inputs/access-om2/input_20200530/common_1deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data/ik11/inputs/access-om2/bin/yatm_4198e150.exe
+      exe: /g/data/ik11/inputs/access-om2/bin/yatm_d7c3c28.exe
       input:
             - /g/data/ik11/inputs/access-om2/input_20200530/yatm_1deg
             - /g/data/ik11/inputs/JRA-55/RYF/v1-4
@@ -25,13 +25,13 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM_e837d05d_libaccessom2_4198e150.x
+      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM_08cf2b5_libaccessom2_d7c3c28.x
       input: /g/data/ik11/inputs/access-om2/input_20200530/mom_1deg
       ncpus: 216
 
     - name: ice
       model: cice5
-      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_597e4561_libaccessom2_4198e150.exe
+      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_26e6159_libaccessom2_d7c3c28.exe
       input: /g/data/ik11/inputs/access-om2/input_20200530/cice_1deg
       ncpus: 24
 
