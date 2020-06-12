@@ -332,9 +332,6 @@ ACCESS-OM2-01
 "ocean_model", "temp_global_ave", "temp_global_ave", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
 "ocean_model", "temp_surface_ave", "temp_surface_ave", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
 "ocean_model", "total_net_sfc_heating", "total_net_sfc_heating", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
-"ocean_model", "total_ocean_calving_heat", "total_ocean_calving_heat", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
-"ocean_model", "total_ocean_calving_melt_heat", "total_ocean_calving_melt_heat", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
-"ocean_model", "total_ocean_calving", "total_ocean_calving", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
 "ocean_model", "total_ocean_evap_heat", "total_ocean_evap_heat", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
 "ocean_model", "total_ocean_evap", "total_ocean_evap", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1
 "ocean_model", "total_ocean_fprec_melt_heat", "total_ocean_fprec_melt_heat", "ocean-scalar-1-daily-ym%4yr%2mo", "all", "none", "none", 1

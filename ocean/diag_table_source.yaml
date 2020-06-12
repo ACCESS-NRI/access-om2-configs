@@ -299,9 +299,6 @@ diag_table:
             temp_global_ave:
             temp_surface_ave:
             total_net_sfc_heating:
-            total_ocean_calving_heat:
-            total_ocean_calving_melt_heat:
-            total_ocean_calving:
             total_ocean_evap_heat:
             total_ocean_evap:
             total_ocean_fprec_melt_heat:
