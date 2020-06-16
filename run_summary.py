@@ -541,11 +541,12 @@ def keylistssuperset(d):
 
 
 def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
-                dump_all=False, show_fails=False):
+                dump_all=False, show_fails=False, outfile_syncdir=False):
     """
     Generate run summary
     """
-    print('Reading run data from ' + basepath, end='')
+    basepath = os.path.abspath(basepath)
+    print('Generating run summary of ' + basepath, end='')
 
     # get jobname from config.yaml -- NB: we assume this is the same for all jobs
     with open(os.path.join(basepath, 'config.yaml'), 'r') as infile:
@@ -559,11 +560,10 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
         sync_path = None
 
     if outfile is None:
-        if sync_path:
-            # outfile = 'run_summary_' + os.path.split(sync_path)[1] + '.csv'
+        if outfile_syncdir and sync_path:
             outfile = 'run_summary_' + sync_path.strip(os.sep).replace(os.sep, '_') + '.csv'
         else:
-            outfile = 'run_summary_' + os.path.abspath(basepath).strip(os.sep).replace(os.sep, '_') + '.csv'
+            outfile = 'run_summary_' + basepath.strip(os.sep).replace(os.sep, '_') + '.csv'
         # if show_fails:
         #     outfile = os.path.splitext(outfile)[0]+'_fails.csv'
 
@@ -921,9 +921,18 @@ if __name__ == '__main__':
     parser.add_argument('-o', '--outfile', type=str,
                         metavar='file',
                         default=None,
-                        help="output file path; default is 'run_summary_<sync dir path>.csv'\
-                        or 'run_summary_<path>.csv' if sync dir path is invalid;\
-                        WARNING: will be overwritten")
+                        help="output file path; default is\
+                        'run_summary_<path>.csv';\
+                        overrides --outfile_syncdir if set.\
+                        WARNING: output file will be overwritten")
+    parser.add_argument('--outfile_syncdir',
+                        action='store_true', default=False,
+                        help="set output file path to\
+                        'run_summary_<sync dir path>.csv'\
+                        or 'run_summary_<path>.csv' if sync dir\
+                        path is invalid;\
+                        ignored if '-o', '--outfile' is set.\
+                        WARNING: output file will be overwritten")
     parser.add_argument('path', metavar='path', type=str, nargs='*',
                         help='zero or more ACCESS-OM2 control directory paths; default is current working directory')
     args = parser.parse_args()
@@ -931,29 +940,15 @@ if __name__ == '__main__':
     lst = vars(args)['list']
     dump_all = vars(args)['dump_all']
     outfile = vars(args)['outfile']
+    outfile_syncdir = vars(args)['outfile_syncdir']
     basepaths = vars(args)['path']  # a list of length >=0 since nargs='*'
-    if outfile is None:
-        if basepaths is None:
-            run_summary(show_fails=show_fails, list_available=lst,
-                        dump_all=dump_all)
-        else:
-            for bp in basepaths:
-                try:
-                    run_summary(show_fails=show_fails, basepath=bp,
-                                list_available=lst, dump_all=dump_all)
-                except:
-                    print('\nFailed. Error:', sys.exc_info())
-    else:
-        if basepaths is None:
-            run_summary(show_fails=show_fails, outfile=outfile,
-                        list_available=lst, dump_all=dump_all)
-        else:
-            for bp in basepaths:
-                try:
-                    run_summary(show_fails=show_fails, basepath=bp,
-                                outfile=outfile, list_available=lst,
-                                dump_all=dump_all)
-                except:
-                    print('\nFailed. Error:', sys.exc_info())
-
-# TODO: run_diff : git diff between 2 runs
+    if not basepaths:
+        basepaths = [os.getcwd()]
+    for bp in basepaths:
+        try:
+            run_summary(show_fails=show_fails, basepath=bp,
+                        outfile=outfile, list_available=lst,
+                        dump_all=dump_all,
+                        outfile_syncdir=outfile_syncdir)
+        except:
+            print('\nFailed. Error:', sys.exc_info())
