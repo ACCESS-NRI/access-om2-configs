@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 
-Tidy up restart directories - see argparse desciption below.
+Tidy up restart directories - see argparse description below.
 
 This is best used with restart_freq: 1 in config.yaml.
 
@@ -14,7 +14,7 @@ import os
 import sys
 from glob import glob
 
-def tidy(yearskip=1, keeplast=6):
+def tidy(yearskip=1, keeplast=1):
     yearskip = abs(yearskip)
     keeplast = max(1, abs(keeplast))  # always keep the last restart
     restarts = glob('archive/restart???')
@@ -61,10 +61,10 @@ if __name__ == '__main__':
         This is best used with restart_freq: 1 in config.yaml.')
     parser.add_argument('-y', '--year-skip', type=int,
                         metavar='n', default=1,
-                        help="keep one restart every n years")
+                        help="keep one restart every n years (default=1)")
     parser.add_argument('-k', '--keep-last', type=int,
-                        metavar='n', default=6,
-                        help="keep last n restarts")
+                        metavar='m', default=1,
+                        help="keep last m >= 1 restarts (default=1)")
     args = parser.parse_args()
     yearskip = vars(args)['year_skip']
     keeplast = vars(args)['keep_last']
