@@ -3,7 +3,7 @@
 #PBS -l ncpus=1
 #PBS -l wd
 #PBS -l walltime=4:00:00,mem=4GB
-#PBS -l storage=gdata/hh5+gdata/ik11+scratch/v45
+#PBS -l storage=gdata/hh5+gdata/ik11+scratch/v45+scratch/x77+scratch/g40
 #PBS -N sync
 
 # Set SYNCDIR to the path you want your data copied to.
@@ -100,6 +100,17 @@ rsync -vrltoD --safe-links pbs_logs ${SYNCDIR}
 cd ${SYNCDIR} || exit 1
 ls git-runlog || git clone $sourcepath git-runlog
 cd git-runlog
-git pull
+git pull --no-rebase
+
+# update and sync run summary - do this last in case it doesn't work
+cd $sourcepath
+module use /g/data/hh5/public/modules
+module load conda/analysis3
+module load python3-as-python
+./run_summary.py
+rsync -vrltoD --safe-links run_summary*.csv ${SYNCDIR}
+git add run_summary*.csv
+git commit -m "update run summary"
+cd ${SYNCDIR}/git-runlog && git pull --no-rebase
 
 echo $0" completed successfully"
