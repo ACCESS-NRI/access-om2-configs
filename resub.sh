@@ -8,9 +8,10 @@ MAX_RESUBMISSIONS=2
 date >> ${logfile}
 
 # Define errors from which a resubmit is appropriate
-declare -a errors=( 
+declare -a errors=(
                    "Segmentation fault: address not mapped to object"
                    "Transport retry count exceeded"
+                   "atmosphere/input.nml"
 		  )
 
 resub=false
@@ -48,10 +49,9 @@ then
   ${PAYU_PATH}/payu sweep >> ${logfile}
   ${PAYU_PATH}/payu run -n ${PAYU_N_RUNS} >> ${logfile}
   # Decrement resub counter and save to counter file
-  ((PAYU_N_RESUB=PAYU_N_RESUB-1)) 
+  ((PAYU_N_RESUB=PAYU_N_RESUB-1))
   echo "${PAYU_N_RESUB}" > ${counterfile}
 else
   echo "Resubmit limit reached ... " >> ${logfile}
   rm ${counterfile}
 fi
-
