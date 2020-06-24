@@ -286,9 +286,9 @@ def parse_mom_time_stamp(paths):
     try:
         d1 = dateutil.parser.parse(parsed_items[keys[0]])
         d2 = dateutil.parser.parse(parsed_items[keys[1]])
-        len = d2-d1  # BUG: presumably assumes Gregorian calendar with leap years and time in UTC
-        parsed_items['Model run length (s)'] = len.total_seconds()
-        parsed_items['Model run length (days)'] = len.total_seconds()/3600/24
+        duration = d2-d1  # BUG: presumably assumes Gregorian calendar with leap years and time in UTC
+        parsed_items['Model run length (s)'] = duration.total_seconds()
+        parsed_items['Model run length (days)'] = duration.total_seconds()/3600/24
     except KeyError:
         pass
     return parsed_items
@@ -541,11 +541,13 @@ def keylistssuperset(d):
 
 
 def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
-                dump_all=False, show_fails=False, outfile_syncdir=False):
+                dump_all=False, show_fails=False, outfile_syncdir=False,
+                no_header=False):
     """
     Generate run summary
     """
     basepath = os.path.abspath(basepath)
+    archive_path = os.path.realpath(os.path.join(basepath, 'archive'))
     print('Generating run summary of ' + basepath, end='')
 
     # get jobname from config.yaml -- NB: we assume this is the same for all jobs
@@ -581,7 +583,7 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
     # NB: match jobname[:15] because in some cases the pbs log files use a shortened version of the jobname in config.yaml
     # e.g. see /home/157/amh157/payu/025deg_jra55_ryf8485
     # NB: logs in archive may be duplicated in sync_path, in which case the latter is used
-    logfiles = glob.glob(os.path.join(basepath, 'archive/pbs_logs', jobname[:15] + '*.o*'))\
+    logfiles = glob.glob(os.path.join(archive_path, 'pbs_logs', jobname[:15] + '*.o*'))\
              + glob.glob(os.path.join(basepath, jobname[:15] + '*.o*'))
     if sync_path:
              logfiles += glob.glob(os.path.join(sync_path, 'pbs_logs', jobname[:15] + '*.o*'))
@@ -592,6 +594,11 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
         run_data[jobid] = dict()
         run_data[jobid]['PBS log'] = parse_pbs_log(f)
         run_data[jobid]['PBS log']['PBS log file'] = f
+        # fudge: these paths might actually apply only to the latest job
+        run_data[jobid]['paths'] = dict()
+        run_data[jobid]['paths']['Control path'] = basepath
+        run_data[jobid]['paths']['Sync path'] = sync_path
+        run_data[jobid]['paths']['Archive path'] = archive_path
 
     # get run data for all jobs
     for jobid in run_data:
@@ -604,10 +611,39 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
             # BUG: assumes the time zones match - no timezone specified in date - what does git assume? UTC?
             if pbs['Exit Status'] == 0:  # output dir belongs to this job only if Exit Status = 0
                 outdir = 'output' + str(pbs['Run number']).zfill(3)
+                restartdir = 'restart' + str(pbs['Run number']).zfill(3)
                 paths = []
+
                 if sync_path:
-                    paths += [os.path.join(sync_path, outdir)]
-                paths += [os.path.join(basepath, 'archive', outdir)]
+                    sync_output_path = os.path.join(sync_path, outdir)
+                    if os.path.isdir(sync_output_path):
+                        paths += [sync_output_path]
+                        run_data[jobid]['paths']['Sync output path'] =\
+                            sync_output_path
+                    sync_restart_path = os.path.join(sync_path, restartdir)
+                    if os.path.isdir(sync_restart_path):
+                        run_data[jobid]['paths']['Sync restart path'] =\
+                            sync_restart_path
+
+                archive_output_path = os.path.join(archive_path, outdir)
+                if os.path.isdir(archive_output_path):
+                    paths += [archive_output_path]
+                    run_data[jobid]['paths']['Archive output path'] =\
+                        archive_output_path
+                archive_restart_path = os.path.join(archive_path, restartdir)
+                if os.path.isdir(archive_restart_path):
+                    run_data[jobid]['paths']['Archive restart path'] =\
+                        archive_restart_path
+
+                # 'Sync output path' if it exists, otherwise 'Archive output path'
+                run_data[jobid]['paths']['Output path'] =\
+                    run_data[jobid]['paths'].get('Sync output path') or\
+                    run_data[jobid]['paths'].get('Archive output path')
+                # 'Sync restart path' if it exists, otherwise 'Archive restart path'
+                run_data[jobid]['paths']['Restart path'] =\
+                    run_data[jobid]['paths'].get('Sync restart path') or\
+                    run_data[jobid]['paths'].get('Archive restart path')
+
                 run_data[jobid]['MOM_time_stamp.out'] = parse_mom_time_stamp(paths)
                 run_data[jobid]['config.yaml'] = parse_config_yaml(paths)
                 run_data[jobid]['namelists'] = parse_nml(paths)
@@ -687,7 +723,8 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
 
         # make a 'timing' entry to contain model timestep and run length for both MATM and YATM runs
         # run length is [years, months, days, seconds] to accommodate both MATM and YATM
-        for jobid in run_data:
+        prevjobid = -1
+        for jobid in sortedjobids:
             r = run_data[jobid]
             timing = dict()
             if r['namelists']['accessom2.nml'] is None:  # non-YATM run
@@ -701,7 +738,18 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
             yrs = r['MOM_time_stamp.out']['Model run length (days)']/365.25  # FUDGE: assumes 365.25-day year
             timing['SU per model year'] = r['PBS log']['Service Units']/yrs
             timing['Walltime (hr) per model year'] = r['PBS log']['Walltime Used (hr)']/yrs
+
+            if prevjobid >= 0:  # also record time including wait between runs
+                d1 = dateutil.parser.parse(run_data[prevjobid]['PBS log']['Run completion date'])
+                d2 = dateutil.parser.parse(r['PBS log']['Run completion date'])
+                tot_walltime = (d2-d1).total_seconds()/3600
+                timing['Walltime (hr) between this completion and previous completion'] = tot_walltime
+                timing['Wait (hr) between this run and previous'] = tot_walltime - r['PBS log']['Walltime Used (hr)']
+                timing['SU per calendar day'] = r['PBS log']['Service Units']/tot_walltime*24
+                timing['Model years per calendar day'] = yrs/tot_walltime*24
+
             r['timing'] = timing
+            prevjobid = jobid
 
         # include changes in all git commits since previous run
         for i, jobid in enumerate(sortedjobids):
@@ -715,7 +763,7 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
         # BUG: always have zero count between two successful runs straddling a jobid rollover
         # BUG: first run also counts all fails after a rollover
         prevjobid = -1
-        for i, jobid in enumerate(sortedjobids):
+        for jobid in sortedjobids:
             c = [e for e in all_run_data.keys() if e > prevjobid and e < jobid
                  and e not in run_data]
             c.sort()
@@ -768,20 +816,29 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
     #    L___ job ID dict
     #           L___ ... etc
     output_format = OrderedDict([
-        ('Run number', ['PBS log', 'Run number']),
+        ('Run', ['PBS log', 'Run number']),
         ('Run start', ['MOM_time_stamp.out', 'Model start time']),
         ('Run end', ['MOM_time_stamp.out', 'Model end time']),
-        ('Run length (years, months, days, seconds)', ['timing', 'Run length']),
+        ('Run length (y, m, d, s)', ['timing', 'Run length']),
         ('Run length (days)', ['MOM_time_stamp.out', 'Model run length (days)']),
-        ('Job Id', ['PBS log', 'Job Id']),
-        ('Failed previous jobs', ['PBS log', 'Failed previous jobs']),
-        ('Failed previous jobids', ['PBS log', 'Failed previous jobids']),
+        ('Control directory', ['paths', 'Control path']),
+        # ('Archive directory', ['paths', 'Archive path']),
+        # ('Sync directory', ['paths', 'Sync path']),
+        ('Output directory', ['paths', 'Output path']),
+        ('Restart directory', ['paths', 'Restart path']),
+        ('Run by', ['git log', 'Author']),
         ('Run completion date', ['PBS log', 'Run completion date']),
+        ('Job Id', ['PBS log', 'Job Id']),
+        # ('Failed jobs', ['PBS log', 'Failed previous jobs']),
+        ('Failed jobids', ['PBS log', 'Failed previous jobids']),
         ('Queue', ['config.yaml', 'queue']),
         ('Service Units', ['PBS log', 'Service Units']),
         ('Walltime Used (hr)', ['PBS log', 'Walltime Used (hr)']),
         ('SU per model year', ['timing', 'SU per model year']),
         ('Walltime (hr) per model year', ['timing', 'Walltime (hr) per model year']),
+        ('Wait (hr) between runs', ['timing', 'Wait (hr) between this run and previous']),
+        ('SU per calendar day', ['timing', 'SU per calendar day']),
+        ('Model years per calendar day', ['timing', 'Model years per calendar day']),
         ('Memory Used (Gb)', ['PBS log', 'Memory Used (Gb)']),
         ('NCPUs Used', ['PBS log', 'NCPUs Used']),
         ('MOM NCPUs', ['config.yaml', 'submodels-by-name', 'ocean', 'ncpus']),
@@ -808,8 +865,8 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
         ('Payu version', ['PBS log', 'payu version']),
         ('Git hash of run', ['git log', 'Commit']),
         ('Commit date', ['git log', 'Date']),
-        ('Git-tracked file changes since previous run', ['git diff', 'Changed files']),
-        ('Git log messages since previous run', ['git diff', 'Messages']),
+        ('Git-tracked file changes', ['git diff', 'Changed files']),
+        ('Git log messages', ['git diff', 'Messages']),
         ])
     ###########################################################################
 
@@ -891,11 +948,12 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
     # output csv file according to output_format above
     print('\nWriting', outfile)
     with open(outfile, 'w', newline='') as csvfile:
-        csvw = csv.writer(csvfile, dialect='excel')
-        csvw.writerow(['Summary report generated by run_summary.py, https://github.com/aekiss/run_summary'])
-        csvw.writerow(['report generated:', datetime.datetime.now().replace(microsecond=0).astimezone().isoformat()])
-        csvw.writerow(['control directory path:', basepath, 'git branch:', git_branch])
-        csvw.writerow(['output path:', sync_path])
+        csvw = csv.writer(csvfile, dialect='excel', lineterminator='\n')
+        if not no_header:
+            csvw.writerow(['Summary report generated by run_summary.py, https://github.com/aekiss/run_summary'])
+            csvw.writerow(['report generated:', datetime.datetime.now().replace(microsecond=0).astimezone().isoformat()])
+            csvw.writerow(['control directory path:', basepath, 'git branch:', git_branch])
+            csvw.writerow(['output path:', sync_path])
         csvw.writerow(output_format.keys())  # header
         for jobid in sortedjobids:
             csvw.writerow([dictget(run_data, [jobid] + keylist) for keylist in output_format.values()])
@@ -933,6 +991,9 @@ if __name__ == '__main__':
                         path is invalid;\
                         ignored if '-o', '--outfile' is set.\
                         WARNING: output file will be overwritten")
+    parser.add_argument('--no_header',
+                        action='store_true', default=False,
+                        help="don't output header in output .csv")
     parser.add_argument('path', metavar='path', type=str, nargs='*',
                         help='zero or more ACCESS-OM2 control directory paths; default is current working directory')
     args = parser.parse_args()
@@ -941,6 +1002,7 @@ if __name__ == '__main__':
     dump_all = vars(args)['dump_all']
     outfile = vars(args)['outfile']
     outfile_syncdir = vars(args)['outfile_syncdir']
+    no_header = vars(args)['no_header']
     basepaths = vars(args)['path']  # a list of length >=0 since nargs='*'
     if not basepaths:
         basepaths = [os.getcwd()]
@@ -949,6 +1011,7 @@ if __name__ == '__main__':
             run_summary(show_fails=show_fails, basepath=bp,
                         outfile=outfile, list_available=lst,
                         dump_all=dump_all,
-                        outfile_syncdir=outfile_syncdir)
+                        outfile_syncdir=outfile_syncdir,
+                        no_header=no_header)
         except:
             print('\nFailed. Error:', sys.exc_info())
