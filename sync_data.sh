@@ -15,7 +15,8 @@ SYNCDIR=/ERROR/SET/SYNCDIR/IN/sync_data.sh
 
 exitcode=0
 help=false
-restarts=false
+dirtype=output
+exclude="--exclude *.nc.*"
 rmlocal=false
 
 # parse argument list
@@ -26,7 +27,11 @@ while [ $# -ge 1 ]; do
             ;;
         -r)
             echo "syncing restarts instead of output directories"
-            restarts=true
+            dirtype=restart
+            ;;
+        -u)
+            echo "syncing collated and uncollated .nc files"
+            exclude=""
             ;;
         -D)
         # --remove-source-files tells rsync to remove from the sending side the files (meaning non-directories) 
@@ -43,12 +48,10 @@ while [ $# -ge 1 ]; do
             ;;
         -*)
             echo $1": invalid option"
-            help=true
             exitcode=1
             ;;
         *)
             echo $1": invalid argument"
-            help=true
             exitcode=1
             ;;
     esac
@@ -56,40 +59,34 @@ while [ $# -ge 1 ]; do
 done
 
 if [ $exitcode != "0" -o $help == true ]; then
-    echo $0": rsync model run outputs (and optionally restarts) to another location."
+    echo "$0: rsync model run outputs (and optionally restarts) to another location."
     echo "  Must be invoked from a control directory."
-    echo "  "$0" should be edited to set SYNCDIR."
+    echo "  $0 should be edited to set SYNCDIR."
     echo "  Default will rsync all output directories, leaving local copies intact."
+    echo "  Uncollated .nc files are not rsynced unless the -u option is used."
     echo "  Also rsyncs error_logs and pbs_logs."
     echo "  Also updates git-runlog, a git clone of the control directory (whose git history documents all changes in the run)."
-    echo "usage: "$0" [-h] [-r] [-D]"
+    echo "  Also updates, rsyncs and commits run summary"
+    echo "usage: $0 [-h] [-r] [-u] [-D]"
     echo "  -h: show this help message and exit"
-    echo "  -r: sync all restart directories (default syncs output directories)"
+    echo "  -r: sync all restart directories instead of output directories"
+    echo "  -u: sync collated and uncollated .nc files (default is collated only)"
     echo "  -D: delete local copies of synced files in all but the most recent synced directories (outputs or restarts, depending on -r). Must be done interactively. (Default leaves local copies intact.)"
     exit $exitcode
 fi
 
 sourcepath="$PWD"
-mkdir -p ${SYNCDIR} || exit 1
+mkdir -p ${SYNCDIR} || { echo "Error: cannot create ${SYNCDIR} - edit $0 to set SYNCDIR"; exit 1; }
 cd archive || exit 1
 
 # first delete any cice log files that only have a 105-character header and nothing else
 find output* -size 105c -iname "ice.log.task_*" -delete
 
-if [ $restarts == true ]; then
-    # only sync/remove restarts
-    rsync -vrltoD --safe-links restart* ${SYNCDIR}
-    if [ $rmlocal == true ]; then
-        # Now do removals. Don't remove final local copy, so we can continue run.
-        rsync --remove-source-files --exclude `\ls -1d restart[0-9][0-9][0-9] | tail -1` -vrltoD --safe-links restart* ${SYNCDIR}
-    fi
-else
-    # default - only sync/remove outputs
-    rsync --exclude "*.nc.*" -vrltoD --safe-links output* ${SYNCDIR}
-    if [ $rmlocal == true ]; then
-        # Now do removals. Don't remove final local copy, so we can continue run.
-        rsync --remove-source-files --exclude `\ls -1d output[0-9][0-9][0-9] | tail -1` --exclude "*.nc.*" -vrltoD --safe-links output* ${SYNCDIR}
-    fi
+# copy all collated outputs/restarts
+rsync $exclude -vrltoD --safe-links $dirtype[0-9][0-9][0-9] ${SYNCDIR}
+if [ $rmlocal == true ]; then
+    # Now do removals. Don't remove final local copy, so we can continue run.
+    rsync --remove-source-files --exclude `\ls -1d $dirtype[0-9][0-9][0-9] | tail -1` $exclude -vrltoD --safe-links $dirtype[0-9][0-9][0-9] ${SYNCDIR}
 fi
 
 # Also sync error and PBS logs
@@ -107,10 +104,10 @@ cd $sourcepath
 module use /g/data/hh5/public/modules
 module load conda/analysis3
 module load python3-as-python
-./run_summary.py
+./run_summary.py --no_header
 rsync -vrltoD --safe-links run_summary*.csv ${SYNCDIR}
 git add run_summary*.csv
 git commit -m "update run summary"
 cd ${SYNCDIR}/git-runlog && git pull --no-rebase
 
-echo $0" completed successfully"
+echo "$0 completed successfully"
