@@ -54,7 +54,7 @@ collate:
   walltime: 1:00:00
   mem: 16GB
   ncpus: 4
-  queue: express
+  queue: normal
   exe: /g/data/ik11/inputs/access-om2/bin/mppnccombine-fast
 
 # Misc
