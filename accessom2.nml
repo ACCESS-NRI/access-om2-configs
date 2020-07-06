@@ -1,5 +1,15 @@
 &accessom2_nml
     log_level = 'DEBUG'
+
+    ! ice_ocean_timestep defines the MOM baroclinic timestep, CICE thermodynamic timestep
+    ! and MOM-CICE coupling interval, in seconds.
+    ! ice_ocean_timestep is normally a factor of the JRA55-do forcing period of 3hr = 10800s,
+    ! e.g. one of 100, 108, 120, 135, 144, 150, 180, 200, 216, 225, 240, 270, 300,
+    ! 360, 400, 432, 450, 540, 600, 675, 720 or 900 seconds.
+    ! The default 300s timestep is stable for a startup from rest, but very slow.
+    ! After the first few months of equilibration you should increase the timestep 
+    ! to 450s and then to 540s (or even 600s) for improved throughput, but you
+    ! may need to decrease the timestep occasionally to avoid instability.
     ice_ocean_timestep = 300
 &end
 
