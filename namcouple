@@ -16,7 +16,6 @@
 ### 11 fields  atm -> ice
 ### 17 fields  ice -> ocn
 ###  7 fields  ocn -> ice
-###  1 fields  ice -> atm
    35
  $END
 #########################################################################
