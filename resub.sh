@@ -10,6 +10,7 @@ date >> ${logfile}
 # Define errors from which a resubmit is appropriate
 declare -a errors=(
                    "Segmentation fault: address not mapped to object"
+                   "Segmentation fault: invalid permissions for mapped object"
                    "Transport retry count exceeded"
                    "atmosphere/input.nml"
 		  )
