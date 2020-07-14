@@ -8,10 +8,7 @@ Author: Andrew Kiss https://github.com/aekiss
 Apache 2.0 License http://www.apache.org/licenses/LICENSE-2.0.txt
 """
 
-# TODO: collect data on storage use on hh5 (and short?) with du -bs
-# TODO: use starting date/time for determining git commit
 # TODO: use PAYU_N_RUNS - does this tell you whether the run is part of a sequence? if so we can determine queue wait for runs in a sequence - but sometimes it is None
-# TODO: summary stats: specify list of excel commands e.g. ['sum', 'average', 'min', 'max'] as optional third tuple element in output_format and insert formulas for these. Or just calculate them in python? might as well, as Execel will save formulas as values if formulas aren't displayed...
 
 from __future__ import print_function
 import sys
@@ -33,6 +30,7 @@ import csv
 import copy
 
 try:
+    import numpy as np
     import yaml
     import f90nml  # from https://f90nml.readthedocs.io/en/latest/
 except ImportError:  # BUG: don't get this exception if payu module loaded, even if on python 2.6.6
@@ -294,20 +292,22 @@ def parse_mom_time_stamp(paths):
     return parsed_items
 
 
-def parse_config_yaml(paths):
+def parse_yaml(paths, filename):
     """
-    Return dict of items from parsed config.yaml.
+    Return dict of items from parsed yaml file.
 
     paths: list of base paths
+    filename: yaml filename to attempt to read from base paths
 
-    output: dict parsed from first matching config.yaml in paths
+    output: dict parsed from first matching filename in paths
     """
     parsed_items = dict()
     for path in paths:
-        fname = os.path.join(path, 'config.yaml')
-        if os.path.isfile(fname):
-            with open(fname, 'r') as infile:
-                parsed_items = yaml.load(infile, Loader=yaml.FullLoader)
+        fpath = os.path.join(path, filename)
+        if os.path.isfile(fpath):
+            with open(fpath, 'r') as infile:
+                # Need to use load_all to handle manifests. Only return final part.
+                parsed_items = list(yaml.load_all(infile, Loader=yaml.FullLoader))[-1]
             break
     return parsed_items
 
@@ -540,9 +540,19 @@ def keylistssuperset(d):
     return [s.split('\b') for s in all]
 
 
+def tryfunc(func, arg):
+    """
+    Return func(arg) or None if there's an exception.
+    """
+    try:
+        return func(arg)
+    except:
+        return None
+
+
 def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
                 dump_all=False, show_fails=False, outfile_syncdir=False,
-                no_header=False):
+                no_header=False, no_stats=False):
     """
     Generate run summary
     """
@@ -599,6 +609,7 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
         run_data[jobid]['paths']['Control path'] = basepath
         run_data[jobid]['paths']['Sync path'] = sync_path
         run_data[jobid]['paths']['Archive path'] = archive_path
+        run_data[jobid]['storage'] = dict()
 
     # get run data for all jobs
     for jobid in run_data:
@@ -644,11 +655,25 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
                     run_data[jobid]['paths'].get('Sync restart path') or\
                     run_data[jobid]['paths'].get('Archive restart path')
 
+                # find GiB for output and restart
+                for k in ['Output path', 'Restart path']:
+                    path = run_data[jobid]['paths'][k]
+                    if path:
+                        p = subprocess.Popen('du -bs ' + path,
+                                             stdout=subprocess.PIPE, shell=True)
+                        ret = p.communicate()[0].decode('ascii')
+                        bytes = int(ret.split()[0])
+                        run_data[jobid]['storage'][k + ' GiB'] = \
+                            round(bytes/1073741824, 3)
+
                 run_data[jobid]['MOM_time_stamp.out'] = parse_mom_time_stamp(paths)
-                run_data[jobid]['config.yaml'] = parse_config_yaml(paths)
                 run_data[jobid]['namelists'] = parse_nml(paths)
                 run_data[jobid]['access-om2.out'] = parse_accessom2_out(paths)
                 run_data[jobid]['ice_diag.d'] = parse_ice_diag_d(paths)
+                run_data[jobid]['metadata.yaml'] = parse_yaml([basepath, sync_path], 'metadata.yaml')
+                for fn in ['config.yaml', 'env.yaml', 'job.yaml',
+                           'manifests/exe.yaml', 'manifests/input.yaml', 'manifests/restart.yaml']:
+                    run_data[jobid][fn] = parse_yaml(paths, fn)
 
     all_run_data = copy.deepcopy(run_data)  # all_run_data includes failed jobs
 
@@ -738,6 +763,9 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
             yrs = r['MOM_time_stamp.out']['Model run length (days)']/365.25  # FUDGE: assumes 365.25-day year
             timing['SU per model year'] = r['PBS log']['Service Units']/yrs
             timing['Walltime (hr) per model year'] = r['PBS log']['Walltime Used (hr)']/yrs
+            storagekeys = list(r['storage'].keys())
+            for k in storagekeys:
+                timing[k + ' per model year'] = round(r['storage'][k]/yrs, 3)
 
             if prevjobid >= 0:  # also record time including wait between runs
                 d1 = dateutil.parser.parse(run_data[prevjobid]['PBS log']['Run completion date'])
@@ -747,6 +775,8 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
                 timing['Wait (hr) between this run and previous'] = tot_walltime - r['PBS log']['Walltime Used (hr)']
                 timing['SU per calendar day'] = r['PBS log']['Service Units']/tot_walltime*24
                 timing['Model years per calendar day'] = yrs/tot_walltime*24
+                for k in storagekeys:
+                    timing[k + ' per calendar day'] = round(r['storage'][k]/tot_walltime*24, 3)
 
             r['timing'] = timing
             prevjobid = jobid
@@ -772,13 +802,15 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
             prevjobid = jobid
 
     if list_available:
-        print('\nInformation which can be tabulated if added to output_format:')
-        keyliststr = []
+        print('\nAvailable data which can be tabulated if added to output_format')
+        print('(but you may need to edit some keys to ensure uniqueness):')
+        keylist = []
         for k in keylistssuperset(run_data):
-            keyliststr.append("['" + "', '".join(k) + "']")
-        keyliststr.sort()
-        for k in keyliststr:
-            print(k)
+            keylist.append((k[-1], "['" + "', '".join(k) + "']"))
+        keylist.sort(key = lambda x: x[1])
+        maxkeywidth = max([len(k[0]) for k in keylist])
+        for k in keylist:
+            print("        ('" + k[0] + "', " + " "*(maxkeywidth-len(k[0])) + k[1] + "),")
 
     if dump_all:
         dumpoutfile = os.path.splitext(outfile)[0]+'.yaml'
@@ -789,32 +821,11 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
     ###########################################################################
     # Specify the output format here.
     ###########################################################################
-    # output_format is a list of (key, value) tuples, one for each column.
-    # keys are headers (must be unique)
+    # output_format is a OrderedDict of (key, value) tuples, one for each column.
+    # keys are column headers (arbitrary but must be unique)
     # values are lists of keys into run_data (omitting job id)
-    #
-    # run_data dict structure (use list_available for full details):
-    #
-    # run_data dict
-    #    L___ job ID dict
-    #           L___ 'PBS log' dict
-    #           L___ 'git log' dict
-    #           L___ 'git diff' dict
-    #           L___ 'MOM_time_stamp.out' dict
-    #           L___ 'config.yaml' dict
-    #           L___ 'access-om2.out' dict
-    #           L___ 'timing' dict
-    #           L___ 'namelists' dict
-    #                   L___ 'accessom2.nml' namelist (or None if non-YATM run)
-    #                   L___ 'atmosphere/atm.nml' namelist (only if YATM run)
-    #                   L___ 'atmosphere/input_atm.nml' namelist (only if MATM run)
-    #                   L___ '/ice/cice_in.nml' namelist
-    #                   L___ 'ice/input_ice.nml' namelist
-    #                   L___ 'ice/input_ice_gfdl.nml' namelist
-    #                   L___ 'ice/input_ice_monin.nml' namelist
-    #                   L___ 'ocean/input.nml' namelist
-    #    L___ job ID dict
-    #           L___ ... etc
+    # "run_summary.py --list" will list all available data you can add here
+    #    (but you may need to edit some keys to ensure uniqueness)
     output_format = OrderedDict([
         ('Run', ['PBS log', 'Run number']),
         ('Run start', ['MOM_time_stamp.out', 'Model start time']),
@@ -825,7 +836,9 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
         # ('Archive directory', ['paths', 'Archive path']),
         # ('Sync directory', ['paths', 'Sync path']),
         ('Output directory', ['paths', 'Output path']),
+        ('Output GiB', ['storage', 'Output path GiB']),
         ('Restart directory', ['paths', 'Restart path']),
+        ('Restart GiB', ['storage', 'Restart path GiB']),
         ('Run by', ['git log', 'Author']),
         ('Run completion date', ['PBS log', 'Run completion date']),
         ('Job Id', ['PBS log', 'Job Id']),
@@ -868,8 +881,17 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
         ('Git-tracked file changes', ['git diff', 'Changed files']),
         ('Git log messages', ['git diff', 'Messages']),
         ])
+    stats = OrderedDict([  # tuples: (label, function)
+        ('Total', sum),
+        ('Mean', np.mean),
+        ('Median', np.median),
+        ('Min', min),
+        ('Max', max),
+        ('Std dev', np.std)
+        ])
     ###########################################################################
-
+    if no_stats:
+        stats = OrderedDict([])
     if show_fails:
         # output crash-related info (redefines order of any keys already in output_format)
         output_format_prefix = OrderedDict([
@@ -947,18 +969,39 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
 
     # output csv file according to output_format above
     print('\nWriting', outfile)
+
+    if len(stats) > 0:
+        lhcol = [None]
+    else:
+        lhcol = []  # don't allow space for stats headings if we don't have any
+
     with open(outfile, 'w', newline='') as csvfile:
         csvw = csv.writer(csvfile, dialect='excel', lineterminator='\n')
+
         if not no_header:
             csvw.writerow(['Summary report generated by run_summary.py, https://github.com/aekiss/run_summary'])
             csvw.writerow(['report generated:', datetime.datetime.now().replace(microsecond=0).astimezone().isoformat()])
             csvw.writerow(['control directory path:', basepath, 'git branch:', git_branch])
             csvw.writerow(['output path:', sync_path])
-        csvw.writerow(output_format.keys())  # header
-        for jobid in sortedjobids:
-            csvw.writerow([dictget(run_data, [jobid] + keylist) for keylist in output_format.values()])
-    print('Done.')
 
+        csvw.writerow(lhcol + list(output_format.keys()))  # header
+        for jobid in sortedjobids:  # output a row for each jobid
+            csvw.writerow(lhcol + [dictget(run_data, [jobid] + keylist) for keylist in output_format.values()])
+
+        if len(stats) > 0:
+            # calculate and save summary stats
+            statsdata = copy.deepcopy(output_format)
+            for k, keylist in output_format.items():  # calculate summary stats
+                coldata = [dictget(run_data, [jobid] + keylist) for jobid in sortedjobids]
+                coldata = [c for c in coldata if c is not None]
+                statsdata[k] = {label:tryfunc(func, coldata) for (label, func) in stats.items()}
+            # write summary stats
+            csvw.writerow(lhcol + [None]*len(list(output_format.keys())))  # blank row
+            csvw.writerow(lhcol + list(output_format.keys()))  # header
+            for s in stats:
+                csvw.writerow([s] + [statsdata[k][s] for k in statsdata.keys()])
+
+        print('Done.')
     return
 
 
@@ -993,7 +1036,10 @@ if __name__ == '__main__':
                         WARNING: output file will be overwritten")
     parser.add_argument('--no_header',
                         action='store_true', default=False,
-                        help="don't output header in output .csv")
+                        help="don't write header rows in output .csv")
+    parser.add_argument('--no_stats',
+                        action='store_true', default=False,
+                        help="don't output summary statistics")
     parser.add_argument('path', metavar='path', type=str, nargs='*',
                         help='zero or more ACCESS-OM2 control directory paths; default is current working directory')
     args = parser.parse_args()
@@ -1003,6 +1049,7 @@ if __name__ == '__main__':
     outfile = vars(args)['outfile']
     outfile_syncdir = vars(args)['outfile_syncdir']
     no_header = vars(args)['no_header']
+    no_stats = vars(args)['no_stats']
     basepaths = vars(args)['path']  # a list of length >=0 since nargs='*'
     if not basepaths:
         basepaths = [os.getcwd()]
@@ -1012,6 +1059,7 @@ if __name__ == '__main__':
                         outfile=outfile, list_available=lst,
                         dump_all=dump_all,
                         outfile_syncdir=outfile_syncdir,
-                        no_header=no_header)
+                        no_header=no_header,
+                        no_stats=no_stats)
         except:
             print('\nFailed. Error:', sys.exc_info())
