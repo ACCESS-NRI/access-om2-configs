@@ -247,14 +247,26 @@ ACCESS-OM2
 "ocean-2d-temp_xflux_adv_int_z-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "years"
 "ocean_model", "temp_xflux_adv_int_z", "temp_xflux_adv_int_z", "ocean-2d-temp_xflux_adv_int_z-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
 
+"ocean-2d-temp_xflux_gm_int_z-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "years"
+"ocean_model", "temp_xflux_gm_int_z", "temp_xflux_gm_int_z", "ocean-2d-temp_xflux_gm_int_z-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
+
 "ocean-2d-temp_xflux_ndiffuse_int_z-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "years"
 "ocean_model", "temp_xflux_ndiffuse_int_z", "temp_xflux_ndiffuse_int_z", "ocean-2d-temp_xflux_ndiffuse_int_z-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
+
+"ocean-2d-temp_xflux_submeso_int_z-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "years"
+"ocean_model", "temp_xflux_submeso_int_z", "temp_xflux_submeso_int_z", "ocean-2d-temp_xflux_submeso_int_z-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
 
 "ocean-2d-temp_yflux_adv_int_z-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "years"
 "ocean_model", "temp_yflux_adv_int_z", "temp_yflux_adv_int_z", "ocean-2d-temp_yflux_adv_int_z-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
 
+"ocean-2d-temp_yflux_gm_int_z-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "years"
+"ocean_model", "temp_yflux_gm_int_z", "temp_yflux_gm_int_z", "ocean-2d-temp_yflux_gm_int_z-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
+
 "ocean-2d-temp_yflux_ndiffuse_int_z-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "years"
 "ocean_model", "temp_yflux_ndiffuse_int_z", "temp_yflux_ndiffuse_int_z", "ocean-2d-temp_yflux_ndiffuse_int_z-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
+
+"ocean-2d-temp_yflux_submeso_int_z-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "years"
+"ocean_model", "temp_yflux_submeso_int_z", "temp_yflux_submeso_int_z", "ocean-2d-temp_yflux_submeso_int_z-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
 
 "ocean-2d-tx_trans_int_z-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "years"
 "ocean_model", "tx_trans_int_z", "tx_trans_int_z", "ocean-2d-tx_trans_int_z-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
