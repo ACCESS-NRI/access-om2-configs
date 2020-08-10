@@ -13,7 +13,7 @@ description: >-
   Spin up starts from a nominal year of 1 Jan 1900.
 note: >-
   Provide details here of any important problems or changes during the experiment,
-  e.g. when additional dignostics are output
+  e.g. when additional diagnostics are output
 keywords:
   - tenth
   - cosima
