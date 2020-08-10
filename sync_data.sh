@@ -20,6 +20,7 @@ dirtype=output
 exclude="--exclude *.nc.*"
 rsyncflags="-vrltoD --safe-links"
 rmlocal=false
+backward=false
 
 # parse argument list
 while [ $# -ge 1 ]; do
@@ -35,12 +36,16 @@ while [ $# -ge 1 ]; do
             echo "ignoring exclusions - syncing collated and uncollated .nc files"
             exclude=""
             ;;
+        -b)
+            echo "backward sync (from SYNCDIR to local)"
+            backward=true
+            ;;
         -D)
         # --remove-source-files tells rsync to remove from the sending side the files (meaning non-directories) 
         # that are a part of the transfer and have been successfully duplicated on the receiving side.
         # This option should only be used on source files that are quiescent.
         # Require interaction here to avoid syncing and removing partially-written files.
-            echo "DELETING LOCAL COPIES OF SYNCED FILES!"
+            echo "DELETING SOURCE COPIES OF SYNCED FILES!"
             echo "WARNING: to avoid losing data, do not proceed if there are any running jobs or collations underway."
             read -p "Proceed? (y/n) " yesno
             case $yesno in
@@ -73,7 +78,8 @@ if [ $exitcode != "0" -o $help == true ]; then
     echo "  -h: show this help message and exit"
     echo "  -r: sync all restart directories instead of output directories"
     echo "  -u: ignore exclusions - sync collated and uncollated .nc files (default is collated only)"
-    echo "  -D: delete local copies of synced files in all but the most recent synced directories (outputs or restarts, depending on -r). Must be done interactively. (Default leaves local copies intact.)"
+    echo "  -b: backward sync, i.e. from SYNCDIR to local dir (default is from local to SYNCDIR)."
+    echo "  -D: delete all source copies (i.e. local copies, or copies on SYNCDIR if -b is used) of synced output or restart files (depending on -r), retaining only the empty directories. Must be done interactively. If -b is not used, the most recent synced local files are not deleted, so model run can continue. Does not delete non-output/restart files. (Default leaves all source copies intact.)"
     exit $exitcode
 fi
 
@@ -81,37 +87,51 @@ sourcepath="$PWD"
 mkdir -p $SYNCDIR || { echo "Error: cannot create $SYNCDIR - edit $0 to set SYNCDIR"; exit 1; }
 cd archive || exit 1
 
-# first delete any cice log files that only have a 105-character header and nothing else
-find output* -size 105c -iname "ice.log.task_*" -delete
+# copy all outputs/restarts
+if [ $backward == true ]; then
+    rsync $exclude $rsyncflags $SYNCDIR/${dirtype}[0-9][0-9][0-9] .
+    if [ $rmlocal == true ]; then
+        rsync --remove-source-files $exclude $rsyncflags $SYNCDIR/${dirtype}[0-9][0-9][0-9] .
+    fi
+    # Also sync error and PBS logs and metadata.yaml and run summary
+    rsync $rsyncflags $SYNCDIR/error_logs .
+    rsync $rsyncflags $SYNCDIR/pbs_logs .
+    cd $sourcepath
+    rsync $rsyncflags $SYNCDIR/metadata.yaml .
+    rsync $rsyncflags $SYNCDIR/run_summary*.csv .
+else
+    # normal case: forward sync from current dir to SYNCDIR
+    # first delete any cice log files that only have a 105-character header and nothing else
+    find output* -size 105c -iname "ice.log.task_*" -delete
 
-# copy all collated outputs/restarts
-rsync $exclude $rsyncflags $dirtype[0-9][0-9][0-9] $SYNCDIR
-if [ $rmlocal == true ]; then
-    # Now do removals. Don't remove final local copy, so we can continue run.
-    rsync --remove-source-files --exclude `\ls -1d $dirtype[0-9][0-9][0-9] | tail -1` $exclude $rsyncflags $dirtype[0-9][0-9][0-9] $SYNCDIR
+    rsync $exclude $rsyncflags ${dirtype}[0-9][0-9][0-9] $SYNCDIR
+    if [ $rmlocal == true ]; then
+        # Now do removals. Don't remove final local copy, so we can continue run.
+        rsync --remove-source-files --exclude `\ls -1d ${dirtype}[0-9][0-9][0-9] | tail -1` $exclude $rsyncflags ${dirtype}[0-9][0-9][0-9] $SYNCDIR
+    fi
+    # Also sync error and PBS logs and metadata.yaml and run summary
+    rsync $rsyncflags error_logs $SYNCDIR
+    rsync $rsyncflags pbs_logs $SYNCDIR
+    cd $sourcepath
+    rsync $rsyncflags metadata.yaml $SYNCDIR
+    rsync $rsyncflags run_summary*.csv $SYNCDIR
+
+    # create/update a clone of the run history in $SYNCDIR/git-runlog
+    cd $SYNCDIR || exit 1
+    ls git-runlog || git clone $sourcepath git-runlog
+    cd git-runlog
+    git pull --no-rebase
+
+    # update and sync run summary - do this last in case it doesn't work
+    cd $sourcepath
+    module use /g/data/hh5/public/modules
+    module load conda/analysis3
+    module load python3-as-python
+    ./run_summary.py --no_header
+    rsync $rsyncflags run_summary*.csv $SYNCDIR
+    git add run_summary*.csv
+    git commit -m "update run summary"
+    cd $SYNCDIR/git-runlog && git pull --no-rebase
 fi
-
-# Also sync error and PBS logs and metadata.yaml
-rsync $rsyncflags error_logs $SYNCDIR
-rsync $rsyncflags pbs_logs $SYNCDIR
-cd $sourcepath
-rsync $rsyncflags metadata.yaml $SYNCDIR
-
-# create/update a clone of the run history in $SYNCDIR/git-runlog
-cd $SYNCDIR || exit 1
-ls git-runlog || git clone $sourcepath git-runlog
-cd git-runlog
-git pull --no-rebase
-
-# update and sync run summary - do this last in case it doesn't work
-cd $sourcepath
-module use /g/data/hh5/public/modules
-module load conda/analysis3
-module load python3-as-python
-./run_summary.py --no_header
-rsync $rsyncflags run_summary*.csv $SYNCDIR
-git add run_summary*.csv
-git commit -m "update run summary"
-cd $SYNCDIR/git-runlog && git pull --no-rebase
 
 echo "$0 completed successfully"
