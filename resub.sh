@@ -56,3 +56,5 @@ else
   echo "Resubmit limit reached ... " >> ${logfile}
   rm ${counterfile}
 fi
+
+echo "" >> ${logfile}
