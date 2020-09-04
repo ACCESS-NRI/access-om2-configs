@@ -201,6 +201,7 @@ diag_table:
             bmf_u:
             bmf_v:
             ekman_we:
+            eta_nonbouss:
             evap_heat:
             evap:
             fprec_melt_heat:
