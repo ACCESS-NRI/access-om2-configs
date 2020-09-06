@@ -274,9 +274,6 @@ ACCESS-OM2-01
 
 # daily 2d fields
 
-"ocean-2d-bottom_temp_max-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
-"ocean_model", "bottom_temp_max", "bottom_temp_max", "ocean-2d-bottom_temp_max-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
-
 "ocean-2d-bottom_temp-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "bottom_temp", "bottom_temp", "ocean-2d-bottom_temp-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
 
@@ -288,9 +285,6 @@ ACCESS-OM2-01
 
 "ocean-2d-pme_river-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "pme_river", "pme_river", "ocean-2d-pme_river-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
-
-"ocean-2d-sea_level_max-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
-"ocean_model", "sea_level_max", "sea_level_max", "ocean-2d-sea_level_max-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
 
 "ocean-2d-sea_level-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "sea_level", "sea_level", "ocean-2d-sea_level-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
@@ -307,9 +301,6 @@ ACCESS-OM2-01
 "ocean-2d-surface_salt-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "surface_salt", "surface_salt", "ocean-2d-surface_salt-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
 
-"ocean-2d-surface_temp_max-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
-"ocean_model", "surface_temp_max", "surface_temp_max", "ocean-2d-surface_temp_max-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
-
 "ocean-2d-surface_temp-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "surface_temp", "surface_temp", "ocean-2d-surface_temp-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
 
@@ -321,6 +312,24 @@ ACCESS-OM2-01
 
 "ocean-2d-vorticity_z_surf-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "vorticity_z_surf", "vorticity_z_surf", "ocean-2d-vorticity_z_surf-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
+
+
+# daily 2d maximum fields
+
+"ocean-2d-bottom_temp-1-daily-max-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
+"ocean_model", "bottom_temp", "bottom_temp", "ocean-2d-bottom_temp-1-daily-max-ym%4yr%2mo", "all", "max", "none", 2
+
+"ocean-2d-sea_level-1-daily-max-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
+"ocean_model", "sea_level", "sea_level", "ocean-2d-sea_level-1-daily-max-ym%4yr%2mo", "all", "max", "none", 2
+
+"ocean-2d-surface_temp-1-daily-max-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
+"ocean_model", "surface_temp", "surface_temp", "ocean-2d-surface_temp-1-daily-max-ym%4yr%2mo", "all", "max", "none", 2
+
+
+# daily 2d minimum fields
+
+"ocean-2d-surface_temp-1-daily-min-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
+"ocean_model", "surface_temp", "surface_temp", "ocean-2d-surface_temp-1-daily-min-ym%4yr%2mo", "all", "min", "none", 2
 
 
 # daily scalar snapshots

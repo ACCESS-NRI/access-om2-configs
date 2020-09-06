@@ -259,22 +259,37 @@ diag_table:
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
         fields:
-            bottom_temp_max:
             bottom_temp:
             frazil_3d_int_z:
             mld:
             pme_river:
-            sea_level_max:
             sea_level:
             sfc_hflux_coupler:
             sfc_hflux_from_runoff:
             sfc_hflux_pme:
             surface_salt:
-            surface_temp_max:
             surface_temp:
             u_surf:
             v_surf:
             vorticity_z_surf:
+    'daily 2d maximum fields':
+        defaults:  # these can be overridden for individual fields below
+            file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
+            reduction_method: max  # mean, snap, rms, pow##, min, max, or diurnal##
+        fields:
+            bottom_temp:
+            sea_level:
+            surface_temp:
+    'daily 2d minimum fields':
+        defaults:  # these can be overridden for individual fields below
+            file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
+            reduction_method: min  # mean, snap, rms, pow##, min, max, or diurnal##
+        fields:
+            surface_temp:  # min for comparison with foundation temperature
     'daily scalar snapshots':  # snapshots of global integrals give better parallel performance
         defaults:  # these can be overridden for individual fields below
             file_name_dimension: scalar  # descriptor for filename, e.g. 3d, 2d, scalar
