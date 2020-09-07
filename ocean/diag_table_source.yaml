@@ -269,8 +269,8 @@ diag_table:
             sfc_hflux_pme:
             surface_salt:
             surface_temp:
-            u_surf:
-            v_surf:
+            usurf:
+            vsurf:
             vorticity_z_surf:
     'daily 2d maximum fields':
         defaults:  # these can be overridden for individual fields below
