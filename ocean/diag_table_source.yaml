@@ -235,11 +235,11 @@ diag_table:
             temp_int_rhodz:
             temp_xflux_adv_int_z:
             # temp_xflux_gm_int_z:
-            temp_xflux_ndiffuse_int_z:
+            # temp_xflux_ndiffuse_int_z:
             # temp_xflux_submeso_int_z:
             temp_yflux_adv_int_z:
             # temp_yflux_gm_int_z:
-            temp_yflux_ndiffuse_int_z:
+            # temp_yflux_ndiffuse_int_z:
             # temp_yflux_submeso_int_z:
             tx_trans_int_z:
             ty_trans_int_z:
