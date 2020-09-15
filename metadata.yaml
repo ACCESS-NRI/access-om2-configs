@@ -9,7 +9,7 @@ description: >-
   Run with JRA55-do v1.4.0 interannually-varying forcing with all solid runoff 
   converted to liquid runoff with no heat transfer.
   Spin up starts 1 Jan 1958 and runs to 1 Jan 2019.
-note: >-
+notes: >-
   Provide details here of any important problems or changes during the experiment,
   e.g. when additional diagnostics are output
 keywords:
