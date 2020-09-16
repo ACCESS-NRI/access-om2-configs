@@ -10,6 +10,8 @@ description: >-
   converted to liquid runoff with no heat transfer.
   Spin up starts 1 Jan 1958 and runs to 1 Jan 2019.
 notes: >-
+  Source code: https://github.com/COSIMA/access-om2
+  License: Attribution-NonCommercial-NoDerivatives 4.0 International (http://creativecommons.org/licenses/by-nc-nd/4.0/legalcode)
   Provide details here of any important problems or changes during the experiment,
   e.g. when additional diagnostics are output
 keywords:
