@@ -228,7 +228,7 @@ diag_table:
             sfc_salt_flux_ice:
             sfc_salt_flux_restore:
             surface_salt:
-            surface_temp:
+            surface_pot_temp:
             swflx:
             tau_x:
             tau_y:
@@ -252,7 +252,7 @@ diag_table:
             output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
         fields:
             mld: {reduction_method: max}  # max avoids spurious small values due to rainfall
-            surface_temp: {reduction_method: min}  # min for comparison with foundation temperature
+            surface_pot_temp: {reduction_method: min}  # min for comparison with foundation temperature
     'daily 2d fields':
         defaults:  # these can be overridden for individual fields below
             file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
@@ -268,7 +268,7 @@ diag_table:
             sfc_hflux_from_runoff:
             sfc_hflux_pme:
             surface_salt:
-            surface_temp:
+            surface_pot_temp:
             usurf:
             vsurf:
             vorticity_z_surf:
@@ -281,7 +281,7 @@ diag_table:
         fields:
             bottom_temp:
             sea_level:
-            surface_temp:
+            surface_pot_temp:
     'daily 2d minimum fields':
         defaults:  # these can be overridden for individual fields below
             file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
@@ -289,7 +289,7 @@ diag_table:
             output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
             reduction_method: min  # mean, snap, rms, pow##, min, max, or diurnal##
         fields:
-            surface_temp:  # min for comparison with foundation temperature
+            surface_pot_temp:  # min for comparison with foundation temperature
     'daily scalar snapshots':  # snapshots of global integrals give better parallel performance
         defaults:  # these can be overridden for individual fields below
             file_name_dimension: scalar  # descriptor for filename, e.g. 3d, 2d, scalar

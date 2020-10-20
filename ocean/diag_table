@@ -223,8 +223,8 @@ ACCESS-OM2-01
 "ocean-2d-surface_salt-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 3, "months"
 "ocean_model", "surface_salt", "surface_salt", "ocean-2d-surface_salt-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
 
-"ocean-2d-surface_temp-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 3, "months"
-"ocean_model", "surface_temp", "surface_temp", "ocean-2d-surface_temp-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
+"ocean-2d-surface_pot_temp-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 3, "months"
+"ocean_model", "surface_pot_temp", "surface_pot_temp", "ocean-2d-surface_pot_temp-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
 
 "ocean-2d-swflx-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 3, "months"
 "ocean_model", "swflx", "swflx", "ocean-2d-swflx-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
@@ -262,8 +262,8 @@ ACCESS-OM2-01
 "ocean-2d-mld-1-monthly-max-ym%4yr%2mo", 1, "months", 1, "days", "time", 3, "months"
 "ocean_model", "mld", "mld", "ocean-2d-mld-1-monthly-max-ym%4yr%2mo", "all", "max", "none", 2
 
-"ocean-2d-surface_temp-1-monthly-min-ym%4yr%2mo", 1, "months", 1, "days", "time", 3, "months"
-"ocean_model", "surface_temp", "surface_temp", "ocean-2d-surface_temp-1-monthly-min-ym%4yr%2mo", "all", "min", "none", 2
+"ocean-2d-surface_pot_temp-1-monthly-min-ym%4yr%2mo", 1, "months", 1, "days", "time", 3, "months"
+"ocean_model", "surface_pot_temp", "surface_pot_temp", "ocean-2d-surface_pot_temp-1-monthly-min-ym%4yr%2mo", "all", "min", "none", 2
 
 
 # daily 2d fields
@@ -295,8 +295,8 @@ ACCESS-OM2-01
 "ocean-2d-surface_salt-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "surface_salt", "surface_salt", "ocean-2d-surface_salt-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
 
-"ocean-2d-surface_temp-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
-"ocean_model", "surface_temp", "surface_temp", "ocean-2d-surface_temp-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
+"ocean-2d-surface_pot_temp-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
+"ocean_model", "surface_pot_temp", "surface_pot_temp", "ocean-2d-surface_pot_temp-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
 
 "ocean-2d-usurf-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "usurf", "usurf", "ocean-2d-usurf-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
@@ -316,14 +316,14 @@ ACCESS-OM2-01
 "ocean-2d-sea_level-1-daily-max-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "sea_level", "sea_level", "ocean-2d-sea_level-1-daily-max-ym%4yr%2mo", "all", "max", "none", 2
 
-"ocean-2d-surface_temp-1-daily-max-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
-"ocean_model", "surface_temp", "surface_temp", "ocean-2d-surface_temp-1-daily-max-ym%4yr%2mo", "all", "max", "none", 2
+"ocean-2d-surface_pot_temp-1-daily-max-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
+"ocean_model", "surface_pot_temp", "surface_pot_temp", "ocean-2d-surface_pot_temp-1-daily-max-ym%4yr%2mo", "all", "max", "none", 2
 
 
 # daily 2d minimum fields
 
-"ocean-2d-surface_temp-1-daily-min-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
-"ocean_model", "surface_temp", "surface_temp", "ocean-2d-surface_temp-1-daily-min-ym%4yr%2mo", "all", "min", "none", 2
+"ocean-2d-surface_pot_temp-1-daily-min-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
+"ocean_model", "surface_pot_temp", "surface_pot_temp", "ocean-2d-surface_pot_temp-1-daily-min-ym%4yr%2mo", "all", "min", "none", 2
 
 
 # daily scalar snapshots
