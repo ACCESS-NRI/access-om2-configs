@@ -51,3 +51,21 @@ elon = 360.0
        "TRACER", "land_mod", "sphum"
        "longname",     "specific humidity"
        "units",        "kg/kg" /
+
+# added by RMH: full depth Rayleigh damping in Kara Strait
+"rayleigh_damp_table","ocean_mod","rayleigh_damp_table"
+"rayleigh","KaraStr","itable=1333,jtable=953,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","KaraStr","itable=1334,jtable=953,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","KaraStr","itable=1335,jtable=953,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","KaraStr","itable=1336,jtable=953,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","KaraStr","itable=1337,jtable=953,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","KaraStr","itable=1338,jtable=953,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","KaraStr","itable=1339,jtable=953,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","KaraStr","itable=1333,jtable=954,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","KaraStr","itable=1334,jtable=954,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","KaraStr","itable=1335,jtable=954,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","KaraStr","itable=1336,jtable=954,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","KaraStr","itable=1337,jtable=954,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","KaraStr","itable=1338,jtable=954,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","KaraStr","itable=1339,jtable=954,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+/
