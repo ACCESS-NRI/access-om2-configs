@@ -341,6 +341,7 @@
     land_model_heat_fluxes = .false.
     max_delta_salinity_restore = 0.5
     max_ice_thickness = 0.0
+    ocean_ice_salt_limit = 0.006
     read_restore_mask = .false.
     restore_mask_gfdl = .false.
     runoff_salinity   = 0.0
