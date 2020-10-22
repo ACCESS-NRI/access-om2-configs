@@ -15,26 +15,26 @@ jobname: 025deg_jra55_ryf
 # Model configuration
 name: common
 model: access-om2
-input: /g/data/ik11/inputs/access-om2/input_20200530/common_025deg_jra55
+input: /g/data/ik11/inputs/access-om2/input_20201022/common_025deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
       exe: /g/data/ik11/inputs/access-om2/bin/yatm_a9d4b67.exe
       input:
-            - /g/data/ik11/inputs/access-om2/input_20200530/yatm_025deg
+            - /g/data/ik11/inputs/access-om2/input_20201022/yatm_025deg
             - /g/data/ik11/inputs/JRA-55/RYF/v1-4
       ncpus: 1
 
     - name: ocean
       model: mom
       exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM_08cf2b5_libaccessom2_a9d4b67.x
-      input: /g/data/ik11/inputs/access-om2/input_20200530/mom_025deg
+      input: /g/data/ik11/inputs/access-om2/input_20201022/mom_025deg
       ncpus: 1455
 
     - name: ice
       model: cice5
       exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_1440x1080_480p_26e6159_libaccessom2_a9d4b67.exe
-      input: /g/data/ik11/inputs/access-om2/input_20200530/cice_025deg
+      input: /g/data/ik11/inputs/access-om2/input_20201022/cice_025deg
       ncpus: 361
 
 # Collation
