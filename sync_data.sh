@@ -41,7 +41,7 @@ while [ $# -ge 1 ]; do
             backward=true
             ;;
         -D)
-        # --remove-source-files tells rsync to remove from the sending side the files (meaning non-directories) 
+        # --remove-source-files tells rsync to remove from the sending side the files (meaning non-directories)
         # that are a part of the transfer and have been successfully duplicated on the receiving side.
         # This option should only be used on source files that are quiescent.
         # Require interaction here to avoid syncing and removing partially-written files.
@@ -132,6 +132,9 @@ else
     if [ $rmlocal == true ]; then
         # Now do removals. Don't remove final local copy, so we can continue run.
         rsync --remove-source-files --exclude `\ls -1d ${dirtype}[0-9][0-9][0-9] | tail -1` $exclude $rsyncflags ${dirtype}[0-9][0-9][0-9] $SYNCDIR
+        for d in ${dirtype}[0-9][0-9][0-9]/ice/OUTPUT; do
+            rm $d/iceh.????-??-??.nc-DELETE
+        done
     fi
     # Also sync error and PBS logs and metadata.yaml and run summary
     rsync $rsyncflags error_logs $SYNCDIR
