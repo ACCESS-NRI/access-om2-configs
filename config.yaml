@@ -19,7 +19,7 @@ input: /g/data/ik11/inputs/access-om2/input_20201022/common_025deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data/ik11/inputs/access-om2/bin/yatm_a9d4b67.exe
+      exe: /g/data/ik11/inputs/access-om2/bin/yatm_2617f7c.exe
       input:
             - /g/data/ik11/inputs/access-om2/input_20201022/yatm_025deg
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/rsds/gr/v20190429
@@ -37,13 +37,13 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM_08cf2b5_libaccessom2_a9d4b67.x
+      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM-BGC_af3a94d_libaccessom2_2617f7c.x
       input: /g/data/ik11/inputs/access-om2/input_20201022/mom_025deg
       ncpus: 1455
 
     - name: ice
       model: cice5
-      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_1440x1080_480p_26e6159_libaccessom2_a9d4b67.exe
+      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_1440x1080_480p_015877c_libaccessom2_2617f7c.exe
       input: /g/data/ik11/inputs/access-om2/input_20201022/cice_025deg
       ncpus: 361
 
@@ -61,7 +61,7 @@ collate:
 runlog: true
 stacksize: unlimited
 restart_freq: 1  # use tidy_restarts.py instead
-mpirun: --mca orte_base_help_aggregate 0
+mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
 qsub_flags: -W umask=027
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
