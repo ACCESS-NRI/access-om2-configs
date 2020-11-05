@@ -11,6 +11,8 @@
     hist_avg          = .true.
     histfreq          = 'd', 'm', 'x', 'x', 'x'
     histfreq_n        = 1, 1, 1, 1, 1
+    history_chunksize_x = 360
+    history_chunksize_y = 270
     history_deflate_level = 1
     history_dir       = './OUTPUT/'
     history_file      = 'iceh'
@@ -29,7 +31,6 @@
     restart_dir       = './RESTART/'
     restart_ext       = .false.
     restart_file      = 'iced'
-    restart_format    = 'nc'
     runtype           = 'initial'
     use_leap_years    = .false.
     use_restart_time  = .true.
