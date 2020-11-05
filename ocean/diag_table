@@ -304,9 +304,6 @@ ACCESS-OM2-01
 "ocean-2d-vsurf-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
 "ocean_model", "vsurf", "vsurf", "ocean-2d-vsurf-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
 
-"ocean-2d-vorticity_z_surf-1-daily-mean-ym%4yr%2mo", 1, "days", 1, "days", "time", 3, "months"
-"ocean_model", "vorticity_z_surf", "vorticity_z_surf", "ocean-2d-vorticity_z_surf-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
-
 
 # daily 2d maximum fields
 
