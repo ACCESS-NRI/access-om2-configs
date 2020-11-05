@@ -16,13 +16,13 @@ mem: 1000GB
 # Model configuration
 name: common
 model: access-om2
-input: /g/data/ik11/inputs/access-om2/input_20201022/common_1deg_jra55
+input: /g/data/ik11/inputs/access-om2/input_20201102/common_1deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
       exe: /g/data/ik11/inputs/access-om2/bin/yatm_2617f7c.exe
       input:
-            - /g/data/ik11/inputs/access-om2/input_20201022/yatm_1deg
+            - /g/data/ik11/inputs/access-om2/input_20201102/yatm_1deg
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/rsds/gr/v20190429
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/rlds/gr/v20190429
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/prra/gr/v20190429
@@ -39,13 +39,13 @@ submodels:
     - name: ocean
       model: mom
       exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM-BGC_af3a94d_libaccessom2_2617f7c.x
-      input: /g/data/ik11/inputs/access-om2/input_20201022/mom_1deg
+      input: /g/data/ik11/inputs/access-om2/input_20201102/mom_1deg
       ncpus: 216
 
     - name: ice
       model: cice5
       exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_015877c_libaccessom2_2617f7c.exe
-      input: /g/data/ik11/inputs/access-om2/input_20201022/cice_1deg
+      input: /g/data/ik11/inputs/access-om2/input_20201102/cice_1deg
       ncpus: 24
 
 # Collation
