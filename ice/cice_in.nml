@@ -53,7 +53,7 @@
     maskhalo_bound    = .true.
     maskhalo_dyn      = .true.
     maskhalo_remap    = .true.
-    nprocs            = 799
+    nprocs            = 722
     ns_boundary_type  = 'tripole'
     processor_shape   = 'square-ice'
 /
