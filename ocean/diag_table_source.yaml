@@ -227,8 +227,8 @@ diag_table:
             sfc_salt_flux_coupler:
             sfc_salt_flux_ice:
             sfc_salt_flux_restore:
-            surface_salt:
             surface_pot_temp:
+            surface_salt:
             swflx:
             tau_x:
             tau_y:
@@ -267,8 +267,8 @@ diag_table:
             sfc_hflux_coupler:
             sfc_hflux_from_runoff:
             sfc_hflux_pme:
-            surface_salt:
             surface_pot_temp:
+            surface_salt:
             usurf:
             vsurf:
     'daily 2d maximum fields':
