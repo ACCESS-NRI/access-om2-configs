@@ -11,8 +11,8 @@
     hist_avg          = .true.
     histfreq          = 'd', 'm', 'x', 'x', 'x'
     histfreq_n        = 1, 1, 1, 1, 1
-    history_chunksize_x = 90
-    history_chunksize_y = 300
+    history_chunksize_x = 180
+    history_chunksize_y = 150
     history_deflate_level = 1
     history_dir       = './OUTPUT/'
     history_file      = 'iceh'
