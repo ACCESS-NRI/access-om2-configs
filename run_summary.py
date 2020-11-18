@@ -39,6 +39,8 @@ except ImportError:  # BUG: don't get this exception if payu module loaded, even
     print('   module use /g/data/hh5/public/modules; module load conda/analysis3\n')
     raise
 import nmltab  # from https://github.com/aekiss/nmltab
+import warnings
+warnings.simplefilter('ignore', np.RankWarning)
 
 
 def num(s):
@@ -856,6 +858,8 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
         ('NCPUs Used', ['PBS log', 'NCPUs Used']),
         ('MOM NCPUs', ['config.yaml', 'submodels-by-name', 'ocean', 'ncpus']),
         ('CICE NCPUs', ['config.yaml', 'submodels-by-name', 'ice', 'ncpus']),
+        # ('Max Ocean diagnostics (s)', ['access-om2.out', '(Ocean diagnostics)', 'tmax']),
+        # ('Max Ocean diagnostics: tracer (s)', ['access-om2.out', '(Ocean diagnostics: tracer)', 'tmax']),
         ('Fraction of MOM runtime in oasis_recv', ['access-om2.out', 'oasis_recv', 'tfrac']),
         ('Max MOM wait for oasis_recv (s)', ['access-om2.out', 'oasis_recv', 'tmax']),
         ('Max CICE wait for coupler (s)', ['ice_diag.d', 'timing', 'waiting_o', 'node', 'max']),
@@ -881,13 +885,18 @@ def run_summary(basepath=os.getcwd(), outfile=None, list_available=False,
         ('Git-tracked file changes', ['git diff', 'Changed files']),
         ('Git log messages', ['git diff', 'Messages']),
         ])
+    SUdata = [dictget(run_data, [jobid] + ['PBS log', 'Service Units'])
+              for jobid in sortedjobids]
     stats = OrderedDict([  # tuples: (label, function)
         ('Total', sum),
         ('Mean', np.mean),
         ('Median', np.median),
         ('Min', min),
         ('Max', max),
-        ('Std dev', np.std)
+        ('Std dev', np.std),
+        ('SU correlation', lambda x: np.corrcoef(x, SUdata)[0, 1]),
+        ('SU slope', lambda x: np.polyfit(x, SUdata, 1)[0]),
+        ('Dimensionless SU slope', lambda x: np.polyfit(x, SUdata, 1)[0]*np.mean(x)/np.mean(SUdata))
         ])
     ###########################################################################
     if no_stats:
