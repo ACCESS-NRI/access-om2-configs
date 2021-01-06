@@ -1,15 +1,15 @@
 contact: Add your name here
 email: Add your email address here
 created: Add the date you started the experiment here (YYYY-MM-DD)
-description: >-
+description: |-
   1 degree ACCESS-OM2 global model configuration under interannual forcing.
   The configuration is based on that described in Kiss et al. (2020),
   https://doi.org/10.5194/gmd-13-401-2020, but with many improvements.
   Initial conditions are WOA13v2 potential temperature and practical salinity.
-  Run with JRA55-do v1.4.0 interannually-varying forcing with all solid runoff 
+  Run with JRA55-do v1.4.0 interannually-varying forcing with all solid runoff
   converted to liquid runoff with no heat transfer.
   Spin up starts 1 Jan 1958 and runs to 1 Jan 2019.
-notes: >-
+notes: |-
   Source code: https://github.com/COSIMA/access-om2
   License: Attribution-NonCommercial-NoDerivatives 4.0 International (http://creativecommons.org/licenses/by-nc-nd/4.0/legalcode)
   Conditions of use:
