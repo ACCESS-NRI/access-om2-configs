@@ -1,7 +1,7 @@
 contact: Add your name here
 email: Add your email address here
 created: Add the date you started the experiment here (YYYY-MM-DD)
-description: >-
+description: |-
   0.1 degree ACCESS-OM2 global model configuration under the RYF9091 Repeat
   Year Forcing strategy outlined by Stewart et al. (2020), 
   https://doi.org/10.1016/j.ocemod.2019.101557.
@@ -11,7 +11,7 @@ description: >-
   Run with JRA55-do v1.4.0 RYF9091 (1 May 1990 - 30 April 1991) repeated forcing
   with all solid runoff converted to liquid runoff with no heat transfer.
   Spin up starts from a nominal year of 1 Jan 1900.
-notes: >-
+notes: |-
   Source code: https://github.com/COSIMA/access-om2
   License: Attribution-NonCommercial-NoDerivatives 4.0 International (http://creativecommons.org/licenses/by-nc-nd/4.0/legalcode)
   Conditions of use:
