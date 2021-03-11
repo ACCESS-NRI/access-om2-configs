@@ -117,6 +117,7 @@
     r_snw             = 0.0
     rsnw_mlt          = 1500.0
     shortwave         = 'default'
+    snowpatch         = 0.02
     tocnfrz           = -1.8
 /
 
