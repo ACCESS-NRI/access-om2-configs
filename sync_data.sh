@@ -83,8 +83,6 @@ if [ $exitcode != "0" -o $help == true ]; then
     exit $exitcode
 fi
 
-sourcepath="$PWD"
-mkdir -p $SYNCDIR || { echo "Error: cannot create $SYNCDIR - edit $0 to set SYNCDIR"; exit 1; }
 
 # concatenate ice daily files
 module load nco
@@ -99,8 +97,8 @@ for d in archive/output*/ice/OUTPUT; do
             then
                 for daily in ${f/.nc/-??.nc}
                 do
-                    # rename individual daily files - user to delete
-                    mv $daily $daily-DELETE
+                    # mv $daily $daily-DELETE  # rename individual daily files - user to delete
+                    rm $daily
                 done
             else
                 rm ${f/.nc/-IN-PROGRESS}
@@ -108,6 +106,10 @@ for d in archive/output*/ice/OUTPUT; do
         fi
     done
 done
+
+
+sourcepath="$PWD"
+mkdir -p $SYNCDIR || { echo "Error: cannot create $SYNCDIR - edit $0 to set SYNCDIR"; exit 1; }
 
 cd archive || exit 1
 
