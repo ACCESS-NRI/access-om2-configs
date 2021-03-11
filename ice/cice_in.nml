@@ -78,7 +78,7 @@
 &thermo_nml
     a_rapid_mode      = 0.0005
     aspect_rapid_mode = 1.0
-    chio              = 0.004
+    chio              = 0.006
     conduct           = 'bubbly'
     dsdt_slow_mode    = -5e-08
     kitd              = 1
