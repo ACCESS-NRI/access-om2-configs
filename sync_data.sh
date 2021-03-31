@@ -87,21 +87,21 @@ fi
 # concatenate ice daily files
 module load nco
 for d in archive/output*/ice/OUTPUT; do
-    for f in $d/iceh.????-??.nc; do
-        if [[ -f ${f/.nc/-01.nc} ]] && [[ ! -f ${f/.nc/-IN-PROGRESS} ]] && [[ ! -f ${f/.nc/-daily.nc} ]];
+    for f in $d/iceh.????-??-01.nc; do
+        if [[ ! -f ${f/-01.nc/-IN-PROGRESS} ]] && [[ ! -f ${f/-01.nc/-daily.nc} ]];
         then
-            touch ${f/.nc/-IN-PROGRESS}
-            echo "doing ncrcat -O -L 5 -7 ${f/.nc/-??.nc} ${f/.nc/-daily.nc}"
-            ncrcat -O -L 5 -7 ${f/.nc/-??.nc} ${f/.nc/-daily.nc} && chmod g+r ${f/.nc/-daily.nc} && rm ${f/.nc/-IN-PROGRESS}
-            if [[ ! -f ${f/.nc/-IN-PROGRESS} ]] && [[ -f ${f/.nc/-daily.nc} ]];
+            touch ${f/-01.nc/-IN-PROGRESS}
+            echo "doing ncrcat -O -L 5 -7 ${f/-01.nc/-??.nc} ${f/-01.nc/-daily.nc}"
+            ncrcat -O -L 5 -7 ${f/-01.nc/-??.nc} ${f/-01.nc/-daily.nc} && chmod g+r ${f/-01.nc/-daily.nc} && rm ${f/-01.nc/-IN-PROGRESS}
+            if [[ ! -f ${f/-01.nc/-IN-PROGRESS} ]] && [[ -f ${f/-01.nc/-daily.nc} ]];
             then
-                for daily in ${f/.nc/-??.nc}
+                for daily in ${f/-01.nc/-??.nc}
                 do
                     # mv $daily $daily-DELETE  # rename individual daily files - user to delete
                     rm $daily
                 done
             else
-                rm ${f/.nc/-IN-PROGRESS}
+                rm ${f/-01.nc/-IN-PROGRESS}
             fi
         fi
     done
