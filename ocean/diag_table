@@ -390,10 +390,11 @@ ACCESS-OM2
 
 
 # monthly 3d snapshots
-# output files
+
+# bgc output will be saved according to temporal frequency (annual, monthly, daily)
 "ocean_ann",  12, "months", 1, "days", "time",
+"ocean_month", 1,  "months",   1, "days", "time",
 "ocean_daily", 1,  "days",   1, "days", "time",
-"ocean_scalar", 1,  "months",   1, "days", "time",
 
 #bgc fields table format
 #0: "ocean_model" (do not change)
@@ -405,7 +406,9 @@ ACCESS-OM2
 #6: "none" (do not change)
 #7: 2 (do not change)
 
-# yearly bgc fields for omip2
+# List of all available bgc diagnostics saved as annual means
+
+#prognostic 3d fields
 
 "ocean_model","adic","adic",    "ocean_ann","all",.true.,"none",2
 "ocean_model","dic","dic",      "ocean_ann","all",.true.,"none",2
@@ -417,29 +420,52 @@ ACCESS-OM2
 "ocean_model","zoo","zoo",      "ocean_ann","all",.true.,"none",2
 "ocean_model","det","det",      "ocean_ann","all",.true.,"none",2
 "ocean_model","caco3","caco3",  "ocean_ann","all",.true.,"none",2
+
+#diagnostic fields
+
 "ocean_model","stf09","stf09",  "ocean_ann","all",.true.,"none",2
 "ocean_model","stf07","stf07",  "ocean_ann","all",.true.,"none",2
 "ocean_model","stf03","stf03",  "ocean_ann","all",.true.,"none",2
-"ocean_model","total_aco2_flux","total_aco2_flux","ocean_ann","all",.true.,"none",2
-"ocean_model","total_co2_flux", "total_co2_flux", "ocean_ann","all",.true.,"none",2
 "ocean_model","paco2","paco2",        "ocean_ann","all",.true.,"none",2
 "ocean_model","pco2","pco2",          "ocean_ann","all",.true.,"none",2
+"ocean_model","npp1","npp1",   "ocean_ann","all",.true.,"none",2
+"ocean_model","npp2d","npp2d",   "ocean_ann","all",.true.,"none",2
 "ocean_model","npp3d","npp3d",   "ocean_ann","all",.true.,"none",2
+"ocean_model","pprod_gross","pprod_gross",   "ocean_ann","all",.true.,"none",2
+"ocean_model","pprod_gross_2d","pprod_gross_2d",   "ocean_ann","all",.true.,"none",2
+"ocean_model","zprod_gross","zprod_gross",   "ocean_ann","all",.true.,"none",2
+"ocean_model","light_limit","light_limit",   "ocean_ann","all",.true.,"none",2
+"ocean_model","radbio1","radbio1",   "ocean_ann","all",.true.,"none",2
+"ocean_model","radbio3d","radbio3d",   "ocean_ann","all",.true.,"none",2
+"ocean_model","wdet100","wdet100",   "ocean_ann","all",.true.,"none",2
+"ocean_model","kw_o2","kw_o2",   "ocean_ann","all",.true.,"none",2
+"ocean_model","o2_saturation","o2_saturation",   "ocean_ann","all",.true.,"none",2
+"ocean_model","sc_o2","sc_o2",   "ocean_ann","all",.true.,"none",2
+"ocean_model","co2_saturation","co2_saturation",   "ocean_ann","all",.true.,"none",2
+"ocean_model","aco2_saturation","aco2_saturation",   "ocean_ann","all",.true.,"none",2
+"ocean_model","caco3_sediment","caco3_sediment",   "ocean_ann","all",.true.,"none",2
+"ocean_model","det_sediment","det_sediment",   "ocean_ann","all",.true.,"none",2
+"ocean_model","caco3_sed_remin","caco3_sed_remin",   "ocean_ann","all",.true.,"none",2
+"ocean_model","caco3_sed_depst","caco3_sed_depst",   "ocean_ann","all",.true.,"none",2
+"ocean_model","det_sed_remin","det_sed_remin",   "ocean_ann","all",.true.,"none",2
+"ocean_model","det_sed_depst","det_sed_depst",   "ocean_ann","all",.true.,"none",2
+"ocean_model","total_aco2_flux","total_aco2_flux","ocean_ann","all",.true.,"none",2
+"ocean_model","total_co2_flux", "total_co2_flux", "ocean_ann","all",.true.,"none",2
 
-# daily bgc fields for omip2
+#prognostic 2d fields (at ocean surface layer)
 
-"ocean_model","surface_adic","surface_adic",     "ocean_daily","all",.true.,"none",2
-"ocean_model","surface_dic","surface_dic",       "ocean_daily","all",.true.,"none",2
-"ocean_model","surface_alk","surface_alk",       "ocean_daily","all",.true.,"none",2
-"ocean_model","surface_no3","surface_no3",       "ocean_daily","all",.true.,"none",2
+"ocean_model","surface_adic","surface_adic",     "ocean_ann","all",.true.,"none",2
+"ocean_model","surface_dic","surface_dic",       "ocean_ann","all",.true.,"none",2
+"ocean_model","surface_alk","surface_alk",       "ocean_ann","all",.true.,"none",2
+"ocean_model","surface_no3","surface_no3",       "ocean_ann","all",.true.,"none",2
+"ocean_model","surface_phy","surface_phy",       "ocean_ann","all",.true.,"none",2
+"ocean_model","surface_zoo","surface_zoo",       "ocean_ann","all",.true.,"none",2
+"ocean_model","surface_det","surface_det",       "ocean_ann","all",.true.,"none",2
+"ocean_model","surface_caco3","surface_caco3",       "ocean_ann","all",.true.,"none",2
+"ocean_model","surface_o2","surface_o2",       "ocean_ann","all",.true.,"none",2
+"ocean_model","surface_fe","surface_fe",         "ocean_ann","all",.true.,"none",2
+
+# An example of monthly and daily bgc diagnostics
+
+"ocean_model","surface_no3","surface_no3",       "ocean_month","all",.true.,"none",2
 "ocean_model","surface_phy","surface_phy",       "ocean_daily","all",.true.,"none",2
-"ocean_model","surface_zoo","surface_zoo",       "ocean_daily","all",.true.,"none",2
-"ocean_model","surface_det","surface_det",       "ocean_daily","all",.true.,"none",2
-"ocean_model","surface_caco3","surface_caco3",       "ocean_daily","all",.true.,"none",2
-"ocean_model","surface_o2","surface_o2",       "ocean_daily","all",.true.,"none",2
-"ocean_model","surface_fe","surface_fe",         "ocean_daily","all",.true.,"none",2
-"ocean_model","npp2d","npp2d",   "ocean_daily","all",.true.,"none",2
-"ocean_model","npp1" ,"npp1" ,   "ocean_daily","all",.true.,"none",2
-"ocean_model","wdet100","wdet100", "ocean_daily","all",.true.,"none",2
-"ocean_model","radbio1","radbio1" ,"ocean_daily","all",.true.,"none",2
-
