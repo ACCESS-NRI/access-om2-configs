@@ -9,10 +9,12 @@
 # shortpath: /scratch/v45
 
 queue: normal
-walltime: 3:00:00
+walltime: 0:05:00
 jobname: 1deg_jra55_iaf
 mem: 1000GB
-
+storage:
+        gdata:
+                - v45
 # Model configuration
 name: common
 model: access-om2
@@ -38,14 +40,18 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM-BGC_af3a94d_libaccessom2_44e8821.x
-      input: /g/data/ik11/inputs/access-om2/input_20201102/mom_1deg
+      exe: /home/581/hh0162/scratch/access-om2-iamip2/bin/fms_ACCESS-OM-BGC_09931a0_libaccessom2_44e8821-modified.x
+      input: 
+      - /g/data/v45/hh0162/projects/icebgc/prep_omip2/input_iamip2
+      - /g/data/ik11/inputs/access-om2/input_20201102/mom_1deg
       ncpus: 216
 
     - name: ice
       model: cice5
-      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_dfb833a_libaccessom2_44e8821.exe
-      input: /g/data/ik11/inputs/access-om2/input_20201102/cice_1deg
+      exe: /home/581/hh0162/scratch/access-om2-iamip2/bin/cice_auscom_360x300_24p_30ba0cc-modified_libaccessom2_44e8821-modified.exe
+      input: 
+      - /g/data/v45/hh0162/projects/icebgc/prep_omip2/input_iamip2
+      - /g/data/ik11/inputs/access-om2/input_20201102/cice_1deg
       ncpus: 24
 
 # Collation
