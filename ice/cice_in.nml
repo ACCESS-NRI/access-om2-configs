@@ -141,7 +141,7 @@
     restart_hbrine    = .false.
     restore_bgc       = .false.
     sil_data_type     = 'default'
-    skl_bgc           = .true.
+    skl_bgc           = .false.
     tr_bgc_am_sk      = .false.
     tr_bgc_c_sk       = .false.
     tr_bgc_chl_sk     = .false.
