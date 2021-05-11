@@ -347,7 +347,7 @@
     f_btin            = 'x'
     f_faero_atm       = 'x'
     f_faero_ocn       = 'x'
-    f_fbri            = 'x'
+    f_fbri            = 'm'
     f_fn              = 'x'
     f_fn_ai           = 'x'
     f_fnh             = 'x'
@@ -357,7 +357,7 @@
     f_fsil            = 'x'
     f_fsil_ai         = 'x'
     f_grownet         = 'x'
-    f_hbri            = 'x'
+    f_hbri            = 'm'
     f_ppnet           = 'm'
 /
 
