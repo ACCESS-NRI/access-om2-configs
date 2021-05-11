@@ -42,7 +42,7 @@ submodels:
       model: mom
       exe: /home/581/hh0162/scratch/access-om2-iamip2/bin/fms_ACCESS-OM-BGC_09931a0_libaccessom2_44e8821-modified.x
       input: 
-      - /g/data/v45/hh0162/projects/icebgc/prep_omip2/input_iamip2
+      - /g/data/v45/hh0162/projects/icebgc/prep_omip2/input_om2-bgc/1deg
       - /g/data/ik11/inputs/access-om2/input_20201102/mom_1deg
       ncpus: 216
 
@@ -50,7 +50,7 @@ submodels:
       model: cice5
       exe: /home/581/hh0162/scratch/access-om2-iamip2/bin/cice_auscom_360x300_24p_30ba0cc-modified_libaccessom2_44e8821-modified.exe
       input: 
-      - /g/data/v45/hh0162/projects/icebgc/prep_omip2/input_iamip2
+      - /g/data/v45/hh0162/projects/icebgc/prep_omip2/input_om2-bgc/1deg
       - /g/data/ik11/inputs/access-om2/input_20201102/cice_1deg
       ncpus: 24
 
