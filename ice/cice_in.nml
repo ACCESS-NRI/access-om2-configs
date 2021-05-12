@@ -11,7 +11,6 @@
   , restart        = .false.
   , restart_ext    = .false.
   , use_restart_time = .true.
-  , restart_format = 'nc'
   , restart_dir    = './RESTART/'
   , restart_file   = 'iced'
   , pointer_file   = './RESTART/ice.restart_file'
@@ -31,6 +30,8 @@
   , histfreq       = 'd','m','x','x','x'
   , histfreq_n     = 1, 1, 1, 1, 1
   , hist_avg       = .true.
+  , history_chunksize_x = 180
+  , history_chunksize_y = 150
   , history_deflate_level = 1
   , history_dir    = './OUTPUT/'
   , history_file   = 'iceh'
