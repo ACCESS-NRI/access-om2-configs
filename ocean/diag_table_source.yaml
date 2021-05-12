@@ -1,0 +1,344 @@
+#######################################################################################################
+# This yaml file is used by make_diag_table.py to create a diag_table file specifying MOM5 diagnostics.
+# Latest version: https://github.com/COSIMA/make_diag_table
+#
+# Define the diagnostics you want in the diag_table section below.
+#
+# The MOM diag_table format is defined here:
+# https://github.com/mom-ocean/MOM5/blob/master/src/shared/diag_manager/diag_table.F90
+#######################################################################################################
+
+
+# Define global default settings which will be applied to all diagnostics,
+# unless overridden in diag_table section below, either in defaults or individual fields.
+# You're unlikely to need to change any of the global_defaults.
+global_defaults:
+# global_section:
+    title: ACCESS-OM2  # any string
+    base_date: [ 1900, 1, 1, 0, 0, 0 ]  # reference time used for the time units. six integers: year, month, day, hour, minute, second
+# file section:
+    file_name:  # file name (without trailing ".nc") is constructed from these components,
+    # separated by file_name_separator, as per https://github.com/COSIMA/access-om2/issues/185
+    # All these components (other than field_name) must be names that exist in global_defaults.
+    # If file_name_date or file_name_date_section are used, it must be the last item.
+        - file_name_prefix
+        - file_name_dimension
+        - field_name  # substituted by field name in diag_table section below
+        - output_freq
+        - output_freq_units
+        - reduction_method
+        - file_name_date
+        # - file_name_date_section
+    output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+    output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+    file_format: 1  # integer, must be 1, specifying NetCDF (the only format currently supported)
+    time_axis_units: days  # time units for the output file time axis: years, months, days, hours, minutes, or seconds
+    time_axis_name: time  # must be "time" (case-insensitive)
+    new_file_freq: 1  # optional integer: frequency (in new_file_freq_units) for closing the existing file, and creating a new file
+    new_file_freq_units: years  # time units for new_file_freq: years, months, days, hours, minutes, or seconds (optional; required if and only if new_file_freq specified)
+    start_time:  # Time to start the file for the first time. The format of this string is the same as base_date (optional; requires new_file_freq, new_file_freq_units)
+    file_duration:  # integer: How long file should receive data after start time (optional; requires new_file_freq, new_file_freq_units, start_time)
+    file_duration_units:  # units for file_duration: years, months, days, hours, minutes, or seconds (optional; required if and only if file_duration specified)
+# field section:
+    module_name: ocean_model
+    field_name:  # set via keys in the fields section of the diag_table section below
+    output_name:  # same as field_name unless overridden
+    # file_name:  # same as file_name in file_section above unless overridden in diag_table section below
+    time_sampling: all  # Currently not used.  Please use the string "all".
+    reduction_method: mean  # mean, snap, rms, pow##, min, max, or diurnal##
+    # reduction_method options:
+    #     mean or average or true: Average from the last time written to the current time. Becomes "average" in diag_table.
+    #     snap or none or false: No reduction.  Write snapshot of current time step value only. Becomes "none" in diag_table.
+    #     rms: Calculate the root mean square from the last time written to the current time.
+    #     pow##: Calculate the mean of the power ## from the last time written to the current time.
+    #     min: Minimum value from last write to current time.
+    #     max: Maximum value from last write to current time.
+    #     diurnal##: ## diurnal averages
+    regional_section: none  # string: bounds of the regional section to capture ("none" indicates a global region). String format: lat_min, lat_max, lon_min, lon_max, vert_min, vert_max. Use vert_min = -1 and vert_max = -1 to get the entire vertical axis.
+    packing: 2
+    # packing is the Fortran number KIND of the data written:
+    #     1: double precision
+    #     2: float (single precision)
+    #     4: packed 16-bit integers
+    #     8: packed 1-byte (not tested)
+# extra things for constructing filename:
+    file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
+    file_name_prefix: ocean
+    file_name_date: "ym%4yr%2mo"  # run date/time of file opening; format: %, 1 digit (#digits), one of (yr, mo, dy, hr, mi, sc); date/time components will be separated by _ in filename.
+    file_name_separator: "-"  # used to separate filename components; best not to use "_" to avoid confusion with fields and dates
+    file_name_omit_empty: true  # whether to omit empty filename components to avoid duplicate file_name_separator
+    file_name_substitutions:  # string replacements for filename components
+        years: yearly
+        months: monthly
+        days: daily
+        hours: hourly
+        none: snap  # careful! will apply to both reduction_method and regional_section
+        'False': snap
+        average: mean
+        'True': mean
+        None: ""  # for empty items
+    file_name_date_section:  # These are separated by "_". If file_name_date is used, it must be the last item.
+        - output_freq
+        - output_freq_units
+        - reduction_method
+        - file_name_date
+
+
+#######################################################################################################
+# diag_table section - this defines the diagnostics that will appear in diag_table.
+# 
+# Top-level categories in diag_table have arbitrary names (they're just used for
+# comments in the output diag_table). Make as many of these as you like to group
+# similar diagnostics with shared defaults. Note that each of the top-level
+# categories can have only have one instance of each field name, so if you need
+# multiple outputs of the same field (e.g. as both averages and snapshots), you’ll
+# need to make additional categories.
+# 
+# Within each top-level category there's an optional defaults section and a
+# fields section. The defaults section overrides items in global_defaults for
+# all fields in the category. The field section specifies diagnostic field
+# names. To add a new diagnostic, all you need to do is add its name to the
+# field section in the appropriate category. Each field name can be followed by
+# a dictionary overriding the category and global defaults for that field only.
+# 
+# Some of the available diagnostics are listed here:
+# https://raw.githubusercontent.com/COSIMA/access-om2/master/MOM_diags.txt
+# https://github.com/COSIMA/access-om2/wiki/Technical-documentation#MOM5-diagnostics-list
+diag_table:
+    'static 2d grid data':
+        defaults:  # these can be overridden for individual fields below
+            file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
+            file_name:  # file name (without trailing ".nc") is constructed from these components,
+            # separated by file_name_separator, as per https://github.com/COSIMA/access-om2/issues/185
+            # All these components (other than field_name) must be names that exist in global_defaults.
+                - file_name_prefix
+                - file_name_dimension
+                - field_name  # substituted by field name in fields section below
+            reduction_method: snap  # mean, snap, rms, pow##, min, max, or diurnal##
+            output_freq: -1  # Output frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            new_file_freq:  # optional integer: frequency (in new_file_freq_units) for closing the existing file, and creating a new file
+        fields:
+            area_t:
+            area_u:
+            drag_coeff:
+            dxt:
+            dxu:
+            dyt:
+            dyu:
+            geolat_c:
+            geolat_t:
+            geolon_c:
+            geolon_t:
+            ht:
+            hu:
+            kmt:
+            kmu:
+    'monthly 3d fields':
+        defaults:  # these can be overridden for individual fields below
+            file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+        fields:
+            age_global:
+            # aiso_bih:
+            buoyfreq2_wt:
+            diff_cbt_t:
+            dzt:  # potentially calculable from other fields - https://github.com/COSIMA/access-om2/issues/203#issuecomment-635752170
+            pot_rho_0:
+            pot_rho_2:
+            pot_temp:
+            salt:
+            temp_xflux_adv:
+            temp_yflux_adv:
+            temp:
+            # tx_trans_gm:
+            # tx_trans_nrho_submeso:
+            # tx_trans_rho_gm:
+            # tx_trans_rho:
+            # tx_trans_submeso:
+            tx_trans:
+            ty_trans_gm:
+            ty_trans_nrho_submeso:
+            ty_trans_rho_gm:
+            ty_trans_rho:
+            ty_trans_submeso:
+            ty_trans:
+            u:
+            v:
+            vert_pv:
+            # vorticity_z:
+            wt:
+    'monthly 3d squared fields':  # for calculating EKE etc
+        defaults:  # these can be overridden for individual fields below
+            file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+            reduction_method: pow02  # mean, snap, rms, pow##, min, max, or diurnal##
+        fields:
+            u:
+            v:
+    'monthly 2d fields':
+        defaults:  # these can be overridden for individual fields below
+            file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+        fields:
+            agm:
+            aredi:
+            bmf_u:
+            bmf_v:
+            ekman_we:
+            eta_nonbouss:
+            evap_heat:
+            evap:
+            fprec_melt_heat:
+            fprec:
+            frazil_3d_int_z:
+            lprec:
+            lw_heat:
+            melt:
+            mh_flux:
+            mld:
+            net_sfc_heating:
+            pbot_t:
+            pme_net:
+            pme_river:
+            river:
+            runoff:
+            sea_level_sq:
+            sea_level:
+            sens_heat:
+            sfc_hflux_coupler:
+            sfc_hflux_from_runoff:
+            sfc_hflux_pme:
+            sfc_salt_flux_coupler:
+            sfc_salt_flux_ice:
+            sfc_salt_flux_restore:
+            surface_pot_temp:
+            surface_salt:
+            swflx:
+            tau_x:
+            tau_y:
+            temp_int_rhodz:
+            temp_xflux_adv_int_z:
+            temp_xflux_gm_int_z:
+            temp_xflux_ndiffuse_int_z:
+            temp_xflux_submeso_int_z:
+            temp_yflux_adv_int_z:
+            temp_yflux_gm_int_z:
+            temp_yflux_ndiffuse_int_z:
+            temp_yflux_submeso_int_z:
+            tx_trans_int_z:
+            ty_trans_int_z:
+            wfiform:
+            wfimelt:
+    'monthly 2d fields with different reduction methods':
+        defaults:  # these can be overridden for individual fields below
+            file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+        fields:
+            mld: {reduction_method: max}  # max avoids spurious small values due to rainfall
+            surface_pot_temp: {reduction_method: min}  # min for comparison with foundation temperature
+    'daily 2d fields':
+        defaults:  # these can be overridden for individual fields below
+            file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
+        fields:
+            bottom_temp:
+            frazil_3d_int_z:
+            mld:
+            pme_river:
+            sea_level:
+            sfc_hflux_coupler:
+            sfc_hflux_from_runoff:
+            sfc_hflux_pme:
+            surface_pot_temp:
+            surface_salt:
+            usurf:
+            vsurf:
+    'daily 2d maximum fields':
+        defaults:  # these can be overridden for individual fields below
+            file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
+            reduction_method: max  # mean, snap, rms, pow##, min, max, or diurnal##
+        fields:
+            bottom_temp:
+            sea_level:
+            surface_pot_temp:
+    'daily 2d minimum fields':
+        defaults:  # these can be overridden for individual fields below
+            file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
+            reduction_method: min  # mean, snap, rms, pow##, min, max, or diurnal##
+        fields:
+            surface_pot_temp:  # min for comparison with foundation temperature
+    'daily scalar snapshots':  # snapshots of global integrals give better parallel performance
+        defaults:  # these can be overridden for individual fields below
+            file_name_dimension: scalar  # descriptor for filename, e.g. 3d, 2d, scalar
+            file_name:  # file name (without trailing ".nc") is constructed from these components,
+            # separated by file_name_separator, as per https://github.com/COSIMA/access-om2/issues/185
+            # All these components (other than field_name) must be names that exist in global_defaults.
+                - file_name_prefix
+                - file_name_dimension
+                - output_freq
+                - output_freq_units
+                - file_name_date
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
+            reduction_method: snap  # mean, snap, rms, pow##, min, max, or diurnal##
+            packing: 1  # double precision
+        fields:
+            eta_global:
+            ke_tot:
+            pe_tot:
+            rhoave:
+            salt_global_ave:
+            salt_surface_ave:
+            temp_global_ave:
+            temp_surface_ave:
+            total_net_sfc_heating:
+            total_ocean_evap_heat:
+            total_ocean_evap:
+            total_ocean_fprec_melt_heat:
+            total_ocean_fprec:
+            total_ocean_heat:
+            total_ocean_hflux_coupler:
+            total_ocean_hflux_evap:
+            total_ocean_hflux_prec:
+            total_ocean_lprec:
+            total_ocean_lw_heat:
+            total_ocean_melt:
+            total_ocean_mh_flux:
+            total_ocean_pme_river:
+            total_ocean_river_heat:
+            total_ocean_river:
+            total_ocean_runoff_heat:
+            total_ocean_runoff:
+            total_ocean_salt:
+            total_ocean_sens_heat:
+            total_ocean_sfc_salt_flux_coupler:
+            total_ocean_swflx_vis:
+            total_ocean_swflx:
+    'monthly 2d snapshots':
+        defaults:  # these can be overridden for individual fields below
+            file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+            reduction_method: snap  # mean, snap, rms, pow##, min, max, or diurnal##
+        fields:
+            # sea_level:
+    'monthly 3d snapshots':
+        defaults:  # these can be overridden for individual fields below
+            file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+            reduction_method: snap  # mean, snap, rms, pow##, min, max, or diurnal##
+        fields:
+            # temp:
+            # u:
+            # v:
+            # vorticity_z:

@@ -53,11 +53,11 @@ elon = 360.0
        "units",        "kg/kg" /
 
 "rayleigh_damp_table","ocean_mod","rayleigh_damp_table"
-"rayleigh","Ombai","itable=44,jtable=111,ktable_1=1,ktable_2=29,rayleigh_damp_table=5400"
-"rayleigh","Lombok","itable=36,jtable=112,ktable_1=1,ktable_2=19,rayleigh_damp_table=5400"
-"rayleigh","Torres","itable=62,jtable=105,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","Lombok","itable=36,jtable=112,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","Ombai","itable=44,jtable=111,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
 "rayleigh","Torres","itable=62,jtable=106,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
 "rayleigh","Torres","itable=62,jtable=107,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
-"rayleigh","Torres","itable=62,jtable=108,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"/
+"rayleigh","Torres","itable=62,jtable=108,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
+"rayleigh","Torres","itable=62,jtable=109,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"/
 
 

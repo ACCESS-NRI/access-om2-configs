@@ -1,18 +1,18 @@
 format: yamanifest
 version: 1.0
 ---
-work/atmosphere/yatm_4198e150.exe:
-  fullpath: /g/data/ik11/inputs/access-om2/bin/yatm_4198e150.exe
+work/atmosphere/yatm_44e8821.exe:
+  fullpath: /g/data/ik11/inputs/access-om2/bin/yatm_44e8821.exe
   hashes:
-    binhash: 6d9aa346608401a4c79df16d21ac3517
-    md5: 09508ee51092bee3ba97efd8a604ae29
-work/ice/cice_auscom_360x300_24p_597e4561_libaccessom2_4198e150.exe:
-  fullpath: /g/data/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_597e4561_libaccessom2_4198e150.exe
+    binhash: c34913cd8082c0e45124f648197ad8e1
+    md5: cdcd9dd20f690bb874cdf392085857cf
+work/ice/cice_auscom_360x300_24p_16fcc6d_libaccessom2_44e8821.exe:
+  fullpath: /g/data/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_16fcc6d_libaccessom2_44e8821.exe
   hashes:
-    binhash: ea5e60ab19518af2dcc374d454dbda8c
-    md5: 6af53b6f9fa02930c376f8f81cb455cb
-work/ocean/fms_ACCESS-OM_e837d05d_libaccessom2_4198e150.x:
-  fullpath: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM_e837d05d_libaccessom2_4198e150.x
+    binhash: 1ad702212bad17e13b63b82892efa9f5
+    md5: f26186f285a91cca933f6123525de172
+work/ocean/fms_ACCESS-OM-BGC_af3a94d_libaccessom2_44e8821.x:
+  fullpath: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM-BGC_af3a94d_libaccessom2_44e8821.x
   hashes:
-    binhash: 820e6a346026240522708d9c321b84df
-    md5: b584ee3f239241ca74d549aa68c64e87
+    binhash: 5bfc6828685f392eeb74a457f07498dd
+    md5: cc91484411d0d34e371bf4807652b4da

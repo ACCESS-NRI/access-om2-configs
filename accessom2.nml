@@ -1,11 +1,18 @@
 &accessom2_nml
     log_level = 'DEBUG'
+
+    ! ice_ocean_timestep defines the MOM baroclinic timestep, CICE thermodynamic timestep
+    ! and MOM-CICE coupling interval, in seconds.
+    ! ice_ocean_timestep is normally a factor of the JRA55-do forcing period of 3hr = 10800s,
+    ! e.g. one of 100, 108, 120, 135, 144, 150, 180, 200, 216, 225, 240, 270, 300, 360, 400, 432,
+    ! 450, 540, 600, 675, 720, 900, 1080, 1200, 1350, 1800, 2160, 2700, 3600 or 5400 seconds.
+    ! The model is usually stable with a 5400s timestep, including in the initial spinup from rest.
     ice_ocean_timestep = 5400
 &end
 
 &date_manager_nml
     forcing_start_date = '1958-01-01T00:00:00'
-    forcing_end_date = '2018-01-01T00:00:00'
+    forcing_end_date = '2019-01-01T00:00:00'
 
     ! Runtime for a single segment/job/submit, format is years, months, seconds,
     ! two of which must be zero.
