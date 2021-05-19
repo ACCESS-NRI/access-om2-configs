@@ -16,7 +16,7 @@
 ### 11 fields  atm -> ice
 ### 17 fields  ice -> ocn
 ###  7 fields  ocn -> ice
-   35
+   40
  $END
 #########################################################################
 # $JOBNAME
@@ -265,6 +265,21 @@ NA NA
 ##########
 licefh_io liceht -1 -1 0 i2o.nc IGNORED
 NA NA
+##########
+# Field 29 : 10 m winds
+########## 
+wnd10_io wnd_io -1 -1 0 i2o.nc IGNORED
+NA NA
+##########
+# Field 30 : sea surface nitrate [mmol m-3]
+##########
+nit_io iof_nit -1 -1 0 i2o.nc IGNORED
+NA NA
+##########
+# Field 31 : sea surface algae/phyto in nitrogen [mmol m-3]
+##########
+alg_io iof_alg -1 -1 0 i2o.nc IGNORED
+NA NA
 ############################################################################
 #
 #                      OCEAN --->>> ICE
@@ -303,5 +318,15 @@ NA NA
 # Field 35 :  sea surface slope _y_ (m/m)
 ##########
 dssldy ssly_i -1 -1 0 o2i.nc IGNORED
+NA NA
+##########
+# Field 36 :  sea surface nitrate (mmol/m^3)
+##########
+n_surf ssn_i -1 -1 0 o2i.nc IGNORED
+NA NA
+##########
+# Field 37 :  sea surface algae/phytoplankton in nitrogen (mmol/m^3)
+##########
+alg_surf ssalg_i -1 -1 0 o2i.nc IGNORED
 NA NA
  $END
