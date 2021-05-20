@@ -3477,6 +3477,36 @@ work/ice/RESTART/dust_om2.nc:
   hashes:
     binhash: 7eb54e681b58ba9c484e9913d57337df
     md5: e16438a05c180e8709d21ff880192b03
+work/ice/RESTART/grid.nc:
+  copy: true
+  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/cice_1deg/grid.nc
+  hashes:
+    binhash: e7108317ae28b1f9ae77711728925cb6
+    md5: 1213e346055ee073fe33dc12578d99c6
+work/ice/RESTART/i2o.nc:
+  copy: true
+  fullpath: /g/data/v45/hh0162/projects/icebgc/prep_omip2/input_om2-bgc/1deg/i2o.nc
+  hashes:
+    binhash: a3026b03b45556cb5a9ce4ae34603ffb
+    md5: 273fb9d25a2b9a7e4cbf158e3aea1e50
+work/ice/RESTART/kmt.nc:
+  copy: true
+  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/cice_1deg/kmt.nc
+  hashes:
+    binhash: 13a23d6d9331abc9d677c6fd466a4433
+    md5: 1f9806c646a620378e5257e480bc9df7
+work/ice/RESTART/monthly_sstsss.nc:
+  copy: true
+  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/cice_1deg/monthly_sstsss.nc
+  hashes:
+    binhash: 66f44d84fada351d4ebf05f196762d8c
+    md5: 323d4c605f83f4d7d3126da70153c2ed
+work/ice/RESTART/o2i.nc:
+  copy: true
+  fullpath: /g/data/v45/hh0162/projects/icebgc/prep_omip2/input_om2-bgc/1deg/o2i.nc
+  hashes:
+    binhash: 11778d8b29e044047dd34b50922d9a21
+    md5: 0ce344f73b224f0809f31357fcdeba98
 work/ice/RESTART/ocmip2_fice_monthly_om1p5_bc.nc:
   copy: true
   fullpath: /g/data/v45/hh0162/projects/icebgc/prep_omip2/input_om2-bgc/1deg/ocmip2_fice_monthly_om1p5_bc.nc
@@ -3501,6 +3531,12 @@ work/ice/RESTART/ocmip2_xkw_monthly_om2.nc:
   hashes:
     binhash: 65728d3d89b4347544961058eb5c69c1
     md5: fd87b17f01689105414865748f97b41b
+work/ice/RESTART/u_star.nc:
+  copy: true
+  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/cice_1deg/u_star.nc
+  hashes:
+    binhash: f93a19930c5c59e03751e70a123ab01f
+    md5: 68cf0ef92576f96ef085cd7f243d0c39
 work/ocean/INPUT/bgc_param.nc:
   fullpath: /g/data/v45/hh0162/projects/icebgc/prep_omip2/input_om2-bgc/1deg/bgc_param.nc
   hashes:
