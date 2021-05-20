@@ -40,7 +40,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /home/156/aek156/github/COSIMA/access-om2-iamip/bin/fms_ACCESS-OM-BGC_af3a94d_libaccessom2_5b6c697.x
+      exe: /home/156/aek156/github/COSIMA/access-om2-iamip/bin/fms_ACCESS-OM-BGC_8bba5c4_libaccessom2_5b6c697.x
       input: 
       - /g/data/v45/hh0162/projects/icebgc/prep_omip2/input_om2-bgc/1deg
       - /g/data/ik11/inputs/access-om2/input_20201102/mom_1deg
