@@ -64,93 +64,115 @@ elon = 360.0
 "tracer_packages","ocean_mod","csiro_bgc"
 
 names = _
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
 min_tracer_limit=-1e6
 max_tracer_limit=1e6
 min_range=-1e6
 max_range=1e6
+ppm_hlimiter = 3
+ppm_vlimiter = 3
 /
 
 "prog_tracers","ocean_mod","adic"
 
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
 longname = adic
+ppm_hlimiter = 3
+ppm_vlimiter = 3
 /
 
 "prog_tracers","ocean_mod","caco3"
 
-horizontal-advection-scheme = upwind
-vertical-advection-scheme = upwind
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
 longname = caco3
+ppm_hlimiter = 3
+ppm_vlimiter = 3
 /
 
 "prog_tracers","ocean_mod","alk"
 
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
 longname = alk
+ppm_hlimiter = 3
+ppm_vlimiter = 3
 /
 
 "prog_tracers","ocean_mod","dic"
 
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
 longname = dic
+ppm_hlimiter = 3
+ppm_vlimiter = 3
 /
 
 "prog_tracers","ocean_mod","no3"
 
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
 longname = no3
+ppm_hlimiter = 3
+ppm_vlimiter = 3
 /
 
 "prog_tracers","ocean_mod","phy"
 
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
 longname = phy
+ppm_hlimiter = 3
+ppm_vlimiter = 3
 /
 
 "prog_tracers","ocean_mod","o2"
 
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
 longname = o2
+ppm_hlimiter = 3
+ppm_vlimiter = 3
 /
 
 "prog_tracers","ocean_mod","fe"
 
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
 longname = fe
+ppm_hlimiter = 3
+ppm_vlimiter = 3
 /
 
 "prog_tracers","ocean_mod","zoo"
 
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
 longname = zoo
+ppm_hlimiter = 3
+ppm_vlimiter = 3
 /
 
 "prog_tracers","ocean_mod","det"
 
-horizontal-advection-scheme = upwind
-vertical-advection-scheme = upwind
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
 longname = det
+ppm_hlimiter = 3
+ppm_vlimiter = 3
 /
 
 "namelists","ocean_mod","csiro_bgc/_"
