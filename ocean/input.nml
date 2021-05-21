@@ -27,6 +27,7 @@
 /
 
 &fms_io_nml
+    checksum_required = .false.
     fileset_write     = 'single'
     threading_read    = 'multi'
     threading_write   = 'single'
