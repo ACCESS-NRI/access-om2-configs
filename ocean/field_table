@@ -83,6 +83,7 @@ restart_file  = csiro_bgc.res.nc
 longname = adic
 ppm_hlimiter = 3
 ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","caco3"
@@ -93,6 +94,7 @@ restart_file  = csiro_bgc.res.nc
 longname = caco3
 ppm_hlimiter = 3
 ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","alk"
@@ -100,9 +102,10 @@ ppm_vlimiter = 3
 horizontal-advection-scheme = mdppm
 vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
-longname = alk
+longname = alkalinity
 ppm_hlimiter = 3
 ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","dic"
@@ -110,9 +113,10 @@ ppm_vlimiter = 3
 horizontal-advection-scheme = mdppm
 vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
-longname = dic
+longname = dissolved inorganic carbon
 ppm_hlimiter = 3
 ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","no3"
@@ -123,6 +127,7 @@ restart_file  = csiro_bgc.res.nc
 longname = no3
 ppm_hlimiter = 3
 ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","phy"
@@ -130,9 +135,10 @@ ppm_vlimiter = 3
 horizontal-advection-scheme = mdppm
 vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
-longname = phy
+longname = phytoplankton
 ppm_hlimiter = 3
 ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","o2"
@@ -143,6 +149,7 @@ restart_file  = csiro_bgc.res.nc
 longname = o2
 ppm_hlimiter = 3
 ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","fe"
@@ -153,6 +160,7 @@ restart_file  = csiro_bgc.res.nc
 longname = fe
 ppm_hlimiter = 3
 ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","zoo"
@@ -160,9 +168,10 @@ ppm_vlimiter = 3
 horizontal-advection-scheme = mdppm
 vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
-longname = zoo
+longname = zooplankton
 ppm_hlimiter = 3
 ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","det"
@@ -170,9 +179,10 @@ ppm_vlimiter = 3
 horizontal-advection-scheme = mdppm
 vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
-longname = det
+longname = detritus
 ppm_hlimiter = 3
 ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "namelists","ocean_mod","csiro_bgc/_"
