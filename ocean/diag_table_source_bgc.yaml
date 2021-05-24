@@ -16,7 +16,7 @@
             o2:
             phy:
             zoo:
-                
+
     'annual 2d prognostic BGC fields (at ocean surface layer)':
         defaults:  # these can be overridden for individual fields below
             file_name_prefix: ocean-bgc
