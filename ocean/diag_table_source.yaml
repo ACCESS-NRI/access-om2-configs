@@ -345,7 +345,7 @@ diag_table:
 
     'annual 3d prognostic BGC fields':
         defaults:  # these can be overridden for individual fields below
-            file_name_prefix: ocean-bgc
+            file_name_prefix: oceanbgc
             file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: years  # time units for output: years, months, days, hours, minutes, or seconds
@@ -360,10 +360,10 @@ diag_table:
             o2:
             phy:
             zoo:
-                
+
     'annual 2d prognostic BGC fields (at ocean surface layer)':
         defaults:  # these can be overridden for individual fields below
-            file_name_prefix: ocean-bgc
+            file_name_prefix: oceanbgc
             file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: years  # time units for output: years, months, days, hours, minutes, or seconds
@@ -381,7 +381,7 @@ diag_table:
 
     'annual 3d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
-            file_name_prefix: ocean-bgc
+            file_name_prefix: oceanbgc
             file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: years  # time units for output: years, months, days, hours, minutes, or seconds
@@ -393,7 +393,7 @@ diag_table:
 
     'annual 2d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
-            file_name_prefix: ocean-bgc
+            file_name_prefix: oceanbgc
             file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: years  # time units for output: years, months, days, hours, minutes, or seconds
@@ -423,7 +423,7 @@ diag_table:
 
     'monthly 2d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
-            file_name_prefix: ocean-bgc
+            file_name_prefix: oceanbgc
             file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
@@ -432,7 +432,7 @@ diag_table:
 
     'daily 2d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
-            file_name_prefix: ocean-bgc
+            file_name_prefix: oceanbgc
             file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
@@ -441,7 +441,7 @@ diag_table:
 
     'annual scalar BGC timeseries':  # snapshots of global integrals would give better parallel performance
         defaults:  # these can be overridden for individual fields below
-            file_name_prefix: ocean-bgc
+            file_name_prefix: oceanbgc
             file_name_dimension: scalar  # descriptor for filename, e.g. 3d, 2d, scalar
             file_name:  # file name (without trailing ".nc") is constructed from these components,
             # separated by file_name_separator, as per https://github.com/COSIMA/access-om2/issues/185
