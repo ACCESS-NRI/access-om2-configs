@@ -1,105 +1,125 @@
-"tracer_packages","ocean_mod","csiro_bgc"
 
+"tracer_packages","ocean_mod","csiro_bgc"
 names = _
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
 min_tracer_limit=-1e6
 max_tracer_limit=1e6
 min_range=-1e6
 max_range=1e6
+ppm_hlimiter = 3
+ppm_vlimiter = 3
 /
 
 "prog_tracers","ocean_mod","adic"
-
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
-longname = adic
+longname = natural + anthropogenic dissolved inorganic carbon
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","caco3"
-
-horizontal-advection-scheme = upwind
-vertical-advection-scheme = upwind
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
-longname = caco3
+longname = calcium carbonate
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","alk"
-
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
-longname = alk
+longname = alkalinity
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","dic"
-
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
-longname = dic
+longname = natural dissolved inorganic carbon
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","no3"
-
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
-longname = no3
+longname = nitrate
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","phy"
-
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
-longname = phy
+longname = phytoplankton
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","o2"
-
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
-longname = o2
+longname = dissolved oxygen
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","fe"
-
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
-longname = fe
+longname = iron
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","zoo"
-
-horizontal-advection-scheme = mdfl_sweby
-vertical-advection-scheme = mdfl_sweby
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
-longname = zoo
+longname = zooplankton
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "prog_tracers","ocean_mod","det"
-
-horizontal-advection-scheme = upwind
-vertical-advection-scheme = upwind
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
 restart_file  = csiro_bgc.res.nc
-longname = det
+longname = detritus
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
 /
 
 "namelists","ocean_mod","csiro_bgc/_"
 /
 
 "namelists","ocean_mod","csiro_bgc/*global*"
-
 use_access_co2 = .false.
 gasx_from_file = .false.
 ice_file4gasx = .false.
 zero_floor = .true.
-
 atmpress_file = INPUT/ocmip2_press_monthly_om2.nc
 atmpress_name = p
 pistonveloc_file = INPUT/ocmip2_xkw_monthly_om2.nc
@@ -110,7 +130,6 @@ aco2_file = INPUT/co2_obs.nc
 aco2_name = co2
 dust_file = INPUT/dust_om2.nc
 dust_name = dust
-
 s_npp=-0.01
 bio_version = 3
 qbio_model = csiro
