@@ -554,8 +554,8 @@ ACCESS-OM2
 "ocean_model", "surface_phy", "surface_phy", "oceanbgc-2d-surface_phy-1-daily-mean-ym%4yr%2mo", "all", "average", "none", 2
 
 
-# annual scalar BGC timeseries
+# monthly scalar BGC timeseries snapshots
 
-"oceanbgc-scalar-1-yearly-y%4yr", 1, "years", 1, "days", "time", 1, "years"
-"ocean_model", "total_aco2_flux", "total_aco2_flux", "oceanbgc-scalar-1-yearly-y%4yr", "all", "average", "none", 1
-"ocean_model", "total_co2_flux", "total_co2_flux", "oceanbgc-scalar-1-yearly-y%4yr", "all", "average", "none", 1
+"oceanbgc-scalar-1-monthly-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "years"
+"ocean_model", "total_aco2_flux", "total_aco2_flux", "oceanbgc-scalar-1-monthly-ym%4yr%2mo", "all", "none", "none", 1
+"ocean_model", "total_co2_flux", "total_co2_flux", "oceanbgc-scalar-1-monthly-ym%4yr%2mo", "all", "none", "none", 1

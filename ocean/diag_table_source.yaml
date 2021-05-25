@@ -361,7 +361,6 @@ diag_table:
             o2:
             phy:
             zoo:
-
     'annual 2d prognostic BGC fields (at ocean surface layer)':
         defaults:  # these can be overridden for individual fields below
             file_name_prefix: oceanbgc
@@ -380,7 +379,6 @@ diag_table:
             surface_o2:
             surface_phy:
             surface_zoo:
-
     'annual 3d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
             file_name_prefix: oceanbgc
@@ -393,7 +391,6 @@ diag_table:
             pprod_gross:
             radbio3d:
             zprod_gross:
-
     'annual 2d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
             file_name_prefix: oceanbgc
@@ -424,7 +421,6 @@ diag_table:
             stf07:
             stf09:
             wdet100:
-
     'monthly 2d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
             file_name_prefix: oceanbgc
@@ -433,7 +429,6 @@ diag_table:
             output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
         fields:
             surface_no3:
-
     'daily 2d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
             file_name_prefix: oceanbgc
@@ -442,8 +437,7 @@ diag_table:
             output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
         fields:
             surface_phy:
-
-    'annual scalar BGC timeseries':  # snapshots of global integrals would give better parallel performance
+    'monthly scalar BGC timeseries snapshots':  # snapshots of global integrals give better parallel performance
         defaults:  # these can be overridden for individual fields below
             file_name_prefix: oceanbgc
             file_name_dimension: scalar  # descriptor for filename, e.g. 3d, 2d, scalar
@@ -456,8 +450,8 @@ diag_table:
                 - output_freq_units
                 - file_name_date
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
-            output_freq_units: years  # time units for output: years, months, days, hours, minutes, or seconds
-            file_name_date: "y%4yr"  # run date/time of file opening; format: %, 1 digit (#digits), one of (yr, mo, dy, hr, mi, sc); date/time components will be separated by _ in filename.
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+            reduction_method: snap  # mean, snap, rms, pow##, min, max, or diurnal##
             packing: 1  # double precision
         fields:
             total_aco2_flux:
