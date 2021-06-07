@@ -20,7 +20,7 @@ input: /g/data/ik11/inputs/access-om2/input_20201102/common_1deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data/ik11/inputs/access-om2/bin/yatm_5b6c697d.exe
+      exe: /g/data/ik11/inputs/access-om2/bin/yatm_a227a61.exe
       input:
             - /g/data/ik11/inputs/access-om2/input_20201102/yatm_1deg
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/rsds/gr/v20190429
@@ -38,13 +38,13 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM_af3a94d4_libaccessom2_5b6c697d.x
+      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM_af3a94d_libaccessom2_a227a61.x
       input: /g/data/ik11/inputs/access-om2/input_20201102/mom_1deg
       ncpus: 216
 
     - name: ice
       model: cice5
-      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_2572851d_libaccessom2_5b6c697d.exe
+      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_2572851_libaccessom2_a227a61.exe
       input: /g/data/ik11/inputs/access-om2/input_20201102/cice_1deg
       ncpus: 24
 
