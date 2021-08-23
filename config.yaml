@@ -63,6 +63,8 @@ stacksize: unlimited
 restart_freq: 1  # use tidy_restarts.py instead
 mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
 qsub_flags: -W umask=027
+env:
+    UCX_LOG_LEVEL: 'error'
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
     nodesize: 48
