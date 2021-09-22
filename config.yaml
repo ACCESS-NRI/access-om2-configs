@@ -22,7 +22,7 @@ input: /g/data/ik11/inputs/access-om2/input_20201102/common_1deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /home/156/aek156/github/COSIMA/access-om2-iamip/bin/yatm_5b6c697.exe
+      exe: /g/data/v45/aek156/access-om2-build/access-om2/bin/yatm_0ab7295.exe
       input:
             - /g/data/ik11/inputs/access-om2/input_20201102/yatm_1deg
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/rsds/gr/v20190429
@@ -40,18 +40,18 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /home/156/aek156/github/COSIMA/access-om2-iamip/bin/fms_ACCESS-OM-BGC_8bba5c4_libaccessom2_5b6c697.x
+      exe: /g/data/v45/aek156/access-om2-build/access-om2/bin/fms_ACCESS-OM-BGC_a971fa7_libaccessom2_0ab7295.x
       input: 
-      - /g/data/v45/hh0162/projects/icebgc/prep_omip2/input_om2-bgc/1deg
-      - /g/data/ik11/inputs/access-om2/input_20201102/mom_1deg
+            - /g/data/v45/hh0162/projects/icebgc/prep_omip2/input_om2-bgc/1deg
+            - /g/data/ik11/inputs/access-om2/input_20201102/mom_1deg
       ncpus: 216
 
     - name: ice
       model: cice5
-      exe: /home/156/aek156/github/COSIMA/access-om2-iamip/bin/cice_auscom_360x300_24p_86d7a26_libaccessom2_5b6c697.exe
+      exe: /g/data/v45/aek156/access-om2-build/access-om2/bin/cice_auscom_360x300_24p_8807d34_libaccessom2_0ab7295.exe
       input: 
-      - /g/data/v45/hh0162/projects/icebgc/prep_omip2/input_om2-bgc/1deg
-      - /g/data/ik11/inputs/access-om2/input_20201102/cice_1deg
+            - /g/data/v45/hh0162/projects/icebgc/prep_omip2/input_om2-bgc/1deg
+            - /g/data/ik11/inputs/access-om2/input_20201102/cice_1deg
       ncpus: 24
 
 # Collation
