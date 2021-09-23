@@ -150,7 +150,6 @@
     tr_bgc_dmspp_sk   = .false.
     tr_bgc_sil_sk     = .false.
     tr_brine          = .false.
-    dz_ocean1         = 2.3035
 /
 
 &forcing_nml
