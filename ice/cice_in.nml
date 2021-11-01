@@ -149,7 +149,7 @@
     tr_bgc_dmspd_sk   = .false.
     tr_bgc_dmspp_sk   = .false.
     tr_bgc_sil_sk     = .false.
-    tr_brine          = .false.
+    tr_brine          = .true.
 /
 
 &forcing_nml

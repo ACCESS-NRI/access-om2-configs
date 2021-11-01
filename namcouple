@@ -271,12 +271,12 @@ NA NA
 wnd10_io wnd_io -1 -1 0 i2o.nc IGNORED
 NA NA
 ##########
-# Field 30 : sea surface nitrate [mmol m-3]
+# Field 30 : ice-to-ocean nitrate flux [mmol m-2 s-1]
 ##########
 nit_io iof_nit -1 -1 0 i2o.nc IGNORED
 NA NA
 ##########
-# Field 31 : sea surface algae/phyto in nitrogen [mmol m-3]
+# Field 31 : ice-to-ocean algae/phyto flux in nitrogen content [mmol m-2 s-1]
 ##########
 alg_io iof_alg -1 -1 0 i2o.nc IGNORED
 NA NA

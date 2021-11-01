@@ -1,18 +1,18 @@
 format: yamanifest
 version: 1.0
 ---
-work/atmosphere/yatm_5b6c697.exe:
-  fullpath: /home/156/aek156/github/COSIMA/access-om2-iamip/bin/yatm_5b6c697.exe
+work/atmosphere/yatm_0ab7295.exe:
+  fullpath: /g/data/ik11/inputs/access-om2/bin/yatm_0ab7295.exe
   hashes:
-    binhash: 0047f8d91334260b8bd63bf350950281
-    md5: e8be3c5f6bdbaec1585ff98e86561d7b
-work/ice/cice_auscom_360x300_24p_86d7a26_libaccessom2_5b6c697.exe:
-  fullpath: /home/156/aek156/github/COSIMA/access-om2-iamip/bin/cice_auscom_360x300_24p_86d7a26_libaccessom2_5b6c697.exe
+    binhash: 5e9255bad23311956a0a22db00608d6c
+    md5: 1972ea44e4795ddbfdcc38e91f5f3232
+work/ice/cice_auscom_360x300_24p_3a5d05f_libaccessom2_0ab7295.exe:
+  fullpath: /g/data/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_3a5d05f_libaccessom2_0ab7295.exe
   hashes:
-    binhash: 6f83e92d0cd32df02ef42a32d030970f
-    md5: dfb877832c33bada7b17663f82d941bc
-work/ocean/fms_ACCESS-OM-BGC_8bba5c4_libaccessom2_5b6c697.x:
-  fullpath: /home/156/aek156/github/COSIMA/access-om2-iamip/bin/fms_ACCESS-OM-BGC_8bba5c4_libaccessom2_5b6c697.x
+    binhash: 1bfebbd3cede2a3f02629c840903ce6f
+    md5: e4dc2c74172a01152a46befb93d9c7e4
+work/ocean/fms_ACCESS-OM-BGC_1d9af9d_libaccessom2_0ab7295.x:
+  fullpath: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM-BGC_1d9af9d_libaccessom2_0ab7295.x
   hashes:
-    binhash: d4c95f4db45537d7e5f461c67393c627
-    md5: e31fe7c569a3829b71d64475251d4ec0
+    binhash: f066d7e29cd0fb7347720c4d29588caf
+    md5: 1c88bb1ea053b34db4c2d4e2b59ce500
