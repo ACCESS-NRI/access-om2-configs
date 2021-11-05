@@ -38,13 +38,17 @@ submodels:
     - name: ocean
       model: mom
       exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM-BGC_1d9af9d_libaccessom2_0ab7295.x
-      input: /g/data/ik11/inputs/access-om2/input_2021xxxx/mom_1deg
+      input: 
+            - /g/data/ik11/inputs/access-om2/input_bgc_20211104/1deg
+            - /g/data/ik11/inputs/access-om2/input_20201102/mom_1deg
       ncpus: 216
 
     - name: ice
       model: cice5
       exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_3a5d05f_libaccessom2_0ab7295.exe
-      input: /g/data/ik11/inputs/access-om2/input_2021xxxx/cice_1deg
+      input: 
+            - /g/data/ik11/inputs/access-om2/input_bgc_20211104/1deg
+            - /g/data/ik11/inputs/access-om2/input_20201102/cice_1deg
       ncpus: 24
 
 # Collation
