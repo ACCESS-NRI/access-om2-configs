@@ -69,3 +69,149 @@ elon = 360.0
 "rayleigh","KaraStr","itable=1338,jtable=954,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
 "rayleigh","KaraStr","itable=1339,jtable=954,ktable_1=1,ktable_2=50,rayleigh_damp_table=5400"
 /
+
+"tracer_packages","ocean_mod","csiro_bgc"
+names = _
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = csiro_bgc.res.nc
+min_tracer_limit=-1e6
+max_tracer_limit=1e6
+min_range=-1e6
+max_range=1e6
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
+
+"prog_tracers","ocean_mod","adic"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = csiro_bgc.res.nc
+longname = natural + anthropogenic dissolved inorganic carbon
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
+/
+
+"prog_tracers","ocean_mod","caco3"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = csiro_bgc.res.nc
+longname = calcium carbonate
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
+/
+
+"prog_tracers","ocean_mod","alk"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = csiro_bgc.res.nc
+longname = alkalinity
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
+/
+
+"prog_tracers","ocean_mod","dic"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = csiro_bgc.res.nc
+longname = natural dissolved inorganic carbon
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
+/
+
+"prog_tracers","ocean_mod","no3"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = csiro_bgc.res.nc
+longname = nitrate
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
+/
+
+"prog_tracers","ocean_mod","phy"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = csiro_bgc.res.nc
+longname = phytoplankton
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
+/
+
+"prog_tracers","ocean_mod","o2"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = csiro_bgc.res.nc
+longname = dissolved oxygen
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
+/
+
+"prog_tracers","ocean_mod","fe"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = csiro_bgc.res.nc
+longname = iron
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
+/
+
+"prog_tracers","ocean_mod","zoo"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = csiro_bgc.res.nc
+longname = zooplankton
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
+/
+
+"prog_tracers","ocean_mod","det"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = csiro_bgc.res.nc
+longname = detritus
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+min_tracer_limit=0.0
+/
+
+"namelists","ocean_mod","csiro_bgc/_"
+/
+
+"namelists","ocean_mod","csiro_bgc/*global*"
+use_access_co2 = .false.
+gasx_from_file = .false.
+ice_file4gasx = .false.
+zero_floor = .true.
+atmpress_file = INPUT/ocmip2_press_monthly_om2.nc
+atmpress_name = p
+pistonveloc_file = INPUT/ocmip2_xkw_monthly_om2.nc
+pistonveloc_name = xkw
+seaicefract_file = INPUT/ocmip2_fice_monthly_om1p5_bc.nc
+seaicefract_name = fice
+aco2_file = INPUT/co2_ryf.nc
+aco2_name = co2
+dust_file = INPUT/dust.nc
+dust_name = dust
+s_npp=-0.01
+bio_version = 3
+qbio_model = csiro
+id_no3 = 1
+id_phy = 2
+id_o2 = 3
+id_zoo = 4
+id_det = 5
+id_caco3 = 6
+id_dic = 7
+id_alk = 8
+id_adic = 9
+id_fe = 10
+/
