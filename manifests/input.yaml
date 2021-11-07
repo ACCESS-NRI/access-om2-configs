@@ -46,6 +46,11 @@ work/atmosphere/INPUT/RYF.psl.1990_1991.nc:
   hashes:
     binhash: 559b1e3183475cfb94a7f013f4acf8ea
     md5: 0dfd94a5c3234fd2016dfdd01e84a170
+work/atmosphere/INPUT/RYF.rhuss.1990_1991.nc:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/RYF.rhuss.1990_1991.nc
+  hashes:
+    binhash: 1f70c237032f7368e6f2478d2a678c99
+    md5: 632519955305cb5c19e286b151439fb5
 work/atmosphere/INPUT/RYF.rlds.1990_1991.nc:
   fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/RYF.rlds.1990_1991.nc
   hashes:
@@ -71,6 +76,146 @@ work/atmosphere/INPUT/RYF.vas.1990_1991.nc:
   hashes:
     binhash: 17224eecb745b6ce72604b41201c1fe7
     md5: 88dc8c70338bbc8f5efc48ed0009a99f
+work/atmosphere/INPUT/make_rhuss/.git/HEAD:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/HEAD
+  hashes:
+    binhash: 5492b62deb76530b4bd9e9356a05b769
+    md5: cf7dd3ce51958c5f13fece957cc417fb
+work/atmosphere/INPUT/make_rhuss/.git/config:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/config
+  hashes:
+    binhash: 5a4554c59ca97481c4ea01f37c9b03be
+    md5: 9334123b810e33b852f3f9579b75efa8
+work/atmosphere/INPUT/make_rhuss/.git/description:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/description
+  hashes:
+    binhash: 58200037251ec45351532e5a9da88478
+    md5: a0a7c3fff21f2aea3cfa1d0316dd816c
+work/atmosphere/INPUT/make_rhuss/.git/hooks/applypatch-msg.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/hooks/applypatch-msg.sample
+  hashes:
+    binhash: 04d4cc2d8d4028615e8eecca6bb73cb0
+    md5: ce562e08d8098926a3862fc6e7905199
+work/atmosphere/INPUT/make_rhuss/.git/hooks/commit-msg.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/hooks/commit-msg.sample
+  hashes:
+    binhash: e063133bd925e94151ba671954c746b9
+    md5: 579a3c1e12a1e74a98169175fb913012
+work/atmosphere/INPUT/make_rhuss/.git/hooks/fsmonitor-watchman.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/hooks/fsmonitor-watchman.sample
+  hashes:
+    binhash: af586216249ae9fc366138cf3afa0897
+    md5: ea587b0fae70333bce92257152996e70
+work/atmosphere/INPUT/make_rhuss/.git/hooks/post-update.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/hooks/post-update.sample
+  hashes:
+    binhash: 3e40c70b03df5ac5c6c1c0dfe8be32ac
+    md5: 2b7ea5cee3c49ff53d41e00785eb974c
+work/atmosphere/INPUT/make_rhuss/.git/hooks/pre-applypatch.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/hooks/pre-applypatch.sample
+  hashes:
+    binhash: 62f53793d62fb037217569477e633d2b
+    md5: 054f9ffb8bfe04a599751cc757226dda
+work/atmosphere/INPUT/make_rhuss/.git/hooks/pre-commit.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/hooks/pre-commit.sample
+  hashes:
+    binhash: 0714525219caaad18be0853a8708311d
+    md5: 305eadbbcd6f6d2567e033ad12aabbc4
+work/atmosphere/INPUT/make_rhuss/.git/hooks/pre-merge-commit.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/hooks/pre-merge-commit.sample
+  hashes:
+    binhash: dcbdcfa4b8809abd6aefc290a1725ab4
+    md5: 39cb268e2a85d436b9eb6f47614c3cbc
+work/atmosphere/INPUT/make_rhuss/.git/hooks/pre-push.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/hooks/pre-push.sample
+  hashes:
+    binhash: 157d0ed15dd0766504007c073158ab4c
+    md5: 2c642152299a94e05ea26eae11993b13
+work/atmosphere/INPUT/make_rhuss/.git/hooks/pre-rebase.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/hooks/pre-rebase.sample
+  hashes:
+    binhash: 89671879991c0e097f228e231a5c40e6
+    md5: 4e8301b0e1f0fa38d39f4b67d3dc0e3c
+work/atmosphere/INPUT/make_rhuss/.git/hooks/pre-receive.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/hooks/pre-receive.sample
+  hashes:
+    binhash: 9b3a5fdc7e058fb4a9c904b563199231
+    md5: 2ad18ec82c20af7b5926ed9cea6aeedd
+work/atmosphere/INPUT/make_rhuss/.git/hooks/prepare-commit-msg.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/hooks/prepare-commit-msg.sample
+  hashes:
+    binhash: f6f29f6c1d8dcd4eee3d9773992b8e3b
+    md5: b08d7ea56a1844e39de452bd8fb90d31
+work/atmosphere/INPUT/make_rhuss/.git/hooks/push-to-checkout.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/hooks/push-to-checkout.sample
+  hashes:
+    binhash: 0daa61e3c423aa977793b20e69862908
+    md5: c7ab00c7784efeadad3ae9b228d4b4db
+work/atmosphere/INPUT/make_rhuss/.git/hooks/update.sample:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/hooks/update.sample
+  hashes:
+    binhash: 662b4cb7220622762af51135268c9270
+    md5: 647ae13c682f7827c22f5fc08a03674e
+work/atmosphere/INPUT/make_rhuss/.git/index:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/index
+  hashes:
+    binhash: 505475b82d1498bfdb076604615477b1
+    md5: a5c5fe69a875cfc64838ccf69c3dcd56
+work/atmosphere/INPUT/make_rhuss/.git/info/exclude:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/info/exclude
+  hashes:
+    binhash: e1362057623287b0d3c47a1f70e84ca9
+    md5: 036208b4a1ab4a235d75c181e685e5a3
+work/atmosphere/INPUT/make_rhuss/.git/logs/HEAD:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/logs/HEAD
+  hashes:
+    binhash: a3d7e24fdd4d44b307ef7cf46bc7f4c6
+    md5: 8f6d5d3eec29677631858b2ea45f80d6
+work/atmosphere/INPUT/make_rhuss/.git/logs/refs/heads/main:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/logs/refs/heads/main
+  hashes:
+    binhash: a40141068e46489eb11269022fa21032
+    md5: 8f6d5d3eec29677631858b2ea45f80d6
+work/atmosphere/INPUT/make_rhuss/.git/logs/refs/remotes/origin/HEAD:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/logs/refs/remotes/origin/HEAD
+  hashes:
+    binhash: a3d7e24fdd4d44b307ef7cf46bc7f4c6
+    md5: 8f6d5d3eec29677631858b2ea45f80d6
+work/atmosphere/INPUT/make_rhuss/.git/objects/pack/pack-86390fdf30e1910937fc9bb40e285c3053b826cb.idx:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/objects/pack/pack-86390fdf30e1910937fc9bb40e285c3053b826cb.idx
+  hashes:
+    binhash: f4278f27422af70a0b39da2a7730f824
+    md5: f1a574c9fc44cf5e72f361998233f572
+work/atmosphere/INPUT/make_rhuss/.git/objects/pack/pack-86390fdf30e1910937fc9bb40e285c3053b826cb.pack:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/objects/pack/pack-86390fdf30e1910937fc9bb40e285c3053b826cb.pack
+  hashes:
+    binhash: 70831d381a54b0e60672c2b32927c439
+    md5: bfe85b9954cedcee78fdaee34b67fefb
+work/atmosphere/INPUT/make_rhuss/.git/packed-refs:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/packed-refs
+  hashes:
+    binhash: 7130b18fcfa0a0580ea90f73588bb911
+    md5: 572b968b306a9eedb2aa3e81a0837855
+work/atmosphere/INPUT/make_rhuss/.git/refs/heads/main:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/refs/heads/main
+  hashes:
+    binhash: e67792bb22672b39a549dc6747227277
+    md5: ea0ea706dee890c4986446c54f482da3
+work/atmosphere/INPUT/make_rhuss/.git/refs/remotes/origin/HEAD:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/.git/refs/remotes/origin/HEAD
+  hashes:
+    binhash: 0adb5660f3bcc2734ff4f26b281db156
+    md5: 98b16e0b650190870f1b40bc8f4aec4e
+work/atmosphere/INPUT/make_rhuss/README.md:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/README.md
+  hashes:
+    binhash: 6f75964003cd8745822c657d5bd772ae
+    md5: 112717d6a08b5b1cee0fc2ad632569e4
+work/atmosphere/INPUT/make_rhuss/make_rhuss.py:
+  fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_rhuss/make_rhuss.py
+  hashes:
+    binhash: 4b6f3d374bf2bb3bba44458599a83ab9
+    md5: 6f8742b0b914e2f17391dffbdcc75691
 work/atmosphere/INPUT/make_ryf/.git/COMMIT_EDITMSG:
   fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/COMMIT_EDITMSG
   hashes:
@@ -149,8 +294,8 @@ work/atmosphere/INPUT/make_ryf/.git/hooks/update.sample:
 work/atmosphere/INPUT/make_ryf/.git/index:
   fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/index
   hashes:
-    binhash: 2bc7a4a06c1334b3cbd33d2289dbda9d
-    md5: 68c8591a1fa35f85da1414d762d24ad4
+    binhash: 3df8d8da75ee9b13a025a2bf64672753
+    md5: 422ebffde8d88a8dc3657f9f78f1a239
 work/atmosphere/INPUT/make_ryf/.git/info/exclude:
   fullpath: /g/data/ik11/inputs/JRA-55/RYF/v1-4/make_ryf/.git/info/exclude
   hashes:
