@@ -9,7 +9,7 @@
 # shortpath: /scratch/v45
 
 queue: normal
-walltime: 6:00:00
+walltime: 0:05:00
 jobname: 1deg_jra55_iaf
 mem: 1000GB
 # Model configuration
@@ -39,7 +39,7 @@ submodels:
       model: mom
       exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM-BGC_1d9af9d_libaccessom2_0ab7295.x
       input: 
-            - /g/data/ik11/inputs/access-om2/input_bgc_20211104/1deg
+            - /g/data/ik11/inputs/access-om2/input_bgc_20211105/1deg
             - /g/data/ik11/inputs/access-om2/input_20201102/mom_1deg
       ncpus: 216
 
@@ -47,7 +47,7 @@ submodels:
       model: cice5
       exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_360x300_24p_3a5d05f_libaccessom2_0ab7295.exe
       input: 
-            - /g/data/ik11/inputs/access-om2/input_bgc_20211104/1deg
+            - /g/data/ik11/inputs/access-om2/input_bgc_20211105/1deg
             - /g/data/ik11/inputs/access-om2/input_20201102/cice_1deg
       ncpus: 24
 
