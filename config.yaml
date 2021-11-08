@@ -9,7 +9,7 @@
 # shortpath: /scratch/v45
 
 queue: normal
-walltime: 5:00:00
+walltime: 3:30:00
 jobname: 025deg_jra55_iaf
 
 # Model configuration
