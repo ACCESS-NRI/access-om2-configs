@@ -355,3 +355,65 @@ diag_table:
             # u:
             # v:
             # vorticity_z:
+    'monthly 3d prognostic BGC fields':
+        defaults:  # these can be overridden for individual fields below
+            file_name_prefix: oceanbgc
+            file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+            file_name_date: "y%4yr"  # run date/time of file opening; format: %, 1 digit (#digits), one of (yr, mo, dy, hr, mi, sc); date/time components will be separated by _ in filename.
+        fields:
+            adic:
+            alk:
+            caco3:
+            det:
+            dic:
+            fe:
+            no3:
+            o2:
+            phy:
+            zoo:
+    'monthly 3d diagnostic BGC fields':
+        defaults:  # these can be overridden for individual fields below
+            file_name_prefix: oceanbgc
+            file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+            file_name_date: "y%4yr"  # run date/time of file opening; format: %, 1 digit (#digits), one of (yr, mo, dy, hr, mi, sc); date/time components will be separated by _ in filename.
+        fields:
+            npp3d:
+            pprod_gross:
+            radbio3d:
+    'monthly 2d diagnostic BGC fields':
+        defaults:  # these can be overridden for individual fields below
+            file_name_prefix: oceanbgc
+            file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+            file_name_date: "y%4yr"  # run date/time of file opening; format: %, 1 digit (#digits), one of (yr, mo, dy, hr, mi, sc); date/time components will be separated by _ in filename.
+        fields:
+            paco2:
+            pco2:
+            stf03: # o2 air-to-sea flux
+            stf07: # dic air-to-sea flux
+            stf09: # adic air-to-sea flux
+            wdet100:
+    'monthly scalar BGC timeseries snapshots':  # snapshots of global integrals give better parallel performance
+        defaults:  # these can be overridden for individual fields below
+            file_name_prefix: oceanbgc
+            file_name_dimension: scalar  # descriptor for filename, e.g. 3d, 2d, scalar
+            file_name:  # file name (without trailing ".nc") is constructed from these components,
+            # separated by file_name_separator, as per https://github.com/COSIMA/access-om2/issues/185
+            # All these components (other than field_name) must be names that exist in global_defaults.
+                - file_name_prefix
+                - file_name_dimension
+                - output_freq
+                - output_freq_units
+                - file_name_date
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+            reduction_method: snap  # mean, snap, rms, pow##, min, max, or diurnal##
+            packing: 1  # double precision
+        fields:
+            total_aco2_flux:
+            total_co2_flux:
