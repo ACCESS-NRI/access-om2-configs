@@ -34,7 +34,7 @@ global_defaults:
     file_format: 1  # integer, must be 1, specifying NetCDF (the only format currently supported)
     time_axis_units: days  # time units for the output file time axis: years, months, days, hours, minutes, or seconds
     time_axis_name: time  # must be "time" (case-insensitive)
-    new_file_freq: 3  # optional integer: frequency (in new_file_freq_units) for closing the existing file, and creating a new file
+    new_file_freq: 1  # optional integer: frequency (in new_file_freq_units) for closing the existing file, and creating a new file
     new_file_freq_units: months  # time units for new_file_freq: years, months, days, hours, minutes, or seconds (optional; required if and only if new_file_freq specified)
     start_time:  # Time to start the file for the first time. The format of this string is the same as base_date (optional; requires new_file_freq, new_file_freq_units)
     file_duration:  # integer: How long file should receive data after start time (optional; requires new_file_freq, new_file_freq_units, start_time)
