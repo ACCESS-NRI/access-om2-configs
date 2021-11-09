@@ -10,11 +10,11 @@
                         'runof_i', 'tair_i', 'qair_i', 'uwnd_i', 'vwnd_i',
                         'licalvf_i'
     fields_from_ocn   = 'sst_i', 'sss_i', 'ssu_i', 'ssv_i', 'sslx_i', 'ssly_i',
-                        'pfmice_i'
+                        'pfmice_i', 'ssn_i', 'ssalg_i'
     fields_to_ocn     = 'strsu_io', 'strsv_io', 'rain_io', 'snow_io', 'stflx_io',
                         'htflx_io', 'swflx_io', 'qflux_io', 'shflx_io',
                         'lwflx_io', 'runof_io', 'press_io', 'aice_io', 'melt_io',
-                        'form_io', 'licefw_io', 'licefh_io'
+                        'form_io', 'licefw_io', 'licefh_io', 'wnd10_io', 'nit_io', 'alg_io'
     gfdl_surface_flux = .true.
     ice_fwflux        = .true.
     ice_pressure_on   = .true.
