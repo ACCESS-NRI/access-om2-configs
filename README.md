@@ -3,6 +3,8 @@ Standard configuration for 0.1 degree [ACCESS-OM2](https://github.com/COSIMA/acc
 
 This is the BGC version, on the `master+bgc` branch. For the physics-only version (no BGC), use the `master` branch.
 
+This BGC setup includes both ocean and sea ice BGC. To turn off the sea ice BGC and have BGC only in the ocean, set `skl_bgc = .false.` in `ice/cice_input.nml`.
+
 For usage instructions, see the [ACCESS-OM2 wiki](https://github.com/COSIMA/access-om2/wiki).
 
 Run length and timestep are set in `accessom2.nml`. The configuration is supplied with a 300s timestep which is stable for a startup from rest, but very slow. **After the model has equilibrated for a few months you should increase the timestep to 450s and then to 540s** for improved throughput. You may even find it runs stably at 600s.
