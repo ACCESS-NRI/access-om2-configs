@@ -149,7 +149,7 @@
     tr_bgc_dmspd_sk   = .false.
     tr_bgc_dmspp_sk   = .false.
     tr_bgc_sil_sk     = .false.
-    tr_brine          = .true.
+    tr_brine          = .false.
 /
 
 &forcing_nml
@@ -346,7 +346,7 @@
     f_btin            = 'x'
     f_faero_atm       = 'x'
     f_faero_ocn       = 'x'
-    f_fbri            = 'm'
+    f_fbri            = 'x'
     f_fn              = 'x'
     f_fn_ai           = 'm'
     f_fnh             = 'x'
@@ -356,7 +356,7 @@
     f_fsil            = 'x'
     f_fsil_ai         = 'x'
     f_grownet         = 'x'
-    f_hbri            = 'm'
+    f_hbri            = 'x'
     f_ppnet           = 'm'
 /
 
