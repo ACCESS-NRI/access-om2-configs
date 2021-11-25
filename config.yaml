@@ -28,7 +28,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM-BGC_13ea3a6_libaccessom2_0ab7295.x
+      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM-BGC_fa34a8d_libaccessom2_0ab7295.x
       input:
             - /g/data/ik11/inputs/access-om2/input_bgc_20211105/1deg
             - /g/data/ik11/inputs/access-om2/input_20201102/mom_1deg      
