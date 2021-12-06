@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 
 Generate MOM5 diag_table file from diag_table_source.yaml
