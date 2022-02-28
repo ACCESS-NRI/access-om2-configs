@@ -39,7 +39,7 @@ submodels:
       model: mom
       exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM-BGC_fa34a8d_libaccessom2_0ab7295.x
       input:
-            - /g/data/ik11/inputs/access-om2/input_bgc_20211126/mom_025deg
+            - /g/data/ik11/inputs/access-om2/input_bgc_20220224/mom_025deg
             - /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg      
       ncpus: 1455
 
@@ -47,7 +47,7 @@ submodels:
       model: cice5
       exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_1440x1080_480p_3a5d05f_libaccessom2_0ab7295.exe
       input:
-            - /g/data/ik11/inputs/access-om2/input_bgc_20211126/cice_025deg
+            - /g/data/ik11/inputs/access-om2/input_bgc_20220224/cice_025deg
             - /g/data/ik11/inputs/access-om2/input_20201102/cice_025deg      
       ncpus: 361
 
