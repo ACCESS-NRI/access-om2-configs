@@ -33,7 +33,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_1440x1080_480p_10b3527_libaccessom2_0ab7295.exe
+      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_1440x1080_480p_27bcc45_libaccessom2_0ab7295.exe
       input: /g/data/ik11/inputs/access-om2/input_20201102/cice_025deg
       ncpus: 361
 
