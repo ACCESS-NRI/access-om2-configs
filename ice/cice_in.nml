@@ -186,12 +186,12 @@
     f_albpnd          = 'x'
     f_albsni          = 'x'
     f_albsno          = 'x'
+    f_alidf_ai        = 'x'
     f_alidr           = 'x'
     f_alidr_ai        = 'x'
     f_alvdf_ai        = 'x'
     f_alvdr           = 'x'
     f_alvdr_ai        = 'x'
-    f_alvdr           = 'x'
     f_angle           = .true.
     f_anglet          = .true.
     f_bounds          = .false.
