@@ -1,6 +1,8 @@
 # 025deg_jra55_iaf
 Standard configuration for 0.25 degree [ACCESS-OM2](https://github.com/COSIMA/access-om2) experiment (ACCESS-OM2-025) with JRA55-do interannual forcing (IAF).
 
+This is the physics-only version, on the `master` branch. For the version with BGC, use the `master+bgc` branch.
+
 For usage instructions, see the [ACCESS-OM2 wiki](https://github.com/COSIMA/access-om2/wiki).
 
 Run length and timestep are set in `accessom2.nml`. The default timestep for this configuration is 1350 seconds, and the model is stable with this timestep right from the start. After the first year or two of model equilibration you may be able to run with a 1800s timestep for faster throughput.
