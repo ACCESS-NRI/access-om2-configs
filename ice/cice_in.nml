@@ -240,7 +240,7 @@
     f_fswfac          = 'm'
     f_fswthru         = 'x'
     f_fswthru_ai      = 'm'
-    f_fswup           = 'x'
+    f_fswup           = 'm'
     f_fy              = 'x'
     f_hi              = 'md'
     f_hisnap          = 'x'
