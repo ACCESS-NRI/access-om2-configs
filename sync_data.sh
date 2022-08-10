@@ -115,9 +115,9 @@ cd archive || exit 1
 
 # copy all outputs/restarts
 if [ $backward == true ]; then
-    rsync $exclude $rsyncflags $SYNCDIR/${dirtype}[0-9][0-9][0-9] .
+    rsync $exclude $rsyncflags $SYNCDIR/${dirtype}[0-9][0-9]*[0-9] .
     if [ $rmlocal == true ]; then
-        rsync --remove-source-files $exclude $rsyncflags $SYNCDIR/${dirtype}[0-9][0-9][0-9] .
+        rsync --remove-source-files $exclude $rsyncflags $SYNCDIR/${dirtype}[0-9][0-9]*[0-9] .
     fi
     # Also sync error and PBS logs and metadata.yaml and run summary
     rsync $rsyncflags $SYNCDIR/error_logs .
@@ -130,11 +130,11 @@ else
     # first delete any cice log files that only have a 105-character header and nothing else
     find output* -size 105c -iname "ice.log.task_*" -delete
 
-    rsync $exclude $rsyncflags ${dirtype}[0-9][0-9][0-9] $SYNCDIR
+    rsync $exclude $rsyncflags ${dirtype}[0-9][0-9]*[0-9] $SYNCDIR
     if [ $rmlocal == true ]; then
         # Now do removals. Don't remove final local copy, so we can continue run.
-        rsync --remove-source-files --exclude `\ls -1d ${dirtype}[0-9][0-9][0-9] | tail -1` $exclude $rsyncflags ${dirtype}[0-9][0-9][0-9] $SYNCDIR
-        for d in ${dirtype}[0-9][0-9][0-9]/ice/OUTPUT; do
+        rsync --remove-source-files --exclude `\ls -1d ${dirtype}[0-9][0-9]*[0-9] | tail -1` $exclude $rsyncflags ${dirtype}[0-9][0-9]*[0-9] $SYNCDIR
+        for d in ${dirtype}[0-9][0-9]*[0-9]/ice/OUTPUT; do
             rm $d/iceh.????-??-??.nc-DELETE
         done
     fi
