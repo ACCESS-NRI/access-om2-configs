@@ -17,7 +17,7 @@ from glob import glob
 def tidy(yearskip=1, keeplast=1):
     yearskip = abs(yearskip)
     keeplast = max(1, abs(keeplast))  # always keep the last restart
-    restarts = glob('archive/restart???')
+    restarts = glob('archive/restart[0-9][0-9]*[0-9]')
     restarts.sort()
 
     keptyear = None
