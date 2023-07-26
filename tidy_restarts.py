@@ -18,7 +18,7 @@ def tidy(yearskip=1, keeplast=1):
     yearskip = abs(yearskip)
     keeplast = max(1, abs(keeplast))  # always keep the last restart
     restarts = glob('archive/restart[0-9][0-9]*[0-9]')
-    restarts.sort()
+    restarts.sort(key=lambda f: int(f.split('restart')[1]))
 
     keptyear = None
     for r in restarts[:-keeplast]:  # don't touch the most recent |keeplast| restarts
