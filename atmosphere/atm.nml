@@ -1,6 +1,0 @@
-&atm_nml
-/
-
-&runoff_nml
-    remap_weights_file = 'INPUT/rmp_jrar_to_cict_CONSERV.nc'
-/
