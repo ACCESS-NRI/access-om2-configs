@@ -50,7 +50,7 @@ collate:
 # Misc
 runlog: true
 stacksize: unlimited
-restart_freq: 1  # use tidy_restarts.py instead
+restart_freq: '5Y'
 mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
 qsub_flags: -W umask=027
 env:
@@ -62,6 +62,3 @@ platform:
 userscripts:
     error: resub.sh
     run: rm -f resubmit.count
-
-# DANGER! Do not uncomment this without checking the script is syncing to the correct location!
-# postscript: sync_data.sh
