@@ -37,8 +37,8 @@ and should also be listed below:
 
 | Branch | Configuration Description |
 ---|---|
-[`1deg_jra55_ryf`](https://github.com/ACCESS-NRI/accessom2-configs/tree/1deg_jra55_ryf) | Global 1&deg; model forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
-[`1deg_jra55_iaf`](https://github.com/ACCESS-NRI/accessom2-configs/tree/1deg_jra55_iaf)| Global 1&deg; model forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
+[`1deg_jra55_ryf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/1deg_jra55_ryf) | Global 1&deg; model forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
+[`1deg_jra55_iaf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/1deg_jra55_iaf)| Global 1&deg; model forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
 
 There are more detailed notes contained in the respective branches for each configuration.
 
