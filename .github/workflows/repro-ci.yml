@@ -1,0 +1,51 @@
+name: Repro Checks
+on:
+  pull_request:
+    branches:
+      - '1deg_jra55_ryf'
+      - '1deg_jra55_iaf'
+  schedule:
+    - cron: '0 0 1 * *'
+jobs:
+  setup-config-branches:
+    name: Setup config branches
+    runs-on: ubuntu-latest
+    outputs:
+      branches: ${{ steps.set-branches.outputs.branches }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set Branches
+        id: set-branches
+        run: |
+          if [[ "${{ github.event.schedule }}" != "" ]]; then
+            echo "branches=$(jq --compact-output --raw-output '.branches' config/released-configs.json)" >> $GITHUB_OUTPUT
+          else
+            echo "branches=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+          fi
+
+
+  run-config:
+    name: Run ${{ github.ref_name }}
+    runs-on: ubuntu-latest
+    needs:
+      - setup-config-branches
+    environment: Gadi
+    strategy:
+      matrix:
+        branch: ${{ needs.setup-config-branches.outputs.branches }}
+    steps:
+      - name: Setup SSH
+        id: ssh
+        uses: access-nri/actions/.github/actions/setup-ssh@main
+        with:
+          hosts: ${{ secrets.HOST }}
+          private-key: ${{ secrets.SSH_KEY }}
+
+      - name: Run configuration
+        run: |
+          ssh -i ${{ steps.ssh.output.private-key-path }} /bin/bash<<EOT
+
+          EOT

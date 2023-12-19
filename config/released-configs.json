@@ -1,0 +1,7 @@
+{
+    "$schema": "./released-configs.schema.json",
+    "branches": [
+        "1deg_jra55_ryf",
+        "1deg_jra55_iaf"
+    ]
+}
