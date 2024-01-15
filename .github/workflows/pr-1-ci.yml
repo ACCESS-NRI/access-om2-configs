@@ -1,0 +1,32 @@
+name: PR Checks
+on:
+  pull_request:
+    branches:
+      - 'release-*'
+      - 'dev-*'
+jobs:
+  # release-* (PR): comment in PR noting possible bump version
+  # dev-* (PR): comment in PR noting possible bump version
+  repro-ci:
+    uses: ./.github/workflows/repro-ci.yml
+    with:
+      model-name: access-om2
+      config-branch: ${{ github.ref_name }}
+
+  successful-repro:
+    name: Successful Reproduction
+    needs:
+      - repro-ci
+    if: needs.repro.outputs.result == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+  failed-repro:
+    name: Failed Reproduction
+    needs:
+      - repro-ci
+    if: needs.repro.outputs.result == 'false'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
