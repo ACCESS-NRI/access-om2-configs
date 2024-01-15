@@ -1,51 +1,88 @@
 name: Repro Checks
 on:
-  pull_request:
-    branches:
-      - '1deg_jra55_ryf'
-      - '1deg_jra55_iaf'
-  schedule:
-    - cron: '0 0 1 * *'
-jobs:
-  setup-config-branches:
-    name: Setup config branches
-    runs-on: ubuntu-latest
+  workflow_call:
+    inputs:
+      model-name:
+        type: string
+        required: true
+        description: The name of the model to check for reproducibility
+      config-branch:
+        type: string
+        required: true
+        description: A config branch to use for the reproducibility run
     outputs:
-      branches: ${{ steps.set-branches.outputs.branches }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
+      result:
+        value: ${{ jobs.run-config.outputs.result }}
+        description: The result of the repro check on the given branch
 
-      - name: Set Branches
-        id: set-branches
-        run: |
-          if [[ "${{ github.event.schedule }}" != "" ]]; then
-            echo "branches=$(jq --compact-output --raw-output '.branches' config/released-configs.json)" >> $GITHUB_OUTPUT
-          else
-            echo "branches=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-          fi
-
-
+jobs:
   run-config:
     name: Run ${{ github.ref_name }}
     runs-on: ubuntu-latest
-    needs:
-      - setup-config-branches
     environment: Gadi
-    strategy:
-      matrix:
-        branch: ${{ needs.setup-config-branches.outputs.branches }}
+    outputs:
+      result: ${{ steps.repro.outputs.result }}
     steps:
+      - name: Checkout Configs Repo
+        # for test framework
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
       - name: Setup SSH
         id: ssh
         uses: access-nri/actions/.github/actions/setup-ssh@main
         with:
-          hosts: ${{ secrets.HOST }}
+          hosts: |
+            ${{ secrets.SSH_HOST }}
+            ${{ secrets.SSH_HOST_DATA }}
           private-key: ${{ secrets.SSH_KEY }}
 
-      - name: Run configuration
+      - name: Copy Repro Tests
         run: |
-          ssh -i ${{ steps.ssh.output.private-key-path }} /bin/bash<<EOT
+          rsync -e 'ssh -i ${{ steps.ssh.outputs.private-key-path }}' \
+            test \
+            ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST_DATA }}:${{ vars.REPRO_TEST_LOCATION }}
 
+      - name: Run configuration
+        env:
+          PAYU_EXPERIMENT_LOCATION: ${{ secrets.PAYU_EXPERIMENTS_LOCATION }}/${{ inputs.model-name }}/${{ inputs.config-branch }}
+        run: |
+          ssh -i ${{ steps.ssh.outputs.private-key-path }} /bin/bash<<EOT
+          module use ${{ secrets.PAYU_MODULE_LOCATION }}
+          module load payu/${{ vars.PAYU_VERSION }}
+          mkdir -p ${{ env.PAYU_EXPERIMENT_LOCATION }}
+          payu clone --branch ${{ inputs.config-branch }} ${{ github.event.repository.clone_url }} ${{ env.PAYU_EXPERIMENT_LOCATION }}
+          cd ${{ env.PAYU_EXPERIMENT_LOCATION }}
+          payu run -f
+          # wait...then extract checksums
+          pytest ${{ vars.REPRO_TEST_LOCATION }}
+          # use super cool checksum-extraction.py
+          mv <wherever checksums are> ${{ vars.PAYU_CHECKSUMS_LOCATION }}
           EOT
+
+      - name: Release Repro
+        if:  startsWith(github.ref_name, 'release-')
+        id: release-repro
+        run: echo hello
+
+      - name: Dev Repro
+        if: startsWith(github.ref_name, 'dev-')
+        id: dev-repro
+        run: echo hello
+
+      - name: Repro Result
+        # combine the two possible result paths into one
+        id: repro
+        run: |
+          if [[ '${{ steps.release-repro.conclusion }}' != 'skipped' ]]; then
+            echo "result=${{ steps.release-repro.outputs.result }}" >> $GITHUB_OUTPUT
+          else
+            echo "result=${{ steps.dev-repro.outputs.result }}" >> $GITHUB_OUTPUT
+          fi
+
+        # TODO: maybe store ground truth in the repo itself? Which branch?
+        # Other options are to store it in artifacts (90-day retention) or releases ()
+
+      - name: Cleanup/Upload/Other stuff
+        run: echo hello
