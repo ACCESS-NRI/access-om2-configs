@@ -1,0 +1,30 @@
+name: Scheduled Checks
+on:
+  schedule:
+    - cron: '0 0 1 * *'  # once a month
+jobs:
+  setup:
+    name: Setup Tasks
+    runs-on: ubuntu-latest
+    outputs:
+      branches: ${{ steps.get-released-config.outputs.branches }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Get all released configs
+        id: get-released-config
+        run: echo "branches=$(jq --compact-output --raw-output '.branches' config/released-configs.json)" >> $GITHUB_OUTPUT
+
+  repro-ci:
+    # We use this reusable workflow with a matrix strategy rather than calling repro-ci.yml, as
+    #   we may want to do config-branch-specific tasks after the matrixed repro-ci.yml has completed.
+    needs:
+      - setup
+    strategy:
+      matrix:
+        config-branch: ${{ fromJson(needs.setup.outputs.branches) }}
+    uses: ./.github/workflows/schedule-2-start.yml
+    with:
+      config-branch: ${{ matrix.config-branch }}
