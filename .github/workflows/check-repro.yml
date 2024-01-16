@@ -1,0 +1,57 @@
+name: Check Repro Results
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        type: string
+        required: true
+        description: Name of an artifact containing the checksum results
+      config-branch:
+        type: string
+        required: true
+        description: Config branch used for the given model run
+    outputs:
+      result:
+        value: ${{ jobs.check-repro.outputs.result }}
+        description: The result of the comparison between the artifact and the latest ground truth
+      ground-truth-version:
+        value: ${{ jobs.check-repro.outputs.ground-truth-version }}
+        description: The ground truth version compared against the given artifact
+env:
+  CHECKSUM_LOCAL_LOCATION: /opt/checksums
+jobs:
+  check-repro:
+    runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.check.outputs.result }}
+      ground-truth-version: ${{ steps.check.outputs.ground-truth-version }}
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: ${{ inputs.artifact-name }}
+          path: ${{ env.CHECKSUM_LOCAL_LOCATION }}
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.config-branch }}
+          fetch-tags: true
+
+      - name: Fetch History and Determine Last Major Truth Update
+        # By default, actions/checkout only checks out `--depth=1` (the tip of the main branch).
+        # Even when we fetch tags the history is fragmented and usually isn't traversable from HEAD with `git describe --tags`.
+        # We fetch the entirety of the main branch history to be able to do the next step, namely
+        # traversing `main` to find the last `git tag` and suppresses the 'long form' of tags (that have a bunch of commit metadata).
+        id: last-truth
+        run: |
+          git fetch --unshallow
+          echo "version=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
+
+      - name: Move, Commit and Push Updated Checksum
+        run: |
+          mv ${{ env.CHECKSUM_LOCAL_LOCATION }} TRUTH
+          git commit -am "Updated truth"
+          git push
+
+      - name:
+        id: check
+        run: git diff TRUTH HEAD..${{ steps.last-truth.outputs.tag }}
