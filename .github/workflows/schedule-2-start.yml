@@ -13,11 +13,23 @@ jobs:
       model-name: access-om2
       config-branch: ${{ inputs.config-branch }}
 
+  check-repro:
+    name: Check Repro Results
+    needs:
+      - repro-ci
+    runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.check.outputs.result }}
+      ground-truth-version: ${{ steps.check.outputs.ground-truth-version }}
+    steps:
+      - name: Download and check repro results, similar to pr-1-ci.yml
+        run: # do the above
+
   successful-repro:
     name: Successful Reproduction
     needs:
-      - repro-ci
-    if: needs.repro.outputs.result == 'true'
+      - check-repro
+    if: needs.check-repro.outputs.result == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,7 +38,7 @@ jobs:
     name: Failed Reproduction
     needs:
       - repro-ci
-    if: needs.repro.outputs.result == 'false'
+    if: needs.check-repro.outputs.result == 'false'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
