@@ -4,29 +4,77 @@ on:
     branches:
       - 'release-*'
       - 'dev-*'
+    paths-ignore:  # and possibly more to ignore (eg. README), check what happens if there is a change to more than just these ignored files
+      - 'VERSION'
+      - 'TRUTH'
+env:
+  CHECKSUM_LOCAL_LOCATION: /opt/checksums
 jobs:
-  # release-* (PR): comment in PR noting possible bump version
-  # dev-* (PR): comment in PR noting possible bump version
   repro-ci:
     uses: ./.github/workflows/repro-ci.yml
     with:
       model-name: access-om2
       config-branch: ${{ github.ref_name }}
 
+  check-repro:
+    needs:
+      - repro-ci
+    runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.check.outputs.result }}
+      ground-truth-version: ${{ steps.check.outputs.ground-truth-version }}
+    # download new truth, check it's repro status and commit here?
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: ${{ needs.repro-ci.outputs.artifact-name }}
+          path: ${{ env.CHECKSUM_LOCAL_LOCATION }}
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-tags: true
+
+      - name: Determine last major truth update
+        # check out spack packages ci for shallow cloning and stuff
+        id: last-truth
+        run: echo
+
+      - run: |
+          mv TRUTH to repo
+          git commit -am "Updated truth" # check that it doesn't do a commit or throw an error if truths are equal
+
+      - name:
+        id: check
+        run: git diff TRUTH HEAD..${{ steps.last-truth.outputs.tag }}
+
   successful-repro:
     name: Successful Reproduction
     needs:
-      - repro-ci
-    if: needs.repro.outputs.result == 'true'
+      - check-repro
+    if: needs.check-repro.outputs.result == 'true'
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: thollander/actions-comment-pull-request@1d3973d  #v2.4.3
+        with:
+          message: |
+            The Bitwise Reproducibility check succeeded when comparing against ${{ needs.check-repro.outputs.ground-truth-version }}
+            Consider bumping the minor version of access-om2 to account for this.
+            To bump the version, comment `!bump minor`.
 
   failed-repro:
     name: Failed Reproduction
     needs:
-      - repro-ci
-    if: needs.repro.outputs.result == 'false'
+      - check-repro
+    if: needs.check-repro.outputs.result == 'false'
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: thollander/actions-comment-pull-request@1d3973d  #v2.4.3
+        with:
+          message: |
+            :x: The Bitwise Reproducibility check failed when comparing against ${{ needs.check-repro.outputs.ground-truth-version }} :x:
+            Consider bumping the major version of access-om2 to account for this.
+            To bump the version, comment `!bump major`.
