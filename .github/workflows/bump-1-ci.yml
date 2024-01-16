@@ -1,0 +1,15 @@
+on:
+  push:
+    branches:
+      - 'release-*'
+    paths:
+      - 'VERSION'
+jobs:
+  check-tag-doesnt-exist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-tags: true
+
+      - run: git tag -l $(cat VERSION)
