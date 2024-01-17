@@ -63,9 +63,10 @@ jobs:
           EOT
 
       - name: Copy Back Checksums
-        run: rsync-e 'ssh -i ${{ steps.ssh.private-key-path }}' \
-                '${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_DATA }}:${{ vars.PAYU_CHECKSUMS_LOCATION }}' \
-                ${{ env.CHECKSUMS_LOCAL_LOCATION }}
+        run: |
+          rsync-e 'ssh -i ${{ steps.ssh.outputs.private-key-path }}' \
+              '${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_DATA }}:${{ vars.PAYU_CHECKSUMS_LOCATION }}' \
+              ${{ env.CHECKSUMS_LOCAL_LOCATION }}
 
       - name: Generate Checksum Artifact Name
         id: artifact
