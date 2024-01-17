@@ -15,7 +15,7 @@ jobs:
     uses: ./.github/workflows/repro-ci.yml
     with:
       model-name: access-om2
-      config-tag: ${{ github.ref_name }}  # TODO: should this be the PR branch or the branch we are merging into?
+      config-tag: ${{ github.ref_name }}
 
   check-repro:
     # compare the uploaded checksum with the ground truth
@@ -24,7 +24,7 @@ jobs:
     uses: ./.github/workflows/check-repro.yml
     with:
       artifact-name: ${{ needs.repro-ci.outputs.artifact-name }}
-      config-tag: ${{ github.ref_name }}  # TODO: same here
+      config-tag: ${{ github.ref_name }}
 
   successful-repro:
     name: Successful Reproduction
@@ -52,7 +52,7 @@ jobs:
       pull-requests: write
     steps:
       - uses: thollander/actions-comment-pull-request@1d3973d  #v2.4.3
-        with:  # TODO: what if it is a dev PR? Do we want them to do stuff with tags?
+        with:
           message: |
             :x: The Bitwise Reproducibility check failed when comparing against ${{ needs.check-repro.outputs.ground-truth-version }} :x:
             Consider bumping the major version of access-om2 to account for this.

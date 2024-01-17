@@ -25,10 +25,10 @@ jobs:
       artifact-name: ${{ steps.artifact.outputs.name }}
     steps:
       - name: Checkout Configs Repo
-        # for test framework
+        # for test framework - note that this one is ACCESS-OM2 specific
         uses: actions/checkout@v4
         with:
-          ref: main  # TODO: is the test logic ACCESS-OM2 specific?
+          ref: main
 
       - name: Setup SSH
         id: ssh
@@ -75,7 +75,6 @@ jobs:
         id: artifact
         run: echo "name=${{ inputs.model-name }}-${{ inputs.config-tag }}" >> $GITHUB_OUTPUT
 
-      # upload the new truth
       - name: Upload Checksum Artifact
         uses: actions/upload-artifact@v3
         with:
