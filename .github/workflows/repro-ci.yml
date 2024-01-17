@@ -6,7 +6,7 @@ on:
         type: string
         required: true
         description: The name of the model to check for reproducibility
-      config-branch:
+      config-branch:  # TODO: actually a config-tag now
         type: string
         required: true
         description: A config branch to use for the reproducibility run
@@ -28,7 +28,7 @@ jobs:
         # for test framework
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: main  # TODO: is the test logic ACCESS-OM2 specific?
 
       - name: Setup SSH
         id: ssh
@@ -40,6 +40,7 @@ jobs:
           private-key: ${{ secrets.SSH_KEY }}
 
       - name: Copy Repro Tests
+        # TODO: this will be redundant when the checksum logic is a package
         run: |
           rsync -e 'ssh -i ${{ steps.ssh.outputs.private-key-path }}' \
             test \
@@ -48,6 +49,8 @@ jobs:
       - name: Run configuration
         env:
           PAYU_EXPERIMENT_LOCATION: ${{ secrets.PAYU_EXPERIMENTS_LOCATION }}/${{ inputs.model-name }}/${{ inputs.config-branch }}
+        # TODO: Does the payu clone fail if there is an existing directory with ^ name
+        # TODO: Does payu clone fail if the directory given doesn't exist
         run: |
           ssh -i ${{ steps.ssh.outputs.private-key-path }} /bin/bash<<EOT
           module use ${{ secrets.PAYU_MODULE_LOCATION }}

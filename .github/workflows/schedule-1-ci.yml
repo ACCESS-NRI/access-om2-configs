@@ -23,7 +23,7 @@ jobs:
     needs:
       - setup
     strategy:
-      matrix:
+      matrix:  # TODO: call this config-tag or something
         config-branch: ${{ fromJson(needs.setup.outputs.branches) }}
     uses: ./.github/workflows/schedule-2-start.yml
     with:

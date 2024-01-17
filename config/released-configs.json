@@ -1,7 +1,6 @@
 {
     "$schema": "./released-configs.schema.json",
-    "branches": [ # this should be tags, not branches (like below)
-        "release-1deg_jra55_ryf-1.0.1",
-        "release-1deg_jra55_iaf"
+    "tags": [
+        "release-1deg_jra55_ryf-1.0.0"
     ]
 }

@@ -11,18 +11,20 @@ env:
   CHECKSUM_LOCAL_LOCATION: /opt/checksums
 jobs:
   repro-ci:
+    # run the given config and upload the checksums
     uses: ./.github/workflows/repro-ci.yml
     with:
       model-name: access-om2
-      config-branch: ${{ github.ref_name }}
+      config-branch: ${{ github.ref_name }}  # TODO: should this be the PR branch or the branch we are merging into?
 
   check-repro:
+    # compare the uploaded checksum with the ground truth
     needs:
       - repro-ci
     uses: ./.github/workflows/check-repro.yml
     with:
       artifact-name: ${{ needs.repro-ci.outputs.artifact-name }}
-      config-branch: ${{ github.ref_name }}
+      config-branch: ${{ github.ref_name }}  # TODO: same here
 
   successful-repro:
     name: Successful Reproduction
@@ -50,7 +52,7 @@ jobs:
       pull-requests: write
     steps:
       - uses: thollander/actions-comment-pull-request@1d3973d  #v2.4.3
-        with:
+        with:  # TODO: what if it is a dev PR? Do we want them to do stuff with tags?
           message: |
             :x: The Bitwise Reproducibility check failed when comparing against ${{ needs.check-repro.outputs.ground-truth-version }} :x:
             Consider bumping the major version of access-om2 to account for this.

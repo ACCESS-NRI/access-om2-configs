@@ -2,7 +2,7 @@ name: Scheduled Checks - Branch Specific
 on:
   workflow_call:
     inputs:
-      config-branch:
+      config-branch:  # TODO: actually a config-tag now
         type: string
         required: true
         description: A config branch to use for the reproducibility run
@@ -39,3 +39,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # something more drastic

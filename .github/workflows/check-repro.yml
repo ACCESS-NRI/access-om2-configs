@@ -6,7 +6,7 @@ on:
         type: string
         required: true
         description: Name of an artifact containing the checksum results
-      config-branch:
+      config-branch:  # TODO: config-tag now
         type: string
         required: true
         description: Config branch used for the given model run
@@ -33,15 +33,19 @@ jobs:
 
       - uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.config-branch }}
+          ref: ${{ inputs.config-branch }}  # TODO: is this the right branch?
           fetch-tags: true
+
+      - name: Get Checksum from TRUTH file
+        id: checksum
+        run: echo "version=$(cat VERSION)" >> $GITHUB_OUTPUT
 
       - name: Fetch History and Determine Last Major Truth Update
         # By default, actions/checkout only checks out `--depth=1` (the tip of the main branch).
         # Even when we fetch tags the history is fragmented and usually isn't traversable from HEAD with `git describe --tags`.
         # We fetch the entirety of the main branch history to be able to do the next step, namely
         # traversing `main` to find the last `git tag` and suppresses the 'long form' of tags (that have a bunch of commit metadata).
-        id: last-truth
+        id: ground-truth
         run: |
           git fetch --unshallow
           echo "version=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
@@ -49,9 +53,9 @@ jobs:
       - name: Move, Commit and Push Updated Checksum
         run: |
           mv ${{ env.CHECKSUM_LOCAL_LOCATION }} TRUTH
-          git commit -am "Updated truth"
+          git commit -am "Updated truth to ${{ steps.checksum.outputs.version }}"
           git push
 
       - name:
         id: check
-        run: git diff TRUTH HEAD..${{ steps.last-truth.outputs.tag }}
+        run: git diff TRUTH HEAD..${{ steps.ground-truth.outputs.version }}

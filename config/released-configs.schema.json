@@ -7,13 +7,13 @@
         "$schema": {
             "type": "string"
         },
-        "branches": {
+        "tags": {
             "type": "array",
             "items": {
                 "type": "string"
             }
         }
     },
-    "required": ["branches"],
+    "required": ["tags"],
     "additionalProperties": false
 }
