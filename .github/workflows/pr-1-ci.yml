@@ -35,12 +35,21 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - uses: thollander/actions-comment-pull-request@1d3973d  #v2.4.3
+      - name: Release Comment
+        if: startsWith(github.ref_name, 'release-')
+        uses: thollander/actions-comment-pull-request@1d3973d  #v2.4.3
         with:
           message: |
-            The Bitwise Reproducibility check succeeded when comparing against ${{ needs.check-repro.outputs.ground-truth-version }}
-            Consider bumping the minor version of access-om2 to account for this.
+            :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against ${{ needs.check-repro.outputs.ground-truth-version }} for this Release config. :white_check_mark:
+            Consider bumping the minor version of access-om2.
             To bump the version, comment `!bump minor`.
+
+      - name: Dev Comment
+        if: startsWith(github.ref_name, 'dev-')
+        uses: thollander/actions-comment-pull-request@1d3973d  #v2.4.3
+        with:
+          message: |
+            :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against ${{ needs.check-repro.outputs.ground-truth-version }} for this Dev config. :white_check_mark:
 
   failed-repro:
     name: Failed Reproduction
@@ -51,9 +60,18 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - uses: thollander/actions-comment-pull-request@1d3973d  #v2.4.3
+      - name: Release Comment
+        if: startsWith(github.ref_name, 'release-')
+        uses: thollander/actions-comment-pull-request@1d3973d  #v2.4.3
         with:
           message: |
-            :x: The Bitwise Reproducibility check failed when comparing against ${{ needs.check-repro.outputs.ground-truth-version }} :x:
+            :x: The Bitwise Reproducibility check failed when comparing against ${{ needs.check-repro.outputs.ground-truth-version }} for this Release config. :x:
             Consider bumping the major version of access-om2 to account for this.
             To bump the version, comment `!bump major`.
+
+      - name: Dev Comment
+        if: startsWith(github.ref_name, 'dev-')
+        uses: thollander/actions-comment-pull-request@1d3973d  #v2.4.3
+        with:
+          message: |
+            :warning: The Bitwise Reproducibility check failed when comparing against ${{ needs.check-repro.outputs.ground-truth-version }} for this Dev config. :warning:
