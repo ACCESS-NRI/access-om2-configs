@@ -17,13 +17,10 @@ jobs:
     name: Check Repro Results
     needs:
       - repro-ci
-    runs-on: ubuntu-latest
-    outputs:
-      result: ${{ steps.check.outputs.result }}
-      ground-truth-version: ${{ steps.check.outputs.ground-truth-version }}
-    steps:
-      - name: Download and check repro results, similar to pr-1-ci.yml
-        run: # do the above
+    uses: ./.github/workflows/check-repro.yml
+    with:
+      artifact-name: ${{ needs.repro-ci.outputs.artifact-name }}
+      config-branch: ${{ inputs.config-branch }}
 
   successful-repro:
     name: Successful Reproduction
@@ -37,7 +34,7 @@ jobs:
   failed-repro:
     name: Failed Reproduction
     needs:
-      - repro-ci
+      - check-repro
     if: needs.check-repro.outputs.result == 'false'
     runs-on: ubuntu-latest
     steps:
