@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       result: ${{ steps.check.outputs.result }}
-      ground-truth-version: ${{ steps.check.outputs.ground-truth-version }}
+      ground-truth-version: ${{ steps.ground-truth.outputs.version }}
     steps:
       - uses: actions/download-artifact@v3
         with:
@@ -56,6 +56,12 @@ jobs:
           git commit -am "Updated truth to ${{ steps.checksum.outputs.version }}"
           git push
 
-      - name:
+      - name: Compare Checksums between ${{ steps.ground-truth.outputs.version }} and ${{ inputs.config-tag }}
         id: check
-        run: git diff TRUTH HEAD..${{ steps.ground-truth.outputs.version }}
+        run: |
+          git diff --exit-code ..${{ steps.ground-truth.outputs.version }} TRUTH
+          if [ "$?" -eq 0 ]; then
+            echo "result=true" >> $GITHUB_OUTPUT
+          else
+            echo "result=false" >> $GITHUB_OUTPUT
+          fi
