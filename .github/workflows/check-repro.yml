@@ -6,10 +6,10 @@ on:
         type: string
         required: true
         description: Name of an artifact containing the checksum results
-      config-branch:  # TODO: config-tag now
+      config-tag:
         type: string
         required: true
-        description: Config branch used for the given model run
+        description: Tag associated with the config branch that is used for the given model run
     outputs:
       result:
         value: ${{ jobs.check-repro.outputs.result }}
@@ -33,7 +33,7 @@ jobs:
 
       - uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.config-branch }}  # TODO: is this the right branch?
+          ref: ${{ inputs.config-tag }}  # TODO: is this the right branch?
           fetch-tags: true
 
       - name: Get Checksum from TRUTH file

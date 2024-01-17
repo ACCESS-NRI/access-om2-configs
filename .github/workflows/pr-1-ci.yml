@@ -15,7 +15,7 @@ jobs:
     uses: ./.github/workflows/repro-ci.yml
     with:
       model-name: access-om2
-      config-branch: ${{ github.ref_name }}  # TODO: should this be the PR branch or the branch we are merging into?
+      config-tag: ${{ github.ref_name }}  # TODO: should this be the PR branch or the branch we are merging into?
 
   check-repro:
     # compare the uploaded checksum with the ground truth
@@ -24,7 +24,7 @@ jobs:
     uses: ./.github/workflows/check-repro.yml
     with:
       artifact-name: ${{ needs.repro-ci.outputs.artifact-name }}
-      config-branch: ${{ github.ref_name }}  # TODO: same here
+      config-tag: ${{ github.ref_name }}  # TODO: same here
 
   successful-repro:
     name: Successful Reproduction

@@ -2,16 +2,16 @@ name: Scheduled Checks - Branch Specific
 on:
   workflow_call:
     inputs:
-      config-branch:  # TODO: actually a config-tag now
+      config-tag:
         type: string
         required: true
-        description: A config branch to use for the reproducibility run
+        description: Tag associated with a config branch that is used in the reproducibility run
 jobs:
   repro-ci:
     uses: ./.github/workflows/repro-ci.yml
     with:
       model-name: access-om2
-      config-branch: ${{ inputs.config-branch }}
+      config-tag: ${{ inputs.config-tag }}
 
   check-repro:
     name: Check Repro Results
@@ -20,7 +20,7 @@ jobs:
     uses: ./.github/workflows/check-repro.yml
     with:
       artifact-name: ${{ needs.repro-ci.outputs.artifact-name }}
-      config-branch: ${{ inputs.config-branch }}
+      config-tag: ${{ inputs.config-tag }}
 
   successful-repro:
     name: Successful Reproduction

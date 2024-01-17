@@ -6,10 +6,10 @@ on:
         type: string
         required: true
         description: The name of the model to check for reproducibility
-      config-branch:  # TODO: actually a config-tag now
+      config-tag:
         type: string
         required: true
-        description: A config branch to use for the reproducibility run
+        description: A tag on an associated config branch to use for the reproducibility run
     outputs:
       artifact-name:
         value: ${{ jobs.repro.outputs.artifact-name }}
@@ -48,7 +48,7 @@ jobs:
 
       - name: Run configuration
         env:
-          PAYU_EXPERIMENT_LOCATION: ${{ secrets.PAYU_EXPERIMENTS_LOCATION }}/${{ inputs.model-name }}/${{ inputs.config-branch }}
+          PAYU_EXPERIMENT_LOCATION: ${{ secrets.PAYU_EXPERIMENTS_LOCATION }}/${{ inputs.model-name }}/${{ inputs.config-tag }}
         # TODO: Does the payu clone fail if there is an existing directory with ^ name
         # TODO: Does payu clone fail if the directory given doesn't exist
         run: |
@@ -56,7 +56,7 @@ jobs:
           module use ${{ secrets.PAYU_MODULE_LOCATION }}
           module load payu/${{ vars.PAYU_VERSION }}
           mkdir -p ${{ env.PAYU_EXPERIMENT_LOCATION }}
-          payu clone --branch ${{ inputs.config-branch }} ${{ github.event.repository.clone_url }} ${{ env.PAYU_EXPERIMENT_LOCATION }}
+          payu clone --branch ${{ inputs.config-tag }} ${{ github.event.repository.clone_url }} ${{ env.PAYU_EXPERIMENT_LOCATION }}
           cd ${{ env.PAYU_EXPERIMENT_LOCATION }}
           payu run -f
           # wait...then extract checksums
@@ -73,7 +73,7 @@ jobs:
 
       - name: Generate Checksum Artifact Name
         id: artifact
-        run: echo "name=${{ inputs.model-name }}-${{ inputs.config-branch }}" >> $GITHUB_OUTPUT
+        run: echo "name=${{ inputs.model-name }}-${{ inputs.config-tag }}" >> $GITHUB_OUTPUT
 
       # upload the new truth
       - name: Upload Checksum Artifact
