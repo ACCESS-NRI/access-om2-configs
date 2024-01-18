@@ -6,9 +6,7 @@ on:
       - 'dev-*'
     paths-ignore:  # and possibly more to ignore (eg. README), check what happens if there is a change to more than just these ignored files
       - 'VERSION'
-      - 'TRUTH'
-env:
-  CHECKSUM_LOCAL_LOCATION: /opt/checksums
+      - 'CHECKSUM'
 jobs:
   repro-ci:
     # run the given config and upload the checksums
@@ -19,12 +17,40 @@ jobs:
 
   check-repro:
     # compare the uploaded checksum with the ground truth
+    name: Check and Update Checksum
     needs:
       - repro-ci
-    uses: ./.github/workflows/check-repro.yml
-    with:
-      artifact-name: ${{ needs.repro-ci.outputs.artifact-name }}
-      config-tag: ${{ github.ref_name }}
+    runs-on: ubuntu-latest
+    env:
+      CHECKSUM_LOCAL_LOCATION: /opt/checksums
+    outputs:
+      result: ${{ steps.check.outputs.result }}
+      ground-truth-version: ${{ steps.check.outputs.ground-truth-version }}
+    steps:
+      - name: Download Newly Created Checksum
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ needs.repro-ci.outputs.artifact-name }}
+          path: ${{ env.CHECKSUM_LOCAL_LOCATION }}
+
+      - name: Checkout Last Config at ${{ github.ref_name }}
+        # This is used to have a link to correct config branch to find
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-tags: true
+
+      - name: Check Reproducibility
+        id: check
+        uses: ./.github/actions/check-repro
+        with:
+          checksum-location: ${{ env.CHECKSUM_LOCAL_LOCATION }}
+
+      - name: Move, Commit and Push Updated Checksum
+        run: |
+          mv ${{ env.CHECKSUM_LOCAL_LOCATION }} CHECKSUM
+          git commit -am "Updated Checksums"
+          git push
 
   successful-repro:
     name: Successful Reproduction

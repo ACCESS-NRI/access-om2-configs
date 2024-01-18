@@ -17,10 +17,27 @@ jobs:
     name: Check Repro Results
     needs:
       - repro-ci
-    uses: ./.github/workflows/check-repro.yml
-    with:
-      artifact-name: ${{ needs.repro-ci.outputs.artifact-name }}
-      config-tag: ${{ inputs.config-tag }}
+    runs-on: ubuntu-latest
+    env:
+      CHECKSUM_LOCAL_LOCATION: /opt/checksums
+    outputs:
+      result: ${{ steps.check.outputs.result }}
+      ground-truth-version: ${{ steps.check.outputs.ground-truth-version }}
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: ${{ needs.repro-ci.outputs.artifact-name }}
+          path: ${{ env.CHECKSUM_LOCAL_LOCATION }}
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.config-tag }}
+
+      - name: Check Repro
+        id: check
+        uses: ./.github/actions/check-repro
+        with:
+          checksum-location: ${{ env.CHECKSUM_LOCAL_LOCATION }}
 
   failed-repro:
     name: Failed Reproduction
