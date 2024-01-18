@@ -10,10 +10,11 @@ on:
 jobs:
   repro-ci:
     # run the given config and upload the checksums
-    uses: ./.github/workflows/repro-ci.yml
+    uses: access-nri/reproducibility/.github/workflows/checks.yml@main
     with:
       model-name: access-om2
-      config-tag: ${{ github.ref_name }}
+      config-tag: ${{ github.ref_name }}  # TODO: github.head_ref vs github.base_ref
+    secrets: inherit
 
   check-repro:
     # compare the uploaded checksum with the ground truth
@@ -42,7 +43,7 @@ jobs:
 
       - name: Check Reproducibility
         id: check
-        uses: ./.github/actions/check-repro
+        uses: access-nri/reproducibility/.github/actions/checksum-check@main
         with:
           checksum-location: ${{ env.CHECKSUM_LOCAL_LOCATION }}
 

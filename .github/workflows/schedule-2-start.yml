@@ -8,10 +8,13 @@ on:
         description: Tag associated with a config branch that is used in the reproducibility run
 jobs:
   repro-ci:
-    uses: ./.github/workflows/repro-ci.yml
+    uses: access-nri/reproducibility/.github/workflows/checks.yml@main
     with:
       model-name: access-om2
       config-tag: ${{ inputs.config-tag }}
+    secrets: inherit
+    permissions:
+      contents: write
 
   check-repro:
     name: Check Repro Results
@@ -35,7 +38,7 @@ jobs:
 
       - name: Check Repro
         id: check
-        uses: ./.github/actions/check-repro
+        uses: access-nri/reproducibility/.github/actions/checksum-check@main
         with:
           checksum-location: ${{ env.CHECKSUM_LOCAL_LOCATION }}
 

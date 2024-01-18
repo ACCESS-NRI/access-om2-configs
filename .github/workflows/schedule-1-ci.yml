@@ -28,3 +28,4 @@ jobs:
     uses: ./.github/workflows/schedule-2-start.yml
     with:
       config-tag: ${{ matrix.config-tag }}
+    secrets: inherit
