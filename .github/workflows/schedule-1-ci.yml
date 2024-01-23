@@ -23,7 +23,8 @@ jobs:
     needs:
       - setup
     strategy:
-      matrix:  # TODO: call this config-tag or something
+      fail-fast: false
+      matrix:
         config-tag: ${{ fromJson(needs.setup.outputs.tags) }}
     uses: ./.github/workflows/schedule-2-start.yml
     with:

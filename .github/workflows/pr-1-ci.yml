@@ -35,6 +35,9 @@ jobs:
       model-name: access-om2
       environment-name: Gadi
       config-tag: ${{ github.ref_name }}
+    secrets: inherit
+    permissions:
+      contents: write
 
   check-repro:
     # compare the uploaded checksum with the ground truth
