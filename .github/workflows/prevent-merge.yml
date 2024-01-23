@@ -1,0 +1,28 @@
+name: Merge Prevention
+on:
+  pull_request:
+    branches:
+      - 'release-*'
+    paths:
+      - VERSION
+      - CHECKSUM
+jobs:
+  version-status:
+    name: Check VERSION Bump Status
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get Changed VERSION
+        id: changed
+        uses: tj-actions/changed-files@ae82ed4ae04587b665efad2f206578aa6f0e8539  #v42
+        with:
+          files: VERSION
+
+      - name: Check VERSION
+        if: steps.changed.outputs.any_changed == 'false'
+        run: |
+          echo "::error::CHECKSUM was updated without a corresponding VERSION bump. Use `!bump` as noted in the pull request comment"
+          exit 1
