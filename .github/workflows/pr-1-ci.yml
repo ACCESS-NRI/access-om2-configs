@@ -8,13 +8,33 @@ on:
       - 'VERSION'
       - 'CHECKSUM'
 jobs:
+  commit-check:
+    name: Commit Check
+    # We run this job to check if the current commit was done during a workflow run
+    # Such as when github-actions bumps the VERSION file or updates the CHECKSUM file
+    # This is so we don't recursively commit and check infinitely during this workflow
+    runs-on: ubuntu-latest
+    outputs:
+      authorship: ${{ steps.head-commit.outputs.authorship }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: HEAD Commit Authorship
+        id: head-commit
+        run: echo "authorship=$(git log -1 --pretty=format:'%an')" >> $GITHUB_OUTPUT
+
   repro-ci:
     # run the given config and upload the checksums
+    needs:
+      - commit-check
+    if: needs.commit-check.outputs.authorship != 'github-actions'
     uses: access-nri/reproducibility/.github/workflows/checks.yml@main
     with:
       model-name: access-om2
-      config-tag: ${{ github.ref_name }}  # TODO: github.head_ref vs github.base_ref
-    secrets: inherit
+      environment-name: Gadi
+      config-tag: ${{ github.ref_name }}
 
   check-repro:
     # compare the uploaded checksum with the ground truth
@@ -22,6 +42,8 @@ jobs:
     needs:
       - repro-ci
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       CHECKSUM_LOCAL_LOCATION: /opt/checksums
     outputs:
@@ -34,12 +56,14 @@ jobs:
           name: ${{ needs.repro-ci.outputs.artifact-name }}
           path: ${{ env.CHECKSUM_LOCAL_LOCATION }}
 
-      - name: Checkout Last Config at ${{ github.ref_name }}
+      - name: Checkout Last Config at ${{ github.base_ref }}
         # This is used to have a link to correct config branch to find
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
+          ref: ${{ github.base_ref }}
+          fetch-depth: 0
           fetch-tags: true
+          token: ${{ secrets.GH_COMMIT_CHECK_TOKEN }}
 
       - name: Check Reproducibility
         id: check
@@ -47,58 +71,55 @@ jobs:
         with:
           checksum-location: ${{ env.CHECKSUM_LOCAL_LOCATION }}
 
-      - name: Move, Commit and Push Updated Checksum
+      - name: Move, Commit and Push Updated Checksum if Repro Fails
+        if: steps.check.outputs.result == 'false'
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          mv ${{ env.CHECKSUM_LOCAL_LOCATION }} CHECKSUM
-          git commit -am "Updated Checksums"
+          mv ${{ env.CHECKSUM_LOCAL_LOCATION }}/CHECKSUM CHECKSUM
+          git checkout ${{ github.head_ref }}
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git commit -am "Updated Checksums as part of ${{ env.RUN_URL }}"
           git push
 
-  successful-repro:
-    name: Successful Reproduction
+  result:
+    name: Reproduction Result Notifier
+    # Notify the PR of the result of the Reproduction check
     needs:
       - check-repro
-    if: needs.check-repro.outputs.result == 'true'
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
     steps:
-      - name: Release Comment
-        if: startsWith(github.ref_name, 'release-')
-        uses: thollander/actions-comment-pull-request@1d3973d  #v2.4.3
+      - name: Successful Release Comment
+        if: needs.check-repro.outputs.result == 'true' && startsWith(github.base_ref, 'release-')
+        uses: thollander/actions-comment-pull-request@1d3973dc4b8e1399c0620d3f2b1aa5e795465308  #v2.4.3
         with:
           message: |
-            :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against ${{ needs.check-repro.outputs.ground-truth-version }} for this Release config. :white_check_mark:
-            Consider bumping the minor version of access-om2.
+            :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against `${{ needs.check-repro.outputs.ground-truth-version }}` for this `Release` config. :white_check_mark:
+            Consider bumping the minor version of `access-om2`.
             To bump the version, comment `!bump minor`.
 
-      - name: Dev Comment
-        if: startsWith(github.ref_name, 'dev-')
-        uses: thollander/actions-comment-pull-request@1d3973d  #v2.4.3
+      - name: Successful Dev Comment
+        if: needs.check-repro.outputs.result == 'true' && startsWith(github.base_ref, 'dev-')
+        uses: thollander/actions-comment-pull-request@1d3973dc4b8e1399c0620d3f2b1aa5e795465308  #v2.4.3
         with:
           message: |
-            :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against ${{ needs.check-repro.outputs.ground-truth-version }} for this Dev config. :white_check_mark:
+            :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against `${{ needs.check-repro.outputs.ground-truth-version }}` for this `Dev` config. :white_check_mark:
 
-  failed-repro:
-    name: Failed Reproduction
-    needs:
-      - check-repro
-    if: needs.check-repro.outputs.result == 'false'
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-    steps:
-      - name: Release Comment
-        if: startsWith(github.ref_name, 'release-')
-        uses: thollander/actions-comment-pull-request@1d3973d  #v2.4.3
+      - name: Failed Release Comment
+        if: needs.check-repro.outputs.result == 'false' && startsWith(github.base_ref, 'release-')
+        uses: thollander/actions-comment-pull-request@1d3973dc4b8e1399c0620d3f2b1aa5e795465308  #v2.4.3
         with:
           message: |
-            :x: The Bitwise Reproducibility check failed when comparing against ${{ needs.check-repro.outputs.ground-truth-version }} for this Release config. :x:
-            Consider bumping the major version of access-om2 to account for this.
+            :x: The Bitwise Reproducibility check failed when comparing against `${{ needs.check-repro.outputs.ground-truth-version }}` for this `Release` config. :x:
+            You must bump the major version of `access-om2` before this PR is merged to account for this.
             To bump the version, comment `!bump major`.
 
-      - name: Dev Comment
-        if: startsWith(github.ref_name, 'dev-')
-        uses: thollander/actions-comment-pull-request@1d3973d  #v2.4.3
+      - name: Failed Dev Comment
+        if: needs.check-repro.outputs.result == 'failed' && startsWith(github.base_ref, 'dev-')
+        uses: thollander/actions-comment-pull-request@1d3973dc4b8e1399c0620d3f2b1aa5e795465308  #v2.4.3
         with:
           message: |
-            :warning: The Bitwise Reproducibility check failed when comparing against ${{ needs.check-repro.outputs.ground-truth-version }} for this Dev config. :warning:
+            :warning: The Bitwise Reproducibility check failed when comparing against `${{ needs.check-repro.outputs.ground-truth-version }}` for this `Dev` config. :warning:

@@ -1,0 +1,105 @@
+name: VERSION
+on:
+  issue_comment:
+    types:
+      - created
+      - edited
+jobs:
+  bump-version:
+    name: Bump
+    if: github.event.issue.pull_request && startsWith(github.event.comment.body, '!bump')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_COMMIT_CHECK_TOKEN }}
+
+      - name: Checkout Associated PR
+        env:
+          GH_TOKEN: ${{ secrets.GH_COMMIT_CHECK_TOKEN }}
+        run: gh pr checkout ${{ github.event.issue.number }}
+
+      - name: Minor
+        if: contains(github.event.comment.body, 'minor')
+        id: minor
+        run: |
+          version=$(cat VERSION)
+          regex="([0-9]+)\.([0-9]+)"
+          if [[ $version =~ $regex ]]; then
+              major_version="${BASH_REMATCH[1]}"
+              minor_version="${BASH_REMATCH[2]}"
+          else
+              echo "Invalid version format in VERSION file!"
+              exit 1
+          fi
+          new_minor_version=$((minor_version + 1))
+          new_version="$major_version.$new_minor_version"
+          echo "$new_version" > VERSION
+
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git commit -am "Bumped VERSION to $new_version as part of ${{ env.RUN_URL }}"
+          git push
+
+          echo "before=$version" >> $GITHUB_OUTPUT
+          echo "after=$new_version" >> $GITHUB_OUTPUT
+
+      - name: Major
+        if: contains(github.event.comment.body, 'major')
+        id: major
+        run: |
+          version=$(cat VERSION)
+          regex="([0-9]+)\.([0-9]+)"
+          if [[ $version =~ $regex ]]; then
+              major_version="${BASH_REMATCH[1]}"
+              minor_version="${BASH_REMATCH[2]}"
+          else
+              echo "Invalid version format in VERSION file!"
+              exit 1
+          fi
+          new_major_version=$((major_version + 1))
+          new_minor_version=0
+          new_version="$new_major_version.$new_minor_version"
+          echo "$new_version" > VERSION
+
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git commit -am "Bumped VERSION to $new_version as part of ${{ env.RUN_URL }}"
+          git push
+
+          echo "before=$version" >> $GITHUB_OUTPUT
+          echo "after=$new_version" >> $GITHUB_OUTPUT
+
+      - name: Results
+        id: result
+        # collate the results of either of the above commands
+        run: |
+          if [[ "${{ steps.major.outcome }}" == "success" ]]; then
+            echo "before=${{ steps.major.outputs.before }}" >> $GITHUB_OUTPUT
+            echo "after=${{ steps.major.outputs.after }}" >> $GITHUB_OUTPUT
+          elif [[ "${{ steps.minor.outcome }}" == "success" ]]; then
+            echo "before=${{ steps.minor.outputs.before }}" >> $GITHUB_OUTPUT
+            echo "after=${{ steps.minor.outputs.after }}" >> $GITHUB_OUTPUT
+          else
+            exit 1
+          fi
+
+      - name: Comment Success
+        if: steps.result.outcome == 'success'
+        uses: thollander/actions-comment-pull-request@1d3973dc4b8e1399c0620d3f2b1aa5e795465308  #v2.4.3
+        with:
+          message: |
+            :white_check_mark: Version bumped from ${{ steps.result.outputs.before }} to ${{ steps.result.outputs.after }} :white_check_mark:
+
+      - name: Comment Failure
+        if: failure() || steps.result.outcome == 'failure'
+        uses: thollander/actions-comment-pull-request@1d3973dc4b8e1399c0620d3f2b1aa5e795465308  #v2.4.3
+        with:
+          message: |
+            :x: Failed to bump version, see ${{ env.RUN_URL }} :x:

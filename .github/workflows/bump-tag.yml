@@ -1,3 +1,4 @@
+name: Bump Tag
 on:
   push:
     branches:
@@ -8,21 +9,27 @@ jobs:
   truth-update:
     name: Check and Update Truth Tag
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-tags: true
 
       - name: Existing Tag Check
-        id: truth
+        id: tag
         run: |
           VERSION_TAG=$(git tag -l $(cat VERSION))
-          if [ ! -z "$VERSION_TAG" ]; then
+          if [ -n "$VERSION_TAG" ]; then
             echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Update Tag
-        if: ${{ steps.truth.outputs.exists }}
+        if: steps.tag.outputs.exists == 'false'
         run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git tag $(cat VERSION)
           git push --tags
