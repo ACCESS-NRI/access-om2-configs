@@ -72,6 +72,7 @@ jobs:
         id: check
         uses: access-nri/reproducibility/.github/actions/checksum-check@main
         with:
+          checksum-name: ${{ needs.repro-ci.outputs.artifact-name }}
           checksum-location: ${{ env.CHECKSUM_LOCAL_LOCATION }}
 
       - name: Move, Commit and Push Updated Checksum if Repro Fails
