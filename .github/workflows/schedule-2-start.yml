@@ -36,7 +36,7 @@ jobs:
           name: ${{ needs.repro-ci.outputs.artifact-name }}
           path: ${{ env.CHECKSUM_LOCAL_LOCATION }}
 
-      - name: Checkout Last Config at ${{ github.base_ref }}
+      - name: Checkout Last Config at ${{ inputs.config-tag }}
         # This is used to have a link to correct config branch to find
         uses: actions/checkout@v4
         with:
@@ -49,7 +49,9 @@ jobs:
         id: check
         uses: access-nri/reproducibility/.github/actions/checksum-check@main
         with:
+          checksum-name: ${{ needs.repro-ci.outputs.artifact-name }}
           checksum-location: ${{ env.CHECKSUM_LOCAL_LOCATION }}
+          checked-against: ${{ inputs.config-tag }}
 
   failed-repro:
     name: Failed Reproduction Notifier
