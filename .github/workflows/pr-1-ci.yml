@@ -4,7 +4,7 @@ on:
     branches:
       - 'release-*'
       - 'dev-*'
-    paths-ignore:  # and possibly more to ignore (eg. README), check what happens if there is a change to more than just these ignored files
+    paths-ignore:  # TODO: and possibly more to ignore (eg. README), check what happens if there is a change to more than just these ignored files
       - 'VERSION'
       - 'CHECKSUM'
 jobs:
