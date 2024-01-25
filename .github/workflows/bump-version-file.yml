@@ -30,16 +30,17 @@ jobs:
         id: minor
         run: |
           version=$(cat VERSION)
-          regex="([0-9]+)\.([0-9]+)"
+          regex="(.+-.+)-([0-9]+)\.([0-9]+)"
           if [[ $version =~ $regex ]]; then
-              major_version="${BASH_REMATCH[1]}"
-              minor_version="${BASH_REMATCH[2]}"
+            config_info="${BASH_REMATCH[1]}"
+            major_version="${BASH_REMATCH[2]}"
+            minor_version="${BASH_REMATCH[3]}"
           else
-              echo "Invalid version format in VERSION file!"
-              exit 1
+            echo "::error::Invalid version format in VERSION file!"
+            exit 1
           fi
           new_minor_version=$((minor_version + 1))
-          new_version="$major_version.$new_minor_version"
+          new_version="${config_info}-${major_version}.${new_minor_version}"
           echo "$new_version" > VERSION
 
           git config user.name github-actions
@@ -55,17 +56,18 @@ jobs:
         id: major
         run: |
           version=$(cat VERSION)
-          regex="([0-9]+)\.([0-9]+)"
+          regex="(.+-.+)-([0-9]+)\.([0-9]+)"
           if [[ $version =~ $regex ]]; then
-              major_version="${BASH_REMATCH[1]}"
-              minor_version="${BASH_REMATCH[2]}"
+            config_info="${BASH_REMATCH[1]}"
+            major_version="${BASH_REMATCH[2]}"
+            minor_version="${BASH_REMATCH[3]}"
           else
-              echo "Invalid version format in VERSION file!"
-              exit 1
+            echo "::error::Invalid version format in VERSION file!"
+            exit 1
           fi
           new_major_version=$((major_version + 1))
           new_minor_version=0
-          new_version="$new_major_version.$new_minor_version"
+          new_version="${config_info}-${new_major_version}.${new_minor_version}"
           echo "$new_version" > VERSION
 
           git config user.name github-actions
@@ -87,6 +89,7 @@ jobs:
             echo "before=${{ steps.minor.outputs.before }}" >> $GITHUB_OUTPUT
             echo "after=${{ steps.minor.outputs.after }}" >> $GITHUB_OUTPUT
           else
+            echo "::error::Bumping failed. Either the '!bump' command isn't typed out correctly, or there was an error earlier."
             exit 1
           fi
 
