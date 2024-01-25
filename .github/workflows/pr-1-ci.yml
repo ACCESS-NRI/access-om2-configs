@@ -91,6 +91,7 @@ jobs:
     name: Reproduction Result Notifier
     # Notify the PR of the result of the Reproduction check
     needs:
+      - repro-ci
       - check-repro
     runs-on: ubuntu-latest
     permissions:
@@ -102,7 +103,8 @@ jobs:
         with:
           message: |
             :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against `${{ needs.check-repro.outputs.ground-truth-version }}` for this `Release` config. :white_check_mark:
-            Consider bumping the minor version of `access-om2`.
+            For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}.
+              Consider bumping the minor version of `access-om2`.
             To bump the version, comment `!bump minor`.
 
       - name: Successful Dev Comment
@@ -111,6 +113,8 @@ jobs:
         with:
           message: |
             :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against `${{ needs.check-repro.outputs.ground-truth-version }}` for this `Dev` config. :white_check_mark:
+            For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}
+
 
       - name: Failed Release Comment
         if: needs.check-repro.outputs.result == 'false' && startsWith(github.base_ref, 'release-')
@@ -118,6 +122,7 @@ jobs:
         with:
           message: |
             :x: The Bitwise Reproducibility check failed when comparing against `${{ needs.check-repro.outputs.ground-truth-version }}` for this `Release` config. :x:
+            For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}
             You must bump the major version of `access-om2` before this PR is merged to account for this.
             To bump the version, comment `!bump major`.
 
@@ -127,3 +132,4 @@ jobs:
         with:
           message: |
             :warning: The Bitwise Reproducibility check failed when comparing against `${{ needs.check-repro.outputs.ground-truth-version }}` for this `Dev` config. :warning:
+            For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}
