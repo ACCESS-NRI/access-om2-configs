@@ -37,8 +37,8 @@ and should also be listed below:
 
 | Branch | Configuration Description |
 ---|---|
-[`1deg_jra55_ryf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/1deg_jra55_ryf) | Global 1&deg; model forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
-[`1deg_jra55_iaf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/1deg_jra55_iaf)| Global 1&deg; model forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
+[`release-1deg_jra55_ryf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_ryf) | Global 1&deg; model forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
+[`release-1deg_jra55_iaf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_iaf)| Global 1&deg; model forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
 
 There are more detailed notes contained in the respective branches for each configuration.
 
@@ -58,9 +58,24 @@ In most cases only a single experiment is required. If that is the case choose w
 git clone -b <experiment> https://github.com/ACCESS-NRI/accessom2-configs/ <experiment>
 ```
 
-and replace `<experiment>` with the branch name of the experiment you wish to run.
+and replace `<experiment>` with the branch name or tag of the experiment you wish to run.
 
 [ACCESS-Hive](https://access-hive.org.au/) contains [detailed instructions for how to configure and run ACCESS-OM2 with `payu`](https://access-hive.org.au/models/run-a-model/run-access-om/).
+
+## CI and Reproducibility Checks
+
+This repository makes use of GitHub Actions to perform reproducibility checks on `ACCESS-OM2` config branches.
+
+Config branches are branches that store model configurations of the form: `release-<config>` or `dev-<config>`, for example: `release-1deg_jra55_iaf`.
+
+Config tags are specific tags on these branches, whose `MAJOR.MINOR` version compares the reproducibility of the models. Major version changes denote that a particular config tag breaks reproducibility, and a minor version change does not. These have the form: `release-<config>-<tag>`, such as `release-1deg_jra55_iaf-1.2`.
+
+These checks are in the context of:
+
+- PR checks: In which a PR creator can modify a config branch, create a pull request, and have their config run and checked for reproducibility against a 'ground truth' version of the config.
+- Scheduled checks: In which config branches and config tags that are deemed especially important are self-tested monthly against their own checksums.
+
+More information on submitting a Pull Request and on the specifics of this pipeline can be found in the [CONTRIBUTING.md](./.github/CONTRIBUTING.md) and [README-DEV.md](./README-DEV.md) respectively.
 
 ## Conditions of use
 
