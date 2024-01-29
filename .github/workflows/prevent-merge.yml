@@ -1,8 +1,12 @@
+# This workflow prevents merging of a config PR if a checksum file has been updated,
+# but there is no associated `VERSION` update.
 name: Merge Prevention
 on:
   pull_request:
     branches:
       - 'release-*'
+    # Note that these paths are the `on.paths-ignore` of the `pr-1-ci.yml` file - we don't
+    # want to rerun that workflow as it would lead to an infinite loop of commits and checks!
     paths:
       - VERSION
       - CHECKSUM
@@ -24,5 +28,5 @@ jobs:
       - name: Check VERSION
         if: steps.changed.outputs.any_changed == 'false'
         run: |
-          echo "::error::CHECKSUM was updated without a corresponding VERSION bump. Use `!bump` as noted in the pull request comment"
+          echo "::error::A checksum was updated without a corresponding VERSION bump. Use `!bump` as noted in the pull request comment"
           exit 1

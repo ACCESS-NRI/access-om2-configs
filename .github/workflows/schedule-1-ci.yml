@@ -20,7 +20,7 @@ jobs:
 
   repro-ci:
     # We use this reusable workflow with a matrix strategy rather than calling repro-ci.yml, as
-    #   we may want to do config-branch-specific tasks after the matrixed repro-ci.yml has completed.
+    # we may want to do config-branch-specific tasks after the matrixed repro-ci.yml has completed.
     needs:
       - setup
     strategy:

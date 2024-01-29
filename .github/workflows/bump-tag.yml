@@ -1,3 +1,5 @@
+# This workflow is used to convert the version in the `VERSION` file into a valid `git tag` on push to `main`.
+# We use the `VERSION` file to denote the version of the config once a PR is merged.
 name: Bump Tag
 on:
   push:
@@ -6,8 +8,8 @@ on:
     paths:
       - 'VERSION'
 jobs:
-  truth-update:
-    name: Check and Update Truth Tag
+  tag-update:
+    name: Check and Update Tag
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -17,12 +19,14 @@ jobs:
           fetch-tags: true
 
       - name: Existing Tag Check
+        # Check if the tag already exists, if it does, we don't want to move it.
         id: tag
         run: |
           VERSION_TAG=$(git tag -l $(cat VERSION))
           if [ -n "$VERSION_TAG" ]; then
             echo "exists=true" >> $GITHUB_OUTPUT
           else
+            echo "::warning::Tag $VERSION_TAG already exists. Skipping."
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
 
