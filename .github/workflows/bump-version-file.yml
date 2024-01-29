@@ -25,6 +25,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_COMMIT_CHECK_TOKEN }}
         run: gh pr checkout ${{ github.event.issue.number }}
 
+
+        # TODO: Consolidate Minor and Major steps, allows deletion of the Result step
       - name: Minor
         if: contains(github.event.comment.body, 'minor')
         id: minor
