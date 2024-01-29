@@ -36,9 +36,9 @@ All available configurations are browsable under [the list of branches](https://
 and should also be listed below:
 
 | Branch | Configuration Description |
----|---|
-[`release-1deg_jra55_ryf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_ryf) | Global 1&deg; model forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
-[`release-1deg_jra55_iaf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_iaf)| Global 1&deg; model forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
+| ------ | ------------------------- |
+| [`release-1deg_jra55_ryf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_ryf) | Global 1&deg; model forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
+| [`release-1deg_jra55_iaf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_iaf)| Global 1&deg; model forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
 
 There are more detailed notes contained in the respective branches for each configuration.
 
@@ -77,7 +77,7 @@ These checks are in the context of:
 
 More information on submitting a Pull Request and on the specifics of this pipeline can be found in the [CONTRIBUTING.md](./.github/CONTRIBUTING.md) and [README-DEV.md](./README-DEV.md) respectively.
 
-For more information on the manually running the pytests that are run as part of the reproducibility CI checks, see 
+For more information on the manually running the pytests that are run as part of the reproducibility CI checks, see
 [test/README.md](./test/README.md).
 
 ## Conditions of use
