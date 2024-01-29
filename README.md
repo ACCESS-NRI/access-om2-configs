@@ -77,6 +77,9 @@ These checks are in the context of:
 
 More information on submitting a Pull Request and on the specifics of this pipeline can be found in the [CONTRIBUTING.md](./.github/CONTRIBUTING.md) and [README-DEV.md](./README-DEV.md) respectively.
 
+For more information on the manually running the pytests that are run as part of the reproducibility CI checks, see 
+[test/README.md](./test/README.md).
+
 ## Conditions of use
 
 COSIMA request that users of this or other ACCESS-OM2 model code:

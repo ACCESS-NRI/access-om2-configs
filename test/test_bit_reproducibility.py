@@ -9,7 +9,7 @@ from exp_test_helper import setup_exp
 
 class TestBitReproducibility():
 
-    @pytest.mark.fast
+    @pytest.mark.checksum
     def test_bit_repro_historical(self, output_path: Path, control_path: Path,
                                   checksum_path: Path):
         """

@@ -45,7 +45,6 @@ class AccessOm2(Model):
         checksums = {
             "version": SCHEMA_VERSION,
             "schema": SCHEMA,
-            "description": "The checksums from access-om2.out after a 3hr run",
             "output": []
         }
 
