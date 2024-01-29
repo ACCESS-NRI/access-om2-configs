@@ -4,9 +4,19 @@ on:
     branches:
       - 'release-*'
       - 'dev-*'
-    paths-ignore:  # TODO: and possibly more to ignore (eg. README), check what happens if there is a change to more than just these ignored files
-      - 'VERSION'
-      - 'CHECKSUM'
+    paths-ignore:
+      # These are ignored because we potentially modify and commit these files in this
+      # workflow. This would lead to an infinite loop of commits and checks.
+      # See `prevent-merge.yml`.
+      - testing/**
+      - VERSION
+      # These are ignored because they don't have anything to do with the model itself
+      - .github/**
+      - tools/**
+      - doc/**
+      - .*
+      - metadata.yaml
+      - README.md
 jobs:
   commit-check:
     name: Commit Check
@@ -125,7 +135,7 @@ jobs:
         if: needs.check-checksum.outputs.result == 'pass' && startsWith(github.base_ref, 'release-')
         env:
           BODY: |
-            :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against `${{ needs.check-checksum.outputs.ground-truth-version }}` for this `Release` config. :white_check_mark:
+            :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against `${{ needs.check-checksum.outputs.compared-checksum-version }}` for this `Release` config. :white_check_mark:
             For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}, and the test results at ${{ needs.check-checksum.outputs.check-run-url }}.
             Consider bumping the minor version of `access-om2` - to bump the version, comment `!bump minor`.
         run: gh pr comment --body "${{ env.BODY }}"
@@ -134,7 +144,7 @@ jobs:
         if: needs.check-checksum.outputs.result == 'pass' && startsWith(github.base_ref, 'dev-')
         env:
           BODY: |
-            :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against `${{ needs.check-checksum.outputs.ground-truth-version }}` for this `Dev` config. :white_check_mark:
+            :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against `${{ needs.check-checksum.outputs.compared-checksum-version }}` for this `Dev` config. :white_check_mark:
             For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}, and the test results at ${{ needs.check-checksum.outputs.check-run-url }}.
         run: gh pr comment --body "${{ env.BODY }}"
 
@@ -142,7 +152,7 @@ jobs:
         if: needs.check-checksum.outputs.result == 'fail' && startsWith(github.base_ref, 'release-')
         env:
           BODY: |
-            :x: The Bitwise Reproducibility check failed when comparing against `${{ needs.check-checksum.outputs.ground-truth-version }}` for this `Release` config. :x:
+            :x: The Bitwise Reproducibility check failed when comparing against `${{ needs.check-checksum.outputs.compared-checksum-version }}` for this `Release` config. :x:
             For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}, and the test results at ${{ needs.check-checksum.outputs.check-run-url }}.
             You must bump the major version of `access-om2` before this PR is merged to account for this - to bump the version, comment `!bump major`.
         run: gh pr comment --body "${{ env.BODY }}"
@@ -151,6 +161,6 @@ jobs:
         if: needs.check-checksum.outputs.result == 'fail' && startsWith(github.base_ref, 'dev-')
         env:
           BODY: |
-            :warning: The Bitwise Reproducibility check failed when comparing against `${{ needs.check-checksum.outputs.ground-truth-version }}` for this `Dev` config. :warning:
+            :warning: The Bitwise Reproducibility check failed when comparing against `${{ needs.check-checksum.outputs.compared-checksum-version }}` for this `Dev` config. :warning:
             For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}, and the test results at ${{ needs.check-checksum.outputs.check-run-url }}.
         run: gh pr comment --body "${{ env.BODY }}"
