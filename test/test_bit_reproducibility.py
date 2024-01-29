@@ -1,6 +1,5 @@
 """Tests for model reproducibility"""
 
-import os
 import yaml
 import pytest
 from pathlib import Path
@@ -11,11 +10,12 @@ from exp_test_helper import setup_exp
 class TestBitReproducibility():
 
     @pytest.mark.fast
-    def test_bit_repro_historical(self, output_path: Path, control_path: Path):
+    def test_bit_repro_historical(self, output_path: Path, control_path: Path,
+                                  checksum_path: Path):
         """
         Test that a run reproduces historical checksums
         """
-        exp = setup_exp(control_path, output_path, "bit_repro_historical")
+        exp = setup_exp(control_path, output_path, "test_bit_repro_historical")
 
         exp.model.set_model_runtime()
         exp.setup_and_run()
@@ -28,11 +28,10 @@ class TestBitReproducibility():
         with open(output_path / 'CHECKSUM', 'w') as file:
             yaml.dump(checksums, file, default_flow_style=False)
 
-        # Check checksum against checksum saved in model configuration
-        hist_checksum_path = control_path / 'CHECKSUM'
-        with open(hist_checksum_path, 'r') as file:
+        # Check checksum against historical checksum file
+        with open(checksum_path, 'r') as file:
             hist_checksum = yaml.safe_load(file)
-    
+
         assert hist_checksum == checksums
 
     @pytest.mark.slow
@@ -41,9 +40,9 @@ class TestBitReproducibility():
         Test that a run has same checksums when ran twice
         """
         exp_bit_repo1 = setup_exp(control_path, output_path,
-                                  "bit_repro_repeat_1")
+                                  "test_bit_repro_repeat_1")
         exp_bit_repo2 = setup_exp(control_path, output_path,
-                                  "bit_repro_repeat_2")
+                                  "test_bit_repro_repeat_2")
 
         # Reconfigure to a 3 hours (default) and run
         for exp in [exp_bit_repo1, exp_bit_repo2]:
@@ -66,7 +65,8 @@ class TestBitReproducibility():
         Test that a run reproduces across restarts.
         """
         # First do two short (1 day) runs.
-        exp_2x1day = setup_exp(control_path, output_path, '2x1day')
+        exp_2x1day = setup_exp(control_path, output_path,
+                               'test_restart_repro_2x1day')
 
         # Reconfigure to a 1 day run.
         exp_2x1day.model.set_model_runtime(seconds=86400)
@@ -76,7 +76,8 @@ class TestBitReproducibility():
         exp_2x1day.force_qsub_run()
 
         # Now do a single 2 day run
-        exp_2day = setup_exp(control_path, output_path, '2day')
+        exp_2day = setup_exp(control_path, output_path,
+                             'test_restart_repro_2day')
         # Reconfigure
         exp_2day.model.set_model_runtime(seconds=172800)
 
@@ -106,5 +107,5 @@ class TestBitReproducibility():
                 yaml.dump(checksums_1d_1, file, default_flow_style=False)
             with open(output_path / 'restart-2d-0-checksum.yaml', 'w') as file:
                 yaml.dump(checksums_2d, file, default_flow_style=False)
-        
+
         assert matching_checksums

@@ -14,6 +14,7 @@ from pathlib import Path
 from util import wait_for_qsub
 from models import index as model_index
 
+
 class ExpTestHelper(object):
 
     def __init__(self, control_path: Path, lab_path: Path):
@@ -29,7 +30,7 @@ class ExpTestHelper(object):
 
         with open(self.config_path) as f:
             self.config = yaml.safe_load(f)
-        
+
         self.set_model()
 
     def set_model(self):
@@ -38,8 +39,8 @@ class ExpTestHelper(object):
         self.model_name = self.config.get('model')
         ModelType = model_index[self.model_name]
         self.model = ModelType(self)
-    
-    def extract_checksums(self, output_directory=None):
+
+    def extract_checksums(self, output_directory: Path = None):
         """Use model subclass to extract checksums from output"""
         return self.model.extract_checksums(output_directory)
 
@@ -57,7 +58,7 @@ class ExpTestHelper(object):
 
         with open(self.config_path) as f:
             doc = yaml.safe_load(f)
-        
+
         # Disable git runlog
         doc['runlog'] = False
 
@@ -108,7 +109,7 @@ class ExpTestHelper(object):
         output_files = []
         # Read qsub stdout file
         stdout_filename = glob.glob(str(self.control_path / f'*.o{run_id}'))
-        print( stdout_filename)
+        print(stdout_filename)
         if len(stdout_filename) != 1:
             print('Error: there are too many stdout files.', file=sys.stderr)
             return 2, None, None, None
@@ -150,6 +151,7 @@ class ExpTestHelper(object):
     def setup_and_run(self):
         self.setup_for_test_run()
         return self.run()
+
 
 def setup_exp(control_path: Path, output_path: Path, exp_name: str):
     """

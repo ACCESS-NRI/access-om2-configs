@@ -2,6 +2,7 @@ import os
 import pytest
 from pathlib import Path
 
+
 @pytest.fixture(scope="session")
 def output_path(request):
     """Set the output path: This contains control and lab directories for each
@@ -26,6 +27,16 @@ def control_path(request):
     return Path(path)
 
 
+@pytest.fixture(scope="session")
+def checksum_path(request, control_path):
+    """Set the path of the model configuration directory to test"""
+    path = request.config.getoption('--checksum-path')
+    if path is None:
+        # Set default to checksum stored on model configuration
+        path = control_path / 'testing' / 'checksum' / 'CHECKSUM'
+    return Path(path)
+
+
 # Set up command line options and default for directory paths
 def pytest_addoption(parser):
     """Attaches optional command line arguments"""
@@ -36,7 +47,11 @@ def pytest_addoption(parser):
     parser.addoption("--control-path",
                      action="store",
                      help="Specify the model configuration path to test")
-    
+
+    parser.addoption("--checksum-path",
+                     action="store",
+                     help="Specify the checksum file to compare against")
+
 
 def pytest_configure(config):
     config.addinivalue_line(
