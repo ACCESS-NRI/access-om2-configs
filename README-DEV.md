@@ -99,3 +99,9 @@ Similar to the [`pr-1-ci.yml` counterpart](#check-repro), this job checks the re
 ##### `failed-repro`
 
 If the reproduction check fails during a scheduled check, something is wrong. This job creates an issue in this repository, and tags the Release team for investigation.
+
+### Supplementary Workflows
+
+#### Config Validation: `validate-json.yml`
+
+This workflow is used to check that modifications to `*.json` files are in line with the associated `*.schema.json`.
