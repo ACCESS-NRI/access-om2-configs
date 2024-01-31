@@ -109,7 +109,7 @@ jobs:
         env:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          mv ${{ env.TESTING_LOCAL_LOCATION }}/CHECKSUM CHECKSUM
+          mv ${{ env.TESTING_LOCAL_LOCATION }}/CHECKSUM CHECKSUM  # TODO: this will be a directory, and don't put test report in
           git checkout ${{ github.head_ref }}
           git config user.name github-actions
           git config user.email github-actions@github.com

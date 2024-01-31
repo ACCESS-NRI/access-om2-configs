@@ -42,15 +42,6 @@ jobs:
           name: ${{ needs.repro-ci.outputs.artifact-name }}
           path: ${{ env.TESTING_LOCAL_LOCATION }}
 
-      - name: Checkout Config branch at ${{ inputs.config-tag }}
-        # This is used to find the version `compared-checksum-version`.
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.config-tag }}
-          fetch-depth: 0
-          fetch-tags: true
-          token: ${{ secrets.GH_COMMIT_CHECK_TOKEN }}
-
       - name: Parse Test Report
         id: tests
         uses: EnricoMi/publish-unit-test-result-action/composite@e780361cd1fc1b1a170624547b3ffda64787d365  #v2.12.0
@@ -66,7 +57,7 @@ jobs:
         id: results
         run: |
           echo "check-url=${{ fromJson(steps.tests.outputs.json).check_url }}" >> $GITHUB_OUTPUT
-          echo "compared-checksum-version=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
+          echo "compared-checksum-version=${{ inputs.config-tag }}" >> $GITHUB_OUTPUT
           if [ "${{ fromJson(steps.tests.outputs.json).stats.tests_fail }}" > 0 ]; then
             echo "result=fail" >> $GITHUB_OUTPUT
           else
@@ -78,7 +69,7 @@ jobs:
     needs:
       - repro-ci
       - check-checksum
-    if: failure() || needs.check-checksum.outputs.result == 'false'
+    if: failure() || needs.check-checksum.outputs.result == 'fail'
     runs-on: ubuntu-latest
     permissions:
       issues: write
