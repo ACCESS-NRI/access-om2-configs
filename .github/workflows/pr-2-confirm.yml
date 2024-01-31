@@ -81,6 +81,7 @@ jobs:
       pull-requests: write
     env:
       GH_TOKEN: ${{ secrets.GH_COMMIT_CHECK_TOKEN }}
+      ARTIFACT_LOCAL_LOCATION: /opt/artifact
     steps:
       - uses: actions/checkout@v4
         with:
@@ -88,10 +89,26 @@ jobs:
           token: ${{ secrets.GH_COMMIT_CHECK_TOKEN }}
 
       - name: Checkout Associated PR ${{ github.event.issue.number }}
-        run: gh pr checkout ${{ github.event.issue.number }}
+        # Since the trigger for this workflow was on.issue_comment, we need
+        # to do a bit more wrangling to checkout the pull request and get the branch name
+        id: pr
+        run: |
+          gh pr checkout ${{ github.event.issue.number }}
+          echo "branch=$(git rev-parse --abbrev-ref HEAD) >> $GITHUB_OUTPUT
 
-      - name: Update VERSION file
-        run: echo "${{ needs.bump-version.outputs.after }}" > VERSION
+      - name: Download Newly Created Checksum
+        # Given the PR branch, we need to find the latest associated workflow run
+        # on this branch we can then download the associated artifact
+        run: |
+          associated_run=$(gh run list \
+            --json='databaseId,headBranch,updatedAt' \
+            --jq 'select(.[].headBranch == "${{ steps.pr.outputs.branch }}") |= sort_by(.updatedAt) | last | .databaseId')
+          gh run download $associated_run -D ${{ env.ARTIFACT_LOCAL_LOCATION }}
+
+      - name: Update VERSION and Checksum files
+        run: |
+          echo "${{ needs.bump-version.outputs.after }}" > VERSION
+          mv ${{ env.ARTIFACT_LOCAL_LOCATION }}/testing testing
 
       - name: Commit and Push Updates
         run: |

@@ -99,18 +99,6 @@ jobs:
             echo "result=pass" >> $GITHUB_OUTPUT
           fi
 
-      - name: Move, Commit and Push Updated Checksum if Repro Fails
-        if: steps.results.outputs.result == 'fail'
-        env:
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          mv ${{ env.TESTING_LOCAL_LOCATION }}/CHECKSUM CHECKSUM  # TODO: this will be a directory, and don't put test report in
-          git checkout ${{ github.head_ref }}
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git commit -am "Updated Checksums as part of ${{ env.RUN_URL }}"
-          git push
-
   result:
     name: Repro Result Notifier
     # Notify the PR of the result of the Repro check
