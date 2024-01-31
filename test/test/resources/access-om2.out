@@ -1,0 +1,165 @@
+Partial Output for access-om2.out file
+...
+
+ Topography checksums
+[chksum] ht                                       -2390360641069121536
+[chksum] hu                                        6389284661071183872
+[chksum] htr                                        928360042410663049
+[chksum] kmu                                                      5491
+[chksum] kmt                                                      5888
+  
+
+...
+  
+ ===Initial velocity checksums ==>
+yyyy/mm/dd hh:mm:ss = 1958/ 1/ 1  0: 0: 0
+ From ocean_velocity_mod: initial velocity chksum (taup1)
+[chksum] Zonal velocity                            9051849634365276068
+[chksum] Meridional velocity                       9051849634365276068
+[chksum] Advection of u                                              0
+[chksum] Advection of v                                              0
+
+
+ &OCEAN_BAROTROPIC_NML
+
+...
+
+ 
+ Ending temp chksum (taup1) ==>
+  
+ === Prognostic tracer checksum follows ===
+yyyy/mm/dd hh:mm:ss = 1958/ 1/ 2  0: 0: 0
+[chksum] temp                                     -8930650806020180877
+  
+ Ending salt chksum (taup1) ==>
+  
+ === Prognostic tracer checksum follows ===
+yyyy/mm/dd hh:mm:ss = 1958/ 1/ 2  0: 0: 0
+[chksum] salt                                     -5978695510357035932
+  
+ Ending age_global chksum (taup1) ==>
+  
+ === Prognostic tracer checksum follows ===
+yyyy/mm/dd hh:mm:ss = 1958/ 1/ 2  0: 0: 0
+[chksum] age_global                                1893953004076406643
+  
+ Ending pot_temp chksum (diag) ==>
+ === Diagnostic tracer checksum follows ===
+yyyy/mm/dd hh:mm:ss = 1958/ 1/ 2  0: 0: 0
+[chksum] pot_temp                                   -52023625948764499
+  
+ Ending frazil chksum (diag) ==>
+ === Diagnostic tracer checksum follows ===
+yyyy/mm/dd hh:mm:ss = 1958/ 1/ 2  0: 0: 0
+[chksum] frazil                                   -5191750332524759769
+  
+ From ocean_nphysics_coeff_end: ending chksum
+yyyy/mm/dd hh:mm:ss = 1958/ 1/ 2  0: 0: 0
+[chksum] ending agm_array                           468391555236794973
+[chksum] ending aredi_array                       -5841239085443710976
+[chksum] ending rossby_radius                        58804802911257614
+[chksum] ending rossby_radius_raw                  -846796980686399232
+[chksum] ending bczone_radius                                        0
+  
+ From ocean_bih_friction_end: ending chksum
+yyyy/mm/dd hh:mm:ss = 1958/ 1/ 2  0: 0: 0
+[chksum] ending bih_viscosity                     -3848032443119120859
+  
+ From ocean_lap_friction_end: ending chksum
+yyyy/mm/dd hh:mm:ss = 1958/ 1/ 2  0: 0: 0
+[chksum] ending lap_viscosity                      6049134025076858299
+  
+ From ocean_sigma_transport_mod: ending chksums
+yyyy/mm/dd hh:mm:ss = 1958/ 1/ 2  0: 0: 0
+[chksum] thickness_sigma                          -8963101766328250809
+  
+ From ocean_velocity_mod: ending velocity chksum (taup1)
+yyyy/mm/dd hh:mm:ss = 1958/ 1/ 2  0: 0: 0
+[chksum] Zonal velocity                            4312548811224352433
+[chksum] Meridional velocity                       1406682888129558516
+[chksum] Advection of u                           -8343099049897830114
+[chksum] Advection of v                            7755521223631777772
+  
+  From ocean_barotropic_mod: ending external mode chksums at taup1
+yyyy/mm/dd hh:mm:ss = 1958/ 1/ 2  0: 0: 0
+[chksum] eta_t                                    -2952865883236087545
+[chksum] eta_u                                     8048386269215363066
+[chksum] deta_dt                                  -2127102120659022600
+[chksum] eta_t_bar                                 6250996322364705031
+[chksum] pbot_t                                   -5140336568939572692
+[chksum] pbot_u                                    8485576456147286765
+[chksum] dpbot_dt                                                    0
+[chksum] anompb                                    6226760822980897704
+[chksum] anompb_bar                                                  0
+[chksum] patm_t                                                      0
+[chksum] dpatm_dt                                                    0
+[chksum] ps                                        1779395057267846087
+[chksum] grad_ps_1                                 7919529210005718844
+[chksum] grad_ps_2                                 1421921711814131101
+[chksum] grad_anompb_1                                               0
+[chksum] grad_anompb_2                                               0
+[chksum] udrho                                     5075226074788415415
+[chksum] vdrho                                     4604969091055249568
+[chksum] conv_rho_ud_t                             3726717485804999834
+[chksum] source                                     613243063746012460
+[chksum] eta smoother                               613243063746012460
+[chksum] pbot smoother                                               0
+[chksum] eta_nonbouss                              6474698125758851091
+[chksum] forcing_u_bt                             -1914050341236437193
+[chksum] forcing_v_bt                             -7357702046294092908
+  
+NOTE from PE     0: MPP_IO_SET_STACK_SIZE: stack size set to     469200.
+  
+ From ocean_thickness_mod: ending thickness checksums
+yyyy/mm/dd hh:mm:ss = 1958/ 1/ 2  0: 0: 0
+[chksum] Thickness%rho_dzt(taup1)                  7776257383205003637
+[chksum] Thickness%rho_dzu(taup1)                  7311294707018006581
+[chksum] Thickness%mass_u(taup1)                  -4241811651667361132
+[chksum] Thickness%rho_dzten(1)                    1250457722514229304
+[chksum] Thickness%rho_dzten(2)                   -7503245538747743150
+[chksum] Thickness%rho_dztr                        6434333308517214235
+[chksum] Thickness%rho_dzur                        7389894084372368130
+[chksum] Thickness%rho_dzt_tendency                5216091198335053533
+[chksum] Thickness%dzt                             1363634231883498791
+[chksum] Thickness%dzten(1)                       -5011016524578090107
+[chksum] Thickness%dzten(2)                        4659452532575128373
+[chksum] Thickness%dztlo                           -496319197121378170
+[chksum] Thickness%dztup                           -496385631319654341
+[chksum] Thickness%dzt_dst                         -632491786679130973
+[chksum] Thickness%dzwt(k=0)                      -3862930248839538341
+[chksum] Thickness%dzwt(k=1:nk)                     792684721599327373
+[chksum] Thickness%dzu                            -8463520639491784400
+[chksum] Thickness%dzwu(k=0)                       6403375959347013654
+[chksum] Thickness%dzwu(k=1:nk)                    4420217072726140142
+[chksum] Thickness%depth_zt                       -1965179639377005121
+[chksum] Thickness%geodepth_zt                     3941087712565168133
+[chksum] Thickness%depth_zu                       -4474748151504442195
+[chksum] Thickness%depth_zwt                        275540391807019983
+[chksum] Thickness%depth_zwu                      -4135811477220356765
+[chksum] Thickness%depth_st                        -436572698594795605
+[chksum] Thickness%depth_swt                       1807210613030518784
+[chksum] Thickness%dst                             2929478174762860544
+[chksum] Thickness%dstlo                           1069524742763059344
+[chksum] Thickness%dstup                           1069458314554632048
+[chksum] Thickness%dswt(k=0)                      -3816777125227134976
+[chksum] Thickness%dswt(k=1:nk)                    2356975803744414556
+[chksum] Thickness%pbot0                          -5076855368579520310
+[chksum] Thickness%mass_en(1)                       849702960701014446
+[chksum] Thickness%mass_en(2)                      1325784634720348455
+  
+ncfile created: ./RESTART/i2o.nc
+
+ From ocean_density_mod: ending density chksums
+yyyy/mm/dd hh:mm:ss = 1958/ 1/ 2  0: 0: 0
+[chksum] rho(taup1)                               -7831101606498019940
+[chksum] pressure_at_depth                         2601521486469547169
+[chksum] denominator_r                             1351612791587987436
+[chksum] drhodT                                    -547430594117990373
+[chksum] drhodS                                   -7315875663657971406
+[chksum] drhodz_zt                                -7569912625476568247
+
+
+ ==================Summary of completed MOM integration=======================
+...
+
+
