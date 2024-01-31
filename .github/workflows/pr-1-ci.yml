@@ -5,11 +5,6 @@ on:
       - 'release-*'
       - 'dev-*'
     paths-ignore:
-      # These are ignored because we potentially modify and commit these files in this
-      # workflow. This would lead to an infinite loop of commits and checks.
-      # See `prevent-merge.yml`.
-      - testing/**
-      - VERSION
       # These are ignored because they don't have anything to do with the model itself
       - .github/**
       - tools/**

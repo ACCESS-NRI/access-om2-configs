@@ -1,0 +1,132 @@
+# This workflow is used to do a major/minor version bump to the `VERSION` file,
+# through a comment on the PR. It also commits and pushes the checksum file,
+# as this is the last stage before merging.
+# This is not done automatically because users may want to modify their config
+# based on the result of the reproducibility check.
+name: Confirm
+on:
+  issue_comment:
+    types:
+      - created
+      - edited
+env:
+  RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+jobs:
+  bump-version:
+    name: Bump VERSION
+    # Bump the `VERSION` file if the comment is made on a PR and starts with '!bump'
+    if: github.event.issue.pull_request && startsWith(github.event.comment.body, '!bump')
+    runs-on: ubuntu-latest
+    outputs:
+      # VERSION before being bumped
+      before: ${{ steps.bump.outputs.before }}
+      # VERSION after being bumped
+      after: ${{ steps.bump.outputs.after }}
+      # The type of bump - 'major' or 'minor'
+      type: ${{ steps.bump.outputs.type }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_COMMIT_CHECK_TOKEN }}
+
+      - name: Checkout Associated PR ${{ github.event.issue.number }}
+        run: gh pr checkout ${{ github.event.issue.number }}
+
+      - name: Get Type of Bump
+        id: type
+        run: |
+          if [[ "${{ contains(github.event.comment.body, 'minor') }}" == "true" ]]; then
+            echo "bump=minor" >> $GITHUB_OUTPUT
+          else if [[ ${{ contains(github.event.comment.body, 'major') }} == "true" ]]; then
+            echo "bump=major" >> $GITHUB_OUTPUT
+          else
+            echo "::error::Comment was not of the form: '!bump [major|minor]'"
+            exit 1
+          fi
+
+      - name: Bump
+        id: bump
+        run: |
+          version=$(cat VERSION)
+          regex="(.+-.+)-([0-9]+)\.([0-9]+)"
+          if [[ $version =~ $regex ]]; then
+            config_info="${BASH_REMATCH[1]}"
+            major_version="${BASH_REMATCH[2]}"
+            minor_version="${BASH_REMATCH[3]}"
+          else
+            echo "::error::Invalid version format in VERSION file!"
+            exit 1
+          fi
+
+          if [[ "${{ steps.type.outputs.bump }}" == "minor" ]]; then
+            new_minor_version=$((minor_version + 1))
+            new_version="${config_info}-${major_version}.${new_minor_version}"
+          else if [[ "${{ steps.type.outputs.bump }}" == "major" ]]; then
+            new_major_version=$((major_version + 1))
+            new_minor_version=0
+            new_version="${config_info}-${new_major_version}.${new_minor_version}"
+          fi
+
+          echo "before=$version" >> $GITHUB_OUTPUT
+          echo "after=$new_version" >> $GITHUB_OUTPUT
+
+  commit:
+    name: Commit VERSION and Checksum
+    needs:
+      - bump-version
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ secrets.GH_COMMIT_CHECK_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_COMMIT_CHECK_TOKEN }}
+
+      - name: Checkout Associated PR ${{ github.event.issue.number }}
+        run: gh pr checkout ${{ github.event.issue.number }}
+
+      - name: Update VERSION file
+        run: echo "${{ needs.bump-version.outputs.after }}" > VERSION
+
+      - name: Commit and Push Updates
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+          if [[ "${{ needs.bump-version.outputs.type }}" == "minor" ]]; then
+            git commit -am "Bumped VERSION to ${{ needs.bump-version.outputs.after }} as part of ${{ env.RUN_URL }}"
+          else if [[ "${{ needs.bump-version.outputs.type }}" == "major" ]]; then
+            git commit -am "Updated checksums and bumped VERSION to ${{ needs.bump-version.outputs.after }} as part of ${{ env.RUN_URL }}"
+          fi
+          git push
+
+      - name: Comment Success
+        env:
+          BODY: |
+            :white_check_mark: Version bumped from `${{ needs.bump-version.outputs.before }}` to `${{ needs.bump-version.outputs.after }}` :white_check_mark:
+        run:
+          gh pr comment --body "${{ env.BODY }}"
+
+  failure-notifier:
+    name: Failure Notifier
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_COMMIT_CHECK_TOKEN }}
+
+      - name: Checkout Associated PR ${{ github.event.issue.number }}
+        run: gh pr checkout ${{ github.event.issue.number }}
+
+      - name: Comment Failure
+        env:
+          BODY: |
+            :x: Failed to bump VERSION or commit changes, see ${{ env.RUN_URL }} :x:
+        run: gh pr comment --body "${{ env.BODY }}"

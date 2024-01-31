@@ -12,14 +12,12 @@ The Reproducibility CI is comprised of two main triggers: on Pull Request and Sc
 
 This pipeline uses the `pr-1-ci.yml` workflow for the majority of the PR lifecycle.
 
-It also uses `bump-version-file.yml`, `bump-tag.yml` and `prevent-merge.yml` to control supplementary actions like bumping the VERSION file correctly, updating the config tag on merge, and preventing merges when the VERSION file has not been updated in the PR.
+It also uses `pr-2-confirm.yml`, and `pr-3-bump-tag.yml` to control supplementary actions like bumping the VERSION file correctly and committing the checksums, and updating the config tag on merge.
 
 The overall pipeline looks like this:
 
-```txt
-PR: pr-1-ci.yml -> prevent-merge.yml -> bump-version-file.yml, then
-Merge: bump-tag.yml
-```
+PR: `pr-1-ci.yml` -> `pr-2-confirm.yml`, then
+Merge: `pr-3-bump-tag.yml`
 
 #### The PR CI Lifecycle: `pr-1-ci.yml`
 
@@ -41,28 +39,32 @@ Note that the `environment-name` refers to the [GitHub Actions Environment](http
 
 This job compares the checksum in the given `<model>-<config-tag>` artifact against the checksum in the 'ground truth' config tag, which is often the most recent config tag in the PR target branch.
 
-In the case where the checksums do not match, the CI pushes a commit to the PR with the updated checksum, and prevents merging until there is an appropriate `VERSION` bump. See the [section on the `prevent-merge.yml` workflow](#preventing-half-formed-prs-prevent-mergeyml).
+In the case where the checksums do not match, the CI pushes a commit to the PR with the updated checksum, and prevents merging until there is an appropriate `VERSION` bump. See the [section on the `pr-2-confirm.yml` workflow](#confirming-changes-pr-2-confirmyml).
 
 ##### `result`
 
 In this final stage, we add a comment to the Pull Request advising the creator of the result of the Repro check, as well as informing them of any actions that they need to take before the PR can be merged - most likely a required bump to the `VERSION` file, as is explained below.
 
-#### Updating `VERSION`: `bump-version-file.yml`
+#### Confirming Changes: `pr-2-confirm.yml`
 
 The `VERSION` file is used to source the new config tag when the PR is eventually merged.
 
-This workflow is triggered on the creation of a comment on the pull request, where the comment matches `!bump [major|minor]`. It is comprised of a single job, `bump`, which checks out the PR, gets the version inside the `VERSION` file, and updates it depending on the command in the PR:
+This workflow is triggered on the creation of a comment on the pull request, where the comment matches `!bump [major|minor]`. Overall, it bumps the `VERSION` file to the version that will be tagged on the merge commit, and pushes the updated checksums and `VERSION` file. It's jobs are explained below.
+
+##### `bump-version`
+
+This job checks out the PR, gets the version inside the `VERSION` file, and determines the appropriate bumped version, depending on the command in the PR:
 
 - `!bump major`: changes the version from `X.Y` ->`(X+1).0`. For example, `11.2` -> `12.0`.
 - `!bump minor`: changes the version from `X.Y` -> `X.(Y+1)`. For example, `11.2` -> `11.3`.
 
-This is then committed to the PR and the creator is notified that the version was successfully bumped. The PR is now mergable.
+##### `commit`
 
-#### Preventing Half-formed PRs: `prevent-merge.yml`
+This job updates and commits the bumped `VERSION` file, as well as modified checksums. These are then pushed onto the PR and the creator is notified that the version was successfully bumped. The PR is now mergable, unless...
 
-This workflow creates an automatic failure condition in the case where reproducibility has failed and the `CHECKSUM` has been automatically updated in the PR, but the `VERSION` hasn't been bumped yet.
+##### `failure-notifier`
 
-Once the appropriate `!bump` command has been issued, this check will pass, and the PR will be mergable.
+If there is an issue with the commit process, or the bumping of the `VERSION` file, the creator will be notified on the PR.
 
 #### The Last Step: `bump-tag.yml`
 
