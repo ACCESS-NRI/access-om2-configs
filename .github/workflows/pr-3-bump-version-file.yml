@@ -3,7 +3,7 @@
 # This is not done automatically because users may want to modify their config
 # based on the result of the reproducibility check.
 name: VERSION
-on:
+on:  # TODO: Can we get the name of the artifact from here?
   issue_comment:
     types:
       - created

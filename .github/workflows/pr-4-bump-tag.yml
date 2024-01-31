@@ -24,9 +24,9 @@ jobs:
         run: |
           VERSION_TAG=$(git tag -l $(cat VERSION))
           if [ -n "$VERSION_TAG" ]; then
+            echo "::warning::Tag $VERSION_TAG already exists. Skipping."
             echo "exists=true" >> $GITHUB_OUTPUT
           else
-            echo "::warning::Tag $VERSION_TAG already exists. Skipping."
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
 

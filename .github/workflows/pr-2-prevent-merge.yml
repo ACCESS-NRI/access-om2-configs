@@ -9,7 +9,7 @@ on:
     # want to rerun that workflow as it would lead to an infinite loop of commits and checks!
     paths:
       - VERSION
-      - CHECKSUM
+      - CHECKSUM  # TODO: Its a folder now
 jobs:
   version-status:
     name: Check VERSION Bump Status
