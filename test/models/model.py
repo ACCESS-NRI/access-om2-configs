@@ -1,11 +1,9 @@
 """Generic Model class"""
 from pathlib import Path
 
-from exp_test_helper import ExpTestHelper
-
 
 class Model(object):
-    def __init__(self, experiment: ExpTestHelper):
+    def __init__(self, experiment):
         self.experiment = experiment
 
     def extract_checksums(self, output_directory: Path = None):

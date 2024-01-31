@@ -4,14 +4,13 @@
     "description": "The checksums from the model output of Access-OM2 model run",
     "type": "object",
     "properties": {
-        "schema": {
-            "type": "string"
+        "schema_name": {
+            "type": "string",
+            "const": "access-om2-checksums.json"
         },
-        "version": {
-            "type": "string"
-        },
-        "description": {
-            "type": "string"
+        "schema_version": {
+            "type": "string",
+            "const": "access-om2-checksums-v1.0"
         },
         "output": {
             "type": "array",
@@ -33,9 +32,8 @@
         }
     },
     "required": [
-        "schema",
-        "version",
+        "schema_name",
+        "schema_version",
         "output"
-    ],
-    "additionalProperties": false
+    ]
 }

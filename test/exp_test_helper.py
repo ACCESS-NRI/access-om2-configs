@@ -40,9 +40,11 @@ class ExpTestHelper(object):
         ModelType = model_index[self.model_name]
         self.model = ModelType(self)
 
-    def extract_checksums(self, output_directory: Path = None):
+    def extract_checksums(self,
+                          output_directory: Path = None,
+                          schema_version: str = None):
         """Use model subclass to extract checksums from output"""
-        return self.model.extract_checksums(output_directory)
+        return self.model.extract_checksums(output_directory, schema_version)
 
     def has_run(self):
         """

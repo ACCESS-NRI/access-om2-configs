@@ -15,22 +15,33 @@ class TestBitReproducibility():
         """
         Test that a run reproduces historical checksums
         """
+        # Setup checksum output directory
+        # NOTE: The checksum output file is used as part of `repro-ci` workflow
+        output_dir = output_path / 'checksum' 
+        output_dir.mkdir(parents=True, exist_ok=True)
+        checksum_output_file =  output_dir / 'CHECKSUM'
+        if checksum_output_file.exists():
+            checksum_output_file.unlink()
+        
+        # Setup and run experiment 
         exp = setup_exp(control_path, output_path, "test_bit_repro_historical")
-
         exp.model.set_model_runtime()
         exp.setup_and_run()
 
         assert exp.model.output_exists()
-        checksums = exp.extract_checksums()
-
-        # Write out checksums to output file
-        # NOTE: This output file is used as part of `repro-ci` workflows
-        with open(output_path / 'CHECKSUM', 'w') as file:
-            yaml.dump(checksums, file, default_flow_style=False)
 
         # Check checksum against historical checksum file
         with open(checksum_path, 'r') as file:
             hist_checksum = yaml.safe_load(file)
+
+        # Parse checksums using the same version
+        hist_checksum_version = hist_checksum["schema_version"]
+
+        checksums = exp.extract_checksums(schema_version=hist_checksum_version)
+
+        # Write out checksums to output file
+        with open(checksum_output_file, 'w') as file:
+            yaml.dump(checksums, file, default_flow_style=False)
 
         assert hist_checksum == checksums
 
