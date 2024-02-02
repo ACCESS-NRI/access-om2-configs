@@ -66,9 +66,28 @@ and replace `<experiment>` with the branch name or tag of the experiment you wis
 
 This repository makes use of GitHub Actions to perform reproducibility checks on `ACCESS-OM2` config branches.
 
+### Config Branches
+
 Config branches are branches that store model configurations of the form: `release-<config>` or `dev-<config>`, for example: `release-1deg_jra55_iaf`.
 
-Config tags are specific tags on these branches, whose `MAJOR.MINOR` version compares the reproducibility of the models. Major version changes denote that a particular config tag breaks reproducibility, and a minor version change does not. These have the form: `release-<config>-<tag>`, such as `release-1deg_jra55_iaf-1.2`.
+### Config Tags
+
+Config tags are specific tags on config branches, whose `MAJOR.MINOR` version compares the reproducibility of the configurations. Major version changes denote that a particular config tag breaks reproducibility with tags before it, and a minor version change does not. These have the form: `release-<config>-<tag>`, such as `release-1deg_jra55_iaf-1.2`.
+
+So for example, say we have the following config tags:
+
+- `release-1deg_jra55_iaf-1.0`
+- `release-1deg_jra55_iaf-1.1`
+- `release-1deg_jra55_iaf-2.0`
+- `release-1deg_jra55_iaf-3.0`
+
+This means that `*-1.0` and `*-1.1` are configurations for that particular experiment type that are reproducible with each other, but not any others (namely, `*-2.0` or `*-3.0`).
+
+`*-2.0` is not reproducible with `*-1.0`, `*.1.1` or `*-3.0` configurations.
+
+Similarly, `*-3.0` is not reproducible with `*-1.0`, `*-1.1` or `*-2.0`.
+
+### Checks
 
 These checks are in the context of:
 
