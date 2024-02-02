@@ -47,7 +47,7 @@ jobs:
       contents: write
 
   check-checksum:
-    # Parse the test report, commit the new checksum if reproducibility fails
+    # Parse the test report and return pass/fail result
     name: Check and Update Checksum
     needs:
       - repro-ci
