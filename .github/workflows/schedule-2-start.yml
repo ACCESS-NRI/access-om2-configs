@@ -95,7 +95,7 @@ jobs:
             Failed Run Log: ${{ env.RUN_URL }}
             Experiment Location (Gadi): ${{ needs.repro-ci.outputs.experiment-location }}
 
-            Tagging @ACCESS-NRI/release
+            Tagging @ACCESS-NRI/model-release
         run: |
           gh issue create \
             --title "Scheduled Repro Check Failed for Config ${{ needs.check-checksum.outputs.compared-checksum-version }}" \
