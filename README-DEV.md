@@ -66,7 +66,7 @@ This job updates and commits the bumped `VERSION` file, as well as modified chec
 
 If there is an issue with the commit process, or the bumping of the `VERSION` file, the creator will be notified on the PR.
 
-#### The Last Step: `bump-tag.yml`
+#### The Last Step: `pr-3-bump-tag.yml`
 
 This workflow runs once the PR has been merged, taking the updated version in the `VERSION` file, and tagging the merge commit with this version.
 
