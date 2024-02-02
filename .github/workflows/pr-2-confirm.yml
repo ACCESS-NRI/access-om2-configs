@@ -46,6 +46,13 @@ jobs:
           fi
 
       - name: Bump
+        # Regarding the regex in the script: `(.+-.+)-([0-9]+)\.([0-9]+)` is broken down into:
+        # `(.+-.+)`: Which is the type and name separated by `-` (eg. `release-1deg_jra55_iaf`)
+        # `-`: Followed by a separation between config and version (eg. `-`)
+        # `([0-9]+)`: Major version (eg. `12`)
+        # `\.`: Version separator (eg. `.`)
+        # `([0-9]+)`: Minor version (eg. `1`)
+        # which would give `release-1deg_jra55_iaf-12.1`
         id: bump
         run: |
           version=$(cat VERSION)
