@@ -1,4 +1,4 @@
-# This workflow is used to do a major/minor version bump to the `VERSION` file,
+# This workflow is used to do a major/minor version bump to the `metadata.yaml` file,
 # through a comment on the PR. It also commits and pushes the checksum file,
 # as this is the last stage before merging.
 # This is not done automatically because users may want to modify their config
@@ -13,14 +13,14 @@ env:
   RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 jobs:
   bump-version:
-    name: Bump VERSION
-    # Bump the `VERSION` file if the comment is made on a PR and starts with '!bump'
+    name: Bump metadata.yaml
+    # Bump the `metadata.yaml` file if the comment is made on a PR and starts with '!bump'
     if: github.event.issue.pull_request && startsWith(github.event.comment.body, '!bump')
     runs-on: ubuntu-latest
     outputs:
-      # VERSION before being bumped
+      # metadata.yaml version before being bumped
       before: ${{ steps.bump.outputs.before }}
-      # VERSION after being bumped
+      # metadata.yaml version after being bumped
       after: ${{ steps.bump.outputs.after }}
       # The type of bump - 'major' or 'minor'
       type: ${{ steps.bump.outputs.type }}
@@ -46,23 +46,20 @@ jobs:
           fi
 
       - name: Bump
-        # Regarding the regex in the script: `(.+-.+)-([0-9]+)\.([0-9]+)` is broken down into:
-        # `(.+-.+)`: Which is the type and name separated by `-` (eg. `release-1deg_jra55_iaf`)
-        # `-`: Followed by a separation between config and version (eg. `-`)
+        # Regarding the regex in the script: `([0-9]+)\.([0-9]+)` is broken down into:
         # `([0-9]+)`: Major version (eg. `12`)
         # `\.`: Version separator (eg. `.`)
         # `([0-9]+)`: Minor version (eg. `1`)
-        # which would give `release-1deg_jra55_iaf-12.1`
+        # which would give `12.1`
         id: bump
         run: |
-          version=$(cat VERSION)
-          regex="(.+-.+)-([0-9]+)\.([0-9]+)"
+          version=$(yq '.version' metadata.yaml)
+          regex="([0-9]+)\.([0-9]+)"
           if [[ $version =~ $regex ]]; then
-            config_info="${BASH_REMATCH[1]}"
-            major_version="${BASH_REMATCH[2]}"
-            minor_version="${BASH_REMATCH[3]}"
+            major_version="${BASH_REMATCH[1]}"
+            minor_version="${BASH_REMATCH[2]}"
           else
-            echo "::error::Invalid version format in VERSION file!"
+            echo "::error::Invalid version format in metadata.yaml file!"
             exit 1
           fi
 
@@ -72,12 +69,12 @@ jobs:
             major_version=$((major_version + 1))
             minor_version=0
           fi
-          new_version="${config_info}-${major_version}.${minor_version}"
+          new_version="${major_version}.${minor_version}"
           echo "before=$version" >> $GITHUB_OUTPUT
           echo "after=$new_version" >> $GITHUB_OUTPUT
 
   commit:
-    name: Commit VERSION and Checksum
+    name: Commit metadata.yaml and Checksum
     needs:
       - bump-version
     runs-on: ubuntu-latest
@@ -110,9 +107,9 @@ jobs:
             --jq 'select(.[].headBranch == "${{ steps.pr.outputs.branch }}") |= sort_by(.updatedAt) | last | .databaseId')
           gh run download $associated_run -D ${{ env.ARTIFACT_LOCAL_LOCATION }}
 
-      - name: Update VERSION and Checksum files
+      - name: Update metadata.yaml and Checksum files
         run: |
-          echo "${{ needs.bump-version.outputs.after }}" > VERSION
+          yq -i '.version = "${{ needs.bump-version.outputs.after }}"' metadata.yaml
           mv ${{ env.ARTIFACT_LOCAL_LOCATION }}/testing testing
 
       - name: Commit and Push Updates
@@ -121,9 +118,9 @@ jobs:
           git config user.email github-actions@github.com
 
           if [[ "${{ needs.bump-version.outputs.type }}" == "minor" ]]; then
-            git commit -am "Bumped VERSION to ${{ needs.bump-version.outputs.after }} as part of ${{ env.RUN_URL }}"
+            git commit -am "Bumped version to ${{ needs.bump-version.outputs.after }} as part of ${{ env.RUN_URL }}"
           else if [[ "${{ needs.bump-version.outputs.type }}" == "major" ]]; then
-            git commit -am "Updated checksums and bumped VERSION to ${{ needs.bump-version.outputs.after }} as part of ${{ env.RUN_URL }}"
+            git commit -am "Updated checksums and bumped version to ${{ needs.bump-version.outputs.after }} as part of ${{ env.RUN_URL }}"
           fi
           git push
 

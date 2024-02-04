@@ -16,7 +16,8 @@ jobs:
   commit-check:
     name: Commit Check
     # We run this job to check if the current commit was done during a workflow run.
-    # Such as when 'github-actions' bumps the VERSION file or updates the CHECKSUM file.
+    # Such as when 'github-actions' bumps the metadata.yaml file or updates the checksums
+    # in the `testing` directory.
     # This is so we don't recursively commit and check infinitely during this workflow.
     runs-on: ubuntu-latest
     outputs:

@@ -12,7 +12,7 @@ The Reproducibility CI is comprised of two main triggers: on Pull Request and Sc
 
 This pipeline uses the `pr-1-ci.yml` workflow for the majority of the PR lifecycle.
 
-It also uses `pr-2-confirm.yml`, and `pr-3-bump-tag.yml` to control supplementary actions like bumping the VERSION file correctly and committing the checksums, and updating the config tag on merge.
+It also uses `pr-2-confirm.yml`, and `pr-3-bump-tag.yml` to control supplementary actions like bumping the `.version` field in the `metadata.yaml` file correctly and committing the checksums, and updating the config tag on merge.
 
 The overall pipeline looks like this:
 
@@ -27,7 +27,7 @@ This file does the bulk of the handling of the PR.
 
 The first job, `commit-check`, is used to short-circuit execution of this workflow in the case where the latest commit was authored by `github-actions`, so there isn't a recursive cycle of checking and adding to the PR.
 
-`github-actions` authors commits to the `CHECKSUM` and `VERSION` files in the PR.
+`github-actions` authors commit to the `testing` directory and `metadata.yaml` files in the PR.
 
 ##### `repro-ci`
 
@@ -39,36 +39,36 @@ Note that the `environment-name` refers to the [GitHub Actions Environment](http
 
 This job compares the checksum in the given `<model>-<config-tag>` artifact against the checksum in the 'ground truth' config tag, which is often the most recent config tag in the PR target branch.
 
-In the case where the checksums do not match, the CI pushes a commit to the PR with the updated checksum, and prevents merging until there is an appropriate `VERSION` bump. See the [section on the `pr-2-confirm.yml` workflow](#confirming-changes-pr-2-confirmyml).
+In the case where the checksums do not match, the CI pushes a commit to the PR with the updated checksum, and prevents merging until there is an appropriate version bump in the `metadata.yaml`. See the [section on the `pr-2-confirm.yml` workflow](#confirming-changes-pr-2-confirmyml).
 
 ##### `result`
 
-In this final stage, we add a comment to the Pull Request advising the creator of the result of the Repro check, as well as informing them of any actions that they need to take before the PR can be merged - most likely a required bump to the `VERSION` file, as is explained below.
+In this final stage, we add a comment to the Pull Request advising the creator of the result of the Repro check, as well as informing them of any actions that they need to take before the PR can be merged - most likely a required bump to the version in the `metadata.yaml` file, as is explained below.
 
 #### Confirming Changes: `pr-2-confirm.yml`
 
-The `VERSION` file is used to source the new config tag when the PR is eventually merged.
+The `.version` field in the `metadata.yaml` file is used to source the new config tag when the PR is eventually merged.
 
-This workflow is triggered on the creation of a comment on the pull request, where the comment matches `!bump [major|minor]`. Overall, it bumps the `VERSION` file to the version that will be tagged on the merge commit, and pushes the updated checksums and `VERSION` file. It's jobs are explained below.
+This workflow is triggered on the creation of a comment on the pull request, where the comment matches `!bump [major|minor]`. Overall, it bumps the `.version` field in the `metadata.yaml` file to the version that will be tagged on the merge commit, and pushes the updated checksums and `metadata.yaml` file. Its jobs are explained below.
 
 ##### `bump-version`
 
-This job checks out the PR, gets the version inside the `VERSION` file, and determines the appropriate bumped version, depending on the command in the PR:
+This job checks out the PR, gets the version inside the `metadata.yaml` file, and determines the appropriate bumped version, depending on the command in the PR:
 
 - `!bump major`: changes the version from `X.Y` ->`(X+1).0`. For example, `11.2` -> `12.0`.
 - `!bump minor`: changes the version from `X.Y` -> `X.(Y+1)`. For example, `11.2` -> `11.3`.
 
 ##### `commit`
 
-This job updates and commits the bumped `VERSION` file, as well as modified checksums. These are then pushed onto the PR and the creator is notified that the version was successfully bumped. The PR is now mergable, unless...
+This job updates and commits the bumped `metadata.yaml` file, as well as modified checksums. These are then pushed onto the PR and the creator is notified that the version was successfully bumped. The PR is now mergable, unless...
 
 ##### `failure-notifier`
 
-If there is an issue with the commit process, or the bumping of the `VERSION` file, the creator will be notified on the PR.
+If there is an issue with the commit process, or the bumping of the `metadata.yaml` file, the creator will be notified on the PR.
 
 #### The Last Step: `pr-3-bump-tag.yml`
 
-This workflow runs once the PR has been merged, taking the updated version in the `VERSION` file, and tagging the merge commit with this version.
+This workflow runs once the PR has been merged, taking the updated version in the `metadata.yaml` file, and tagging the merge commit with this version.
 
 ### Triggered as a Scheduled Check
 
