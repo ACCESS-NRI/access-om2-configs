@@ -114,8 +114,7 @@ jobs:
       - name: Update metadata.yaml and Checksum files
         run: |
           yq -i '.version = "${{ needs.bump-version.outputs.after }}"' metadata.yaml
-          artifact_name=$(ls ${{ env.ARTIFACT_LOCAL_LOCATION }})
-          mv ${{ env.ARTIFACT_LOCAL_LOCATION }}/${artifact_name}/ testing
+          cp --recursive --verbose ${{ env.ARTIFACT_LOCAL_LOCATION }}/*/* testing
 
       - name: Commit and Push Updates
         run: |
