@@ -125,7 +125,7 @@ jobs:
             :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against `${{ needs.check-checksum.outputs.compared-checksum-version }}` for this `Release` config. :white_check_mark:
             For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}, and the test results at ${{ needs.check-checksum.outputs.check-run-url }}.
             Consider bumping the minor version of `access-om2-configs` - to bump the version, comment `!bump minor`. The meaning of these version bumps is explained in the README.md, under `Config Tags`.
-        run: gh pr comment --body "${{ env.BODY }}"
+        run: gh pr comment --body '${{ env.BODY }}'
 
       - name: Successful Dev Comment
         if: needs.check-checksum.outputs.result == 'pass' && startsWith(github.base_ref, 'dev-')
@@ -133,7 +133,7 @@ jobs:
           BODY: |
             :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against `${{ needs.check-checksum.outputs.compared-checksum-version }}` for this `Dev` config. :white_check_mark:
             For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}, and the test results at ${{ needs.check-checksum.outputs.check-run-url }}.
-        run: gh pr comment --body "${{ env.BODY }}"
+        run: gh pr comment --body '${{ env.BODY }}'
 
       - name: Failed Release Comment
         if: needs.check-checksum.outputs.result == 'fail' && startsWith(github.base_ref, 'release-')
@@ -142,7 +142,7 @@ jobs:
             :x: The Bitwise Reproducibility check failed when comparing against `${{ needs.check-checksum.outputs.compared-checksum-version }}` for this `Release` config. :x:
             For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}, and the test results at ${{ needs.check-checksum.outputs.check-run-url }}.
             You must bump the major version of `access-om2-configs` before this PR is merged to account for this - to bump the version, comment `!bump major`. The meaning of these version bumps is explained in the README.md, under `Config Tags`.
-        run: gh pr comment --body "${{ env.BODY }}"
+        run: gh pr comment --body '${{ env.BODY }}'
 
       - name: Failed Dev Comment
         if: needs.check-checksum.outputs.result == 'fail' && startsWith(github.base_ref, 'dev-')
@@ -150,4 +150,4 @@ jobs:
           BODY: |
             :warning: The Bitwise Reproducibility check failed when comparing against `${{ needs.check-checksum.outputs.compared-checksum-version }}` for this `Dev` config. :warning:
             For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}, and the test results at ${{ needs.check-checksum.outputs.check-run-url }}.
-        run: gh pr comment --body "${{ env.BODY }}"
+        run: gh pr comment --body '${{ env.BODY }}'
