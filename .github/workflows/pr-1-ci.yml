@@ -41,7 +41,7 @@ jobs:
     with:
       model-name: access-om2
       environment-name: Gadi
-      config-tag: ${{ github.ref_name }}
+      config-tag: ${{ github.head_ref }}
       test-markers: checksum
     secrets: inherit
     permissions:
@@ -55,6 +55,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
+      checks: write
     env:
       TESTING_LOCAL_LOCATION: /opt/testing
     outputs:
@@ -76,7 +78,6 @@ jobs:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
           fetch-tags: true
-          token: ${{ secrets.GH_COMMIT_CHECK_TOKEN }}
 
       - name: Parse Test Report
         id: tests
@@ -114,6 +115,8 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Successful Release Comment
         if: needs.check-checksum.outputs.result == 'pass' && startsWith(github.base_ref, 'release-')

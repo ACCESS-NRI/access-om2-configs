@@ -10,6 +10,7 @@ on:
       - created
       - edited
 env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 jobs:
   bump-version:
@@ -23,7 +24,7 @@ jobs:
       # metadata.yaml version after being bumped
       after: ${{ steps.bump.outputs.after }}
       # The type of bump - 'major' or 'minor'
-      type: ${{ steps.bump.outputs.type }}
+      type: ${{ steps.type.outputs.bump }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -31,6 +32,9 @@ jobs:
           token: ${{ secrets.GH_COMMIT_CHECK_TOKEN }}
 
       - name: Checkout Associated PR ${{ github.event.issue.number }}
+        # Since the trigger for this workflow was on.issue_comment, we need
+        # to do a bit more wrangling to checkout the pull request
+        id: pr
         run: gh pr checkout ${{ github.event.issue.number }}
 
       - name: Get Type of Bump
@@ -38,7 +42,7 @@ jobs:
         run: |
           if [[ "${{ contains(github.event.comment.body, 'minor') }}" == "true" ]]; then
             echo "bump=minor" >> $GITHUB_OUTPUT
-          else if [[ ${{ contains(github.event.comment.body, 'major') }} == "true" ]]; then
+          elif [[ ${{ contains(github.event.comment.body, 'major') }} == "true" ]]; then
             echo "bump=major" >> $GITHUB_OUTPUT
           else
             echo "::error::Comment was not of the form: '!bump [major|minor]'"
@@ -65,7 +69,7 @@ jobs:
 
           if [[ "${{ steps.type.outputs.bump }}" == "minor" ]]; then
             minor_version=$((minor_version + 1))
-          else if [[ "${{ steps.type.outputs.bump }}" == "major" ]]; then
+          elif [[ "${{ steps.type.outputs.bump }}" == "major" ]]; then
             major_version=$((major_version + 1))
             minor_version=0
           fi
@@ -96,21 +100,22 @@ jobs:
         id: pr
         run: |
           gh pr checkout ${{ github.event.issue.number }}
-          echo "branch=$(git rev-parse --abbrev-ref HEAD) >> $GITHUB_OUTPUT
+          echo "branch=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_OUTPUT
 
       - name: Download Newly Created Checksum
         # Given the PR branch, we need to find the latest associated workflow run
         # on this branch we can then download the associated artifact
         run: |
           associated_run=$(gh run list \
-            --json='databaseId,headBranch,updatedAt' \
-            --jq 'select(.[].headBranch == "${{ steps.pr.outputs.branch }}") |= sort_by(.updatedAt) | last | .databaseId')
+            --json='databaseId,headBranch,updatedAt,status' \
+            --jq='[.[] | select(.headBranch == "${{ steps.pr.outputs.branch }}" and .status == "completed")] | sort_by(.updatedAt) | last | .databaseId')
           gh run download $associated_run -D ${{ env.ARTIFACT_LOCAL_LOCATION }}
 
       - name: Update metadata.yaml and Checksum files
         run: |
           yq -i '.version = "${{ needs.bump-version.outputs.after }}"' metadata.yaml
-          mv ${{ env.ARTIFACT_LOCAL_LOCATION }}/testing testing
+          artifact_name=$(ls ${{ env.ARTIFACT_LOCAL_LOCATION }})
+          mv ${{ env.ARTIFACT_LOCAL_LOCATION }}/${artifact_name}/ testing
 
       - name: Commit and Push Updates
         run: |
@@ -119,7 +124,7 @@ jobs:
 
           if [[ "${{ needs.bump-version.outputs.type }}" == "minor" ]]; then
             git commit -am "Bumped version to ${{ needs.bump-version.outputs.after }} as part of ${{ env.RUN_URL }}"
-          else if [[ "${{ needs.bump-version.outputs.type }}" == "major" ]]; then
+          elif [[ "${{ needs.bump-version.outputs.type }}" == "major" ]]; then
             git commit -am "Updated checksums and bumped version to ${{ needs.bump-version.outputs.after }} as part of ${{ env.RUN_URL }}"
           fi
           git push
@@ -128,18 +133,23 @@ jobs:
         env:
           BODY: |
             :white_check_mark: Version bumped from `${{ needs.bump-version.outputs.before }}` to `${{ needs.bump-version.outputs.after }}` :white_check_mark:
-        run:
-          gh pr comment --body "${{ env.BODY }}"
+        run: gh pr comment --body '${{ env.BODY }}'
 
   failure-notifier:
     name: Failure Notifier
     if: failure()
+    needs:
+      - commit
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GH_COMMIT_CHECK_TOKEN }}
 
       - name: Checkout Associated PR ${{ github.event.issue.number }}
         run: gh pr checkout ${{ github.event.issue.number }}
@@ -148,4 +158,4 @@ jobs:
         env:
           BODY: |
             :x: Failed to bump VERSION or commit changes, see ${{ env.RUN_URL }} :x:
-        run: gh pr comment --body "${{ env.BODY }}"
+        run: gh pr comment --body '${{ env.BODY }}'
