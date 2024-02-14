@@ -107,7 +107,7 @@ class TestBitReproducibility():
         matching_checksums = True
         for item in checksums_2d['output']:
             if item not in checksums_2x1d:
-                print("Inequal checksum:", item)
+                print("Unequal checksum:", item)
                 matching_checksums = False
 
         if not matching_checksums:
