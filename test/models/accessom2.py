@@ -1,5 +1,7 @@
 """Specific Access-OM2 Model setup and post-processing"""
 
+# NOTE for developers: `f90nml` is imported implicitly when this code is running in
+# the `Payu` conda environment.
 import f90nml
 import re
 from pathlib import Path
@@ -53,8 +55,12 @@ class AccessOm2(Model):
             output_filename = output_directory / 'access-om2.out'
         else:
             output_filename = self.output_file
-        
-        # Regex pattern
+
+        # Regex pattern for checksums in the `<model>.out` file
+        # Examples:
+        # [chksum] ht              -2390360641069121536
+        # [chksum] hu               6389284661071183872
+        # [chksum] htr               928360042410663049
         pattern = r'\[chksum\]\s+(.+)\s+(-?\d+)'
 
         output_checksums = []
@@ -87,6 +93,6 @@ class AccessOm2(Model):
         # TODO:
         # Add "schema": f"{BASE_SCHEMA_URL}/{schema_version}/{SCHEMA_NAME}""
         # Could remove the schema_name and just keep schema_version for
-        # easy extraction of version. 
+        # easy extraction of version.
 
         return checksums
