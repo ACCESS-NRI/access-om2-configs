@@ -17,13 +17,13 @@ class TestBitReproducibility():
         """
         # Setup checksum output directory
         # NOTE: The checksum output file is used as part of `repro-ci` workflow
-        output_dir = output_path / 'checksum' 
+        output_dir = output_path / 'checksum'
         output_dir.mkdir(parents=True, exist_ok=True)
-        checksum_output_file =  output_dir / 'CHECKSUM'
+        checksum_output_file =  output_dir / 'historical-3hr-checksum.yaml'
         if checksum_output_file.exists():
             checksum_output_file.unlink()
-        
-        # Setup and run experiment 
+
+        # Setup and run experiment
         exp = setup_exp(control_path, output_path, "test_bit_repro_historical")
         exp.model.set_model_runtime()
         exp.setup_and_run()
