@@ -8,20 +8,11 @@ from pathlib import Path
 
 from models.model import Model
 
-SCHEMA_NAME = "access-om2-checksums.json"
-#TODO:
-# Depending on where/how schema is stored and versioned:
-#BASE_SCHEMA_URL = "https://raw.githubusercontent.com/ACCESS-NRI/schema"
+BASE_SCHEMA_URL = "https://raw.githubusercontent.com/ACCESS-NRI/schema/main/au.org.access-nri/model/access-om2/experiment/reproducibility/checksums"
 
-# Add to schema properties:
-# "schema": {
-#     "type": "string",
-#     "const": "https://raw.githubusercontent.com/ACCESS-NRI/schema/access-om2-checksums-v1.0/access-om2-checksums.json"
-# }
-
-SCHEMA_VERSION_v1_0 = "access-om2-checksums-v1.0"
-DEFAULT_SCHEMA_VERSION = SCHEMA_VERSION_v1_0
-SUPPORTED_SCHEMA_VERSIONS = [SCHEMA_VERSION_v1_0]
+SCHEMA_VERSION_1_0_0 = "1-0-0"
+DEFAULT_SCHEMA_VERSION = SCHEMA_VERSION_1_0_0
+SUPPORTED_SCHEMA_VERSIONS = [SCHEMA_VERSION_1_0_0]
 
 class AccessOm2(Model):
     def __init__(self, experiment):
@@ -80,19 +71,14 @@ class AccessOm2(Model):
         if schema_version is None:
             schema_version = DEFAULT_SCHEMA_VERSION
 
-        if schema_version == SCHEMA_VERSION_v1_0:
+        if schema_version == SCHEMA_VERSION_1_0_0:
             checksums = {
-                "schema_name": SCHEMA_NAME,
+                "schema": f"{BASE_SCHEMA_URL}/{schema_version}.json",
                 "schema_version": schema_version,
                 "output": output_checksums
             }
         else:
             raise NotImplementedError(
                 f"Unsupported checksum schema version: {schema_version}")
-
-        # TODO:
-        # Add "schema": f"{BASE_SCHEMA_URL}/{schema_version}/{SCHEMA_NAME}""
-        # Could remove the schema_name and just keep schema_version for
-        # easy extraction of version.
 
         return checksums

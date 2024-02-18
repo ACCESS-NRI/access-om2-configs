@@ -6,3 +6,4 @@ access-om2.out
 *.[eo][0-9]*
 .DS_Store
 ._*
+.vscode
