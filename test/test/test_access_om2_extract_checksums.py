@@ -9,7 +9,6 @@ from models.accessom2 import AccessOm2
 from models.accessom2 import SUPPORTED_SCHEMA_VERSIONS
 
 @pytest.mark.parametrize("version", SUPPORTED_SCHEMA_VERSIONS)
-@pytest.mark.skip(reason="This test shouldn't run as part of the normal test suite - it is the test for the tests")
 @pytest.mark.test
 def test_extract_checksums(version):
     # Mock ExpTestHelper
