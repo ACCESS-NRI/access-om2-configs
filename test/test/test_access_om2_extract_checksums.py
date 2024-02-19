@@ -26,7 +26,7 @@ def test_extract_checksums(version):
     assert checksums["schema_version"] == version
 
     # Check the entire checksum file is expected
-    with open(f'test/resources/access-om2-checksums-1-0-0.yaml', 'r') as file:
+    with open(f'test/test/resources/access-om2-checksums-1-0-0.yaml', 'r') as file:
         expected_checksums = yaml.safe_load(file)
 
     assert checksums == expected_checksums
