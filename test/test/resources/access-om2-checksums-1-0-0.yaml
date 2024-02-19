@@ -181,5 +181,5 @@ output:
   field: drhodS
 - checksum: '-7569912625476568247'
   field: drhodz_zt
-schema_name: access-om2-checksums.json
-schema_version: access-om2-checksums-v1.0
+schema: https://raw.githubusercontent.com/ACCESS-NRI/schema/main/au.org.access-nri/model/access-om2/experiment/reproducibility/checksums/1-0-0.json
+schema_version: 1-0-0

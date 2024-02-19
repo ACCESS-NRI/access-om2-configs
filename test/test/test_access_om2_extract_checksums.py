@@ -28,15 +28,13 @@ def test_extract_checksums(version):
     assert checksums["schema_version"] == version
 
     # Check the entire checksum file is expected
-    with open(f'test/resources/{version}.yaml', 'r') as file:
+    with open(f'test/resources/access-om2-checksums-1-0-0.yaml', 'r') as file:
         expected_checksums = yaml.safe_load(file)
 
     assert checksums == expected_checksums
 
     # Validate checksum file with schema
-    schema = get_schema(checksums["schema"])
-    with open(f'{BASE_SCHEMA_URL}/{version}.json') as f:
-        schema = json.load(f)
+    schema = get_schema_from_url(expected_checksums["schema"])
 
     # Validate checksums against schema
     jsonschema.validate(instance=checksums, schema=schema)
