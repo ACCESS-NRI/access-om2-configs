@@ -60,3 +60,6 @@ def pytest_configure(config):
     config.addinivalue_line(
         "markers", "checksum: mark tests to run as part of reproducibility CI tests"
     )
+    config.addinivalue_line(
+        "markers", "test: mark tests as testing test functionality"
+    )

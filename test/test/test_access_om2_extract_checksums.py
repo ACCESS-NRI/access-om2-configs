@@ -1,21 +1,20 @@
 import pytest
-import json
 import requests
 import yaml
 import jsonschema
 from pathlib import Path
 from unittest.mock import Mock
 
-# import jsonschema
-
 from models.accessom2 import AccessOm2
-from models.accessom2 import BASE_SCHEMA_URL, SUPPORTED_SCHEMA_VERSIONS
+from models.accessom2 import SUPPORTED_SCHEMA_VERSIONS
 
 @pytest.mark.parametrize("version", SUPPORTED_SCHEMA_VERSIONS)
+@pytest.mark.skip(reason="This test shouldn't run as part of the normal test suite - it is the test for the tests")
+@pytest.mark.test
 def test_extract_checksums(version):
     # Mock ExpTestHelper
     mock_experiment = Mock()
-    mock_experiment.output000 = Path('test/resources')
+    mock_experiment.output000 = Path('test/test/resources')
     mock_experiment.control_path = Path('test/tmp')
 
     model = AccessOm2(mock_experiment)
