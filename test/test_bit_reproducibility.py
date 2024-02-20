@@ -6,6 +6,7 @@ from pathlib import Path
 
 from exp_test_helper import setup_exp
 
+from models.accessom2 import DEFAULT_SCHEMA_VERSION
 
 class TestBitReproducibility():
 
@@ -30,20 +31,26 @@ class TestBitReproducibility():
 
         assert exp.model.output_exists()
 
-        # Check checksum against historical checksum file
-        with open(checksum_path, 'r') as file:
-            hist_checksum = yaml.safe_load(file)
+        #Check checksum against historical checksum file
+        hist_checksums = None
+        hist_checksums_schema_version = None
 
-        # Parse checksums using the same version
-        hist_checksum_version = hist_checksum["schema_version"]
+        if not checksum_path.exists():  # AKA, if the config branch doesn't have a checksum, or the path is misconfigured
+            hist_checksums_schema_version = exp.model.default_schema_version
+        else:  # we can use the historic-3hr-checksum that is in the testing directory
+            with open(checksum_path, 'r') as file:
+                hist_checksums = yaml.safe_load(file)
 
-        checksums = exp.extract_checksums(schema_version=hist_checksum_version)
+                # Parse checksums using the same version
+                hist_checksums_schema_version = hist_checksums["schema_version"]
+
+        checksums = exp.extract_checksums(schema_version=hist_checksums_schema_version)
 
         # Write out checksums to output file
         with open(checksum_output_file, 'w') as file:
             yaml.dump(checksums, file, default_flow_style=False)
 
-        assert hist_checksum == checksums
+        assert hist_checksums == checksums, f"Checksums were not equal. The new checksums have been written to {checksum_output_file}."
 
     @pytest.mark.slow
     def test_bit_repro_repeat(self, output_path: Path, control_path: Path):

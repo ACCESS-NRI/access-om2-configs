@@ -21,6 +21,7 @@ class AccessOm2(Model):
 
         self.accessom2_config = experiment.control_path / 'accessom2.nml'
         self.ocean_config = experiment.control_path / 'ocean' / 'input.nml'
+        self.default_schema_version = DEFAULT_SCHEMA_VERSION
 
     def set_model_runtime(self,
                           years: int = 0,
