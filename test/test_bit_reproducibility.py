@@ -1,6 +1,6 @@
 """Tests for model reproducibility"""
 
-import yaml
+import json
 import pytest
 from pathlib import Path
 
@@ -18,7 +18,7 @@ class TestBitReproducibility():
         # NOTE: The checksum output file is used as part of `repro-ci` workflow
         output_dir = output_path / 'checksum'
         output_dir.mkdir(parents=True, exist_ok=True)
-        checksum_output_file =  output_dir / 'historical-3hr-checksum.yaml'
+        checksum_output_file =  output_dir / 'historical-3hr-checksum.json'
         if checksum_output_file.exists():
             checksum_output_file.unlink()
 
@@ -37,7 +37,7 @@ class TestBitReproducibility():
             hist_checksums_schema_version = exp.model.default_schema_version
         else:  # we can use the historic-3hr-checksum that is in the testing directory
             with open(checksum_path, 'r') as file:
-                hist_checksums = yaml.safe_load(file)
+                hist_checksums = json.load(file)
 
                 # Parse checksums using the same version
                 hist_checksums_schema_version = hist_checksums["schema_version"]
@@ -46,7 +46,7 @@ class TestBitReproducibility():
 
         # Write out checksums to output file
         with open(checksum_output_file, 'w') as file:
-            yaml.dump(checksums, file, default_flow_style=False)
+            json.dump(checksums, file)
 
         assert hist_checksums == checksums, f"Checksums were not equal. The new checksums have been written to {checksum_output_file}."
 
@@ -117,11 +117,11 @@ class TestBitReproducibility():
 
         if not matching_checksums:
             # Write checksums out to file
-            with open(output_path / 'restart-1d-0-checksum.yaml', 'w') as file:
-                yaml.dump(checksums_1d_0, file, default_flow_style=False)
-            with open(output_path / 'restart-1d-1-checksum.yaml', 'w') as file:
-                yaml.dump(checksums_1d_1, file, default_flow_style=False)
-            with open(output_path / 'restart-2d-0-checksum.yaml', 'w') as file:
-                yaml.dump(checksums_2d, file, default_flow_style=False)
+            with open(output_path / 'restart-1d-0-checksum.json', 'w') as file:
+                json.dump(checksums_1d_0, file)
+            with open(output_path / 'restart-1d-1-checksum.json', 'w') as file:
+                json.dump(checksums_1d_1, file)
+            with open(output_path / 'restart-2d-0-checksum.json', 'w') as file:
+                json.dump(checksums_2d, file)
 
         assert matching_checksums

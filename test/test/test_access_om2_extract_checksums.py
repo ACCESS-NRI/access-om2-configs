@@ -1,6 +1,6 @@
 import pytest
 import requests
-import yaml
+import json
 import jsonschema
 from pathlib import Path
 from unittest.mock import Mock
@@ -26,8 +26,8 @@ def test_extract_checksums(version):
     assert checksums["schema_version"] == version
 
     # Check the entire checksum file is expected
-    with open(f'test/test/resources/access-om2-checksums-1-0-0.yaml', 'r') as file:
-        expected_checksums = yaml.safe_load(file)
+    with open(f'test/test/resources/access-om2-checksums-1-0-0.json', 'r') as file:
+        expected_checksums = json.load(file)
 
     assert checksums == expected_checksums
 

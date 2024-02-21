@@ -33,7 +33,7 @@ def checksum_path(request, control_path):
     path = request.config.getoption('--checksum-path')
     if path is None:
         # Set default to checksum stored on model configuration
-        path = control_path / 'testing' / 'checksum' / 'historical-3hr-checksum.yaml'
+        path = control_path / 'testing' / 'checksum' / 'historical-3hr-checksum.json'
     return Path(path)
 
 
