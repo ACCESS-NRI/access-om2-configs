@@ -55,7 +55,7 @@ class AccessOm2(Model):
         # [chksum] htr               928360042410663049
         pattern = r'\[chksum\]\s+(.+)\s+(-?\d+)'
 
-        output_checksums = []
+        output_checksums: dict[str, any] = {}
         with open(output_filename) as f:
             for line in f:
                 # Check for checksum pattern match
@@ -64,17 +64,13 @@ class AccessOm2(Model):
                     # Extract values
                     field = match.group(1).strip()
                     checksum = match.group(2).strip()
-                    output_checksums.append({
-                        "field": field,
-                        "checksum": checksum,
-                    })
+                    output_checksums[field] = checksum
 
         if schema_version is None:
             schema_version = DEFAULT_SCHEMA_VERSION
 
         if schema_version == SCHEMA_VERSION_1_0_0:
             checksums = {
-                "schema": f"{BASE_SCHEMA_URL}/{schema_version}.json",
                 "schema_version": schema_version,
                 "output": output_checksums
             }

@@ -6,8 +6,6 @@ from pathlib import Path
 
 from exp_test_helper import setup_exp
 
-from models.accessom2 import DEFAULT_SCHEMA_VERSION
-
 class TestBitReproducibility():
 
     @pytest.mark.checksum
