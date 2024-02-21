@@ -2,6 +2,7 @@
 
 # NOTE for developers: `f90nml` is imported implicitly when this code is running in
 # the `Payu` conda environment.
+from collections import defaultdict
 import f90nml
 import re
 from pathlib import Path
@@ -55,7 +56,15 @@ class AccessOm2(Model):
         # [chksum] htr               928360042410663049
         pattern = r'\[chksum\]\s+(.+)\s+(-?\d+)'
 
-        output_checksums: dict[str, any] = {}
+        # checksums outputted in form:
+        # {
+        #   "ht": ["-2390360641069121536"],
+        #   "hu": ["6389284661071183872"],
+        #   "htr": ["928360042410663049"]
+        # }
+        # with potential for multiple checksums for one key.
+        output_checksums: dict[str, list[any]] = defaultdict(list)
+
         with open(output_filename) as f:
             for line in f:
                 # Check for checksum pattern match
@@ -64,7 +73,8 @@ class AccessOm2(Model):
                     # Extract values
                     field = match.group(1).strip()
                     checksum = match.group(2).strip()
-                    output_checksums[field] = checksum
+
+                    output_checksums[field].append(checksum)
 
         if schema_version is None:
             schema_version = DEFAULT_SCHEMA_VERSION
@@ -72,7 +82,7 @@ class AccessOm2(Model):
         if schema_version == SCHEMA_VERSION_1_0_0:
             checksums = {
                 "schema_version": schema_version,
-                "output": output_checksums
+                "output": dict(output_checksums)
             }
         else:
             raise NotImplementedError(
