@@ -1,0 +1,41 @@
+# This workflow is used to convert the `.version` in the `metadata.yaml` file into a valid `git tag` on push to `main`.
+# We use the `.version` field in that file to denote the version of the config once a PR is merged.
+name: Bump Tag
+on:
+  push:
+    branches:
+      - 'release-*'
+    paths:
+      - 'metadata.yaml'
+jobs:
+  tag-update:
+    name: Check and Update Tag
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-tags: true
+
+      - name: Existing Tag Check
+        # Check if the tag already exists, if it does, we don't want to move it.
+        id: tag
+        run: |
+          VERSION_TAG=${{ github.ref_name }}-$(yq '.version' metadata.yaml)
+          VERSION_TAG_ON_GIT=$(git tag -l $VERSION_TAG)
+          if [ -n "$VERSION_TAG_ON_GIT" ]; then
+            echo "::warning::Tag $VERSION_TAG already exists. Skipping."
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "version=$VERSION_TAG" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update Tag
+        if: steps.tag.outputs.exists == 'false'
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git tag ${{ steps.tag.outputs.version }}
+          git push --tags
