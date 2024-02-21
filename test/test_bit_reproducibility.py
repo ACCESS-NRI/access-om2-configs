@@ -46,7 +46,7 @@ class TestBitReproducibility():
 
         # Write out checksums to output file
         with open(checksum_output_file, 'w') as file:
-            json.dump(checksums, file)
+            json.dump(checksums, file, indent=2)
 
         assert hist_checksums == checksums, f"Checksums were not equal. The new checksums have been written to {checksum_output_file}."
 
@@ -118,10 +118,10 @@ class TestBitReproducibility():
         if not matching_checksums:
             # Write checksums out to file
             with open(output_path / 'restart-1d-0-checksum.json', 'w') as file:
-                json.dump(checksums_1d_0, file)
+                json.dump(checksums_1d_0, file, indent=2)
             with open(output_path / 'restart-1d-1-checksum.json', 'w') as file:
-                json.dump(checksums_1d_1, file)
+                json.dump(checksums_1d_1, file, indent=2)
             with open(output_path / 'restart-2d-0-checksum.json', 'w') as file:
-                json.dump(checksums_2d, file)
+                json.dump(checksums_2d, file, indent=2)
 
         assert matching_checksums
