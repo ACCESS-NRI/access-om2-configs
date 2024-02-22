@@ -107,3 +107,7 @@ If the reproduction check fails during a scheduled check, something is wrong. Th
 #### Config Validation: `validate-json.yml`
 
 This workflow is used to check that modifications to `*.json` files are in line with the associated `*.schema.json`.
+
+#### Initial Checksum Creation: `generate-initial-checksums.yml`
+
+This `workflow_dispatch`-triggered workflow generates checksums of a given config branch, and optionally commits them. This is useful for generating checksums for an entirely new config branch, so the workflows above have something to compare against.
