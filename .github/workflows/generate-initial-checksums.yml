@@ -1,0 +1,35 @@
+name: Generate Initial Checksums
+on:
+  workflow_dispatch:
+    inputs:
+      config-branch-name:
+        type: string
+        required: true
+        description: The configuration branch that will be run that will generate the checksums.
+      commit-checksums-to-target-branch:
+        type: boolean
+        required: true
+        description: Whether to commit the checksums to the target branch once generated.
+      target-branch-name:
+        type: string
+        required: false
+        description: "If `commit-checksums-to-target-branch`: Which branch to commit the generated checksums."
+      target-branch-checksum-location:
+        type: string
+        required: false
+        default: ./testing/checksums
+        description: "If `commit-checksums-to-target-branch`: Where in the repository the generated checksums should be committed to."
+jobs:
+  generate-checksums:
+    name: Generate Checksums
+    uses: access-nri/reproducibility/.github/workflows/generate-initial-checksums.yml@main
+    with:
+      model-name: access-om2
+      config-branch-name: ${{ inputs.config-branch-name }}
+      commit-checksums-to-target-branch: ${{ inputs.commit-checksums-to-target-branch }}
+      target-branch-name: ${{ inputs.target-branch-name }}
+      target-branch-checksum-location: ${{ inputs.target-branch-checksum-location }}
+      environment-name: "Gadi Initial Checksum"
+    permissions:
+      contents: write
+    secrets: inherit
