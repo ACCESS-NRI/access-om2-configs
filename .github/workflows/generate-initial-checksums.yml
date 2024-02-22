@@ -19,6 +19,10 @@ on:
         required: false
         default: ./testing/checksums
         description: "If `commit-checksums-to-target-branch`: Where in the repository the generated checksums should be committed to."
+      target-branch-checksum-tag:
+        type: string
+        required: false
+        description: "If `commit-checksums-to-target-branch`: An optional tag to attach to the committed checksums"
 jobs:
   generate-checksums:
     name: Generate Checksums
@@ -29,6 +33,7 @@ jobs:
       commit-checksums-to-target-branch: ${{ inputs.commit-checksums-to-target-branch }}
       target-branch-name: ${{ inputs.target-branch-name }}
       target-branch-checksum-location: ${{ inputs.target-branch-checksum-location }}
+      target-branch-checksum-tag: "${{ inputs.config-branch-name }}-1.0"
       environment-name: "Gadi Initial Checksum"
     permissions:
       contents: write
