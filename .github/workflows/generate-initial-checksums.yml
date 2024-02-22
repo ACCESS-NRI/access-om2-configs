@@ -6,23 +6,19 @@ on:
         type: string
         required: true
         description: The configuration branch that will be run that will generate the checksums.
-      commit-checksums-to-target-branch:
+      commit-checksums:
         type: boolean
         required: true
         description: Whether to commit the checksums to the target branch once generated.
-      target-branch-name:
-        type: string
-        required: false
-        description: "If `commit-checksums-to-target-branch`: Which branch to commit the generated checksums."
-      target-branch-checksum-location:
+      committed-checksum-location:
         type: string
         required: false
         default: ./testing/checksums
-        description: "If `commit-checksums-to-target-branch`: Where in the repository the generated checksums should be committed to."
-      target-branch-checksum-tag:
+        description: "If `commit-checksums`: Where in the repository the generated checksums should be committed to."
+      committed-checksum-tag:
         type: string
         required: false
-        description: "If `commit-checksums-to-target-branch`: An optional tag to attach to the committed checksums"
+        description: "If `commit-checksums`: An optional tag to attach to the committed checksums"
 jobs:
   generate-checksums:
     name: Generate Checksums
@@ -30,10 +26,9 @@ jobs:
     with:
       model-name: access-om2
       config-branch-name: ${{ inputs.config-branch-name }}
-      commit-checksums-to-target-branch: ${{ inputs.commit-checksums-to-target-branch }}
-      target-branch-name: ${{ inputs.target-branch-name }}
-      target-branch-checksum-location: ${{ inputs.target-branch-checksum-location }}
-      target-branch-checksum-tag: "${{ inputs.config-branch-name }}-1.0"
+      commit-checksums: ${{ inputs.commit-checksums }}
+      committed-checksum-location: ${{ inputs.committed-checksum-location }}
+      committed-checksum-tag: "${{ inputs.config-branch-name }}-1.0"
       environment-name: "Gadi Initial Checksum"
     permissions:
       contents: write
