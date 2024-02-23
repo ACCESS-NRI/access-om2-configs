@@ -13,12 +13,8 @@ on:
       committed-checksum-location:
         type: string
         required: false
-        default: ./testing/checksums
+        default: ./testing/checksum
         description: "If `commit-checksums`: Where in the repository the generated checksums should be committed to."
-      committed-checksum-tag:
-        type: string
-        required: false
-        description: "If `commit-checksums`: An optional tag to attach to the committed checksums"
 jobs:
   generate-checksums:
     name: Generate Checksums
