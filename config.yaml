@@ -15,13 +15,13 @@ jobname: 025deg_jra55_iaf
 # Model configuration
 name: common
 model: access-om2
-input: /g/data/ik11/inputs/access-om2/input_20201102/common_025deg_jra55
+input: /g/data/ik11/inputs/access-om2/input_20230515_025deg_topog/common_025deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
       exe: /g/data/ik11/inputs/access-om2/bin/yatm_d750b4b.exe
       input:
-            - /g/data/ik11/inputs/access-om2/input_20201102/yatm_025deg
+            - /g/data/ik11/inputs/access-om2/input_20230515_025deg_topog/yatm_025deg
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/rsds/gr/v20190429
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/rlds/gr/v20190429
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/prra/gr/v20190429
@@ -38,13 +38,13 @@ submodels:
     - name: ocean
       model: mom
       exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM_730f0bf_libaccessom2_d750b4b.x
-      input: /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg
-      ncpus: 1455
+      input: /g/data/ik11/inputs/access-om2/input_20230515_025deg_topog/mom_025deg
+      ncpus: 1456
 
     - name: ice
       model: cice5
       exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_1440x1080_480p_edcfa6f_libaccessom2_d750b4b.exe
-      input: /g/data/ik11/inputs/access-om2/input_20201102/cice_025deg
+      input: /g/data/ik11/inputs/access-om2/input_20230515_025deg_topog/cice_025deg
       ncpus: 361
 
 # Collation
