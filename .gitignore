@@ -7,3 +7,4 @@ access-om2.out
 .DS_Store
 ._*
 .vscode
+.pytest_cache
