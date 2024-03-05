@@ -31,12 +31,62 @@ jobs:
         id: head-commit
         run: echo "authorship=$(git log -1 --pretty=format:'%an')" >> $GITHUB_OUTPUT
 
+  branch-check:
+    name: PR Source Branch Check
+    # This check is run to confirm that the source branch is of the form `dev-<config>`
+    # and the target branch is of the form `release-<config>`. We are being especially
+    # concerned with branch names because deployment to GitHub Environments can only
+    # be done on source branches with a certain pattern. See #20.
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Check Source
+        run: |
+          if [[ "${{ startsWith(github.head_ref, 'dev-') }}" == "false" ]]; then
+            echo "::error::Source branch ${{ github.head_ref }} doesn't match 'dev-*'"
+            exit 1
+          fi
+
+      - name: Check Target
+        run: |
+          if [[ "${{ startsWith(github.base_ref, 'release-') }}" == "false" ]]; then
+            echo "::error::Target branch ${{ github.base_ref }} doesn't match 'release-*'"
+            exit 1
+          fi
+
+      - name: Compare Source and Target Config Names
+        # In this step, we cut the 'dev-' and 'release-' to compare config names directly.
+        run: |
+          source=$(cut --delimiter '-' --field 2- <<< "${{ github.head_ref }}")
+          target=$(cut --delimiter '-' --field 2- <<< "${{ github.base_ref }}")
+          if [[ "${source}" != "${target}" ]]; then
+            echo "::error::Config name of Source branch '${source}' does not match Target branch '${target}'"
+            exit 1
+          fi
+
+      - name: Failure Notifier
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          BODY: |
+            :x: Automated testing cannot be run on this branch :x:
+            Source and Target branches must be of the form `dev-<config>` and `release-<config>` respectively, and `<config>` must match between them.
+            Rename the Source branch or check the Target branch, and try again.
+        run: gh pr comment --body '${{ env.BODY }}'
+
   repro-ci:
     # run the given config on the deployment GitHub Environment (`environment-name`) and
     # upload the checksums and test details
     needs:
       - commit-check
-    if: needs.commit-check.outputs.authorship != 'github-actions'
+      - branch-check
+    if: needs.commit-check.outputs.authorship != 'github-actions' && needs.branch-check.result == 'success'
     uses: access-nri/reproducibility/.github/workflows/checks.yml@main
     with:
       model-name: access-om2
