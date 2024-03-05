@@ -62,8 +62,8 @@ jobs:
       - name: Compare Source and Target Config Names
         # In this step, we cut the 'dev-' and 'release-' to compare config names directly.
         run: |
-          source=$(cut --delimiter '-' --field 2 <<< "${{ github.head_ref }}")
-          target=$(cut --delimiter '-' --field 2 <<< "${{ github.base_ref }}")
+          source=$(cut --delimiter '-' --field 2- <<< "${{ github.head_ref }}")
+          target=$(cut --delimiter '-' --field 2- <<< "${{ github.base_ref }}")
           if [[ "${source}" != "${target}" ]]; then
             echo "::error::Config name of Source branch '${source}' does not match Target branch '${target}'"
             exit 1
