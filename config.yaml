@@ -18,8 +18,10 @@ sync:
     enable: False # set path below and change to true
     path: none # Set to location on /g/data or a remote server and path (rsync syntax)
     exclude:
-      - '*.nc.*'
-      - 'iceh.????-??-??.nc'
+      - *.nc.*              # uncollated MOM outputs (eg if collation is slow or fails)
+      - iceh.????-??-??.nc  # individual daily cice outputs - concatenated by sync_data.sh
+      - *-DELETE            # deletable files from daily ice concatenation
+      - *-IN-PROGRESS       # temp files from daily ice concatenation
 
 # Model configuration
 name: common
