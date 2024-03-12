@@ -39,7 +39,7 @@ submodels:
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.025deg/2020.11.02/topog.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.025deg/2020.11.02/ocean_mask.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/vertical/global.025deg/2020.11.02/ocean_vgrid.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/processor_masks/global.025deg/216.16x15/2020.05.30/ocean_mask_table
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/processor_masks/global.025deg/1455.48x40/2020.05.30/ocean_mask_table
           - /g/data/vk83/experiments/inputs/access-om2/ocean/chlorophyll/global.025deg/2020.05.30/chl.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/initial_conditions/global.025deg/2020.10.22/ocean_temp_salt.res.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.025deg/2020.05.30/tideamp.nc
