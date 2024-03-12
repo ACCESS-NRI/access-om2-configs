@@ -2,20 +2,20 @@ format: yamanifest
 version: 1.0
 ---
 work/INPUT/rmp_jra55_cice_1st_conserve.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/common_025deg_jra55/rmp_jra55_cice_1st_conserve.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.025deg/2023.05.15/rmp_jra55_cice_1st_conserve.nc
   hashes:
-    binhash: 820a87212ae71e99603e7ffcf0957ce5
-    md5: f9c1da1671e0281c6696a3e5daf7d927
+    binhash: 355adca71729a204ac35c82b2af1eb18
+    md5: a5ab556badacc038c034ce088745a511
 work/INPUT/rmp_jra55_cice_2nd_conserve.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/common_025deg_jra55/rmp_jra55_cice_2nd_conserve.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.025deg/2023.05.15/rmp_jra55_cice_2nd_conserve.nc
   hashes:
-    binhash: dd3f4f877dbdfb159e5e7aa19da71de0
-    md5: 02127843cf519d924bb3f01868c80969
+    binhash: 3b11f3d9ef175d68cf6a374ea0c1294b
+    md5: d9da8f0e91f3ba5e2699ddb42930a09a
 work/INPUT/rmp_jra55_cice_patch.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/common_025deg_jra55/rmp_jra55_cice_patch.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.025deg/2023.05.15/rmp_jra55_cice_patch.nc
   hashes:
-    binhash: 6450c6476d9e385244a988147c271392
-    md5: e2e5f2c69d2164cec1f4d395476d93a3
+    binhash: 0676551dd14fbdb358da029584b74273
+    md5: 8379069a00d376c3723c7bd821af2a42
 work/atmosphere/INPUT/friver_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-4-0_gr_19580101-19581231.nc:
   fullpath: /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/land/day/friver/gr/v20190429/friver_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-4-0_gr_19580101-19581231.nc
   hashes:
@@ -2187,7 +2187,7 @@ work/atmosphere/INPUT/rlds_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-4-0_g
     binhash: f1a3c4313a4f6ff631f0fe887a849153
     md5: 3d08213bdacd00ba2cfde806cf6d6b6f
 work/atmosphere/INPUT/rmp_jrar_to_cict_CONSERV.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/yatm_025deg/rmp_jrar_to_cict_CONSERV.nc
+  fullpath: /g/data/ik11/inputs/access-om2/input_20230515_025deg_topog/yatm_025deg/rmp_jrar_to_cict_CONSERV.nc
   hashes:
     binhash: 5c9dc38068da3431afd3aa342bebbbcc
     md5: 2e8cf1844fe7a1156ef47170a6eb5ef1
@@ -3433,107 +3433,102 @@ work/atmosphere/INPUT/vas_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-4-0_gr
     md5: b0e514bfac0d9dfbf538d36b8ecd17f9
 work/ice/RESTART/grid.nc:
   copy: true
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/cice_025deg/grid.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.025deg/2020.11.02/grid.nc
   hashes:
     binhash: ef32f5ea0beca45e4aaf2f4833b339d0
     md5: 24920ffb6c0fea5f6ec1e590a5f46280
 work/ice/RESTART/i2o.nc:
   copy: true
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/cice_025deg/i2o.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.025deg/2020.05.30/i2o.nc
   hashes:
     binhash: 169a43590d8b0c812af3d993c4f65e8c
     md5: ca16c9eef58814b9ff13fd5e8bd88a25
 work/ice/RESTART/kmt.nc:
   copy: true
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/cice_025deg/kmt.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.025deg/2023.05.15/kmt.nc
   hashes:
-    binhash: 01227be8425456ad64f9973e5ffaccbd
-    md5: 576e78b474c37f61a6fb45c9f5692bc6
+    binhash: 614d68eb75a67af836cb00e9d4307f8c
+    md5: 2e9743de8f4cb868d9802db8c8e6e9ca
 work/ice/RESTART/monthly_sstsss.nc:
   copy: true
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/cice_025deg/monthly_sstsss.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.025deg/2020.05.30/monthly_sstsss.nc
   hashes:
     binhash: 2fdf1798189b37092a239c9c947d9d26
     md5: 598c7aa8a08fe3f48a621f781dd26331
 work/ice/RESTART/o2i.nc:
   copy: true
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/cice_025deg/o2i.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.025deg/2020.10.22/o2i.nc
   hashes:
     binhash: 29b684d1cc141deb8f4bc69a47c12801
     md5: 5c695c6a91b4a2f64e653a5baa62c34a
 work/ice/RESTART/u_star.nc:
   copy: true
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/cice_025deg/u_star.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.025deg/2020.05.30/u_star.nc
   hashes:
     binhash: d0496680b0c663575627c6b13cdde39a
     md5: 4be7800aa8e310a6c7a9c3af1d50c7f0
 work/ocean/INPUT/chl.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg/chl.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/chlorophyll/global.025deg/2020.05.30/chl.nc
   hashes:
     binhash: 3f04f0d65acdcd3b372792a41a268a3b
     md5: 99b68aec777292d746e4d93c2b976189
 work/ocean/INPUT/grid_spec.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg/grid_spec.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.025deg/2020.05.30/grid_spec.nc
   hashes:
     binhash: ae901d0f717e53515ca692138e02f264
     md5: 57663e6575e424cce2cf98bc9778786a
-work/ocean/INPUT/mask_table.465.48x40:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg/mask_table.465.48x40
-  hashes:
-    binhash: 78890536cf18e166ab321c735bfb3d98
-    md5: 10be6631aa435160b4d36531a4f6fd64
 work/ocean/INPUT/ocean_hgrid.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg/ocean_hgrid.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.025deg/2020.05.30/ocean_hgrid.nc
   hashes:
     binhash: e9be93a3cf26a195384ee3bc05bd7092
     md5: 38b6f324ae16cc13c180699123ad85b5
 work/ocean/INPUT/ocean_mask.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg/ocean_mask.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.025deg/2023.05.15/ocean_mask.nc
   hashes:
-    binhash: be9a9fee69a77e01905aa46033997d19
-    md5: 238bb01f653ae8a22a7efea4abda5442
+    binhash: 756798128a06a19bd0231ac9170cdc69
+    md5: ee07436042b71df2938726854be5a9aa
 work/ocean/INPUT/ocean_mask_table:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg/ocean_mask_table
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/processor_masks/global.025deg/1456.48x40/2023.05.15/ocean_mask_table
   hashes:
-    binhash: e2d8c0480d04f17bfd2f18c6a2442fd7
-    md5: 10be6631aa435160b4d36531a4f6fd64
+    binhash: 0e60ad737148124742171680758826c2
+    md5: 7a2fcdfbb9b331161c7d8874e2b7e6f9
 work/ocean/INPUT/ocean_mosaic.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg/ocean_mosaic.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.025deg/2020.05.30/ocean_mosaic.nc
   hashes:
     binhash: d6a322921d55b3f2c513b41140419110
     md5: 36e956159508785d9201cc13aec0cf02
 work/ocean/INPUT/ocean_temp_salt.res.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg/ocean_temp_salt.res.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/initial_conditions/global.025deg/2020.10.22/ocean_temp_salt.res.nc
   hashes:
     binhash: aad91ea4d65dd96c5bff35831dec88e1
     md5: 1797b25e6339595a320076080145fd5a
 work/ocean/INPUT/ocean_vgrid.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg/ocean_vgrid.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/grids/vertical/global.025deg/2020.11.02/ocean_vgrid.nc
   hashes:
     binhash: 686f94c85f81b4f8ece467b6b75436e1
     md5: e56e2936499d3ad53429d5940821118d
 work/ocean/INPUT/roughness_amp.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg/roughness_amp.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.025deg/2020.05.30/roughness_amp.nc
   hashes:
     binhash: 5c1446b38f847078524d0c7bd9a28f3a
     md5: 6b18885d65950d7ee2afe803432fbf5c
 work/ocean/INPUT/roughness_cdbot.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg/roughness_cdbot.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.025deg/2020.05.30/roughness_cdbot.nc
   hashes:
     binhash: 725ac7778f8de3b161e629a8870c9835
     md5: efa8999e9e4686cad695ff5cf0d523d5
 work/ocean/INPUT/salt_sfc_restore.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg/salt_sfc_restore.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/surface_salt_restoring/global.025deg/2020.05.30/salt_sfc_restore.nc
   hashes:
     binhash: 59af4727ac218e7bc655dcbe583d8957
     md5: 434b4bdb323d17e9714d02519627fea2
 work/ocean/INPUT/tideamp.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg/tideamp.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.025deg/2020.05.30/tideamp.nc
   hashes:
     binhash: 15f0f0b212c93c48b02bcc4fa1113e3f
     md5: 49b1f91341f19cd4ef80a6be2cb2d250
 work/ocean/INPUT/topog.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20201102/mom_025deg/topog.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.025deg/2023.05.15/topog.nc
   hashes:
-    binhash: 403068c883c2929190bbaf96ea711c80
-    md5: bd08b1618377bf74309c52207e44be17
+    binhash: be1d6039fe88cad38b727ddd7d73e9c4
+    md5: fa71dfdf4a91198d651d657bcf9aadb6
