@@ -24,8 +24,10 @@ notes: |-
   https://scholar.google.com/citations?hl=en&user=inVqu_4AAAAJ
 license: CC-BY-4.0
 keywords:
-  - quarter
-  - cosima
-  - access-om2-025
-  - jra55-do-v1.4.0
-  - iaf
+- quarter
+- cosima
+- access-om2-025
+- jra55-do-v1.4.0
+- iaf
+model: ACCESS-OM2
+url: https://github.com/ACCESS-NRI/access-om2-configs.git
