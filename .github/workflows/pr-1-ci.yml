@@ -1,17 +1,19 @@
 name: PR Checks
 on:
-  pull_request:
-    branches:
-      - 'release-*'
-      - 'dev-*'
-    paths-ignore:
-      # These are ignored because they don't have anything to do with the model itself
-      - .github/**
-      - tools/**
-      - doc/**
-      - .*
-      - metadata.yaml
-      - README.md
+  workflow_call:
+  # Workflows that call this workflow use the following triggers:
+  # pull_request:
+  #   branches:
+  #     - 'release-*'
+  #     - 'dev-*'
+  #   paths-ignore:
+  #     # These are ignored because they don't have anything to do with the model itself
+  #     - .github/**
+  #     - tools/**
+  #     - doc/**
+  #     - .*
+  #     - metadata.yaml
+  #     - README.md
 jobs:
   commit-check:
     name: Commit Check

@@ -2,6 +2,23 @@
 
 ## Pull Request Process
 
+### Creation of a new ACCESS-OM2 Config
+
+Config branches are entirely separate from the `main` history in this repository, except for a few files in `.github` Note, you may need to be an Administrator to commit to `release-*` branches directly.
+
+If you are creating a new branch, and don't have config stored in another repository, just branch off `main` and delete everything except `.github/workflows/pr-1-ci.yml`, `.github/workflows/pr-3-bump-tag.yml` and `.github/workflows/validate-json.yml`, then add your config.
+
+#### If the Config is Stored in Another Repository
+
+```bash
+git remote add <config_repo> <config_repo_url>  # ex. git remote add config git@github.com/my/configs.git
+git checkout <config_repo>/<config_branch> -b release-<config_name>  # checkout config from new remote + add to branch, ex. git checkout config/main -b release-1deg_abc_def
+git checkout main -- .github/workflows/call-*.yml .github/workflows/validate-json.yml  #
+git add .
+git commit -m "Initial commit for config branch"
+git push  # might require admin permissions for pushes to release-* branch
+```
+
 ### Changes to ACCESS-OM2 Configs
 
 1. Make your changes, test them, and open a PR from the `dev-*` branch to the `release-*` branch of a particular configuration.
@@ -12,15 +29,6 @@
 
 ### Changes to the CI Infrastructure
 
-Changes to the CI Infrastructure are made to the `main` branch in this repository, and then incorporated into each config branch, using the following:
-
-```bash
-git checkout main
-git subtree split -P .github -b ci
-git checkout  # some config branch
-git subtree add --squash -P .github ci  # can also subtree merge if the branch is still there locally
-# can also delete the local branch at the end with:
-git branch -D ci
-```
+Changes to the CI Infrastructure are made to the `main` branch in this repository. Config branches use the `call-*.yml` workflows to `workflow_call` the equivalent workflow that is on the `main` branch.
 
 Since the logic in the CI infrastructure is quite involved, it would be a good idea to read the [README-DEV.md](./README-DEV.md).
