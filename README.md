@@ -68,7 +68,7 @@ This repository makes use of GitHub Actions to perform reproducibility checks on
 
 ### Config Branches
 
-Config branches are branches that store model configurations of the form: `release-<config>` or `dev-<config>`, for example: `release-1deg_jra55_iaf`.
+Config branches are branches that store model configurations of the form: `release-<config>` or `dev-<config>`, for example: `release-1deg_jra55_iaf`. For more information on creating your own config branches, or for understanding the PR process in this repository, see the [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Config Tags
 
