@@ -2,11 +2,13 @@
 # We use the `.version` field in that file to denote the version of the config once a PR is merged.
 name: Bump Tag
 on:
-  push:
-    branches:
-      - 'release-*'
-    paths:
-      - 'metadata.yaml'
+  workflow_call:
+  # Workflows that call this workflow use the following triggers:
+  # push:
+  #   branches:
+  #     - 'release-*'
+  #   paths:
+  #     - 'metadata.yaml'
 jobs:
   tag-update:
     name: Check and Update Tag
