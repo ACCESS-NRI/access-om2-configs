@@ -12,15 +12,6 @@
 
 ### Changes to the CI Infrastructure
 
-Changes to the CI Infrastructure are made to the `main` branch in this repository, and then incorporated into each config branch, using the following:
-
-```bash
-git checkout main
-git subtree split -P .github -b ci
-git checkout  # some config branch
-git subtree add --squash -P .github ci  # can also subtree merge if the branch is still there locally
-# can also delete the local branch at the end with:
-git branch -D ci
-```
+Changes to the CI Infrastructure are made to the `main` branch in this repository. Config branches use the `call-*.yml` workflows to `workflow_call` the equivalent workflow that is on the `main` branch.
 
 Since the logic in the CI infrastructure is quite involved, it would be a good idea to read the [README-DEV.md](./README-DEV.md).
