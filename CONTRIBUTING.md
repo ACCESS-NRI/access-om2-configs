@@ -2,6 +2,24 @@
 
 ## Pull Request Process
 
+### Creation of a new ACCESS-OM2 Config
+
+Config branches are entirely separate from the `main` history in this repository, save for a few files in `.github`. Note, you may need to be an Administrator to commit to `release-*` branches directly.
+
+#### If the Config is Stored in Another Repository
+
+1. Add the repository that houses the config as an upstream remote. Let's call this upstream `config`, and assume that the config is stored on the `main` branch. Let's also call the config `1deg_abc_def`.
+2. Checkout the config from one repo to this one. Run `git checkout <upstream>/<config_branch> -b release-<config_name>`. In our example, this would be `git checkout config/main -b release-1deg_abc_def`.
+3. Checkout the new branch. Run `git checkout release-<config_name>`. This would be `git checkout release-1deg_abc_def`.
+4. Copy across the required workflow files from the `main` branch. Run `git checkout main -- .github/workflows/call-*.yml .github/workflows/validate-json.yml`.
+5. Commit and push the config branch. Due to branch protection rules, you may need to be an Administrator of the repository to commit directly to a `release-*` branch.
+
+#### If the Config is Local or New
+
+1. Branch off `main` and delete everything except for `.github/workflows/call-*.yml` and `.github/workflows/validate-json.yml`.
+2. Add and commit your config files onto this branch.
+3. Commit and push the config branch. Due to branch protection rules, you may need to be an Administrator of the repository to commit directly to a `release-*` branch.
+
 ### Changes to ACCESS-OM2 Configs
 
 1. Make your changes, test them, and open a PR from the `dev-*` branch to the `release-*` branch of a particular configuration.
