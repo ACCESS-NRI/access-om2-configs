@@ -18,7 +18,7 @@ jobs:
   call:
     # We simply call the workflow on main so we don't have to propagate CI changes to
     # multiple config branches all the time.
-    uses: codegat-test-org/configs/.github/workflows/pr-1-ci.yml@main
+    uses: access-nri/access-om2-configs/.github/workflows/pr-1-ci.yml@main
     secrets: inherit
     permissions:
       contents: write
