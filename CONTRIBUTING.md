@@ -4,21 +4,20 @@
 
 ### Creation of a new ACCESS-OM2 Config
 
-Config branches are entirely separate from the `main` history in this repository, save for a few files in `.github`. Note, you may need to be an Administrator to commit to `release-*` branches directly.
+Config branches are entirely separate from the `main` history in this repository, except for a few files in `.github` Note, you may need to be an Administrator to commit to `release-*` branches directly.
+
+If you are creating a new branch, and don't have config stored in another repository, just branch off `main` and delete everything except `.github/workflows/pr-1-ci.yml`, `.github/workflows/pr-3-bump-tag.yml` and `.github/workflows/validate-json.yml`, then add your config.
 
 #### If the Config is Stored in Another Repository
 
-1. Add the repository that houses the config as an upstream remote. Let's call this upstream `config`, and assume that the config is stored on the `main` branch. Let's also call the config `1deg_abc_def`.
-2. Checkout the config from one repo to this one. Run `git checkout <upstream>/<config_branch> -b release-<config_name>`. In our example, this would be `git checkout config/main -b release-1deg_abc_def`.
-3. Checkout the new branch. Run `git checkout release-<config_name>`. This would be `git checkout release-1deg_abc_def`.
-4. Copy across the required workflow files from the `main` branch. Run `git checkout main -- .github/workflows/call-*.yml .github/workflows/validate-json.yml`.
-5. Commit and push the config branch. Due to branch protection rules, you may need to be an Administrator of the repository to commit directly to a `release-*` branch.
-
-#### If the Config is Local or New
-
-1. Branch off `main` and delete everything except for `.github/workflows/call-*.yml` and `.github/workflows/validate-json.yml`.
-2. Add and commit your config files onto this branch.
-3. Commit and push the config branch. Due to branch protection rules, you may need to be an Administrator of the repository to commit directly to a `release-*` branch.
+```bash
+git remote add <config_repo> <config_repo_url>  # ex. git remote add config git@github.com/my/configs.git
+git checkout <config_repo>/<config_branch> -b release-<config_name>  # checkout config from new remote + add to branch, ex. git checkout config/main -b release-1deg_abc_def
+git checkout main -- .github/workflows/call-*.yml .github/workflows/validate-json.yml  #
+git add .
+git commit -m "Initial commit for config branch"
+git push  # might require admin permissions for pushes to release-* branch
+```
 
 ### Changes to ACCESS-OM2 Configs
 
