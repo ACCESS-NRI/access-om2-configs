@@ -92,7 +92,9 @@ env:
 platform:
     nodesize: 48
 
-# sweep and resubmit on specific errors - see https://github.com/payu-org/payu/issues/241#issuecomment-610739771
 userscripts:
+    # sweep and resubmit on specific errors - see https://github.com/payu-org/payu/issues/241#issuecomment-610739771
     error: tools/resub.sh
     run: rm -f resubmit.count
+    # combine cice daily history files into one file per month
+    archive: tools/concat_ice_daily.sh 
