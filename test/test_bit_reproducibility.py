@@ -74,8 +74,7 @@ class TestBitReproducibility():
 
         assert produced == expected
 
-    @pytest.mark.slow
-    @pytest.mark.skip(reason="TODO:Check checksum comparision across restarts")
+    @pytest.mark.checksum
     def test_restart_repro(self, output_path: Path, control_path: Path):
         """
         Test that a run reproduces across restarts.
@@ -104,16 +103,15 @@ class TestBitReproducibility():
         checksums_1d_0 = exp_2x1day.extract_checksums()
         checksums_1d_1 = exp_2x1day.extract_checksums(exp_2x1day.output001)
 
-        # Adding checksums over two outputs might need to be model specific?
-        checksums_2x1d = checksums_1d_0['output'] + checksums_1d_1['output']
-
         checksums_2d = exp_2day.extract_checksums()
 
-        matching_checksums = True
-        for item in checksums_2d['output']:
-            if item not in checksums_2x1d:
-                print("Unequal checksum:", item)
-                matching_checksums = False
+        # Use model specific comparision method for checksums
+        model = exp_2day.model
+        matching_checksums = model.check_checksums_over_restarts(
+            long_run_checksum=checksums_2d,
+            short_run_checksum_0=checksums_1d_0,
+            short_run_checksum_1=checksums_1d_1
+        )
 
         if not matching_checksums:
             # Write checksums out to file
