@@ -32,5 +32,6 @@ jobs:
       config-tag: ${{ matrix.config-tag }}
     secrets: inherit
     permissions:
+      checks: write
       contents: write
       issues: write

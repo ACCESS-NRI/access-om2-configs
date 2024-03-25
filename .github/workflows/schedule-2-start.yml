@@ -26,6 +26,8 @@ jobs:
     needs:
       - repro-ci
     runs-on: ubuntu-latest
+    permissions:
+      checks: write
     env:
       TESTING_LOCAL_LOCATION: /opt/testing
     outputs:
