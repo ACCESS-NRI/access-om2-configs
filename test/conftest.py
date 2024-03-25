@@ -63,3 +63,10 @@ def pytest_configure(config):
     config.addinivalue_line(
         "markers", "test: mark tests as testing test functionality"
     )
+    config.addinivalue_line(
+        "markers", "config: mark tests as dealing with quick model configuration checks"
+    )
+    config.addinivalue_line(
+        # FIXME: What is this marker about?
+        "markers", "highres: mark tests as dealing with <something>"
+    )
