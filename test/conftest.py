@@ -61,6 +61,18 @@ def pytest_configure(config):
         "markers", "checksum: mark tests to run as part of reproducibility CI tests"
     )
     config.addinivalue_line(
+        "markers", "config: mark as configuration tests (e.g. config.yaml)"
+    )
+    config.addinivalue_line(
+        "markers", "metadata: mark as metadata tests (e.g. metadata.yaml)"
+    )
+    config.addinivalue_line(
+        "markers", "access_om2: mark as access-om2 specific tests"
+    )
+    config.addinivalue_line(
+        "markers", "access_om2_bgc: mark as access-om2-bgc specific tests"
+    )
+    config.addinivalue_line(
         "markers", "test: mark tests as testing test functionality"
     )
     config.addinivalue_line(
