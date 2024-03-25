@@ -35,10 +35,13 @@ jobs:
 
   branch-check:
     name: PR Source Branch Check
+    # This check is used as a precursor to any repro-ci checks - which are only fired
+    # on dev-* -> release-* PRs.
     # This check is run to confirm that the source branch is of the form `dev-<config>`
     # and the target branch is of the form `release-<config>`. We are being especially
     # concerned with branch names because deployment to GitHub Environments can only
-    # be done on source branches with a certain pattern. See #20.
+    # be done on source branches with a certain pattern. See ACCESS-NRI/access-om2-configs#20.
+    if: startsWith(github.base_ref, 'dev-')
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -82,8 +85,60 @@ jobs:
             Rename the Source branch or check the Target branch, and try again.
         run: gh pr comment --body '${{ env.BODY }}'
 
+  simple-ci:
+    # Run quick, non-HPC tests on the runner.
+    name: Simple CI checks
+    needs:
+      - commit-check
+      - branch-check
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+    steps:
+      - name: Checkout PR ${{ github.event.action.pull_request.number }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.base_ref }}
+          path: pr
+
+      - name: Checkout Tests
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: pytest
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+          cache: pip
+
+      - name: Install requirements.txt
+        run: pip install -r ./pytest/test/requirements.txt
+
+      - name: Invoke Simple CI Pytests
+        # We continue on error because we will left the checks generated in
+        # the next step speak to the state of the testing
+        continue-on-error: true
+        run: |
+          cd pr
+          pytest ../pytest/test/test_config.py \
+            -m 'config' \
+            --junitxml=./test_report.xml
+
+      - name: Parse Test Report
+        id: tests
+        uses: EnricoMi/publish-unit-test-result-action/composite@e780361cd1fc1b1a170624547b3ffda64787d365  #v2.12.0
+        with:
+          files: ./pr/test_report.xml
+          comment_mode: off
+          check_run: true
+          compare_to_earlier_commit: false
+          report_individual_runs: true
+          report_suite_logs: any
+
   repro-ci:
-    # run the given config on the deployment GitHub Environment (`environment-name`) and
+    # Run the given config on the deployment GitHub Environment (`environment-name`) and
     # upload the checksums and test details
     needs:
       - commit-check
