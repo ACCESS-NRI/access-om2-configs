@@ -1,6 +1,6 @@
 {
     "$schema": "./released-configs.schema.json",
     "tags": [
-        "release-1deg_jra55_ryf-1.0.0"
+        "release-1deg_jra55_ryf-1.0"
     ]
 }
