@@ -6,6 +6,7 @@ from collections import defaultdict
 import f90nml
 import re
 from pathlib import Path
+from typing import Dict, Any
 
 from models.model import Model
 
@@ -36,13 +37,13 @@ class AccessOm2(Model):
         nml['date_manager_nml']['restart_period'] = [years, months, seconds]
         nml.write(self.accessom2_config, force=True)
 
-    def output_exists(self):
+    def output_exists(self) -> bool:
         """Check for existing output file"""
         return self.output_file.exists()
 
     def extract_checksums(self,
                           output_directory: Path = None,
-                          schema_version: str = None):
+                          schema_version: str = None) -> Dict[str, Any]:
         """Parse output file and create checksum using defined schema"""
         if output_directory:
             output_filename = output_directory / 'access-om2.out'
@@ -89,3 +90,27 @@ class AccessOm2(Model):
                 f"Unsupported checksum schema version: {schema_version}")
 
         return checksums
+
+    def check_checksums_over_restarts(self,
+                                      long_run_checksum: Dict[str, Any],
+                                      short_run_checksum_0: Dict[str, Any],
+                                      short_run_checksum_1: Dict[str, Any]
+                                      ) -> bool:
+        """Compare a checksums from a long run (e.g. 2 days) against
+        checksums from 2 short runs (e.g. 1 day)"""
+        short_run_checksums = short_run_checksum_0['output']
+        for field, checksums in short_run_checksum_1['output'].items():
+            if field not in short_run_checksums:
+                short_run_checksums[field] = checksums
+            else:
+                short_run_checksums[field].extend(checksums)
+
+        matching_checksums = True
+        for field, checksums in long_run_checksum['output'].items():
+            for checksum in checksums:
+                if (field not in short_run_checksums or
+                        checksum not in short_run_checksums[field]):
+                    print(f"Unequal checksum: {field}: {checksum}")
+                    matching_checksums = False
+
+        return matching_checksums
