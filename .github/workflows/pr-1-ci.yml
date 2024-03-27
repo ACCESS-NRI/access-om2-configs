@@ -57,7 +57,9 @@ jobs:
     # and the target branch is of the form `release-<config>`. We are being especially
     # concerned with branch names because deployment to GitHub Environments can only
     # be done on source branches with a certain pattern. See ACCESS-NRI/access-om2-configs#20.
-    if: startsWith(github.base_ref, 'release-') && startsWith(github.head_ref, 'dev-')
+    if: needs.commit-check.outputs.authorship != vars.GH_ACTIONS_BOT_GIT_USER_NAME && startsWith(github.base_ref, 'release-') && startsWith(github.head_ref, 'dev-')
+    needs:
+      - commit-check
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -92,6 +94,7 @@ jobs:
     name: QA CI Checks
     needs:
       - commit-check
+    if: needs.commit-check.outputs.authorship != vars.GH_ACTIONS_BOT_GIT_USER_NAME
     runs-on: ubuntu-latest
     permissions:
       checks: write
@@ -168,7 +171,7 @@ jobs:
     needs:
       - commit-check
       - branch-check
-    if: needs.commit-check.outputs.authorship != 'github-actions' && needs.branch-check.result == 'success'
+    if: needs.commit-check.outputs.authorship != vars.GH_ACTIONS_BOT_GIT_USER_NAME && needs.branch-check.result == 'success'
     uses: access-nri/reproducibility/.github/workflows/checks.yml@main
     with:
       model-name: access-om2
