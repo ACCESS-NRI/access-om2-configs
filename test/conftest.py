@@ -58,6 +58,9 @@ def pytest_configure(config):
         "markers", "slow: mark tests as slow (deselect with '-m \"not slow\"')"
     )
     config.addinivalue_line(
+        "markers", "test: mark tests as testing test functionality"
+    )
+    config.addinivalue_line(
         "markers", "checksum: mark tests to run as part of reproducibility CI tests"
     )
     config.addinivalue_line(

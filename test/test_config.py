@@ -49,7 +49,7 @@ def insist_array(str_or_array):
 
 @pytest.mark.config
 class TestConfig:
-    """Test contents of config.yaml files"""
+    """General configuration tests"""
 
     @pytest.mark.parametrize(
         "field", ["project", "shortpath"]
@@ -152,17 +152,14 @@ class TestConfig:
             "Executable reproducibility should be enforced, e.g set:\n" +
             "manifest:\n    reproduce:\n        exe: True"
             )
-        config.get('manifest', {}).get('reproduce', {})
 
-
-@pytest.mark.config
-def test_no_scripts_in_top_level_directory(control_path):
-    exts = {".py", ".sh"}
-    scripts = [p for p in control_path.iterdir() if p.suffix in exts]
-    assert scripts == [], (
-        "Scripts in top-level directory should be moved to a " +
-        "'tools' sub-directory"
-    )
+    def test_no_scripts_in_top_level_directory(self, control_path):
+        exts = {".py", ".sh"}
+        scripts = [p for p in control_path.iterdir() if p.suffix in exts]
+        assert scripts == [], (
+            "Scripts in top-level directory should be moved to a " +
+            "'tools' sub-directory"
+        )
 
 
 @pytest.mark.highres
