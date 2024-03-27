@@ -196,7 +196,7 @@ def test_metadata_contains_fields(field, metadata):
     assert field in metadata, f"{field} field shoud be defined in metadata"
 
 
-@pytest.mark.access_om2_bcm
+@pytest.mark.access_om2_bgc
 def test_metadata_realm(metadata):
     assert ('realm' in metadata
             and metadata['realm'] == ['ocean', 'seaIce', 'ocnBgchem']), (
