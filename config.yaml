@@ -97,4 +97,8 @@ userscripts:
     error: tools/resub.sh
     run: rm -f resubmit.count
     # combine cice daily history files into one file per month
-    archive: tools/concat_ice_daily.sh 
+    archive: tools/concat_ice_daily.sh
+    
+modules:
+  load:
+    - nco/5.0.5
