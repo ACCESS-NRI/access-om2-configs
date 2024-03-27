@@ -96,7 +96,6 @@ class TestConfig:
         for model in config.get('submodels', []):
             if 'exe' not in model:
                 # Allow models such as couplers that have no executable
-                # TODO: Should a similar check be for the top level model?
                 if 'ncpus' in model and model['ncpus'] != 0:
                     pytest.fail(f"No executable for submodel {model['name']}")
                 continue
@@ -182,8 +181,9 @@ def test_validate_metadata(metadata):
     assert response.status_code == 200
     schema = response.json()
 
-    # TODO: In version (1-0-0), required fields are name, experiment_uuid,
-    # description and long_description. Removing the required fields
+    # In schema version (1-0-0), required fields are name, experiment_uuid,
+    # description and long_description. As name & experiment_uuid are
+    # generated for running experiments, the required fields are removed
     # from the schema validation for now
     schema.pop('required')
 
