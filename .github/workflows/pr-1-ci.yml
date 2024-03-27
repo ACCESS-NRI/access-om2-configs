@@ -1,6 +1,22 @@
 name: PR Checks
 on:
   workflow_call:
+    inputs:
+      qa-pytest-markers:
+        type: string
+        required: false
+        default: config or metadata
+        description: List of markers for the pytest QA CI checks
+      qa-pytest-add-model-markers:
+        type: boolean
+        required: false
+        default: false
+        description: Whether to run model-specific tests
+      repro-pytest-markers:
+        type: string
+        required: false
+        default: checksum
+        description: List of markers for the pytest repro CI checks
   # Workflows that call this workflow use the following triggers:
   # pull_request:
   #   branches:
@@ -85,9 +101,9 @@ jobs:
             Rename the Source branch or check the Target branch, and try again.
         run: gh pr comment --body '${{ env.BODY }}'
 
-  simple-ci:
+  qa-ci:
     # Run quick, non-HPC tests on the runner.
-    name: Simple CI checks
+    name: QA CI Checks
     needs:
       - commit-check
       - branch-check
@@ -114,16 +130,38 @@ jobs:
           cache: pip
 
       - name: Install requirements.txt
-        run: pip install -r ./pytest/test/requirements.txt
+        working-directory: ./pytest
+        run: pip install -r ./test/requirements.txt
+
+      - name: Infer Model-Specific Checks
+        id: model
+        if: inputs.qa-pytest-add-model-markers
+        run:
+          if [[ "${{ contains(github.base_ref, 'bgc') }}" == "true" ]]; then
+            echo "Using model-specific access_om2_bgc pytest marker"
+            echo "markers=access_om2_bgc" >> $GITHUB_OUTPUT
+          else
+            echo "Using model-specific access_om2 pytest marker"
+            echo "markers=access_om2" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get Final List of Markers
+        id: pytest
+        run: |
+          if [[ ${{ inputs.qa-pytest-add-model-markers }} == "true" ]]; then
+            echo "markers=${{ inputs.qa-pytest-markers }} or ${{ steps.model.outputs.markers }}" >> $GITHUB_OUTPUT
+          else
+            echo "markers=${{ inputs.qa-pytest-markers }}" >> $GITHUB_OUTPUT
+          fi
 
       - name: Invoke Simple CI Pytests
         # We continue on error because we will left the checks generated in
         # the next step speak to the state of the testing
         continue-on-error: true
         run: |
-          cd pr
+          echo "Running pytest using '-m ${{ steps.pytest.outputs.markers }}'"
           pytest ../pytest/test/test_config.py \
-            -m 'config' \
+            -m '${{ steps.pytest.outputs.markers }}' \
             --junitxml=./test_report.xml
 
       - name: Parse Test Report
@@ -149,7 +187,7 @@ jobs:
       model-name: access-om2
       environment-name: Gadi
       config-tag: ${{ github.head_ref }}
-      test-markers: checksum
+      test-markers: ${{ inputs.repro-pytest-markers }}
     secrets: inherit
     permissions:
       contents: write
