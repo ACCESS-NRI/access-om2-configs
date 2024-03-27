@@ -57,7 +57,7 @@ jobs:
     # and the target branch is of the form `release-<config>`. We are being especially
     # concerned with branch names because deployment to GitHub Environments can only
     # be done on source branches with a certain pattern. See ACCESS-NRI/access-om2-configs#20.
-    if: startsWith(github.base_ref, 'dev-') && startsWith(github.head_ref, 'release-')
+    if: startsWith(github.base_ref, 'release-') && startsWith(github.head_ref, 'dev-')
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -65,20 +65,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
-
-      - name: Check Source
-        run: |
-          if [[ "${{ startsWith(github.head_ref, 'dev-') }}" == "false" ]]; then
-            echo "::error::Source branch ${{ github.head_ref }} doesn't match 'dev-*'"
-            exit 1
-          fi
-
-      - name: Check Target
-        run: |
-          if [[ "${{ startsWith(github.base_ref, 'release-') }}" == "false" ]]; then
-            echo "::error::Target branch ${{ github.base_ref }} doesn't match 'release-*'"
-            exit 1
-          fi
 
       - name: Compare Source and Target Config Names
         # In this step, we cut the 'dev-' and 'release-' to compare config names directly.
@@ -96,7 +82,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
           BODY: |
-            :x: Automated testing cannot be run on this branch :x:
+            :x: Automated Reproducibility testing cannot be run on this branch :x:
             Source and Target branches must be of the form `dev-<config>` and `release-<config>` respectively, and `<config>` must match between them.
             Rename the Source branch or check the Target branch, and try again.
         run: gh pr comment --body '${{ env.BODY }}'
