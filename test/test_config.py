@@ -146,6 +146,14 @@ class TestConfig:
                 "Sync path to remote archive should not be set"
             )
 
+    def test_manifest_reproduce_exe_is_on(self, config):
+        manifest_reproduce = config.get('manifest', {}).get('reproduce', {})
+        assert 'exe' in manifest_reproduce and manifest_reproduce['exe'], (
+            "Executable reproducibility should be enforced, e.g set:\n" +
+            "manifest:\n    reproduce:\n        exe: True"
+            )
+        config.get('manifest', {}).get('reproduce', {})
+
 
 @pytest.mark.config
 def test_no_scripts_in_top_level_directory(control_path):
