@@ -10,7 +10,7 @@ on:
       qa-pytest-add-model-markers:
         type: boolean
         required: false
-        default: false
+        default: true
         description: Whether to run model-specific tests
       repro-pytest-markers:
         type: string
@@ -57,7 +57,7 @@ jobs:
     # and the target branch is of the form `release-<config>`. We are being especially
     # concerned with branch names because deployment to GitHub Environments can only
     # be done on source branches with a certain pattern. See ACCESS-NRI/access-om2-configs#20.
-    if: startsWith(github.base_ref, 'dev-')
+    if: startsWith(github.base_ref, 'dev-') && startsWith(github.head_ref, 'release-')
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -106,7 +106,6 @@ jobs:
     name: QA CI Checks
     needs:
       - commit-check
-      - branch-check
     runs-on: ubuntu-latest
     permissions:
       checks: write
@@ -114,7 +113,7 @@ jobs:
       - name: Checkout PR ${{ github.event.action.pull_request.number }}
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.base_ref }}
+          ref: ${{ github.head_ref }}
           path: pr
 
       - name: Checkout Tests
@@ -146,7 +145,7 @@ jobs:
           fi
 
       - name: Get Final List of Markers
-        id: pytest
+        id: pytest-markers
         run: |
           if [[ ${{ inputs.qa-pytest-add-model-markers }} == "true" ]]; then
             echo "markers=${{ inputs.qa-pytest-markers }} or ${{ steps.model.outputs.markers }}" >> $GITHUB_OUTPUT
@@ -158,10 +157,12 @@ jobs:
         # We continue on error because we will left the checks generated in
         # the next step speak to the state of the testing
         continue-on-error: true
+        working-directory: ./pr
+        # TODO: Call `pytest ../pytest/test` once we can factor out the tests that require 'f90nml'
         run: |
-          echo "Running pytest using '-m ${{ steps.pytest.outputs.markers }}'"
+          echo "Running pytest using '-m ${{ steps.pytest-markers.outputs.markers }}'"
           pytest ../pytest/test/test_config.py \
-            -m '${{ steps.pytest.outputs.markers }}' \
+            -m '${{ steps.pytest-markers.outputs.markers }}' \
             --junitxml=./test_report.xml
 
       - name: Parse Test Report
