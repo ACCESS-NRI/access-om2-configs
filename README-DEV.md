@@ -10,9 +10,9 @@ The Reproducibility CI is comprised of two main triggers: on Pull Request and Sc
 
 ### Triggered On Pull Request
 
-This pipeline uses the `pr-1-ci.yml` workflow for the majority of the PR lifecycle.
+This pipeline uses the `pr-1-ci.yml` workflow for the majority of the PR lifecycle. The `main` version of this workflow is called by `call-pr-1-ci.yml` workflow on the config branch.
 
-It also uses `pr-2-confirm.yml`, and `pr-3-bump-tag.yml` to control supplementary actions like bumping the `.version` field in the `metadata.yaml` file correctly and committing the checksums, and updating the config tag on merge.
+It also uses `pr-2-confirm.yml`, and `pr-3-bump-tag.yml` (via `call-pr-3-bump-tag.yml` on the config branch) to control supplementary actions like bumping the `.version` field in the `metadata.yaml` file correctly and committing the checksums, and updating the config tag on merge.
 
 The overall pipeline looks like this:
 
@@ -22,12 +22,27 @@ Merge: `pr-3-bump-tag.yml`
 #### The PR CI Lifecycle: `pr-1-ci.yml`
 
 This file does the bulk of the handling of the PR.
+It contains the following inputs, when the PR-triggered `call-pr-1-ci.yml` calls it:
+
+| Name | Type | Description | Required | Default | Example |
+| ---- | ---- | ----------- | -------- | ------- | ------- |
+| `qa-pytest-markers` | `string` | Markers used for the pytest QA CI checks, in the python format | `false` | `config or metadata` | `config or metadata or highres` |
+| `qa-pytest-add-model-markers` | `boolean` | Markers used for the pytest QA CI checks, in the python format | `false` | `false` | `true` |
+| `repro-pytest-markers` | `string` | Markers used for the pytest repro CI checks, in the python format | `false` | `checksum` | `checksum or performance` |
 
 ##### `commit-check`
 
 The first job, `commit-check`, is used to short-circuit execution of this workflow in the case where the latest commit was authored by `github-actions`, so there isn't a recursive cycle of checking and adding to the PR.
 
 `github-actions` authors commit to the `testing` directory and `metadata.yaml` files in the PR.
+
+##### `branch-check`
+
+This job is used as a check before running [`repro-ci`](#repro-ci) checks, which are only run on PRs `dev-*` -> `release-*`. It also makes sure that the branches are formatted correctly.
+
+##### `qa-ci`
+
+These checks are runner-hosted, quick configuration sanity checks that will always fire on PRs into `release-*` or `dev-*`.
 
 ##### `repro-ci`
 
