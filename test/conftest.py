@@ -82,8 +82,8 @@ def pytest_configure(config):
         "markers", "checksum: mark tests to run as part of reproducibility CI tests"
     )
     config.addinivalue_line(
-        "markers", "config: mark as configuration tests in quick CI checks"
+        "markers", "config: mark as configuration tests in quick QA CI checks"
     )
     config.addinivalue_line(
-        "markers", "access_om2: mark as access-om2 specific tests"
+        "markers", "access_om2: mark as access-om2 specific tests in quick QA CI checks"
     )

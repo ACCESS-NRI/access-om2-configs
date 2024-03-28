@@ -1,4 +1,3 @@
-from datetime import timedelta
 import re
 
 import pytest
@@ -60,14 +59,14 @@ class TestAccessOM2:
                     )
 
     def test_metadata_realm(self, metadata, branch):
-        expected_realms = ['ocean', 'seaIce']
+        expected_realms = {'ocean', 'seaIce'}
         expected_config = 'realm:\n - ocean\n - seaIce'
         if branch.is_bgc:
-            expected_realms.append('ocnBgchem')
+            expected_realms.add('ocnBgchem')
             expected_config += '\n - ocnBgchem'
 
         assert ('realm' in metadata
-                and metadata['realm'] == expected_realms), (
+                and set(metadata['realm']) == expected_realms), (
                     'Expected metadata realm set to:\n' + expected_config
                     )
 
@@ -78,7 +77,7 @@ class TestAccessOM2:
         accessom2_nml = f90nml.read(accessom2_nml_path)
         restart_period = accessom2_nml['date_manager_nml']['restart_period']
 
-        # TODO: Use set of expected periods?
+        # TODO: Here it's fixed, should it be a set of accepted values?
         if branch.resolution == '1deg':
             expected_period = [5, 0, 0]
         elif branch.resolution == '025deg':
