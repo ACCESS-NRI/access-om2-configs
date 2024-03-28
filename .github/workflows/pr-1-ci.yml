@@ -224,6 +224,38 @@ jobs:
             echo "result=pass" >> $GITHUB_OUTPUT
           fi
 
+  bump-check:
+    name: Version Bump Check
+    # Check that the `.version` in the metadata.yaml has been modified in
+    # this PR.
+    needs:
+      - repro-ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR Target
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.base_ref }}
+          path: target
+
+      - name: Checkout PR Source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          path: source
+
+      - name: Modification Check
+        run: |
+          target=$(yq e '.version' ./target/metadata.yaml)
+          source=$(yq e '.version' ./source/metadata.yaml)
+
+          if [[ "${source}" != "${target}" && "${source}" != "null" ]]; then
+            echo "::notice::The version has been modified to ${target}. Merging is now availible"
+          else
+            echo "::error::The version has not been modified in this PR. Merging is disallowed until an appropriate '!bump' is issued"
+            exit 1
+          fi
+
   result:
     name: Repro Result Notifier
     # Notify the PR of the result of the Repro check
@@ -247,7 +279,7 @@ jobs:
           BODY: |
             :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against `${{ needs.check-checksum.outputs.compared-checksum-version }}` for this `Release` config. :white_check_mark:
             For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}, and the test results at ${{ needs.check-checksum.outputs.check-run-url }}.
-            Consider bumping the minor version of `access-om2-configs` - to bump the version, comment `!bump minor`. The meaning of these version bumps is explained in the README.md, under `Config Tags`.
+            You must bump the minor version of `access-om2-configs` - to bump the version, comment `!bump minor`. The meaning of these version bumps is explained in the README.md, under `Config Tags`.
         run: gh pr comment --body '${{ env.BODY }}'
 
       - name: Successful Dev Comment
