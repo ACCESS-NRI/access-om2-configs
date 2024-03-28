@@ -5,7 +5,7 @@ on:
       qa-pytest-markers:
         type: string
         required: false
-        default: config or metadata
+        default: config
         description: List of markers for the pytest QA CI checks
       qa-pytest-add-model-markers:
         type: boolean
@@ -121,23 +121,11 @@ jobs:
         working-directory: ./pytest
         run: pip install -r ./test/requirements.txt
 
-      - name: Infer Model-Specific Checks
-        id: model
-        if: inputs.qa-pytest-add-model-markers
-        run:
-          if [[ "${{ contains(github.base_ref, 'bgc') }}" == "true" ]]; then
-            echo "Using model-specific access_om2_bgc pytest marker"
-            echo "markers=access_om2_bgc" >> $GITHUB_OUTPUT
-          else
-            echo "Using model-specific access_om2 pytest marker"
-            echo "markers=access_om2" >> $GITHUB_OUTPUT
-          fi
-
       - name: Get Final List of Markers
         id: pytest-markers
         run: |
           if [[ ${{ inputs.qa-pytest-add-model-markers }} == "true" ]]; then
-            echo "markers=${{ inputs.qa-pytest-markers }} or ${{ steps.model.outputs.markers }}" >> $GITHUB_OUTPUT
+            echo "markers=${{ inputs.qa-pytest-markers }} or access_om2" >> $GITHUB_OUTPUT
           else
             echo "markers=${{ inputs.qa-pytest-markers }}" >> $GITHUB_OUTPUT
           fi
@@ -147,10 +135,9 @@ jobs:
         # the next step speak to the state of the testing
         continue-on-error: true
         working-directory: ./pr
-        # TODO: Call `pytest ../pytest/test` once we can factor out the tests that require 'f90nml'
         run: |
           echo "Running pytest using '-m ${{ steps.pytest-markers.outputs.markers }}'"
-          pytest ../pytest/test/test_config.py \
+          pytest ../pytest/test \
             -m '${{ steps.pytest-markers.outputs.markers }}' \
             --junitxml=./test_report.xml
 
