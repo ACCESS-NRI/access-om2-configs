@@ -2,6 +2,8 @@ import os
 import pytest
 from pathlib import Path
 
+import yaml
+
 
 @pytest.fixture(scope="session")
 def output_path(request):
@@ -37,6 +39,32 @@ def checksum_path(request, control_path):
     return Path(path)
 
 
+@pytest.fixture(scope="session")
+def metadata(control_path: Path):
+    """Read the metadata file in the control directory"""
+    metadata_path = control_path / 'metadata.yaml'
+    with open(metadata_path) as f:
+        content = yaml.safe_load(f)
+    return content
+
+
+@pytest.fixture(scope="session")
+def config(control_path: Path):
+    """Read the config file in the control directory"""
+    config_path = control_path / 'config.yaml'
+    with open(config_path) as f:
+        config_content = yaml.safe_load(f)
+    return config_content
+
+
+@pytest.fixture(scope="session")
+def target_branch(request):
+    """Set the target branch - i.e., the branch the configuration will be
+    merged into. This used is to infer configuration information, if the
+    configuration branches follow a common naming scheme (e.g. ACCESS-OM2)"""
+    return request.config.getoption('--target-branch')
+
+
 # Set up command line options and default for directory paths
 def pytest_addoption(parser):
     """Attaches optional command line arguments"""
@@ -51,6 +79,10 @@ def pytest_addoption(parser):
     parser.addoption("--checksum-path",
                      action="store",
                      help="Specify the checksum file to compare against")
+    
+    parser.addoption("--target-branch",
+                     action="store",
+                     help="Specify the target branch name")
 
 
 def pytest_configure(config):
@@ -58,8 +90,14 @@ def pytest_configure(config):
         "markers", "slow: mark tests as slow (deselect with '-m \"not slow\"')"
     )
     config.addinivalue_line(
+        "markers", "test: mark tests as testing test functionality"
+    )
+    config.addinivalue_line(
         "markers", "checksum: mark tests to run as part of reproducibility CI tests"
     )
     config.addinivalue_line(
-        "markers", "test: mark tests as testing test functionality"
+        "markers", "config: mark as configuration tests in quick QA CI checks"
+    )
+    config.addinivalue_line(
+        "markers", "access_om2: mark as access-om2 specific tests in quick QA CI checks"
     )

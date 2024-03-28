@@ -18,3 +18,16 @@ def wait_for_qsub(run_id):
 
         if 'Job has finished' in qsub_out:
             break
+
+
+def get_git_branch_name(path):
+    """Get the git branch name of the given git directory"""
+    try:
+        cmd = 'git rev-parse --abbrev-ref HEAD'
+        result = sp.check_output(cmd, shell=True,
+                                         cwd=path).strip()
+        # Decode byte string to string
+        branch_name = result.decode('utf-8')
+        return branch_name
+    except sp.CalledProcessError:
+        return None
