@@ -17,22 +17,6 @@ DEFAULT_SCHEMA_VERSION = "1-0-0"
 
 
 @pytest.fixture(scope="class")
-def metadata(control_path: Path):
-    metadata_path = control_path / 'metadata.yaml'
-    with open(metadata_path) as f:
-        content = yaml.safe_load(f)
-    return content
-
-
-@pytest.fixture(scope="class")
-def config(control_path: Path):
-    config_path = control_path / 'config.yaml'
-    with open(config_path) as f:
-        config_content = yaml.safe_load(f)
-    return config_content
-
-
-@pytest.fixture(scope="class")
 def exe_manifest_fullpaths(control_path: Path):
     manifest_path = control_path / 'manifests' / 'exe.yaml'
     with open(manifest_path) as f:
@@ -160,60 +144,29 @@ class TestConfig:
             "'tools' sub-directory"
         )
 
+    def test_validate_metadata(self, metadata):
+        # Schema URL
+        schema_version = metadata.get("schema_version", DEFAULT_SCHEMA_VERSION)
+        url = f"{BASE_SCHEMA_URL}/{schema_version}.json"
 
-@pytest.mark.highres
-def test_mppncombine_fast_collate_exe(config):
-    pattern = r'/g/data/vk83/apps/mppnccombine-fast/.*/bin/mppnccombine-fast'
-    if 'collate' in config:
-        assert re.match(pattern, config['collate']['exe']), (
-            "Expect collate executable set to mppnccombine-fast"
-            )
+        # Get schema from Github
+        response = requests.get(url)
+        assert response.status_code == 200
+        schema = response.json()
 
+        # In schema version (1-0-0), required fields are name, experiment_uuid,
+        # description and long_description. As name & experiment_uuid are
+        # generated for running experiments, the required fields are removed
+        # from the schema validation for now
+        schema.pop('required')
 
-@pytest.mark.metadata
-def test_validate_metadata(metadata):
-    # Schema URL
-    schema_version = metadata.get("schema_version", DEFAULT_SCHEMA_VERSION)
-    url = f"{BASE_SCHEMA_URL}/{schema_version}.json"
+        # Validate field names and types
+        jsonschema.validate(instance=metadata, schema=schema)
 
-    # Get schema from Github
-    response = requests.get(url)
-    assert response.status_code == 200
-    schema = response.json()
-
-    # In schema version (1-0-0), required fields are name, experiment_uuid,
-    # description and long_description. As name & experiment_uuid are
-    # generated for running experiments, the required fields are removed
-    # from the schema validation for now
-    schema.pop('required')
-
-    # Experiment_uuid
-    jsonschema.validate(instance=metadata, schema=schema)
-
-
-@pytest.mark.metadata
-@pytest.mark.parametrize(
-    "field",
-    ["description", "notes", "keywords", "nominal resolution", "version",
-     "reference", "license", "url", "model", "realm"]
-)
-def test_metadata_contains_fields(field, metadata):
-    assert field in metadata, f"{field} field shoud be defined in metadata"
-
-
-@pytest.mark.access_om2_bgc
-def test_metadata_realm(metadata):
-    assert ('realm' in metadata
-            and metadata['realm'] == ['ocean', 'seaIce', 'ocnBgchem']), (
-            'Expected access-om2-bgc metadata realm set to:\n' +
-            'realm:\n - ocean\n - seaIce\n - ocnBgchem'
-            )
-
-
-@pytest.mark.access_om2
-def test_metadata_access_om2_realm(metadata):
-    assert ('realm' in metadata
-            and metadata['realm'] == ['ocean', 'seaIce']), (
-            'Expected access-om2 metadata realm set to:\n' +
-            'realm:\n - ocean\n - seaIce\n'
-            )
+    @pytest.mark.parametrize(
+        "field",
+        ["description", "notes", "keywords", "nominal resolution", "version",
+        "reference", "license", "url", "model", "realm"]
+    )
+    def test_metadata_contains_fields(self, field, metadata):
+        assert field in metadata, f"{field} field shoud be defined in metadata"

@@ -2,6 +2,8 @@ import os
 import pytest
 from pathlib import Path
 
+import yaml
+
 
 @pytest.fixture(scope="session")
 def output_path(request):
@@ -37,6 +39,22 @@ def checksum_path(request, control_path):
     return Path(path)
 
 
+@pytest.fixture(scope="session")
+def metadata(control_path: Path):
+    metadata_path = control_path / 'metadata.yaml'
+    with open(metadata_path) as f:
+        content = yaml.safe_load(f)
+    return content
+
+
+@pytest.fixture(scope="session")
+def config(control_path: Path):
+    config_path = control_path / 'config.yaml'
+    with open(config_path) as f:
+        config_content = yaml.safe_load(f)
+    return config_content
+
+
 # Set up command line options and default for directory paths
 def pytest_addoption(parser):
     """Attaches optional command line arguments"""
@@ -67,14 +85,5 @@ def pytest_configure(config):
         "markers", "config: mark as configuration tests in quick CI checks"
     )
     config.addinivalue_line(
-        "markers", "metadata: mark as metadata tests in quick CI checks"
-    )
-    config.addinivalue_line(
         "markers", "access_om2: mark as access-om2 specific tests"
-    )
-    config.addinivalue_line(
-        "markers", "access_om2_bgc: mark as access-om2-bgc specific tests"
-    )
-    config.addinivalue_line(
-        "markers", "highres: mark tests as high resolution model configuration tests"
     )
