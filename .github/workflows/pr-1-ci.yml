@@ -139,6 +139,7 @@ jobs:
           echo "Running pytest using '-m ${{ steps.pytest-markers.outputs.markers }}'"
           pytest ../pytest/test \
             -m '${{ steps.pytest-markers.outputs.markers }}' \
+            --target-branch '${{ github.base_ref }}' \
             --junitxml=./test_report.xml
 
       - name: Parse Test Report

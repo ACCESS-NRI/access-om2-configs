@@ -41,6 +41,7 @@ def checksum_path(request, control_path):
 
 @pytest.fixture(scope="session")
 def metadata(control_path: Path):
+    """Read the metadata file in the control directory"""
     metadata_path = control_path / 'metadata.yaml'
     with open(metadata_path) as f:
         content = yaml.safe_load(f)
@@ -49,10 +50,19 @@ def metadata(control_path: Path):
 
 @pytest.fixture(scope="session")
 def config(control_path: Path):
+    """Read the config file in the control directory"""
     config_path = control_path / 'config.yaml'
     with open(config_path) as f:
         config_content = yaml.safe_load(f)
     return config_content
+
+
+@pytest.fixture(scope="session")
+def target_branch(request):
+    """Set the target branch - i.e., the branch the configuration will be
+    merged into. This used is to infer configuration information, if the
+    configuration branches follow a common naming scheme (e.g. ACCESS-OM2)"""
+    return request.config.getoption('--target-branch')
 
 
 # Set up command line options and default for directory paths
@@ -69,6 +79,10 @@ def pytest_addoption(parser):
     parser.addoption("--checksum-path",
                      action="store",
                      help="Specify the checksum file to compare against")
+    
+    parser.addoption("--target-branch",
+                     action="store",
+                     help="Specify the target branch name")
 
 
 def pytest_configure(config):

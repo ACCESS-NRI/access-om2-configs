@@ -2,6 +2,7 @@ import re
 
 import pytest
 import f90nml
+import warnings
 
 from util import get_git_branch_name
 
@@ -38,11 +39,21 @@ class AccessOM2Branch:
 
 
 @pytest.fixture(scope="class")
-def branch(control_path):
-    branch_name = get_git_branch_name(control_path)
-    assert branch_name is not None, (
-        f"Failed getting git branch name of control path: {control_path}"
-    )
+def branch(control_path, target_branch):
+    branch_name = target_branch
+    if branch_name is None:
+        # Default to current branch name
+        branch_name = get_git_branch_name(control_path)
+        assert branch_name is not None, (
+             f"Failed getting git branch name of control path: {control_path}"
+        )
+        warnings.warn(
+            "Target branch is not specifed, defaulting to current git branch: "
+            f"{branch_name}. As some ACCESS-OM2 tests infer information, "
+            "such as resolution, from the target branch name, some tests may "
+            "not be run. To set use --target-branch flag in pytest call"
+        )
+
     return AccessOM2Branch(branch_name)
 
 
