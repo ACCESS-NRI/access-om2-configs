@@ -58,6 +58,12 @@ jobs:
         id: bump
         run: |
           version=$(yq '.version' metadata.yaml)
+
+          if [[ "${version}" == "null" ]]; then
+            echo "before=null" >> $GITHUB_OUTPUT
+            echo "after=1.0" >> $GITHUB_OUTPUT
+          fi
+
           regex="([0-9]+)\.([0-9]+)"
           if [[ $version =~ $regex ]]; then
             major_version="${BASH_REMATCH[1]}"
