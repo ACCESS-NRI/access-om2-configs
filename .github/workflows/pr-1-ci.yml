@@ -28,7 +28,6 @@ on:
   #     - tools/**
   #     - doc/**
   #     - .*
-  #     - metadata.yaml
   #     - README.md
 jobs:
   commit-check:
