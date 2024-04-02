@@ -80,7 +80,7 @@ jobs:
       MODEL_URL: https://github.com/ACCESS-NRI/access-om2
       CONFIG: access-om2-configs
       CONFIG_URL: https://github.com/ACCESS-NRI/access-om2-configs
-      TAG_URL: https://github.com/ACCESS-NRI/access-om2-configs/tags/${{ needs.check-checksum.outputs.compared-checksum-version }}
+      TAG_URL: https://github.com/ACCESS-NRI/access-om2-configs/releases/tag/${{ needs.check-checksum.outputs.compared-checksum-version }}
       RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
     steps:
       - name: Create issue

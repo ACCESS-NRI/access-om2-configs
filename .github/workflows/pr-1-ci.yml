@@ -1,6 +1,22 @@
 name: PR Checks
 on:
   workflow_call:
+    inputs:
+      qa-pytest-markers:
+        type: string
+        required: false
+        default: config
+        description: List of markers for the pytest QA CI checks
+      qa-pytest-add-model-markers:
+        type: boolean
+        required: false
+        default: true
+        description: Whether to run model-specific tests
+      repro-pytest-markers:
+        type: string
+        required: false
+        default: checksum
+        description: List of markers for the pytest repro CI checks
   # Workflows that call this workflow use the following triggers:
   # pull_request:
   #   branches:
@@ -12,7 +28,6 @@ on:
   #     - tools/**
   #     - doc/**
   #     - .*
-  #     - metadata.yaml
   #     - README.md
 jobs:
   commit-check:
@@ -35,10 +50,15 @@ jobs:
 
   branch-check:
     name: PR Source Branch Check
+    # This check is used as a precursor to any repro-ci checks - which are only fired
+    # on dev-* -> release-* PRs.
     # This check is run to confirm that the source branch is of the form `dev-<config>`
     # and the target branch is of the form `release-<config>`. We are being especially
     # concerned with branch names because deployment to GitHub Environments can only
-    # be done on source branches with a certain pattern. See #20.
+    # be done on source branches with a certain pattern. See ACCESS-NRI/access-om2-configs#20.
+    if: needs.commit-check.outputs.authorship != vars.GH_ACTIONS_BOT_GIT_USER_NAME && startsWith(github.base_ref, 'release-') && startsWith(github.head_ref, 'dev-')
+    needs:
+      - commit-check
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -46,20 +66,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
-
-      - name: Check Source
-        run: |
-          if [[ "${{ startsWith(github.head_ref, 'dev-') }}" == "false" ]]; then
-            echo "::error::Source branch ${{ github.head_ref }} doesn't match 'dev-*'"
-            exit 1
-          fi
-
-      - name: Check Target
-        run: |
-          if [[ "${{ startsWith(github.base_ref, 'release-') }}" == "false" ]]; then
-            echo "::error::Target branch ${{ github.base_ref }} doesn't match 'release-*'"
-            exit 1
-          fi
 
       - name: Compare Source and Target Config Names
         # In this step, we cut the 'dev-' and 'release-' to compare config names directly.
@@ -77,24 +83,89 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
           BODY: |
-            :x: Automated testing cannot be run on this branch :x:
+            :x: Automated Reproducibility testing cannot be run on this branch :x:
             Source and Target branches must be of the form `dev-<config>` and `release-<config>` respectively, and `<config>` must match between them.
             Rename the Source branch or check the Target branch, and try again.
         run: gh pr comment --body '${{ env.BODY }}'
 
+  qa-ci:
+    # Run quick, non-HPC tests on the runner.
+    name: QA CI Checks
+    needs:
+      - commit-check
+    if: needs.commit-check.outputs.authorship != vars.GH_ACTIONS_BOT_GIT_USER_NAME
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+    steps:
+      - name: Checkout PR ${{ github.event.action.pull_request.number }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          path: pr
+
+      - name: Checkout Tests
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: pytest
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+          cache: pip
+
+      - name: Install requirements.txt
+        working-directory: ./pytest
+        run: pip install -r ./test/requirements.txt
+
+      - name: Get Final List of Markers
+        id: pytest-markers
+        run: |
+          if [[ ${{ inputs.qa-pytest-add-model-markers }} == "true" ]]; then
+            echo "markers=${{ inputs.qa-pytest-markers }} or access_om2" >> $GITHUB_OUTPUT
+          else
+            echo "markers=${{ inputs.qa-pytest-markers }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Invoke Simple CI Pytests
+        # We continue on error because we will let the checks generated in
+        # the next step speak to the state of the testing
+        continue-on-error: true
+        working-directory: ./pr
+        run: |
+          echo "Running pytest using '-m ${{ steps.pytest-markers.outputs.markers }}'"
+          pytest ../pytest/test \
+            -m '${{ steps.pytest-markers.outputs.markers }}' \
+            --target-branch '${{ github.base_ref }}' \
+            --junitxml=./test_report.xml
+
+      - name: Parse Test Report
+        id: tests
+        uses: EnricoMi/publish-unit-test-result-action/composite@e780361cd1fc1b1a170624547b3ffda64787d365  #v2.12.0
+        with:
+          files: ./pr/test_report.xml
+          comment_mode: off
+          check_run: true
+          check_name: QA Test Results
+          compare_to_earlier_commit: false
+          report_individual_runs: true
+          report_suite_logs: any
+
   repro-ci:
-    # run the given config on the deployment GitHub Environment (`environment-name`) and
+    # Run the given config on the deployment GitHub Environment (`environment-name`) and
     # upload the checksums and test details
     needs:
       - commit-check
       - branch-check
-    if: needs.commit-check.outputs.authorship != 'github-actions' && needs.branch-check.result == 'success'
+    if: needs.commit-check.outputs.authorship != vars.GH_ACTIONS_BOT_GIT_USER_NAME && needs.branch-check.result == 'success'
     uses: access-nri/reproducibility/.github/workflows/checks.yml@main
     with:
       model-name: access-om2
       environment-name: Gadi
       config-tag: ${{ github.head_ref }}
-      test-markers: checksum
+      test-markers: ${{ inputs.repro-pytest-markers }}
     secrets: inherit
     permissions:
       contents: write
@@ -138,6 +209,7 @@ jobs:
           files: ${{ env.TESTING_LOCAL_LOCATION }}/checksum/test_report.xml
           comment_mode: off
           check_run: true
+          check_name: Repro Test Results
           compare_to_earlier_commit: false
           report_individual_runs: true
           report_suite_logs: any
@@ -151,6 +223,38 @@ jobs:
             echo "result=fail" >> $GITHUB_OUTPUT
           else
             echo "result=pass" >> $GITHUB_OUTPUT
+          fi
+
+  bump-check:
+    name: Version Bump Check
+    # Check that the `.version` in the metadata.yaml has been modified in
+    # this PR.
+    needs:
+      - repro-ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR Target
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.base_ref }}
+          path: target
+
+      - name: Checkout PR Source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          path: source
+
+      - name: Modification Check
+        run: |
+          target=$(yq e '.version' ./target/metadata.yaml)
+          source=$(yq e '.version' ./source/metadata.yaml)
+
+          if [[ "${source}" != "${target}" && "${source}" != "null" ]]; then
+            echo "::notice::The version has been modified to ${target}. Merging is now availible"
+          else
+            echo "::error::The version has not been modified in this PR. Merging is disallowed until an appropriate '!bump' is issued"
+            exit 1
           fi
 
   result:
@@ -171,35 +275,19 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - name: Successful Release Comment
-        if: needs.check-checksum.outputs.result == 'pass' && startsWith(github.base_ref, 'release-')
+        if: needs.check-checksum.outputs.result == 'pass'
         env:
           BODY: |
             :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against `${{ needs.check-checksum.outputs.compared-checksum-version }}` for this `Release` config. :white_check_mark:
             For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}, and the test results at ${{ needs.check-checksum.outputs.check-run-url }}.
-            Consider bumping the minor version of `access-om2-configs` - to bump the version, comment `!bump minor`. The meaning of these version bumps is explained in the README.md, under `Config Tags`.
-        run: gh pr comment --body '${{ env.BODY }}'
-
-      - name: Successful Dev Comment
-        if: needs.check-checksum.outputs.result == 'pass' && startsWith(github.base_ref, 'dev-')
-        env:
-          BODY: |
-            :white_check_mark: The Bitwise Reproducibility check succeeded when comparing against `${{ needs.check-checksum.outputs.compared-checksum-version }}` for this `Dev` config. :white_check_mark:
-            For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}, and the test results at ${{ needs.check-checksum.outputs.check-run-url }}.
+            You must bump the minor version of `access-om2-configs` - to bump the version, comment `!bump minor` or modify the `version` in `metadata.yaml`. The meaning of these version bumps is explained in the README.md, under `Config Tags`.
         run: gh pr comment --body '${{ env.BODY }}'
 
       - name: Failed Release Comment
-        if: needs.check-checksum.outputs.result == 'fail' && startsWith(github.base_ref, 'release-')
+        if: needs.check-checksum.outputs.result == 'fail'
         env:
           BODY: |
             :x: The Bitwise Reproducibility check failed when comparing against `${{ needs.check-checksum.outputs.compared-checksum-version }}` for this `Release` config. :x:
             For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}, and the test results at ${{ needs.check-checksum.outputs.check-run-url }}.
-            You must bump the major version of `access-om2-configs` before this PR is merged to account for this - to bump the version, comment `!bump major`. The meaning of these version bumps is explained in the README.md, under `Config Tags`.
-        run: gh pr comment --body '${{ env.BODY }}'
-
-      - name: Failed Dev Comment
-        if: needs.check-checksum.outputs.result == 'fail' && startsWith(github.base_ref, 'dev-')
-        env:
-          BODY: |
-            :warning: The Bitwise Reproducibility check failed when comparing against `${{ needs.check-checksum.outputs.compared-checksum-version }}` for this `Dev` config. :warning:
-            For further information, the experiment can be found on Gadi at ${{ needs.repro-ci.outputs.experiment-location }}, and the test results at ${{ needs.check-checksum.outputs.check-run-url }}.
+            You must bump the major version of `access-om2-configs` before this PR is merged to account for this - to bump the version, comment `!bump major`or modify the `version` in `metadata.yaml`. The meaning of these version bumps is explained in the README.md, under `Config Tags`.
         run: gh pr comment --body '${{ env.BODY }}'
