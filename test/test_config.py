@@ -2,18 +2,17 @@
 
 from pathlib import Path
 import re
+import warnings
 
 import pytest
 import requests
 import jsonschema
 import yaml
 
-# #TODO: Pointing to main, allows testing to point to recent schema versions,
-# though makes this test code less robust.
-# Could point to a commit - then if schema_version was a version not defined,
-# at that commit, use the default schema version.
-BASE_SCHEMA_URL = "https://raw.githubusercontent.com/ACCESS-NRI/schema/main/au.org.access-nri/model/output/experiment-metadata/"
+BASE_SCHEMA_URL = "https://raw.githubusercontent.com/ACCESS-NRI/schema"
+BASE_SCHEMA_PATH = "au.org.access-nri/model/output/experiment-metadata"
 DEFAULT_SCHEMA_VERSION = "1-0-0"
+DEFAULT_SCHEMA_COMMIT = "bfc15e3c6fa20d492ccfa0c4706805d64c531e7c"
 
 
 @pytest.fixture(scope="class")
@@ -145,13 +144,23 @@ class TestConfig:
         )
 
     def test_validate_metadata(self, metadata):
-        # Schema URL
-        schema_version = metadata.get("schema_version", DEFAULT_SCHEMA_VERSION)
-        url = f"{BASE_SCHEMA_URL}/{schema_version}.json"
-
         # Get schema from Github
+        schema_version = metadata.get("schema_version", DEFAULT_SCHEMA_VERSION)
+        schema_path = f"{BASE_SCHEMA_PATH}/{schema_version}.json"
+    
+        url = f"{BASE_SCHEMA_URL}/main/{schema_path}"
         response = requests.get(url)
-        assert response.status_code == 200
+        if response.status_code != 200:
+            # Use default schema
+            warnings.warn(
+                f"Failed to retrieve schema from url: {url}\n" +
+                f"Defaulting to schema version: {DEFAULT_SCHEMA_VERSION}"
+            )
+            schema_path = f"{BASE_SCHEMA_PATH}/{DEFAULT_SCHEMA_VERSION}.json"
+
+            url = f"{BASE_SCHEMA_URL}/{DEFAULT_SCHEMA_COMMIT}/{schema_path}"
+            response = requests.get(url)
+            assert response.status_code == 200
         schema = response.json()
 
         # In schema version (1-0-0), required fields are name, experiment_uuid,

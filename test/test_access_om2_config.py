@@ -35,7 +35,11 @@ class AccessOM2Branch:
             if res in self.branch_name:
                 self.resolution = res
                 return
-        # TODO Should unknown resolutions fail the pytests or be ignored?
+
+        pytest.fail(
+            f"Branch name {self.branch_name} has an unknown resolution. " +
+            f"Current supported resolutions: {', '.join(resolutions)}"
+        )
 
 
 @pytest.fixture(scope="class")
@@ -88,7 +92,6 @@ class TestAccessOM2:
         accessom2_nml = f90nml.read(accessom2_nml_path)
         restart_period = accessom2_nml['date_manager_nml']['restart_period']
 
-        # TODO: Here it's fixed, should it be a set of accepted values?
         if branch.resolution == '1deg':
             expected_period = [5, 0, 0]
         elif branch.resolution == '025deg':
@@ -102,7 +105,10 @@ class TestAccessOM2:
             else:
                 expected_period = [0, 3, 0]
         else:
-            return
+            pytest.fail(
+                f"The expected restart period is not defined for given "
+                f"resolution: {branch.resolution}"
+            )
         assert restart_period == expected_period
 
     def test_metadata_keywords(self, metadata):
