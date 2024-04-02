@@ -148,6 +148,7 @@ jobs:
           files: ./pr/test_report.xml
           comment_mode: off
           check_run: true
+          check_name: QA Test Results
           compare_to_earlier_commit: false
           report_individual_runs: true
           report_suite_logs: any
@@ -208,6 +209,7 @@ jobs:
           files: ${{ env.TESTING_LOCAL_LOCATION }}/checksum/test_report.xml
           comment_mode: off
           check_run: true
+          check_name: Repro Test Results
           compare_to_earlier_commit: false
           report_individual_runs: true
           report_suite_logs: any
