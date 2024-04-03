@@ -141,12 +141,14 @@ This is checked to make sure a shorter run time hasn't been set during testing a
 
 | Config resolution | `restart_period`|
 | -- | -- |
-| 1&deg; | `5Y` |
-| 1&deg; BGC | `5Y`|
-| 0.25&deg; | `2Y`|
-| 0.25&deg; BGC | `1Y`|
-| 0.1&deg; | `3M`|
-| 0.1&deg; BGC | `1M` |
+| 1&deg; | `5, 0, 0` |
+| 1&deg; BGC | `5, 0, 0` |
+| 0.25&deg; | `2, 0, 0` |
+| 0.25&deg; BGC | `1, 0, 0` |
+| 0.1&deg; | `0, 3, 0` |
+| 0.1&deg; BGC | `0, 1, 0` |
+
+The values shown are what is required for the namelist variable `restart_period` in the `accessom2.nml` namelist file.
 
 If you need to set it to a different value for a released configuration this will need to be changed in the CI checking code.
 
