@@ -12,7 +12,7 @@ Each configuration has a `dev-*` and `release-*` branch. They differ in the CI c
 
 ### Release
 
-Pull requests to the `release-*` branch are intended to create a new version of the configuration. It is expected that the version *will* be updated before the PR can be merged. This in turn creates a GitHub release. It can be confusing for users if there are a large number of versions of a configuration. For this reason the atomicity of updates to a released configuration should be minimised, i.e.  updates should be meaningful.
+Pull requests to the `release-*` branch are intended to create a new version of the configuration. It is expected that the version *will* be updated before the PR can be merged. This in turn creates a new tag for that configuration branch. It can be confusing for users if there are a large number of versions of a configuration. For this reason the atomicity of updates to a released configuration should be minimised, i.e.  updates should be meaningful.
 
 On pull requests to `release-*` branches CI quality assurance (QA) checks are run to ensure the model configuration is suitable for release. Model reproducibility checks are also conducted. These checks run a short test of the configuration and test for bitwise reproducibility. The success or otherwise of this check determines if a major or minor version bump is required.
 
@@ -34,7 +34,7 @@ Create a `dev-*` branch by adding the config repository as a remote and checking
 
 ```bash
 git remote add <config_repo> <config_repo_url>  # ex. git remote add config git@github.com/my/configs.git
-git checkout <config_repo>/<config_branch> -b dev-<config_name>  # checkout config from new remote + add to branch, ex. git checkout config/main -b release-1deg_abc_def
+git checkout <config_repo>/<config_branch> -b dev-<config_name>  # checkout config from new remote + add to branch, ex. git checkout config/main -b dev-1deg_abc_def
 git checkout main -- .github/workflows/call-*.yml .github/workflows/validate-json.yml  #
 git add .
 git commit -m "Initial commit for config branch"
