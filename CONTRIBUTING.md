@@ -1,28 +1,36 @@
 # Contributing
 
+## Changes to the CI Infrastructure
+
+Changes to the CI Infrastructure are made to the `main` branch in this repository. Config branches use the `call-*.yml` workflows to `workflow_call` the equivalent workflow that is on the `main` branch.
+
+Since the logic in the CI infrastructure is quite involved, it would be a good idea to read the [README-DEV.md](./README-DEV.md).
+
 ## Dev and Release branches
 
-Each configuration has a `dev-` and `release-` branch. They differ in the CI checks that are run when pull requests are made to update the branch.
+Each configuration has a `dev-*` and `release-*` branch. They differ in the CI checks that are run when pull requests are made to update the branch.
 
 ### Release
 
-Pull requests to the `release-` branch are intended to create a new version of the configuration. It is expected that the version *will* be updated before the PR can be merged. This in turn creates a GitHub release. It can be confusing for users if there are a large number of versions of a configuration. For this reason the atomicity of updates to a released configuration should be minimised, i.e.  updates should be meaningful.
+Pull requests to the `release-*` branch are intended to create a new version of the configuration. It is expected that the version *will* be updated before the PR can be merged. This in turn creates a GitHub release. It can be confusing for users if there are a large number of versions of a configuration. For this reason the atomicity of updates to a released configuration should be minimised, i.e.  updates should be meaningful.
 
-On pull requests to `release-` branches CI quality assurance (QA) checks are run to ensure the model configuration is suitable for release. Model reproducibility checks are also conducted. These checks run a short test of the configuration and test for bitwise reproducibility. The success or otherwise of this check determines if a major or minor version bump is required.
+On pull requests to `release-*` branches CI quality assurance (QA) checks are run to ensure the model configuration is suitable for release. Model reproducibility checks are also conducted. These checks run a short test of the configuration and test for bitwise reproducibility. The success or otherwise of this check determines if a major or minor version bump is required.
 
 ### Dev
 
-Quality assurance (QA) CI checks are run on pull requests to `dev-` branches, but not reproducibility checks. There is no requirement that the version be updated when changes are made to the `dev-` branch. So the `dev-` branch of a configuration allows for smaller changes can be accumulated before a PR is made to the respective `release-` branch.
-
-## Pull Request Process
+Quality assurance (QA) CI checks are run on pull requests to `dev-*` branches, but not reproducibility checks. There is no requirement that the version be updated when changes are made to the `dev-` branch. So the `dev-` branch of a configuration allows for smaller changes that can be accumulated before a PR is made to the respective `release-*` branch.
 
 ### Creation of a new ACCESS-OM2 Config
 
-Config branches are entirely separate from the `main` history in this repository, except for a few files in `.github`. Note, you may need to be an Administrator to commit to `release-*` or `dev-` branches directly.
+Config branches are entirely separate from the `main` history in this repository, except for a few files in `.github`. Note, you may need to be an Administrator to commit to `release-*` or `dev-*` branches directly.
 
-If you are creating a new branch, and don't have the config stored in another repository, just checkout a `dev-` branch from `main` and delete everything except `.github/workflows/pr-1-ci.yml`, `.github/workflows/pr-3-bump-tag.yml` and `.github/workflows/validate-json.yml`, then add your config.
+#### Brand new configuration
 
-#### If the Config is Stored in Another Repository
+If you are creating a brand new configuration, and don't have the config stored in another repository, just checkout a `dev-*` branch from `main` and delete everything except `.github/workflows/pr-1-ci.yml`, `.github/workflows/pr-3-bump-tag.yml` and `.github/workflows/validate-json.yml`, then add your config.
+
+#### Config is Stored in Another Repository
+
+Create a `dev-*` branch by adding the config repository as a remote and checking out the config branch: 
 
 ```bash
 git remote add <config_repo> <config_repo_url>  # ex. git remote add config git@github.com/my/configs.git
@@ -33,15 +41,35 @@ git commit -m "Initial commit for config branch"
 git push  # might require admin permissions for pushes to dev-* branch
 ```
 
-### Changes to ACCESS-OM2 Configs
+## Pull Request Process
 
-#### Required metadata
+#### Update dev config
+
+1. Make your changes, test them, and open a PR from a feature/change branch (or fork) to the `dev-*` branch of a particular configuration.
+2. QA checks will run to ensure the configuration meets criteria for a released configuration, and to ensure consistency of released configurations.
+3. Fix the problems identified in the QA checks, commit and push to the PR branch.
+4. Once all checks pass the pull request branch can be merged.
+4. Consider making a PR to the equivalent `release-*` branch.
+5. Finally, bump the version using the `!bump [major|minor]` command depending on the result of the reproducibility check. Additionally, if the checksums are different, the updated checksum will be automatically committed to the PR. This is a requirement before the PR will be mergable.
+
+#### Update release config
+
+1. Open a PR from the `dev-*` branch of a particular configuration to the equivalent `release-*` branch
+2. QA checks will run to ensure the configuration meets criteria for a released configuration, and to ensure consistency of released configurations.
+2. Checks will also run to test if changes break reproducibility with the current major version config tag on the target branch. For example, if you are opening a PR on the `release-1deg_jra55_iaf` branch, and the last tagged version on this branch is `release-1deg_jra55_iaf-1.2`, the checksums between the config in your PR and the checksum in the config tag are compared.
+3. A comment will be posted on the PR when this is completed, notifying you whether the checksums match (in this example meaning a minor bump to `*-1.3`), or are different (meaning a major bump to `*-2.0`).
+4. Optionally, you can now modify your PR and get more reproducibility checks. Particularly in the case where bitwise reproducibility should be retained this is an opportunity to modify the configuration to enable this.
+5. Finally, bump the version using the `!bump [major|minor]` command depending on the result of the reproducibility check. Additionally, if the checksums are different, the updated checksum will be automatically committed to the PR. Bumping the version in some way is a requirement before the PR will be mergable.
+
+#### Common Changes Required
+
+##### Required metadata
 
 The following fields must be set in `metadata.yaml`:
 
 **version**
 
-Use the existing `release-` version. If there isn't an existing version set to `null`.  
+Use the existing `release-*` version. If there isn't an existing version set to `null`.  
 
 **realm**
 
@@ -81,7 +109,7 @@ An appropriate scientific reference for the configuration. For ACCESS-OM2 this s
 
 **license**
 
-TO BE DECIDED
+This is the license that will apply to the model outputs for an experiment. This should be set to the [SPDX identifier](https://spdx.org/licenses/) for [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (`CC-BY-4.0`) to alleviate users from the burden of choosing a license, and to ensure model outputs have a permissive license for reuse to encourage open and shareable science.
 
 **url**
 
@@ -91,7 +119,7 @@ This is a bit tricky. Ideally this should be a URL to the GitHub (or similar) re
 
 Should be either `access-om2` or `access-om2-bgc`.
 
-#### Configuration settings
+##### Configuration settings
 
 **restart_period**
 
@@ -117,17 +145,4 @@ The requirement is simply that a date-based frequency be used so that restarts a
 
 **sync**
 
-This should not be enabled. Nor should `sync_path` be set. Ideally set to `null`.
-
-1. Make your changes, test them, and open a PR from a feature/change branch (or fork) to the `dev-*` branch of a particular configuration.
-2. 
-2. Checks will run to note whether your changes break reproducibility with the current major version config tag on the target branch. For example, if you are opening a PR on the `release-1deg_jra55_iaf` branch, and the last tagged version on this branch is `release-1deg_jra55_iaf-1.2`, the checksums between the config in your PR and the checksum in the config tag are compared.
-3. A comment will be posted on the PR when this is completed, notifying you whether the checksums match (meaning a minor bump to `*-1.3`), or are different (meaning a major bump to `*-3.0`).
-4. Optionally, you can now modify your PR and get more reproducibility checks.
-5. Finally, bump the version using the `!bump [major|minor]` command depending on the result of the reproducibility check. Additionally, if the checksums are different, the updated checksum will be automatically committed to the PR. This is a requirement before the PR will be mergable.
-
-### Changes to the CI Infrastructure
-
-Changes to the CI Infrastructure are made to the `main` branch in this repository. Config branches use the `call-*.yml` workflows to `workflow_call` the equivalent workflow that is on the `main` branch.
-
-Since the logic in the CI infrastructure is quite involved, it would be a good idea to read the [README-DEV.md](./README-DEV.md).
+This should not be enabled. Nor should `sync_path` be set to a real path. Ideally set `sync_path` to `null`.
