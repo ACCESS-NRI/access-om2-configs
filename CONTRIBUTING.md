@@ -20,15 +20,15 @@ On pull requests to `release-*` branches CI quality assurance (QA) checks are ru
 
 Quality assurance (QA) CI checks are run on pull requests to `dev-*` branches, but not reproducibility checks. There is no requirement that the version be updated when changes are made to the `dev-` branch. So the `dev-` branch of a configuration allows for smaller changes that can be accumulated before a PR is made to the respective `release-*` branch.
 
-### Creation of a new ACCESS-OM2 Config
+## Creation of a new ACCESS-OM2 Config
 
 Config branches are entirely separate from the `main` history in this repository, except for a few files in `.github`. Note, you may need to be an Administrator to commit to `release-*` or `dev-*` branches directly.
 
-#### Brand new configuration
+### Brand new configuration
 
 If you are creating a brand new configuration, and don't have the config stored in another repository, just checkout a `dev-*` branch from `main` and delete everything except `.github/workflows/pr-1-ci.yml`, `.github/workflows/pr-3-bump-tag.yml` and `.github/workflows/validate-json.yml`, then add your config.
 
-#### Config is Stored in Another Repository
+### Config is Stored in Another Repository
 
 Create a `dev-*` branch by adding the config repository as a remote and checking out the config branch: 
 
@@ -41,18 +41,32 @@ git commit -m "Initial commit for config branch"
 git push  # might require admin permissions for pushes to dev-* branch
 ```
 
+### Create a new release branch
+
+For a brand new configuration there is no existing `release-*` branch, so one needs to be created. Follow the pull request process outlined below to update the dev branch so that it is passing QA checks. At this point create a `release-*` branch from the `dev-` branch and `git push` it to the repository:
+
+```bash
+git checkout -b release-<config_name>
+git push release-<config_name>
+```
+
+For the CI workflows to work correctly the `release-` branch needs to have a version set, and a reproducibility checksum committed. There is a convenience workflow for this purpose: [Generate Initial Checksums](https://github.com/ACCESS-NRI/access-om2-configs/actions/workflows/generate-initial-checksums.yml). Click the "Run workflow" menu, fill in the fields and push the green "Run workflow" button.
+
+Once the workflow is completed there should be a new commit on the `release-*` branch, and a [tag](https://github.com/ACCESS-NRI/access-om2-configs/tags) for the specified version.
+
 ## Pull Request Process
 
-#### Update dev config
+### Update dev config
 
 1. Make your changes, test them, and open a PR from a feature/change branch (or fork) to the `dev-*` branch of a particular configuration.
 2. QA checks will run to ensure the configuration meets criteria for a released configuration, and to ensure consistency of released configurations.
 3. Fix the problems identified in the QA checks, commit and push to the PR branch.
 4. Once all checks pass the pull request branch can be merged.
 4. Consider making a PR to the equivalent `release-*` branch.
-5. Finally, bump the version using the `!bump [major|minor]` command depending on the result of the reproducibility check. Additionally, if the checksums are different, the updated checksum will be automatically committed to the PR. This is a requirement before the PR will be mergable.
 
-#### Update release config
+Note: If this is a brand new configuration and there is no existing `release-*` branch you will need to create one first
+
+### Update release config
 
 1. Open a PR from the `dev-*` branch of a particular configuration to the equivalent `release-*` branch
 2. QA checks will run to ensure the configuration meets criteria for a released configuration, and to ensure consistency of released configurations.
@@ -61,9 +75,9 @@ git push  # might require admin permissions for pushes to dev-* branch
 4. Optionally, you can now modify your PR and get more reproducibility checks. Particularly in the case where bitwise reproducibility should be retained this is an opportunity to modify the configuration to enable this.
 5. Finally, bump the version using the `!bump [major|minor]` command depending on the result of the reproducibility check. Additionally, if the checksums are different, the updated checksum will be automatically committed to the PR. Bumping the version in some way is a requirement before the PR will be mergable.
 
-#### Common Changes Required
+### Common Changes Required
 
-##### Required metadata
+#### Required metadata
 
 The following fields must be set in `metadata.yaml`:
 
@@ -119,7 +133,7 @@ This is a bit tricky. Ideally this should be a URL to the GitHub (or similar) re
 
 Should be either `access-om2` or `access-om2-bgc`.
 
-##### Configuration settings
+#### Configuration settings
 
 **restart_period**
 
