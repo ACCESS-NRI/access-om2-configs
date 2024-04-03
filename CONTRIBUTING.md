@@ -60,11 +60,11 @@ Once the workflow is completed there should be a new commit on the `release-*` b
 
 1. Make your changes, test them, and open a PR from a feature/change branch (or fork) to the `dev-*` branch of a particular configuration.
 2. QA checks will run to ensure the configuration meets criteria for a released configuration, and to ensure consistency of released configurations.
-3. Fix the problems identified in the QA checks, commit and push to the PR branch.
+3. [Fix the problems identified in the QA checks](#common-changes-required), commit and push to the PR branch.
 4. Once all checks pass the pull request branch can be merged.
 4. Consider making a PR to the equivalent `release-*` branch.
 
-Note: If this is a brand new configuration and there is no existing `release-*` branch you will need to create one first
+Note: If this is a brand new configuration and there is no existing `release-*` branch you will [need to create one first](#create-a-new-release-branch).
 
 ### Update release config
 
