@@ -15,30 +15,58 @@ jobname: 01deg_jra55_ryf
 # Model configuration
 name: common
 model: access-om2
-input: /g/data/ik11/inputs/access-om2/input_20201102/common_01deg_jra55
+input:
+    - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.01deg/2020.05.30/rmp_jra55_cice_1st_conserve.nc
+    - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.01deg/2020.05.30/rmp_jra55_cice_2nd_conserve.nc
+    - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.01deg/2020.05.30/rmp_jra55_cice_patch.nc
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data/ik11/inputs/access-om2/bin/yatm_d750b4b.exe
+      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26=2023.10.26-ieiy3e7hidn4dzaqly3ly2yu45mecgq4/bin/yatm.exe
       input:
-            - /g/data/ik11/inputs/access-om2/input_20201102/yatm_01deg
-            - /g/data/ik11/inputs/JRA-55/RYF/v1-4
+            - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.01deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
+            - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/rsds/gr/v20190429
+            - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/rlds/gr/v20190429
+            - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/prra/gr/v20190429
+            - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/prsn/gr/v20190429
+            - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hrPt/psl/gr/v20190429
+            - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/land/day/friver/gr/v20190429
+            - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hrPt/tas/gr/v20190429
+            - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hrPt/huss/gr/v20190429
+            - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hrPt/uas/gr/v20190429
+            - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hrPt/vas/gr/v20190429
+            - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/landIce/day/licalvf/gr/v20190429
       ncpus: 1
 
     - name: ocean
       model: mom
-      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM-BGC_730f0bf_libaccessom2_d750b4b.x
+      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-64l5azdtcoxhrgb5ynn2vued5lmjvn33/bin/fms_ACCESS-OM-BGC.x
       input:
-            - /g/data/ik11/inputs/access-om2/input_bgc_20220224/mom_01deg
-            - /g/data/ik11/inputs/access-om2/input_20201102/mom_01deg
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.01deg/2020.05.30/grid_spec.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.01deg/2020.05.30/ocean_hgrid.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.01deg/2020.05.30/ocean_mosaic.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.01deg/2020.05.30/ocean_mask.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.01deg/2020.05.30/topog.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/vertical/global.01deg/2020.05.30/ocean_vgrid.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/processor_masks/global.01deg/4358.80x75/2020.05.30/ocean_mask_table
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/chlorophyll/global.01deg/2020.05.30/chl.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/initial_conditions/global.01deg/2020.10.22/ocean_temp_salt.res.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.01deg/2020.05.30/tideamp.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.01deg/2020.05.30/roughness_amp.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.01deg/2020.05.30/roughness_cdbot.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/surface_salt_restoring/global.01deg/2020.05.30/salt_sfc_restore.nc
       ncpus: 4358
 
     - name: ice
       model: cice5
-      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_3600x2700_722p_edcfa6f_libaccessom2_d750b4b.exe
+      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19=2023.10.19-rh3xfkrgajya3ghtliacuhlx3pgvrzqs/bin/cice_auscom_3600x2700_90x90_722p.exe
       input:
-            - /g/data/ik11/inputs/access-om2/input_bgc_20220224/cice_01deg
-            - /g/data/ik11/inputs/access-om2/input_20201102/cice_01deg
+        - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.01deg/2020.05.30/grid.nc
+        - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.01deg/2020.05.30/kmt.nc
+        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.01deg/2020.05.30/i2o.nc
+        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.01deg/2020.05.30/o2i.nc
+        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.01deg/2020.05.30/monthly_sstsss.nc
+        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.01deg/2020.05.30/u_star.nc
       ncpus: 722
 
 # Collation
@@ -49,7 +77,7 @@ collate:
   mem: 16GB
   ncpus: 4
   queue: normal
-  exe: /g/data/ik11/inputs/access-om2/bin/mppnccombine-fast
+  exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-ewcdbrfukblyjxpkhd3mfkj4yxfolal4/bin/mppnccombine.spack
 
 # Misc
 runlog: true
