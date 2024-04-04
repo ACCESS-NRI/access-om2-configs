@@ -18,6 +18,8 @@ jobs:
     # Bump the `metadata.yaml` file if the comment is made on a PR and starts with '!bump'
     if: github.event.issue.pull_request && startsWith(github.event.comment.body, '!bump')
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     outputs:
       # metadata.yaml version before being bumped
       before: ${{ steps.bump.outputs.before }}
@@ -26,6 +28,11 @@ jobs:
       # The type of bump - 'major' or 'minor'
       type: ${{ steps.type.outputs.bump }}
     steps:
+      - uses: access-nri/actions/.github/actions/react-to-comment@main
+        with:
+          reaction: rocket
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
