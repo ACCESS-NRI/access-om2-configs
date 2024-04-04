@@ -164,4 +164,19 @@ The requirement is simply that a date-based frequency be used so that restarts a
 
 **sync**
 
-This should not be enabled. Nor should `sync_path` be set to a real path. Ideally set `sync_path` to `null`.
+This should not be enabled by default. Nor should `path` be set to a real path. Ideally set `path` to `null`:
+```yaml
+sync:
+    enable: false
+    path: null
+```
+Users should enable this, and set the `path` themselves, as there is no safe default for this.
+
+**userscript**
+
+The `sync` userscript should be set to the correct path so that daily ice data will be concatenated, which saves a great deal of space. This will only work when syncing is enabled.
+
+```yaml
+userscripts:
+    sync: /g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh
+```
