@@ -99,6 +99,7 @@ class TestAccessOM2:
             expected_config += '\n - ocnBgchem'
 
         assert ('realm' in metadata
+                and metadata['realm'] is not None
                 and set(metadata['realm']) == expected_realms), (
                     'Expected metadata realm set to:\n' + expected_config
                     )
@@ -157,7 +158,7 @@ class TestAccessOM2:
 
         expected = NOMINAL_RESOLUTION[branch.resolution]
         assert ('nominal_resolution' in metadata
-                and set(metadata['nominal_resolution']) == expected), (
+                and metadata['nominal_resolution'] == expected), (
                     f"Expected nominal_resolution field set to: {expected} " +
-                    f"\nnominal_resolutionzz:\n - {"\n - ".join(expected)}"
+                    f"\nnominal_resolution: {metadata['nominal_resolution']}"
                     )
