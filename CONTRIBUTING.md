@@ -54,6 +54,8 @@ For the CI workflows to work correctly the `release-` branch needs to have a ver
 
 Once the workflow is completed there should be a new commit on the `release-*` branch, and a [tag](https://github.com/ACCESS-NRI/access-om2-configs/tags) for the specified version.
 
+Once the `release-*` branch has been updated those changes need to be merged **back** into the `dev-*` branch. This step is only necessary when the `release-*` branch is updated independently of the `dev-*` branch.
+
 ## Pull Request Process
 
 ### Update dev config
@@ -73,7 +75,8 @@ Note: If this is a brand new configuration and there is no existing `release-*` 
 2. Checks will also run to test if changes break reproducibility with the current major version config tag on the target branch. For example, if you are opening a PR on the `release-1deg_jra55_iaf` branch, and the last tagged version on this branch is `release-1deg_jra55_iaf-1.2`, the checksums between the config in your PR and the checksum in the config tag are compared.
 3. A comment will be posted on the PR when this is completed, notifying you whether the checksums match (in this example meaning a minor bump to `*-1.3`), or are different (meaning a major bump to `*-2.0`).
 4. Optionally, you can now modify your PR and get more reproducibility checks. Particularly in the case where bitwise reproducibility should be retained this is an opportunity to modify the configuration to enable this.
-5. Finally, bump the version using the `!bump [major|minor]` command depending on the result of the reproducibility check. Additionally, if the checksums are different, the updated checksum will be automatically committed to the PR. Bumping the version in some way is a requirement before the PR will be mergable.
+5. Bump the version using the `!bump [major|minor]` command depending on the result of the reproducibility check. Additionally, if the checksums are different, the updated checksum will be automatically committed to the PR. Bumping the version in some way is a requirement before the PR will be mergable.
+6. Merge the PR and 
 
 ### Common Changes Required
 
@@ -141,12 +144,14 @@ This is checked to make sure a shorter run time hasn't been set during testing a
 
 | Config resolution | `restart_period`|
 | -- | -- |
-| 1&deg; | `5Y` |
-| 1&deg; BGC | `5Y`|
-| 0.25&deg; | `2Y`|
-| 0.25&deg; BGC | `1Y`|
-| 0.1&deg; | `3M`|
-| 0.1&deg; BGC | `1M` |
+| 1&deg; | `5, 0, 0` |
+| 1&deg; BGC | `5, 0, 0` |
+| 0.25&deg; | `2, 0, 0` |
+| 0.25&deg; BGC | `1, 0, 0` |
+| 0.1&deg; | `0, 3, 0` |
+| 0.1&deg; BGC | `0, 1, 0` |
+
+The values shown are what is required for the namelist variable `restart_period` in the `accessom2.nml` namelist file.
 
 If you need to set it to a different value for a released configuration this will need to be changed in the CI checking code.
 
@@ -159,4 +164,19 @@ The requirement is simply that a date-based frequency be used so that restarts a
 
 **sync**
 
-This should not be enabled. Nor should `sync_path` be set to a real path. Ideally set `sync_path` to `null`.
+This should not be enabled by default. Nor should `path` be set to a real path. Ideally set `path` to `null`:
+```yaml
+sync:
+    enable: false
+    path: null
+```
+Users should enable this, and set the `path` themselves, as there is no safe default for this.
+
+**userscript**
+
+The `sync` userscript should be set to the correct path so that daily ice data will be concatenated, which saves a great deal of space. This will only work when syncing is enabled.
+
+```yaml
+userscripts:
+    sync: /g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh
+```
