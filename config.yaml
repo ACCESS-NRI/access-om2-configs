@@ -9,8 +9,8 @@
 # shortpath: /scratch/v45
 
 queue: normal
-walltime:  3:00:00
-jobname: 01deg_jra55_ryf
+walltime:  5:00:00
+jobname: 01deg_jra55_ryf+bgc
 
 # Model configuration
 name: common
@@ -92,7 +92,7 @@ platform:
     nodesize: 48
 # sweep and resubmit on specific errors - see https://github.com/payu-org/payu/issues/241#issuecomment-610739771
 userscripts:
-    error: resub.sh
+    error: tools/resub.sh
     run: rm -f resubmit.count
 
 # DANGER! Do not uncomment this without checking the script is syncing to the correct location!
