@@ -9,17 +9,17 @@ on:
       commit-checksums:
         type: boolean
         required: true
-        description: Whether to commit the checksums to the target branch once generated. They will still be stored as a workflow artifact.
+        description: Commit the checksums to the target branch once generated. They will still be stored as a workflow artifact.
       committed-checksum-location:
         type: string
         required: false
         default: ./testing/checksum
-        description: "If `commit-checksums`: Where in the repository the generated checksums should be committed to."
+        description: "If checksums are being committed: Where in the repository the generated checksums should be committed to."
       committed-checksum-tag-version:
         type: string
-        required: true
+        required: false
         default: '1.0'
-        description: "If `commit-checksums`: The initial version for the git tag associated with the committed checksums."
+        description: "If checksums are being committed: The initial version for the git tag associated with the committed checksums."
 jobs:
   generate-checksums:
     name: Generate Checksums
