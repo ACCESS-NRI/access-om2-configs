@@ -15,6 +15,14 @@ TOPIC_KEYWORDS = {
     'model': {'access-om2', 'access-om2-025', 'access-om2-01'}
 }
 
+# Nominal resolutions are sourced from CMIP6 controlled vocabulary
+# https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_nominal_resolution.json
+NOMINAL_RESOLUTION = {
+    '025deg': {'25 km'},
+    '01deg': {'10 km'},
+    '1deg': {'100 km'}
+}
+
 
 class AccessOM2Branch:
     """Use the naming patterns of the branch name to infer informatiom of
@@ -73,6 +81,16 @@ class TestAccessOM2:
                     "Expect collate executable set to mppnccombine-fast"
                     )
 
+    def test_sync_userscript_ice_concatenation(self, config):
+        # This script runs in the sync pbs job before syncing output to a
+        # remote location
+        script = '/g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh'
+        assert ('userscripts' in config and 'sync' in config['userscripts']
+                and config['userscripts']['sync'] == script), (
+                    "Expect sync userscript set to ice-concatenation script." +
+                    f"\nuserscript:\n  sync: {script}"
+                )
+
     def test_metadata_realm(self, metadata, branch):
         expected_realms = {'ocean', 'seaIce'}
         expected_config = 'realm:\n - ocean\n - seaIce'
@@ -130,3 +148,16 @@ class TestAccessOM2:
         assert len(unrecognised_keywords) == 0, (
             f"Metadata has unrecognised keywords: {unrecognised_keywords}"
             )
+
+    def test_metadata_nominal_resolution(self, metadata, branch):
+        assert branch.resolution in NOMINAL_RESOLUTION, (
+            f"The expected nominal_resolution is not defined for given " +
+            f"resolution: {branch.resolution}"
+        )
+
+        expected = NOMINAL_RESOLUTION[branch.resolution]
+        assert ('nominal_resolution' in metadata
+                and set(metadata['nominal_resolution']) == expected), (
+                    f"Expected nominal_resolution field set to: {expected} " +
+                    f"\nnominal_resolutionzz:\n - {"\n - ".join(expected)}"
+                    )

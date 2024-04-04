@@ -135,6 +135,21 @@ class TestConfig:
             "manifest:\n    reproduce:\n        exe: True"
             )
 
+    def test_metadata_is_enabled(self, config):
+        if 'metadata' in config and 'enable' in config['metadata']:
+            assert config['metadata']['enable'], (
+                "Metadata should be enabled, otherwise new UUIDs will not " +
+                "be generated and branching in Payu would not work - as " +
+                "branch and UUIDs are not used in the name used for archival."
+            )
+
+    def test_experiment_name_is_not_defined(self, config):
+        assert 'experiment' not in config, (
+            f"experiment: {config['experiment']} should not set, " +
+            "as this over-rides the experiment name used for archival. " +
+            "If set, branching in payu would not work."
+        )
+
     def test_no_scripts_in_top_level_directory(self, control_path):
         exts = {".py", ".sh"}
         scripts = [p for p in control_path.iterdir() if p.suffix in exts]
@@ -174,8 +189,13 @@ class TestConfig:
 
     @pytest.mark.parametrize(
         "field",
-        ["description", "notes", "keywords", "nominal resolution", "version",
-        "reference", "license", "url", "model", "realm"]
+        ["description", "notes", "keywords", "nominal_resolution", "version",
+        "reference", "url", "model", "realm"]
     )
     def test_metadata_contains_fields(self, field, metadata):
         assert field in metadata, f"{field} field shoud be defined in metadata"
+
+    def test_metadata_license(self, metadata):
+        assert 'license' in metadata and metadata['license'] == 'CC-BY-4.0', (
+            "The license should be set to CC-BY-4.0"
+            )
