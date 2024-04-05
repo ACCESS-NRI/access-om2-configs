@@ -16,10 +16,7 @@ mem: 1000GB
 # longer term storage
 sync:
     enable: False # set path below and change to true
-    path: none # Set to location on /g/data or a remote server and path (rsync syntax)
-    exclude:
-      - '*.nc.*'
-      - 'iceh.????-??-??.nc'
+    path: null # Set to location on /g/data or a remote server and path (rsync syntax)
 
 # Model configuration
 name: common
@@ -80,13 +77,17 @@ collate:
   exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-ewcdbrfukblyjxpkhd3mfkj4yxfolal4/bin/mppnccombine.spack
 
 # Misc
-runlog: false
+runlog: true
 stacksize: unlimited
-restart_freq: 1
+restart_freq: 5Y
 mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
 qsub_flags: -W umask=027
 env:
     UCX_LOG_LEVEL: 'error'
+
+manifest:
+    reproduce:
+        exe: True
 
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
