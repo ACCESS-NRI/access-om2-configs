@@ -22,16 +22,23 @@ notes: |-
   (c) let them know of any publications which use these models or data so we can add them to their list:
   https://scholar.google.com/citations?hl=en&user=inVqu_4AAAAJ
 keywords:
-  - JRA55
-  - access-om2
-  - interannual
-  - global
+- JRA55
+- access-om2
+- interannual
+- global
 realm:
-  - ocean
-  - seaIce
+- ocean
+- seaIce
 nominal_resolution: 100 km
 reference: https://doi.org/10.5194/gmd-13-401-2020
 license: CC-BY-4.0
 model: access-om2
-version: null
+version:
 url: https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_iaf
+experiment_uuid: 62fc7bda-b1c8-4105-be4c-0a86659a311e
+name:  # The name of the experiment (string)
+long_description: # Long description of the experiment (string)
+frequency: # The frequency(/ies) included in the experiment (string)
+variable: # The variable(s) included in the experiment (string)
+parent_experiment: # experiment_uuid for parent experiment if appropriate (string)
+related_experiments: # experiment_uuids for any related experiment(s) (string)
