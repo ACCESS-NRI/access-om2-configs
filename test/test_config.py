@@ -9,10 +9,14 @@ import requests
 import jsonschema
 import yaml
 
+#TODO: Change to latest schema - 1-0-3? Otherwise use sets for nominal_resolution
 BASE_SCHEMA_URL = "https://raw.githubusercontent.com/ACCESS-NRI/schema"
 BASE_SCHEMA_PATH = "au.org.access-nri/model/output/experiment-metadata"
-DEFAULT_SCHEMA_VERSION = "1-0-0"
-DEFAULT_SCHEMA_COMMIT = "bfc15e3c6fa20d492ccfa0c4706805d64c531e7c"
+SCHEMA_VERSION = "1-0-2"
+SCHEMA_COMMIT = "e9055da95093ec2faa555c090fc5af17923d1566"
+
+LICENSE = "CC-BY-4.0"
+LICENSE_URL = "https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt"
 
 
 @pytest.fixture(scope="class")
@@ -160,22 +164,11 @@ class TestConfig:
 
     def test_validate_metadata(self, metadata):
         # Get schema from Github
-        schema_version = metadata.get("schema_version", DEFAULT_SCHEMA_VERSION)
-        schema_path = f"{BASE_SCHEMA_PATH}/{schema_version}.json"
+        schema_path = f"{BASE_SCHEMA_PATH}/{SCHEMA_VERSION}.json"
+        url = f"{BASE_SCHEMA_URL}/{SCHEMA_COMMIT}/{schema_path}"
     
-        url = f"{BASE_SCHEMA_URL}/main/{schema_path}"
         response = requests.get(url)
-        if response.status_code != 200:
-            # Use default schema
-            warnings.warn(
-                f"Failed to retrieve schema from url: {url}\n" +
-                f"Defaulting to schema version: {DEFAULT_SCHEMA_VERSION}"
-            )
-            schema_path = f"{BASE_SCHEMA_PATH}/{DEFAULT_SCHEMA_VERSION}.json"
-
-            url = f"{BASE_SCHEMA_URL}/{DEFAULT_SCHEMA_COMMIT}/{schema_path}"
-            response = requests.get(url)
-            assert response.status_code == 200
+        assert response.status_code == 200
         schema = response.json()
 
         # In schema version (1-0-0), required fields are name, experiment_uuid,
@@ -196,6 +189,25 @@ class TestConfig:
         assert field in metadata, f"{field} field shoud be defined in metadata"
 
     def test_metadata_license(self, metadata):
-        assert 'license' in metadata and metadata['license'] == 'CC-BY-4.0', (
-            "The license should be set to CC-BY-4.0"
+        assert 'license' in metadata and metadata['license'] == LICENSE, (
+            f"The license should be set to {LICENSE}"
             )
+
+    def test_license_file(self, control_path):
+        license_path = control_path / 'LICENSE'
+        assert license_path.exists(), (
+            f"LICENSE file should exist and equal to {LICENSE} found here: " +
+            LICENSE_URL
+        )
+
+        response = requests.get(LICENSE_URL)
+        assert response.status_code == 200
+        license = response.text
+
+        with open(license_path, 'r') as f:
+            content = f.read()
+
+        assert content == license, (
+            f"LICENSE file should be equal to {LICENSE} found here: " +
+            LICENSE_URL
+        )

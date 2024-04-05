@@ -18,9 +18,9 @@ TOPIC_KEYWORDS = {
 # Nominal resolutions are sourced from CMIP6 controlled vocabulary
 # https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_nominal_resolution.json
 NOMINAL_RESOLUTION = {
-    '025deg': {'25 km'},
-    '01deg': {'10 km'},
-    '1deg': {'100 km'}
+    '025deg': '25 km',
+    '01deg': '10 km',
+    '1deg': '100 km'
 }
 
 
@@ -159,6 +159,5 @@ class TestAccessOM2:
         expected = NOMINAL_RESOLUTION[branch.resolution]
         assert ('nominal_resolution' in metadata
                 and metadata['nominal_resolution'] == expected), (
-                    f"Expected nominal_resolution field set to: {expected} " +
-                    f"\nnominal_resolution: {metadata['nominal_resolution']}"
+                    f"Expected nominal_resolution field set to: {expected}"
                     )
