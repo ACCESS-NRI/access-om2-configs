@@ -8,17 +8,17 @@ Since the logic in the CI infrastructure is quite involved, it would be a good i
 
 ## Dev and Release branches
 
-Each configuration has a `dev-*` and `release-*` branch. They differ in the CI checks that are run when pull requests are made to update the branch.
-
-### Release
-
-Pull requests to the `release-*` branch are intended to create a new version of the configuration. It is expected that the version *will* be updated before the PR can be merged. This in turn creates a new tag for that configuration branch. It can be confusing for users if there are a large number of versions of a configuration. For this reason the atomicity of updates to a released configuration should be minimised, i.e.  updates should be meaningful.
-
-On pull requests to `release-*` branches CI quality assurance (QA) checks are run to ensure the model configuration is suitable for release. Model reproducibility checks are also conducted. These checks run a short test of the configuration and test for bitwise reproducibility. The success or otherwise of this check determines if a major or minor version bump is required.
+Each configuration has a `dev-*` and a `release-*` branch. They differ in the CI checks that are run when pull requests are made to update the branch. Any branch starting with either `dev-*` or  `release-*` are protected branches. You cannot (and should not) modify them directly or create new branches starting with either `dev-` or `release-`. 
 
 ### Dev
 
-Quality assurance (QA) CI checks are run on pull requests to `dev-*` branches, but not reproducibility checks. There is no requirement that the version be updated when changes are made to the `dev-` branch. So the `dev-` branch of a configuration allows for smaller changes that can be accumulated before a PR is made to the respective `release-*` branch.
+The `dev-*` branch is where a configuration is updated. Temporary branches should be created and a pull request made to update the `dev-*` branch. Quality assurance (QA) CI checks are run on pull requests to `dev-*` branches, but not reproducibility checks. There is no requirement that the version be updated when changes are made to the `dev-` branch. So the `dev-` branch of a configuration allows for smaller changes that can be accumulated before a PR is made to the respective `release-*` branch.
+
+### Release
+
+Pull requests to the `release-*` branch should be made from the respective `dev-*` branch and are intended to create a new version of the configuration. These pull requests have CI quality assurance (QA) checks that ensure the model configuration is suitable for release. CI Model reproducibility checks are also conducted: a short test run of the configuration is checked for bitwise reproducibility. The success or otherwise of this check determines if a minor or major version bump is required.
+
+It is expected that the version *will* be updated before the pull request can be merged. This in turn creates a new tag for that configuration branch. It can be confusing for users if there are a large number of versions of a configuration and it is of little benefit to them. For this reason the atomicity of updates to a released configuration should be minimised, i.e.  updates should be meaningful.
 
 ## Creation of a new ACCESS-OM2 Config
 
