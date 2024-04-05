@@ -159,7 +159,7 @@ If you need to set it to a different value for a released configuration this wil
 
 This governs how what model restart files are retained.
 
-The requirement is simply that a date-based frequency be used so that restarts are saved in a reliable manner. Typical values are `1Y` or `5Y` for 0.1&deg; models, and `5Y` to `20Y` for 1&deg;.
+The requirement is simply that a date-based frequency be used so that restarts are saved in a reliable manner. Typical values are `1YS` or `5YS` for 0.1&deg; models, and `5YS` to `20YS` for 1&deg;. See the [payu documentation](https://payu.readthedocs.io/en/latest/config.html#model) for a detailed description of the meaning of the time units in `restart_freq`.
 
 
 **sync**
