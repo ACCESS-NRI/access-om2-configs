@@ -16,10 +16,7 @@ mem: 1000GB
 # longer term storage
 sync:
     enable: False # set path below and change to true
-    path: none # Set to location on /g/data or a remote server and path (rsync syntax)
-    exclude:
-      - '*.nc.*'
-      - 'iceh.????-??-??.nc'
+    path: null # Set to location on /g/data or a remote server and path (rsync syntax)
 
 # Model configuration
 name: common
@@ -33,7 +30,7 @@ input:
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26=2023.10.26-ieiy3e7hidn4dzaqly3ly2yu45mecgq4/bin/yatm.exe
+      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26=2023.10.26-ltfg7jcn6t4cefotvj3kjnyu5nru26xo/bin/yatm.exe
       input:
             - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/rsds/gr/v20190429
@@ -51,7 +48,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-ewcdbrfukblyjxpkhd3mfkj4yxfolal4/bin/fms_ACCESS-OM.x
+      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-qji4nlmr6utrribaiyhewe4je6mifguz/bin/fms_ACCESS-OM.x
       input:
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/grid_spec.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_hgrid.nc
@@ -70,7 +67,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19=2023.10.19-rh3xfkrgajya3ghtliacuhlx3pgvrzqs/bin/cice_auscom_360x300_24x1_24p.exe
+      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19=2023.10.19-v3zncpqjj2gyseudbwiudolcjq3k3leo/bin/cice_auscom_360x300_24x1_24p.exe
       input:
         - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2020.05.30/grid.nc
         - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2020.10.22/kmt.nc
@@ -87,16 +84,20 @@ collate:
   mem: 30GB
   ncpus: 4
   queue: normal
-  exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-ewcdbrfukblyjxpkhd3mfkj4yxfolal4/bin/mppnccombine.spack
+  exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-qji4nlmr6utrribaiyhewe4je6mifguz/bin/mppnccombine.spack
 
 # Misc
-runlog: false
+runlog: true
 stacksize: unlimited
-restart_freq: 1
+restart_freq: 5YS
 mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
 qsub_flags: -W umask=027
 env:
     UCX_LOG_LEVEL: 'error'
+
+manifest:
+  reproduce:
+    exe: False # True
 
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
@@ -106,3 +107,4 @@ platform:
 userscripts:
     error: tools/resub.sh
     run: rm -f resubmit.count
+    sync: /g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh
