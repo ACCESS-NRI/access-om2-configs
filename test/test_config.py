@@ -9,12 +9,13 @@ import requests
 import jsonschema
 import yaml
 
-#TODO: Change to latest schema - 1-0-3? Otherwise use sets for nominal_resolution
+# Experiment Metadata Schema
 BASE_SCHEMA_URL = "https://raw.githubusercontent.com/ACCESS-NRI/schema"
 BASE_SCHEMA_PATH = "au.org.access-nri/model/output/experiment-metadata"
 SCHEMA_VERSION = "1-0-3"
 SCHEMA_COMMIT = "4b7207e47afe402a732c58741ff66acc5f93b8cf"
 
+# CC BY 4.0 License
 LICENSE = "CC-BY-4.0"
 LICENSE_URL = "https://creativecommons.org/licenses/by/4.0/legalcode.txt"
 
@@ -187,6 +188,12 @@ class TestConfig:
     )
     def test_metadata_contains_fields(self, field, metadata):
         assert field in metadata, f"{field} field shoud be defined in metadata"
+
+    def test_metadata_does_contain_UUID(self, metadata):
+        assert 'experiment_uuid' not in metadata, (
+            "`experiment_uuid` should not be defined in metadata, " +
+            "as this is an configuration rather than an experiment. "
+        )
 
     def test_metadata_license(self, metadata):
         assert 'license' in metadata and metadata['license'] == LICENSE, (
