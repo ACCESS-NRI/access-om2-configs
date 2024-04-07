@@ -12,11 +12,11 @@ import yaml
 #TODO: Change to latest schema - 1-0-3? Otherwise use sets for nominal_resolution
 BASE_SCHEMA_URL = "https://raw.githubusercontent.com/ACCESS-NRI/schema"
 BASE_SCHEMA_PATH = "au.org.access-nri/model/output/experiment-metadata"
-SCHEMA_VERSION = "1-0-2"
-SCHEMA_COMMIT = "e9055da95093ec2faa555c090fc5af17923d1566"
+SCHEMA_VERSION = "1-0-3"
+SCHEMA_COMMIT = "4b7207e47afe402a732c58741ff66acc5f93b8cf"
 
 LICENSE = "CC-BY-4.0"
-LICENSE_URL = "https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt"
+LICENSE_URL = "https://creativecommons.org/licenses/by/4.0/legalcode.txt"
 
 
 @pytest.fixture(scope="class")
