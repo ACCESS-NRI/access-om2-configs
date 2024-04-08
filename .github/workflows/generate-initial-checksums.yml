@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo '::notice::This deployment is using the following inputs: `config-branch-name`=`${{ inputs.config-branch-name }}`, `commit-checksums`=`${{ inputs.commit-checksums }}`, `committed-checksum-location`=`${{ inputs.committed-checksum-location }}`, `committed-checksum-tag-version`=`${{ inputs.committed-checksum-tag-version }}.'
+          echo '::notice::This deployment is using the following inputs: `config-branch-name`=`${{ inputs.config-branch-name }}`, `commit-checksums`=`${{ inputs.commit-checksums }}`, `committed-checksum-location`=`${{ inputs.committed-checksum-location }}`, `committed-checksum-tag-version`=`${{ inputs.committed-checksum-tag-version }}`.'
 
   generate-checksums:
     name: Generate Checksums
