@@ -34,9 +34,3 @@ model: access-om2
 version:
 url: https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_iaf
 experiment_uuid: 62fc7bda-b1c8-4105-be4c-0a86659a311e
-name:  # The name of the experiment (string)
-long_description: # Long description of the experiment (string)
-frequency: # The frequency(/ies) included in the experiment (string)
-variable: # The variable(s) included in the experiment (string)
-parent_experiment: # experiment_uuid for parent experiment if appropriate (string)
-related_experiments: # experiment_uuids for any related experiment(s) (string)
