@@ -77,12 +77,11 @@ submodels:
 # Collation
 collate:
   restart: true
-  mpi: true
   walltime: 1:00:00
   mem: 30GB
   ncpus: 4
   queue: normal
-  exe: /g/data/vk83/apps/mppnccombine-fast/0.2/bin/mppnccombine-fast
+  exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-64l5azdtcoxhrgb5ynn2vued5lmjvn33/bin/mppnccombine.spack
 
 manifest:
   reproduce:
