@@ -69,6 +69,7 @@ jobs:
           if [[ "${version}" == "null" ]]; then
             echo "before=null" >> $GITHUB_OUTPUT
             echo "after=1.0" >> $GITHUB_OUTPUT
+            exit 0
           fi
 
           regex="([0-9]+)\.([0-9]+)"
