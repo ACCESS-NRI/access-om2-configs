@@ -27,10 +27,22 @@ notes: |-
   (c) let us know of any publications which use these models or data so we can add them to our list:
   https://scholar.google.com/citations?hl=en&user=inVqu_4AAAAJ
 keywords:
-  - tenth
-  - cosima
-  - access-om2-01
-  - jra55-do-v1.4.0
+  - global
+  - JRA55
   - ryf
-  - bgc
+  - access-om2-01
+version: null
+realm:
+  - ocean
+  - seaIce
+  - ocnBgchem
+nominal_resolution: 10km
+reference: https://doi.org/10.5194/gmd-13-401-2020
+license: CC-BY-4.0
+url: https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_ryf_bgc
+model: access-om2-bgc
+
+
+
+
   

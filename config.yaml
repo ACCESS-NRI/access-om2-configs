@@ -16,7 +16,7 @@ jobname: 01deg_jra55_ryf_bgc
 # longer term storage
 sync:
     enable: False # set path below and change to true
-    path: none # Set to location on /g/data or a remote server and path (rsync syntax)
+    path: null # Set to location on /g/data or a remote server and path (rsync syntax)
     exclude:
       - '*.nc.*'
       - 'iceh.????-??-??.nc'
@@ -86,7 +86,7 @@ collate:
 # Misc
 runlog: true
 stacksize: unlimited
-restart_freq: '5Y'
+restart_freq: '1YS'
 mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
 qsub_flags: -W umask=027
 env:
