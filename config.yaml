@@ -9,7 +9,7 @@
 
 queue: normal
 walltime: 3:00:00
-jobname: 1deg_jra55_ryf
+jobname: 1deg_jra55_iaf
 mem: 1000GB
 
 # Sync options for automatically copying data from ephemeral scratch space to 
