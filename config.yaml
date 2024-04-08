@@ -17,9 +17,6 @@ mem: 1000GB
 # longer term storage
 sync:
     enable: False # set path below and change to true
-    exclude:
-        - '*.nc.*'
-        - 'iceh.????-??-??.nc'
     path: null # Set to location on /g/data or a remote server and path (rsync syntax)
 
 # Model configuration
