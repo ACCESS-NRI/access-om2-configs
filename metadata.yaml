@@ -28,9 +28,17 @@ notes: |-
   https://scholar.google.com/citations?hl=en&user=inVqu_4AAAAJ
 license: CC-BY-4.0
 keywords:
-  - one
-  - cosima
-  - access-om2-1
-  - jra55-do-v1.4.0
-  - ryf
-  - bgc
+  - JRA55
+  - access-om2
+  - repeat-year
+  - global
+realm:
+  - ocean
+  - seaIce
+  - ocnBgchem
+nominal_resolution: 100 km
+reference: https://doi.org/10.5194/gmd-13-401-2020
+license: CC-BY-4.0
+model: access-om2
+version: null
+url: https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_ryf_bgc

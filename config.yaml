@@ -17,10 +17,10 @@ mem: 1000GB
 # longer term storage
 sync:
     enable: False # set path below and change to true
-    path: none # Set to location on /g/data or a remote server and path (rsync syntax)
     exclude:
         - '*.nc.*'
         - 'iceh.????-??-??.nc'
+    path: null # Set to location on /g/data or a remote server and path (rsync syntax)
 
 # Model configuration
 name: common
@@ -93,9 +93,9 @@ manifest:
     exe: true
 
 # Misc
-runlog: false
+runlog: true
 stacksize: unlimited
-restart_freq: 1
+restart_freq: 5YS
 mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
 qsub_flags: -W umask=027
 env:
@@ -109,3 +109,4 @@ platform:
 userscripts:
     error: tools/resub.sh
     run: rm -f resubmit.count
+    sync: /g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh
