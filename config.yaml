@@ -12,6 +12,15 @@ queue: normal
 walltime: 5:00:00
 jobname: 01deg_jra55_ryf_bgc
 
+# Sync options for automatically copying data from ephemeral scratch space to 
+# longer term storage
+sync:
+    enable: False # set path below and change to true
+    path: none # Set to location on /g/data or a remote server and path (rsync syntax)
+    exclude:
+      - '*.nc.*'
+      - 'iceh.????-??-??.nc'
+
 # Model configuration
 name: common
 model: access-om2
@@ -77,7 +86,7 @@ collate:
 # Misc
 runlog: true
 stacksize: unlimited
-restart_freq: 1  # use tidy_restarts.py instead
+restart_freq: '5Y'
 mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
 qsub_flags: -W umask=027
 env:
@@ -89,6 +98,6 @@ platform:
 userscripts:
     error: tools/resub.sh
     run: rm -f resubmit.count
-
+    sync: /g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh
 # DANGER! Do not uncomment this without checking the script is syncing to the correct location!
 # postscript: sync_data.sh
