@@ -9,19 +9,28 @@
 # shortpath: /scratch/v45
 
 queue: normal
-walltime:  3:00:00
-jobname: 01deg_jra55_iaf
+walltime:  5:00:00
+jobname: 01deg_jra55_iaf_bgc
+
+# Sync options for automatically copying data from ephemeral scratch space to
+# longer term storage
+sync:
+    enable: False # set path below and change to true
+    path: null # Set to location on /g/data or a remote server and path (rsync syntax)
 
 # Model configuration
 name: common
 model: access-om2
-input: /g/data/ik11/inputs/access-om2/input_20201102/common_01deg_jra55
+input:
+    - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.01deg/2020.05.30/rmp_jra55_cice_1st_conserve.nc
+    - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.01deg/2020.05.30/rmp_jra55_cice_2nd_conserve.nc
+    - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.01deg/2020.05.30/rmp_jra55_cice_patch.nc
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data/ik11/inputs/access-om2/bin/yatm_d750b4b.exe
+      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26=2023.10.26-ltfg7jcn6t4cefotvj3kjnyu5nru26xo/bin/yatm.exe
       input:
-            - /g/data/ik11/inputs/access-om2/input_20201102/yatm_01deg
+            - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.01deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/rsds/gr/v20190429
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/rlds/gr/v20190429
             - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/prra/gr/v20190429
@@ -37,18 +46,39 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/ik11/inputs/access-om2/bin/fms_ACCESS-OM-BGC_730f0bf_libaccessom2_d750b4b.x
+      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-64l5azdtcoxhrgb5ynn2vued5lmjvn33/bin/fms_ACCESS-OM-BGC.x
       input:
-            - /g/data/ik11/inputs/access-om2/input_bgc_20220224/mom_01deg
-            - /g/data/ik11/inputs/access-om2/input_20201102/mom_01deg
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.01deg/2022.02.24/bgc_param.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.01deg/2022.02.24/co2_iaf.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.01deg/2022.02.24/co2_ryf.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.01deg/2022.02.24/csiro_bgc.res.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.01deg/2022.02.24/csiro_bgc_sediment.res.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.01deg/2022.02.24/dust.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.01deg/2020.05.30/grid_spec.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.01deg/2020.05.30/ocean_hgrid.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.01deg/2020.05.30/ocean_mosaic.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.01deg/2020.05.30/ocean_mask.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.01deg/2020.05.30/topog.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/vertical/global.01deg/2020.05.30/ocean_vgrid.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/processor_masks/global.01deg/4358.80x75/2020.05.30/ocean_mask_table
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/chlorophyll/global.01deg/2020.05.30/chl.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/initial_conditions/global.01deg/2020.10.22/ocean_temp_salt.res.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.01deg/2020.05.30/tideamp.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.01deg/2020.05.30/roughness_amp.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.01deg/2020.05.30/roughness_cdbot.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ocean/surface_salt_restoring/global.01deg/2020.05.30/salt_sfc_restore.nc
       ncpus: 4358
 
     - name: ice
       model: cice5
-      exe: /g/data/ik11/inputs/access-om2/bin/cice_auscom_3600x2700_722p_edcfa6f_libaccessom2_d750b4b.exe
+      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19=2023.10.19-v3zncpqjj2gyseudbwiudolcjq3k3leo/bin/cice_auscom_3600x2700_90x90_722p.exe
       input:
-            - /g/data/ik11/inputs/access-om2/input_bgc_20220224/cice_01deg
-            - /g/data/ik11/inputs/access-om2/input_20201102/cice_01deg
+        - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.01deg/2020.05.30/grid.nc
+        - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.01deg/2020.05.30/kmt.nc
+        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions_biogeochemistry/global.01deg/2022.02.24/o2i.nc
+        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions_biogeochemistry/global.01deg/2022.02.24/i2o.nc
+        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.01deg/2020.05.30/u_star.nc
+        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.01deg/2020.05.30/monthly_sstsss.nc
       ncpus: 722
 
 # Collation
@@ -59,12 +89,11 @@ collate:
   mem: 16GB
   ncpus: 4
   queue: normal
-  exe: /g/data/ik11/inputs/access-om2/bin/mppnccombine-fast
-
+  exe: /g/data/vk83/apps/mppnccombine-fast/0.2/bin/mppnccombine-fast
 # Misc
 runlog: true
 stacksize: unlimited
-restart_freq: 1  # use tidy_restarts.py instead
+restart_freq: '1YS'
 mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
 qsub_flags: -W umask=027
 env:
@@ -74,8 +103,9 @@ platform:
     nodesize: 48
 # sweep and resubmit on specific errors - see https://github.com/payu-org/payu/issues/241#issuecomment-610739771
 userscripts:
-    error: resub.sh
+    error: tools/resub.sh
     run: rm -f resubmit.count
-
-# DANGER! Do not uncomment this without checking the script is syncing to the correct location!
-# postscript: sync_data.sh
+    sync: /g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh
+manifest:
+  reproduce:
+    exe: true
