@@ -38,7 +38,20 @@ jobs:
         if: steps.tag.outputs.exists == 'false'
         # NOTE: Regarding the config user.name/user.email, see https://github.com/actions/checkout/pull/1184
         run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git config user.name ${{ vars.GH_ACTIONS_BOT_GIT_USER_NAME }}
+          git config user.email ${{ vars.GH_ACTIONS_BOT_GIT_USER_EMAIL }}
           git tag ${{ steps.tag.outputs.version }}
           git push --tags
+
+      - name: Create Release
+        if: steps.tag.outputs.exists == 'false'
+        env:
+          TAG: ${{ steps.tag.outputs.version }}
+          IS_REPRO_BREAK: ${{ endsWith(steps.tag.outputs.version, '.0') && 'DOES' || 'does not' }}
+        uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844  #v0.1.15
+        with:
+          tag_name: ${{ env.TAG }}
+          name: Configuration ${{ env.TAG }}
+          body: |
+            This released configuration ${{ env.IS_REPRO_BREAK }} break reproducibility with released configurations before it. See the 'Config Tags' section in the `README.md` for more information.
+          generate_release_notes: true
