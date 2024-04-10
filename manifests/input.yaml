@@ -3437,6 +3437,12 @@ work/ice/RESTART/grid.nc:
   hashes:
     binhash: 6747a890dcea1c980c81835c74b80c08
     md5: 189f572cf886440edd5ac6dab40df3d8
+work/ice/RESTART/i2o.nc:
+  copy: true
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions_biogeochemistry/global.01deg/2022.02.24/i2o.nc
+  hashes:
+    binhash: 7ee5c443b504f7c5845100ae2be67864
+    md5: c06055d70383aec3de3573b97f57c7fc
 work/ice/RESTART/kmt.nc:
   copy: true
   fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.01deg/2020.05.30/kmt.nc
@@ -3449,12 +3455,18 @@ work/ice/RESTART/monthly_sstsss.nc:
   hashes:
     binhash: 59d46726887afc66225c8bdfa6a25d5b
     md5: e00d77cf7b519d9bbcfc8bea2e34ef8f
+work/ice/RESTART/o2i.nc:
+  copy: true
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions_biogeochemistry/global.01deg/2022.02.24/o2i.nc
+  hashes:
+    binhash: c5a3a534b68381bfcb011c77ede547e6
+    md5: 83081ee7dd0abd61ef8bc76a4832f885
 work/ice/RESTART/u_star.nc:
   copy: true
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/u_star.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.01deg/2020.05.30/u_star.nc
   hashes:
-    binhash: f93a19930c5c59e03751e70a123ab01f
-    md5: 68cf0ef92576f96ef085cd7f243d0c39
+    binhash: 6eae42f2ab0164f2b3df10292649abae
+    md5: e34bf0c92d0585cfc2d90de32af35e43
 work/ocean/INPUT/bgc_param.nc:
   fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.01deg/2022.02.24/bgc_param.nc
   hashes:
