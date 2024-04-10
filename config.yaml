@@ -12,6 +12,12 @@ queue: normal
 walltime: 5:00:00
 jobname: 01deg_jra55_ryf_bgc
 
+# Sync options for automatically copying data from ephemeral scratch space to 
+# longer term storage
+sync:
+    enable: False # set path below and change to true
+    path: null # Set to location on /g/data or a remote server and path (rsync syntax)
+
 # Model configuration
 name: common
 model: access-om2
@@ -22,7 +28,7 @@ input:
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26=2023.10.26-ieiy3e7hidn4dzaqly3ly2yu45mecgq4/bin/yatm.exe
+      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26=2023.10.26-ltfg7jcn6t4cefotvj3kjnyu5nru26xo/bin/yatm.exe
       input:
             - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.01deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
             - /g/data/vk83/experiments/inputs/JRA-55/RYF/v1-4/data
@@ -61,23 +67,23 @@ submodels:
         - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.01deg/2020.05.30/kmt.nc
         - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions_biogeochemistry/global.01deg/2022.02.24/o2i.nc
         - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions_biogeochemistry/global.01deg/2022.02.24/i2o.nc
-        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.01deg/2020.05.30/monthly_sstsss.nc
         - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.01deg/2020.05.30/u_star.nc
+        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.01deg/2020.05.30/monthly_sstsss.nc
       ncpus: 722
 
 # Collation
 collate:
   restart: true
+  mpi: true
   walltime: 1:00:00
   mem: 16GB
   ncpus: 4
   queue: normal
-  exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-ewcdbrfukblyjxpkhd3mfkj4yxfolal4/bin/mppnccombine.spack  
-
+  exe: /g/data/vk83/apps/mppnccombine-fast/0.2/bin/mppnccombine-fast
 # Misc
 runlog: true
 stacksize: unlimited
-restart_freq: 1  # use tidy_restarts.py instead
+restart_freq: '1YS'
 mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
 qsub_flags: -W umask=027
 env:
@@ -89,6 +95,7 @@ platform:
 userscripts:
     error: tools/resub.sh
     run: rm -f resubmit.count
-
-# DANGER! Do not uncomment this without checking the script is syncing to the correct location!
-# postscript: sync_data.sh
+    sync: /g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh
+manifest:
+  reproduce:
+    exe: true
