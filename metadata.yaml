@@ -20,16 +20,16 @@ notes: |-
   (c) let COSIMA know of any publications which use these models or data so they can add them to their list:
   https://scholar.google.com/citations?hl=en&user=inVqu_4AAAAJ
 keywords:
-- JRA55
-- access-om2
-- interannual
-- global
+  - JRA55
+  - access-om2
+  - interannual
+  - global
 realm:
-- ocean
-- seaIce
+  - ocean
+  - seaIce
 nominal_resolution: 100 km
 reference: https://doi.org/10.5194/gmd-13-401-2020
 license: CC-BY-4.0
 model: access-om2
-version: 1.0
+version: "2.0"
 url: https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_iaf
