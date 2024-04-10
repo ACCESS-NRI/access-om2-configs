@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="750.720" timestamp="2024-04-10T12:36:11.020655" hostname="gadi-login-04.gadi.nci.org.au"><testcase classname="test_bit_reproducibility.TestBitReproducibility" name="test_bit_repro_historical" time="192.960"><failure message="AssertionError: Checksums were not equal. The new checksums have been written to /scratch/tm70/repro-ci/experiments/access-om2/dev-1deg_jra55_iaf/checksum/historical-3hr-checksum.json.&#10;assert None == {'output': {'Advection of u': ['0', '-5761337607251339334'], 'Advection of v': ['0', '-1518588527314325192'], 'Meridio...9634365276068', '6810758898695568142'], 'Thickness%depth_st': ['-436572698594795605'], ...}, 'schema_version': '1-0-0'}">self = &lt;test_bit_reproducibility.TestBitReproducibility object at 0x7feda97dd3d0&gt;
+output_path = PosixPath('/scratch/tm70/repro-ci/experiments/access-om2/dev-1deg_jra55_iaf')
+control_path = PosixPath('/scratch/tm70/repro-ci/experiments/access-om2/dev-1deg_jra55_iaf/base-experiment')
+checksum_path = PosixPath('/scratch/tm70/repro-ci/experiments/access-om2/dev-1deg_jra55_iaf/base-experiment/testing/checksum/historical-3hr-checksum.json')
+
+    @pytest.mark.checksum
+    def test_bit_repro_historical(self, output_path: Path, control_path: Path,
+                                  checksum_path: Path):
+        """
+        Test that a run reproduces historical checksums
+        """
+        # Setup checksum output directory
+        # NOTE: The checksum output file is used as part of `repro-ci` workflow
+        output_dir = output_path / 'checksum'
+        output_dir.mkdir(parents=True, exist_ok=True)
+        checksum_output_file =  output_dir / 'historical-3hr-checksum.json'
+        if checksum_output_file.exists():
+            checksum_output_file.unlink()
+    
+        # Setup and run experiment
+        exp = setup_exp(control_path, output_path, "test_bit_repro_historical")
+        exp.model.set_model_runtime()
+        exp.setup_and_run()
+    
+        assert exp.model.output_exists()
+    
+        #Check checksum against historical checksum file
+        hist_checksums = None
+        hist_checksums_schema_version = None
+    
+        if not checksum_path.exists():  # AKA, if the config branch doesn't have a checksum, or the path is misconfigured
+            hist_checksums_schema_version = exp.model.default_schema_version
+        else:  # we can use the historic-3hr-checksum that is in the testing directory
+            with open(checksum_path, 'r') as file:
+                hist_checksums = json.load(file)
+    
+                # Parse checksums using the same version
+                hist_checksums_schema_version = hist_checksums["schema_version"]
+    
+        checksums = exp.extract_checksums(schema_version=hist_checksums_schema_version)
+    
+        # Write out checksums to output file
+        with open(checksum_output_file, 'w') as file:
+            json.dump(checksums, file, indent=2)
+    
+&gt;       assert hist_checksums == checksums, f"Checksums were not equal. The new checksums have been written to {checksum_output_file}."
+E       AssertionError: Checksums were not equal. The new checksums have been written to /scratch/tm70/repro-ci/experiments/access-om2/dev-1deg_jra55_iaf/checksum/historical-3hr-checksum.json.
+E       assert None == {'output': {'Advection of u': ['0', '-5761337607251339334'], 'Advection of v': ['0', '-1518588527314325192'], 'Meridio...9634365276068', '6810758898695568142'], 'Thickness%depth_st': ['-436572698594795605'], ...}, 'schema_version': '1-0-0'}
+
+/g/data/tm70/repro-ci/test/access-om2-configs/test/test_bit_reproducibility.py:51: AssertionError</failure></testcase><testcase classname="test_bit_reproducibility.TestBitReproducibility" name="test_restart_repro" time="553.293" /></testsuite></testsuites>
