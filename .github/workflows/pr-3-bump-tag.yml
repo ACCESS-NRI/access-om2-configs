@@ -24,9 +24,13 @@ jobs:
         # Check if the tag already exists, if it does, we don't want to move it.
         id: tag
         run: |
-          VERSION_TAG=${{ github.ref_name }}-$(yq '.version' metadata.yaml)
+          VERSION=$(yq '.version' metadata.yaml)
+          VERSION_TAG=${{ github.ref_name }}-$VERSION
           VERSION_TAG_ON_GIT=$(git tag -l $VERSION_TAG)
-          if [ -n "$VERSION_TAG_ON_GIT" ]; then
+          if [[ "$VERSION" == "null" ]]; then
+            echo "::warning::Version is null. Skipping."
+            exit 1
+          elif [ -n "$VERSION_TAG_ON_GIT" ]; then
             echo "::warning::Tag $VERSION_TAG already exists. Skipping."
             echo "exists=true" >> $GITHUB_OUTPUT
           else
