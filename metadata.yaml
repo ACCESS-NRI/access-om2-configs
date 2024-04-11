@@ -24,7 +24,7 @@ keywords:
   - JRA55
   - interannual
   - access-om2-01
-version: null
+version: "2.0"
 realm:
   - ocean
   - seaIce
