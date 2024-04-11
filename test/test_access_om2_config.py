@@ -12,7 +12,8 @@ TOPIC_KEYWORDS = {
     'forcing product':	{'JRA55', 'ERA5'},
     'forcing mode': {'repeat-year', 'ryf', 'repeat-decade', 'rdf',
                         'interannual', 'iaf'},
-    'model': {'access-om2', 'access-om2-025', 'access-om2-01'}
+    'model': {'access-om2', 'access-om2-025', 'access-om2-01'},
+    'model variant': {'bgc'}
 }
 
 # Nominal resolutions are sourced from CMIP6 controlled vocabulary
@@ -80,6 +81,10 @@ class TestAccessOM2:
                 assert re.match(pattern, config['collate']['exe']), (
                     "Expect collate executable set to mppnccombine-fast"
                     )
+
+                assert config['collate']['mpi'], (
+                    "Expect `mpi: true` when using mppnccombine-fast"
+                )
 
     def test_sync_userscript_ice_concatenation(self, config):
         # This script runs in the sync pbs job before syncing output to a
