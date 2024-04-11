@@ -1,16 +1,7 @@
 contact: Add your name here
 email: Add your email address here
 created: Add the date you started the experiment here (YYYY-MM-DD)
-description: |-
-  0.1 degree ACCESS-OM2 global model configuration under the RYF9091 Repeat
-  Year Forcing strategy outlined by Stewart et al. (2020), 
-  https://doi.org/10.1016/j.ocemod.2019.101557.
-  The configuration is based on that described in Kiss et al. (2020),
-  https://doi.org/10.5194/gmd-13-401-2020, but with many improvements.
-  Initial conditions are WOA13v2 potential temperature and practical salinity.
-  Run with JRA55-do v1.4.0 RYF9091 (1 May 1990 - 30 April 1991) repeated forcing
-  with all solid runoff converted to liquid runoff with no heat transfer.
-  Spin up starts from a nominal year of 1 Jan 1900.
+description: "0.1 degree ACCESS-OM2 global model configuration under the RYF9091 Repeat\nYear Forcing strategy outlined by Stewart et al. (2020), \nhttps://doi.org/10.1016/j.ocemod.2019.101557.\nThe configuration is based on that described in Kiss et al. (2020),\nhttps://doi.org/10.5194/gmd-13-401-2020, but with many improvements.\nInitial conditions are WOA13v2 potential temperature and practical salinity.\nRun with JRA55-do v1.4.0 RYF9091 (1 May 1990 - 30 April 1991) repeated forcing\nwith all solid runoff converted to liquid runoff with no heat transfer.\nSpin up starts from a nominal year of 1 Jan 1900."
 notes: |-
   COSIMA request that users of this or other ACCESS-OM2 model code or output data:
   (a) consider citing Kiss et al. (2020) [http://doi.org/10.5194/gmd-13-401-2020]
@@ -26,7 +17,7 @@ keywords:
   - JRA55
   - repeat-year
   - access-om2-01
-version: null
+version: "2.0"
 realm:
   - ocean
   - seaIce
