@@ -3,3 +3,4 @@ jsonschema==4.21.1
 requests
 PyYAML
 f90nml>=0.16
+ruamel.yaml>=0.18.5

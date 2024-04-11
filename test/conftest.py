@@ -3,6 +3,7 @@ import pytest
 from pathlib import Path
 
 import yaml
+from ruamel.yaml import YAML
 
 
 @pytest.fixture(scope="session")
@@ -43,8 +44,9 @@ def checksum_path(request, control_path):
 def metadata(control_path: Path):
     """Read the metadata file in the control directory"""
     metadata_path = control_path / 'metadata.yaml'
-    with open(metadata_path) as f:
-        content = yaml.safe_load(f)
+    # Use ruamel.yaml as that is what is used to read metadata files in Payu
+    # It also errors out if there are duplicate keys in metadata
+    content = YAML().load(metadata_path)
     return content
 
 
