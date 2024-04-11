@@ -3,5 +3,6 @@
     "tags": [
         "release-1deg_jra55_ryf-2.0",
         "release-1deg_jra55_iaf_bgc-2.0"
-    ]
+    ],
+    "tests-version": "0156301"
 }

@@ -12,8 +12,11 @@
             "items": {
                 "type": "string"
             }
+        },
+        "tests-version": {
+            "type": "string"
         }
     },
-    "required": ["tags"],
+    "required": ["tags", "tests-version"],
     "additionalProperties": false
 }
