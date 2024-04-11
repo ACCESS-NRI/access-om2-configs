@@ -46,7 +46,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-ewcdbrfukblyjxpkhd3mfkj4yxfolal4/bin/fms_ACCESS-OM.x
+      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-qji4nlmr6utrribaiyhewe4je6mifguz/bin/fms_ACCESS-OM.x
       input: 
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.01deg/2020.05.30/grid_spec.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.01deg/2020.05.30/ocean_hgrid.nc
@@ -102,4 +102,4 @@ userscripts:
     sync: /g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh
 manifest:
   reproduce:
-    exe: true
+    exe: false
