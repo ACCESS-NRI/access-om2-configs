@@ -1,6 +1,12 @@
 name: Scheduled Checks
 on:
   workflow_dispatch:
+    inputs:
+      pytest-tests-version:
+        type: string
+        required: true
+        default: main
+        description: commit, branch or tag containing a particular version of the pytest tests
   schedule:
     - cron: '0 0 1 * *'  # once a month
 jobs:
@@ -9,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       tags: ${{ steps.get-released-config.outputs.tags }}
+      tests-version: ${{ steps.get-tests-version.outputs.version }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -17,6 +24,15 @@ jobs:
       - name: Get all released configs
         id: get-released-config
         run: echo "tags=$(jq --compact-output --raw-output '.tags' config/released-configs.json)" >> $GITHUB_OUTPUT
+
+      - name: Get pytests tests version
+        id: get-tests-version
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "version=${{ inputs.pytest-tests-version }}" >> $GITHUB_OUTPUT
+          else
+            echo "version=$(jq --compact-output --raw-output '."tests-version"' config/released-configs.json)" >> $GITHUB_OUTPUT
+          fi
 
   repro-ci:
     # We use this reusable workflow with a matrix strategy rather than calling repro-ci.yml, as
@@ -30,6 +46,7 @@ jobs:
     uses: ./.github/workflows/schedule-2-start.yml
     with:
       config-tag: ${{ matrix.config-tag }}
+      tests-version: ${{ needs.setup.outputs.tests-version }}
     secrets: inherit
     permissions:
       checks: write

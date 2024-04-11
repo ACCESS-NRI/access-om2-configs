@@ -6,6 +6,10 @@ on:
         type: string
         required: true
         description: Tag associated with a config branch that is used in the reproducibility run
+      tests-version:
+        type: string
+        required: true
+        description: commit, branch or tag containing a particular version of the pytest tests
 jobs:
   repro-ci:
     # Run the given config on the deployment Github Environment (`environment-name`) and upload
@@ -16,6 +20,7 @@ jobs:
       environment-name: Gadi
       config-tag: ${{ inputs.config-tag }}
       test-markers: checksum
+      test-version: ${{ inputs.tests-version }}
     secrets: inherit
     permissions:
       contents: write
@@ -61,8 +66,10 @@ jobs:
           echo "check-url=${{ fromJson(steps.tests.outputs.json).check_url }}" >> $GITHUB_OUTPUT
           echo "compared-checksum-version=${{ inputs.config-tag }}" >> $GITHUB_OUTPUT
           if [ "${{ fromJson(steps.tests.outputs.json).stats.tests_fail }}" -gt "0" ]; then
+            echo "::notice::Ran tests on ${{ inputs.config-tag }} using pytest tests at version ${{ inputs.tests-version }}, and they succeeded."
             echo "result=fail" >> $GITHUB_OUTPUT
           else
+            echo "::warning::Ran tests on ${{ inputs.config-tag }} using pytest tests at version ${{ inputs.tests-version }}, but they failed."
             echo "result=pass" >> $GITHUB_OUTPUT
           fi
 
@@ -88,18 +95,19 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
           BODY: |
-            There was a failure of a monthly reproducibility check on ${{ github.repository }}.
+            There was a failure of a monthly reproducibility check on `${{ github.repository }}`.
             Logs, checksums and other artifacts can be found at the Failed Run Log link below.
 
-            Model: ${{ env.MODEL }}, found here: ${{ env.MODEL_URL }}
-            Config Repo: ${{ env.CONFIG }}, found here: ${{ env.CONFIG_URL }}
-            Config Tag Tested for Reproducibility: ${{ needs.check-checksum.outputs.compared-checksum-version }}, found here: ${{ env.TAG_URL }}
+            Model: `${{ env.MODEL }}`, found here: ${{ env.MODEL_URL }}
+            Config Repo: `${{ env.CONFIG }}`, found here: ${{ env.CONFIG_URL }}
+            Config Tag Tested for Reproducibility: `${{ needs.check-checksum.outputs.compared-checksum-version }}`, found here: ${{ env.TAG_URL }}
+            Tests Version: `${{ inputs.tests-version }}`
             Failed Run Log: ${{ env.RUN_URL }}
-            Experiment Location (Gadi): ${{ needs.repro-ci.outputs.experiment-location }}
+            Experiment Location (Gadi): `${{ needs.repro-ci.outputs.experiment-location }}`
 
             Tagging @ACCESS-NRI/model-release
         run: |
           gh issue create \
             --title "Scheduled Repro Check Failed for Config ${{ needs.check-checksum.outputs.compared-checksum-version }}" \
             --label "type:repro-fail,priority:blocker" \
-            --body "${{ env.BODY }}"
+            --body '${{ env.BODY }}'
