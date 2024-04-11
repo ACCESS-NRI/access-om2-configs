@@ -1,6 +1,6 @@
-contact: Add your name here
-email: Add your email address here
-created: Add the date you started the experiment here (YYYY-MM-DD)
+contact: minghangli-uni
+email: minghangl1101@gmail.com
+created: '2024-04-11'
 description: |-
   0.1 degree ACCESS-OM2 global model configuration under interannual forcing.
   The configuration is based on that described in Kiss et al. (2020),
@@ -20,16 +20,18 @@ notes: |-
   (c) let COSIMA know of any publications which use these models or data so they can add them to their list:
   https://scholar.google.com/citations?hl=en&user=inVqu_4AAAAJ
 keywords:
-  - global
-  - JRA55
-  - interannual
-  - access-om2-01
-version: null
+- global
+- JRA55
+- interannual
+- access-om2-01
+version:
 realm:
-  - ocean
-  - seaIce
+- ocean
+- seaIce
 nominal_resolution: 10 km
 reference: https://doi.org/10.5194/gmd-13-401-2020
 license: CC-BY-4.0
-url: https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_iaf
-model: access-om2-01
+url: git@github.com:ACCESS-NRI/access-om2-configs.git
+model: ACCESS-OM2
+experiment_uuid: ad9320b7-aafa-40ed-b3e7-d982516bb151
+name: access-om2-configs-01-iaf-update-01deg_jra55_iaf-ad9320b7
