@@ -12,21 +12,26 @@ description: |-
   with all solid runoff converted to liquid runoff with no heat transfer.
   Spin up starts from a nominal year of 1 Jan 1900.
 notes: |-
-  Source code: https://github.com/COSIMA/access-om2
-  License: Attribution-NonCommercial-NoDerivatives 4.0 International (http://creativecommons.org/licenses/by-nc-nd/4.0/legalcode)
-  Conditions of use:
-  We request that users of this or other ACCESS-OM2 model code or output data:
+  COSIMA request that users of this or other ACCESS-OM2 model code or output data:
   (a) consider citing Kiss et al. (2020) [http://doi.org/10.5194/gmd-13-401-2020]
   (b) include an acknowledgement such as the following:
   "The authors thank the Consortium for Ocean-Sea Ice Modelling in Australia (COSIMA; http://www.cosima.org.au)
   for making the ACCESS-OM2 suite of models available at https://github.com/COSIMA/access-om2.
   Model runs were undertaken with the assistance of resources from the National Computational Infrastructure (NCI),
   which is supported by the Australian Government."
-  (c) let us know of any publications which use these models or data so we can add them to our list:
+  (c) let COSIMA know of any publications which use these models or data so they can add them to their list:
   https://scholar.google.com/citations?hl=en&user=inVqu_4AAAAJ
 keywords:
-  - tenth
-  - cosima
+  - global
+  - JRA55
+  - repeat-year
   - access-om2-01
-  - jra55-do-v1.4.0
-  - ryf
+version: null
+realm:
+  - ocean
+  - seaIce
+nominal_resolution: 10 km
+reference: https://doi.org/10.5194/gmd-13-401-2020
+license: CC-BY-4.0
+url: https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_ryf
+model: access-om2-01
