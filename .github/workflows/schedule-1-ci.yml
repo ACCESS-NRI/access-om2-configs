@@ -46,7 +46,7 @@ jobs:
     uses: ./.github/workflows/schedule-2-start.yml
     with:
       config-tag: ${{ matrix.config-tag }}
-      tests-version: ${{ needs.setup.outputs.tests-version }}
+      pytest-tests-version: ${{ needs.setup.outputs.tests-version }}
     secrets: inherit
     permissions:
       checks: write
