@@ -24,9 +24,9 @@ options that are necessary to uniquely identify a configuration.
 
 Some examples of possible values of the specifiers:
 
-- **`resolution`**: `1deg` (1&deg;), `025deg` (0.25&deg;), `01deg` (0.1&deg;), `005deg` (0.05&deg;)
+- **`resolution`**: `1deg` (1&deg;), `025deg` (0.25&deg;), `01deg` (0.1&deg;)
 - **`atmosforcing`**: `jra55`, `era5`
-- **`forcingmode`**: `iaf` (interannual forcing), `ryf` (repeat year forcing), `rdf` (repeat decadal forcing)
+- **`forcingmode`**: `iaf` (interannual forcing), `ryf` (repeat year forcing)
 - **`option`**: `bgc` (Biogeochemistry)
 
 ## Supported configurations
@@ -39,6 +39,12 @@ and should also be listed below:
 | ------ | ------------------------- |
 | [`release-1deg_jra55_ryf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_ryf) | Global 1&deg; model forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
 | [`release-1deg_jra55_iaf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_iaf)| Global 1&deg; model forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
+| [`release-1deg_jra55_ryf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_ryf_bgc) | Global 1&deg; model with BGC forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
+| [`release-1deg_jra55_iaf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_iaf_bgc)| Global 1&deg; model with BGC forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
+| [`release-01deg_jra55_ryf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_ryf) | Global 0.1&deg; model forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
+| [`release-01deg_jra55_iaf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_iaf)| Global 0.1&deg; model forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
+| [`release-01deg_jra55_ryf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_ryf_bgc) | Global 0.1&deg; model with BGC forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
+| [`release-01deg_jra55_iaf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_iaf_bgc)| Global 0.1&deg; model with BGC forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
 
 There are more detailed notes contained in the respective branches for each configuration.
 
