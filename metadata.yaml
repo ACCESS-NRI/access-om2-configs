@@ -10,24 +10,26 @@ description: |-
   converted to liquid runoff with no heat transfer.
   Spin up starts 1 Jan 1958 and runs to 1 Jan 2019.
 notes: |-
-  Source code: https://github.com/COSIMA/access-om2
-  License: Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/legalcode)
-  Conditions of use:
-  We request that users of this or other ACCESS-OM2 model code or output data:
+  COSIMA request that users of this or other ACCESS-OM2 model code or output data:
   (a) consider citing Kiss et al. (2020) [http://doi.org/10.5194/gmd-13-401-2020]
   (b) include an acknowledgement such as the following:
   "The authors thank the Consortium for Ocean-Sea Ice Modelling in Australia (COSIMA; http://www.cosima.org.au)
   for making the ACCESS-OM2 suite of models available at https://github.com/COSIMA/access-om2.
   Model runs were undertaken with the assistance of resources from the National Computational Infrastructure (NCI),
   which is supported by the Australian Government."
-  (c) let us know of any publications which use these models or data so we can add them to our list:
+  (c) let COSIMA know of any publications which use these models or data so they can add them to their list:
   https://scholar.google.com/citations?hl=en&user=inVqu_4AAAAJ
-license: CC-BY-4.0
 keywords:
-- quarter
-- cosima
+- JRA55
 - access-om2-025
-- jra55-do-v1.4.0
-- iaf
+- repeat-year
+- global
+realm:
+- ocean
+- seaIce
+nominal_resolution: 25 km
+reference: https://doi.org/10.5194/gmd-13-401-2020
+license: CC-BY-4.0
 model: ACCESS-OM2
+version: '2.0'
 url: https://github.com/ACCESS-NRI/access-om2-configs.git
