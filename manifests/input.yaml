@@ -3433,10 +3433,10 @@ work/atmosphere/INPUT/vas_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-4-0_gr
     md5: b0e514bfac0d9dfbf538d36b8ecd17f9
 work/ice/RESTART/grid.nc:
   copy: true
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.025deg/2020.11.02/grid.nc
+  fullpath: /g/data/tm70/as2285/esmgrids/025deg/grid.nc
   hashes:
-    binhash: ef32f5ea0beca45e4aaf2f4833b339d0
-    md5: 24920ffb6c0fea5f6ec1e590a5f46280
+    binhash: 72fc887d7553ba638b48afe6416bb078
+    md5: d72c0fa43e3aea96c9157514b3876bff
 work/ice/RESTART/i2o.nc:
   copy: true
   fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.025deg/2020.05.30/i2o.nc
@@ -3445,10 +3445,10 @@ work/ice/RESTART/i2o.nc:
     md5: ca16c9eef58814b9ff13fd5e8bd88a25
 work/ice/RESTART/kmt.nc:
   copy: true
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.025deg/2023.05.15/kmt.nc
+  fullpath: /g/data/tm70/as2285/esmgrids/025deg/kmt.nc
   hashes:
-    binhash: 614d68eb75a67af836cb00e9d4307f8c
-    md5: 2e9743de8f4cb868d9802db8c8e6e9ca
+    binhash: 048003c4269efb1da0151e962564f45c
+    md5: bd2a45147ae0ed9806708f6fdfc89ddc
 work/ice/RESTART/monthly_sstsss.nc:
   copy: true
   fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.025deg/2020.05.30/monthly_sstsss.nc
