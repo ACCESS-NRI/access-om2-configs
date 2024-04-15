@@ -81,42 +81,6 @@ work/atmosphere/INPUT/rmp_jrar_to_cict_CONSERV.nc:
   hashes:
     binhash: 5c9dc38068da3431afd3aa342bebbbcc
     md5: 2e8cf1844fe7a1156ef47170a6eb5ef1
-work/ice/RESTART/grid.nc:
-  copy: true
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.025deg/2020.11.02/grid.nc
-  hashes:
-    binhash: ef32f5ea0beca45e4aaf2f4833b339d0
-    md5: 24920ffb6c0fea5f6ec1e590a5f46280
-work/ice/RESTART/i2o.nc:
-  copy: true
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.025deg/2020.05.30/i2o.nc
-  hashes:
-    binhash: 169a43590d8b0c812af3d993c4f65e8c
-    md5: ca16c9eef58814b9ff13fd5e8bd88a25
-work/ice/RESTART/kmt.nc:
-  copy: true
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.025deg/2023.05.15/kmt.nc
-  hashes:
-    binhash: 614d68eb75a67af836cb00e9d4307f8c
-    md5: 2e9743de8f4cb868d9802db8c8e6e9ca
-work/ice/RESTART/monthly_sstsss.nc:
-  copy: true
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.025deg/2020.05.30/monthly_sstsss.nc
-  hashes:
-    binhash: 2fdf1798189b37092a239c9c947d9d26
-    md5: 598c7aa8a08fe3f48a621f781dd26331
-work/ice/RESTART/o2i.nc:
-  copy: true
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.025deg/2020.10.22/o2i.nc
-  hashes:
-    binhash: 29b684d1cc141deb8f4bc69a47c12801
-    md5: 5c695c6a91b4a2f64e653a5baa62c34a
-work/ice/RESTART/u_star.nc:
-  copy: true
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.025deg/2020.05.30/u_star.nc
-  hashes:
-    binhash: d0496680b0c663575627c6b13cdde39a
-    md5: 4be7800aa8e310a6c7a9c3af1d50c7f0
 work/ocean/INPUT/chl.nc:
   fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/chlorophyll/global.025deg/2020.05.30/chl.nc
   hashes:
