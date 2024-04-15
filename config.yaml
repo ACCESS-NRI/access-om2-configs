@@ -1,16 +1,21 @@
 # PBS configuration
 
-# If submitting to a different project to your default, uncomment line below 
-# and change project code as appropriate; also set shortpath below
-# project: v45
+# If submitting to a different project to your default, uncomment line below
+# and replace PROJECT_CODE with appropriate code. This may require setting shortpath
+# project: PROJECT_CODE
 
 # Force payu to always find, and save, files in this scratch project directory
-# (you may need to add the corresponding PBS -l storage flag in sync_data.sh)
-# shortpath: /scratch/v45
+# shortpath: /scratch/PROJECT_CODE
 
 queue: normal
 walltime: 5:00:00
 jobname: 025deg_jra55_ryf
+
+# Sync options for automatically copying data from ephemeral scratch space to 
+# longer term storage
+sync:
+    enable: False # set path below and change to true
+    path: null # Set to location on /g/data or a remote server and path (rsync syntax)
 
 # Model configuration
 name: common
@@ -51,8 +56,8 @@ submodels:
       model: cice5
       exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19=2023.10.19-rh3xfkrgajya3ghtliacuhlx3pgvrzqs/bin/cice_auscom_1440x1080_48x40_480p.exe
       input:
-        - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.025deg/2020.11.02/grid.nc
-        - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.025deg/2023.05.15/kmt.nc
+        - /g/data/tm70/as2285/esmgrids/025deg/grid.nc
+        - /g/data/tm70/as2285/esmgrids/025deg/kmt.nc
         - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.025deg/2020.05.30/i2o.nc
         - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.025deg/2020.10.22/o2i.nc
         - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.025deg/2020.05.30/u_star.nc
@@ -64,19 +69,23 @@ collate:
   restart: true
   mpi: true
   walltime: 1:00:00
-  mem: 16GB
+  mem: 30GB
   ncpus: 4
   queue: normal
-  exe: /g/data/ik11/inputs/access-om2/bin/mppnccombine-fast
+  exe: /g/data/vk83/apps/mppnccombine-fast/0.2/bin/mppnccombine-fast
 
 # Misc
 runlog: true
 stacksize: unlimited
-restart_freq: '5Y'
+restart_freq: 5YS
 mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
 qsub_flags: -W umask=027
 env:
     UCX_LOG_LEVEL: 'error'
+
+manifest:
+  reproduce:
+    exe: True
 
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
@@ -86,3 +95,4 @@ platform:
 userscripts:
     error: tools/resub.sh
     run: rm -f resubmit.count
+    sync: /g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh
