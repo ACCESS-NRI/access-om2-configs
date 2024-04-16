@@ -61,7 +61,7 @@ submodels:
         - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.025deg/2020.05.30/roughness_cdbot.nc
         - /g/data/vk83/experiments/inputs/access-om2/ocean/surface_salt_restoring/global.025deg/2020.05.30/salt_sfc_restore.nc
         - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.025deg/2022.02.24/bgc_param.nc
-        - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.025deg/2022.02.24/co2_ryf.nc
+        - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.025deg/2022.02.24/co2_iaf.nc
         - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.025deg/2022.02.24/csiro_bgc.res.nc
         - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.025deg/2022.02.24/csiro_bgc_sediment.res.nc
         - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.025deg/2022.02.24/dust.nc

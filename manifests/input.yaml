@@ -14,8 +14,8 @@ work/INPUT/rmp_jra55_cice_2nd_conserve.nc:
 work/INPUT/rmp_jra55_cice_patch.nc:
   fullpath: /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.025deg/2023.05.15/rmp_jra55_cice_patch.nc
   hashes:
-    binhash: 6450c6476d9e385244a988147c271392
-    md5: e2e5f2c69d2164cec1f4d395476d93a3
+    binhash: 0676551dd14fbdb358da029584b74273
+    md5: 8379069a00d376c3723c7bd821af2a42
 work/atmosphere/INPUT/friver_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-4-0_gr_19580101-19581231.nc:
   fullpath: /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/land/day/friver/gr/v20190429/friver_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-4-0_gr_19580101-19581231.nc
   hashes:
@@ -3477,11 +3477,11 @@ work/ocean/INPUT/chl.nc:
   hashes:
     binhash: 3f04f0d65acdcd3b372792a41a268a3b
     md5: 99b68aec777292d746e4d93c2b976189
-work/ocean/INPUT/co2_ryf.nc:
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.025deg/2022.02.24/co2_ryf.nc
+work/ocean/INPUT/co2_iaf.nc:
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.025deg/2022.02.24/co2_iaf.nc
   hashes:
-    binhash: 95421006948ed72b50bbfe116892ab9d
-    md5: c4608d171ce363bc9de8c5d44521d2f4
+    binhash: 42d1f1c0f21184108be6ea8ac04b3bd7
+    md5: 3ea0c260040e47d84c53a917c288cc6e
 work/ocean/INPUT/csiro_bgc.res.nc:
   fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.025deg/2022.02.24/csiro_bgc.res.nc
   hashes:
