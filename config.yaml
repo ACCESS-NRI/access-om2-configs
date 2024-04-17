@@ -67,8 +67,8 @@ submodels:
       model: cice5
       exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19=2023.10.19-v3zncpqjj2gyseudbwiudolcjq3k3leo/bin/cice_auscom_3600x2700_90x90_722p.exe
       input:
-        - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.01deg/2020.05.30/grid.nc
-        - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.01deg/2020.05.30/kmt.nc
+        - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.01deg/2024.04.17/grid.nc
+        - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.01deg/2024.04.17/kmt.nc
         - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.01deg/2020.05.30/i2o.nc
         - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.01deg/2020.05.30/o2i.nc
         - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.01deg/2020.05.30/monthly_sstsss.nc
