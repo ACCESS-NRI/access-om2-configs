@@ -2187,7 +2187,7 @@ work/atmosphere/INPUT/rlds_input4MIPs_atmosphericState_OMIP_MRI-JRA55-do-1-4-0_g
     binhash: f1a3c4313a4f6ff631f0fe887a849153
     md5: 3d08213bdacd00ba2cfde806cf6d6b6f
 work/atmosphere/INPUT/rmp_jrar_to_cict_CONSERV.nc:
-  fullpath: /g/data/ik11/inputs/access-om2/input_20230515_025deg_topog/yatm_025deg/rmp_jrar_to_cict_CONSERV.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.025deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
   hashes:
     binhash: 5c9dc38068da3431afd3aa342bebbbcc
     md5: 2e8cf1844fe7a1156ef47170a6eb5ef1
