@@ -20,13 +20,13 @@ notes: |-
   (c) let COSIMA know of any publications which use these models or data so they can add them to their list:
   https://scholar.google.com/citations?hl=en&user=inVqu_4AAAAJ
 keywords:
-- JRA55
-- access-om2-025
-- repeat-year
-- global
+  - JRA55
+  - access-om2-025
+  - repeat-year
+  - global
 realm:
-- ocean
-- seaIce
+  - ocean
+  - seaIce
 nominal_resolution: 25 km
 reference: https://doi.org/10.5194/gmd-13-401-2020
 license: CC-BY-4.0
