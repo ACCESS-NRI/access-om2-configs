@@ -103,7 +103,7 @@ These checks are in the context of:
 More information on submitting a Pull Request and on the specifics of this pipeline can be found in the [CONTRIBUTING.md](./.github/CONTRIBUTING.md) and [README-DEV.md](./README-DEV.md) respectively.
 
 For more information on the manually running the pytests that are run as part of the reproducibility CI checks, see
-[test/README.md](./test/README.md).
+[model-config-tests](https://github.com/ACCESS-NRI/model-config-tests/).
 
 ## Conditions of use
 
