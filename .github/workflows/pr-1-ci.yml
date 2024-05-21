@@ -108,7 +108,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: access-nri/model-config-tests
-          ref: main
+          # Temporarily pin model-config-tests to a commit
+          # TODO: Update to use model-config-tests package
+          ref: b086103bb4a2ff87f7d6bb82cd767ab173b1e089
           path: pytest
 
       - name: Setup Python 3.11
