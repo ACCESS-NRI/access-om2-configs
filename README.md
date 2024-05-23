@@ -1,7 +1,7 @@
-# 1deg_jra55_ryf with BGC
+# 1deg_jra55_ryf with WOMBATlite
 Standard configuration for 1 degree global [ACCESS-OM2](https://github.com/ACCESS-NRI/access-om2) experiment (ACCESS-OM2) with JRA55-do 1 May 1990 - 30 April 1991 repeat-year forcing (RYF9091) and coupled biogeochemistry in the ocean and sea ice.
 
-This is the BGC version. This BGC setup includes both ocean and sea ice BGC. To turn off the sea ice BGC and have BGC only in the ocean, set `skl_bgc = .false.` in `ice/cice_input.nml`.
+This is the BGC version **using WOMBATlite implemented via the generic tracers framework**. This setup includes both ocean and sea ice BGC. To turn off the sea ice BGC and have BGC only in the ocean, set `skl_bgc = .false.` in `ice/cice_input.nml`.
 
 For usage instructions, see the [ACCESS-Hive docs](https://access-hive.org.au/models/run-a-model/run-access-om/).
 
