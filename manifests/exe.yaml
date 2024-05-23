@@ -2,17 +2,17 @@ format: yamanifest
 version: 1.0
 ---
 work/atmosphere/yatm.exe:
-  fullpath: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26_2023.10.26-xarvbgn4yf4mxy5hxixm4gfbp7rbzsfh/bin/yatm.exe
+  fullpath: /g/data/tm70/ds0092/software/release/linux-rocky8-x86_64_v4/intel-19.0.5.281/libaccessom2-git.2023.10.26_2023.10.26-amcozzabls6htcegplvynw4hjxtgw3gs/bin/yatm.exe
   hashes:
-    binhash: 4f968e4cf41d6e51cf3cd59bd070e393
-    md5: eccfeb3f49d620b4e5f6b8c2bc5d8c36
+    binhash: d09421bec313e77fb479c725e364de87
+    md5: 99cae2744d9246e26c061a8423d77361
 work/ice/cice_auscom_360x300_24x1_24p.exe:
-  fullpath: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19_2023.10.19-4tttbvaxg4afg3hjcrfaah6qngp43e5e/bin/cice_auscom_360x300_24x1_24p.exe
+  fullpath: /g/data/tm70/ds0092/software/release/linux-rocky8-x86_64_v4/intel-19.0.5.281/cice5-git.2023.10.19_2023.10.19-7vgkgisko6tczk6lwt4ibmldronggihe/bin/cice_auscom_360x300_24x1_24p.exe
   hashes:
-    binhash: 6d1d90c6ba37b4dbbd3173fab98d32d1
-    md5: 1ee0b63f488f38619cba0000586bc0c4
-work/ocean/fms_ACCESS-OM-BGC.x:
-  fullpath: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2024.06.27_2024.06.27-q6bpwu526xql2gm6dbpnvf36yvnfxynj/bin/fms_ACCESS-OM-BGC.x
+    binhash: a05cb7d566a7f3f8d581c9852493b6f5
+    md5: 4f6b61a4ecd11d53ad9430712fdcc045
+work/ocean/fms_ACCESS-OM.x:
+  fullpath: /g/data/tm70/ds0092/software/release/linux-rocky8-x86_64_v4/intel-19.0.5.281/mom5-git.2023.11.09_2023.11.09-3aryi2uol3zxlgrtfxgset6bh5xv6ckg/bin/fms_ACCESS-OM.x
   hashes:
-    binhash: efb3edca9d546723c29f92f7c8eb1856
-    md5: 1297c30c1b945e55fa08acdeb301b3d0
+    binhash: ecccfcb590c090a452dfea87715037fe
+    md5: 9c28d37b1efd889ae2a521bb62a39673

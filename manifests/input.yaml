@@ -127,36 +127,11 @@ work/ice/RESTART/u_star.nc:
   hashes:
     binhash: f93a19930c5c59e03751e70a123ab01f
     md5: 68cf0ef92576f96ef085cd7f243d0c39
-work/ocean/INPUT/bgc_param.nc:
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/bgc_param.nc
-  hashes:
-    binhash: 1b19152ca86ad04a8e3f46639277fa05
-    md5: 850cd274cfe138ef4aa671b403bfe96e
 work/ocean/INPUT/chl.nc:
   fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/chlorophyll/global.1deg/2020.05.30/chl.nc
   hashes:
     binhash: 05b3313121bbb9825a20f0fb58901b21
     md5: a7aa5bcf4a3b9fa8102edd3b6b67c3a2
-work/ocean/INPUT/co2_iaf.nc:
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/co2_iaf.nc
-  hashes:
-    binhash: 6879f54b49e62bc078a4e5bc6afa1890
-    md5: a1385f25d63375156fba70e75a53334a
-work/ocean/INPUT/co2_ryf.nc:
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/co2_ryf.nc
-  hashes:
-    binhash: f7c019e60814d70a2456730e6cfed69c
-    md5: 7b3557fc31a44eeac14094db895e55f3
-work/ocean/INPUT/csiro_bgc.res.nc:
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/csiro_bgc.res.nc
-  hashes:
-    binhash: 5ef42add77623325180cd40e51102aff
-    md5: 87f4a657f2d8e459d1ae38eec3723fd3
-work/ocean/INPUT/csiro_bgc_sediment.res.nc:
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/csiro_bgc_sediment.res.nc
-  hashes:
-    binhash: fff3375ad2ae36b7d0521dd67912a9fd
-    md5: 12488f7cf8f9c2f714c0ff2dbbb33a9b
 work/ocean/INPUT/dust.nc:
   fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/dust.nc
   hashes:
@@ -197,6 +172,11 @@ work/ocean/INPUT/ocean_vgrid.nc:
   hashes:
     binhash: cd9ef67b8cf6d4ea0c78554ac38e1bc3
     md5: 339ff716e3019a86fc861498e674250a
+work/ocean/INPUT/ocean_wombatlite.res.nc:
+  fullpath: /g/data/tm70/ds0092/model/inputs/access-om2/ocean_wombatlite.res.nc
+  hashes:
+    binhash: aa59cf0c8e2b457d098b0a2218cc0597
+    md5: bf5cf793d251a36402cd575e949f877d
 work/ocean/INPUT/roughness_amp.nc:
   fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_amp.nc
   hashes:
