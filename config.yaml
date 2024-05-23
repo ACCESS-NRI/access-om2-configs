@@ -39,13 +39,9 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-64l5azdtcoxhrgb5ynn2vued5lmjvn33/bin/fms_ACCESS-OM-BGC.x
+      exe: /g/data/tm70/ds0092/software/release/linux-rocky8-x86_64_v4/intel-19.0.5.281/mom5-git.2023.11.09_2023.11.09-3aryi2uol3zxlgrtfxgset6bh5xv6ckg/bin/fms_ACCESS-OM.x
       input:
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/bgc_param.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/co2_iaf.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/co2_ryf.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/csiro_bgc.res.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/csiro_bgc_sediment.res.nc
+          - /g/data/tm70/ds0092/model/inputs/access-om2/ocean_wombatlite.res.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/dust.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/grid_spec.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_hgrid.nc
@@ -85,16 +81,18 @@ collate:
 
 manifest:
   reproduce:
-    exe: true
+    exe: false
 
 # Misc
-runlog: true
+runlog: false
 stacksize: unlimited
 restart_freq: 5YS
 mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
 qsub_flags: -W umask=027
 env:
     UCX_LOG_LEVEL: 'error'
+metadata:
+    enable: false
 
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:

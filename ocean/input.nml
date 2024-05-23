@@ -493,6 +493,15 @@
     zero_tracer_source = .false.
 /
 
+&generic_tracer_nml
+    do_generic_tracer = .true.
+    do_generic_WOMBATlite = .true.
+/
+
+&generic_wombatlite_nml
+    co2_calc='ocmip2'
+/
+
 &ocean_velocity_advect_nml
 /
 
