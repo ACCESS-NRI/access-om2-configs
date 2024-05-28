@@ -102,16 +102,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
-          path: pr
-
-      - name: Checkout Tests
-        uses: actions/checkout@v4
-        with:
-          repository: access-nri/model-config-tests
-          # Temporarily pin model-config-tests to a commit
-          # TODO: Update to use model-config-tests package
-          ref: b086103bb4a2ff87f7d6bb82cd767ab173b1e089
-          path: pytest
 
       - name: Setup Python 3.11
         uses: actions/setup-python@v5
@@ -119,9 +109,8 @@ jobs:
           python-version: 3.11
           cache: pip
 
-      - name: Install requirements.txt
-        working-directory: ./pytest
-        run: pip install -r ./requirements.txt
+      - name: Install model-config-tests
+        run: pip install model-config-tests==0.0.1
 
       - name: Get Final List of Markers
         id: pytest-markers
@@ -136,10 +125,9 @@ jobs:
         # We continue on error because we will let the checks generated in
         # the next step speak to the state of the testing
         continue-on-error: true
-        working-directory: ./pr
         run: |
           echo "Running pytest using '-m ${{ steps.pytest-markers.outputs.markers }}'"
-          pytest ../pytest \
+          model-config-tests \
             -m '${{ steps.pytest-markers.outputs.markers }}' \
             --target-branch '${{ github.base_ref }}' \
             --junitxml=./test_report.xml
@@ -148,7 +136,7 @@ jobs:
         id: tests
         uses: EnricoMi/publish-unit-test-result-action/composite@e780361cd1fc1b1a170624547b3ffda64787d365  #v2.12.0
         with:
-          files: ./pr/test_report.xml
+          files: ./test_report.xml
           comment_mode: off
           check_run: true
           check_name: QA Test Results
