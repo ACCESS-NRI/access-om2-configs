@@ -157,6 +157,9 @@ jobs:
       environment-name: Gadi
       config-tag: ${{ github.head_ref }}
       test-markers: ${{ inputs.repro-pytest-markers }}
+      model-config-tests-version: "0.0.1"
+      python-version: "3.11.0"
+
     secrets: inherit
     permissions:
       contents: write

@@ -40,6 +40,8 @@ jobs:
       committed-checksum-location: ${{ inputs.committed-checksum-location }}
       committed-checksum-tag: "${{ inputs.config-branch-name }}-${{ inputs.committed-checksum-tag-version }}"
       environment-name: "Gadi Initial Checksum"
+      model-config-tests-version: "0.0.1"
+      python-version: "3.11.0"
     permissions:
       contents: write
     secrets: inherit
