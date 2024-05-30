@@ -141,7 +141,7 @@
     restart_hbrine    = .false.
     restore_bgc       = .false.
     sil_data_type     = 'default'
-    skl_bgc           = .true.
+    skl_bgc           = .false.
     tr_bgc_am_sk      = .false.
     tr_bgc_c_sk       = .false.
     tr_bgc_chl_sk     = .false.
@@ -346,9 +346,9 @@
     f_bgc_dmsp_ml     = 'x'
     f_bgc_dmspd_sk    = 'x'
     f_bgc_dmspp_sk    = 'x'
-    f_bgc_n_sk        = 'm'
-    f_bgc_nit_ml      = 'm'
-    f_bgc_nit_sk      = 'm'
+    f_bgc_n_sk        = 'x'
+    f_bgc_nit_ml      = 'x'
+    f_bgc_nit_sk      = 'x'
     f_bgc_sil_ml      = 'x'
     f_bgc_sil_sk      = 'x'
     f_bphi            = 'x'
@@ -357,16 +357,16 @@
     f_faero_ocn       = 'x'
     f_fbri            = 'x'
     f_fn              = 'x'
-    f_fn_ai           = 'm'
+    f_fn_ai           = 'x'
     f_fnh             = 'x'
     f_fnh_ai          = 'x'
     f_fno             = 'x'
-    f_fno_ai          = 'm'
+    f_fno_ai          = 'x'
     f_fsil            = 'x'
     f_fsil_ai         = 'x'
     f_grownet         = 'x'
     f_hbri            = 'x'
-    f_ppnet           = 'm'
+    f_ppnet           = 'x'
 /
 
 &icefields_drag_nml

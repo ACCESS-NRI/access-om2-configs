@@ -99,10 +99,10 @@ work/ice/RESTART/grid.nc:
     md5: 7dd9ee5bce7f2eaeb75355684ddba599
 work/ice/RESTART/i2o.nc:
   copy: true
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions_biogeochemistry/global.1deg/2022.02.24/i2o.nc
+  fullpath: /g/data/tm70/ds0092/model/inputs/access-om2/i2o.nc
   hashes:
-    binhash: bfd8a293b5da16ecc5e40f06d7e6db67
-    md5: cc4cc9b60706470beddce59b600fef9f
+    binhash: 32307cfaffdc8721312359f1e2b5bfb1
+    md5: ae6b3de0f48a0780fe6ed5b766464e17
 work/ice/RESTART/kmt.nc:
   copy: true
   fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
@@ -117,10 +117,10 @@ work/ice/RESTART/monthly_sstsss.nc:
     md5: 323d4c605f83f4d7d3126da70153c2ed
 work/ice/RESTART/o2i.nc:
   copy: true
-  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions_biogeochemistry/global.1deg/2022.02.24/o2i.nc
+  fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/o2i.nc
   hashes:
-    binhash: 1dc25bbe08939c60777518fe2e653361
-    md5: 8ed9a78b70ebd040e8d83303c32454e8
+    binhash: 56f258e931a8eda2fc42b3a315d485eb
+    md5: 3498246dcd7da40d3b8c6b4a908b260f
 work/ice/RESTART/u_star.nc:
   copy: true
   fullpath: /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/u_star.nc
