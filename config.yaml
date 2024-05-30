@@ -64,8 +64,8 @@ submodels:
       input: 
           - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/grid.nc
           - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions_biogeochemistry/global.1deg/2022.02.24/i2o.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions_biogeochemistry/global.1deg/2022.02.24/o2i.nc
+          - /g/data/tm70/ds0092/model/inputs/access-om2/i2o.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/o2i.nc
           - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/u_star.nc
           - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/monthly_sstsss.nc
       ncpus: 24
