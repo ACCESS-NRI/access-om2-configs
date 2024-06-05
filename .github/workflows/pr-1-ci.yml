@@ -1,22 +1,6 @@
 name: PR Checks
 on:
   workflow_call:
-    inputs:
-      qa-pytest-markers:
-        type: string
-        required: false
-        default: config
-        description: List of markers for the pytest QA CI checks
-      qa-pytest-add-model-markers:
-        type: boolean
-        required: false
-        default: true
-        description: Whether to run model-specific tests
-      repro-pytest-markers:
-        type: string
-        required: false
-        default: checksum
-        description: List of markers for the pytest repro CI checks
   # Workflows that call this workflow use the following triggers:
   # pull_request:
   #   branches:
@@ -88,11 +72,44 @@ jobs:
             Rename the Source branch or check the Target branch, and try again.
         run: gh pr comment --body '${{ env.BODY }}'
 
+  config:
+    name: Read CI Testing Configuration
+    runs-on: ubuntu-latest
+    outputs:
+      qa-markers: ${{ steps.qa-config.outputs.markers }}
+      qa-python-version: ${{ steps.qa-config.outputs.python-version }}
+      qa-model-config-tests-version: ${{ steps.qa-config.outputs.model-config-tests-version }}
+      repro-markers: ${{ steps.repro-config.outputs.markers }}
+      repro-python-version: ${{ steps.repro-config.outputs.python-version }}
+      repro-model-config-tests-version: ${{ steps.repro-config.outputs.model-config-tests-version }}
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Read QA tests config
+        id: qa-config
+        uses: access-nri/access-om2-configs/.github/actions/parse-ci-config@main
+        with:
+          check: qa
+          branch-or-tag: ${{ github.base_ref }}
+          config-filepath: "config/ci.json"
+      
+      - name: Read reproducibility tests config
+        id: repro-config
+        uses: access-nri/access-om2-configs/.github/actions/parse-ci-config@main
+        with:
+          check: reproducibility
+          branch-or-tag: ${{ github.base_ref }}
+          config-filepath: "config/ci.json"
+
   qa-ci:
     # Run quick, non-HPC tests on the runner.
     name: QA CI Checks
     needs:
       - commit-check
+      - config
     if: needs.commit-check.outputs.authorship != vars.GH_ACTIONS_BOT_GIT_USER_NAME
     runs-on: ubuntu-latest
     permissions:
@@ -103,32 +120,23 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Setup Python 3.11
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.11
+          python-version: ${{ needs.config.outputs.qa-python-version }}
           cache: pip
 
-      - name: Install model-config-tests
-        run: pip install model-config-tests==0.0.1
-
-      - name: Get Final List of Markers
-        id: pytest-markers
-        run: |
-          if [[ ${{ inputs.qa-pytest-add-model-markers }} == "true" ]]; then
-            echo "markers=${{ inputs.qa-pytest-markers }} or access_om2" >> $GITHUB_OUTPUT
-          else
-            echo "markers=${{ inputs.qa-pytest-markers }}" >> $GITHUB_OUTPUT
-          fi
+      - name: Install model-config-tests 
+        run: pip install model-config-tests=='${{ needs.config.outputs.qa-model-config-tests-version }}'
 
       - name: Invoke Simple CI Pytests
         # We continue on error because we will let the checks generated in
         # the next step speak to the state of the testing
         continue-on-error: true
         run: |
-          echo "Running pytest using '-m ${{ steps.pytest-markers.outputs.markers }}'"
+          echo "Running pytest using '-m ${{ needs.config.outputs.qa-markers }}'"
           model-config-tests \
-            -m '${{ steps.pytest-markers.outputs.markers }}' \
+            -m '${{ needs.config.outputs.qa-markers }}' \
             --target-branch '${{ github.base_ref }}' \
             --junitxml=./test_report.xml
 
@@ -150,15 +158,16 @@ jobs:
     needs:
       - commit-check
       - branch-check
+      - config
     if: needs.commit-check.outputs.authorship != vars.GH_ACTIONS_BOT_GIT_USER_NAME && needs.branch-check.result == 'success'
     uses: access-nri/reproducibility/.github/workflows/checks.yml@main
     with:
       model-name: access-om2
       environment-name: Gadi
       config-tag: ${{ github.head_ref }}
-      test-markers: ${{ inputs.repro-pytest-markers }}
-      model-config-tests-version: "0.0.1"
-      python-version: "3.11.0"
+      test-markers: ${{ needs.config.outputs.repro-markers }}
+      model-config-tests-version: ${{ needs.config.outputs.repro-model-config-tests-version }}
+      python-version: ${{ needs.config.outputs.repro-python-version }}
 
     secrets: inherit
     permissions:

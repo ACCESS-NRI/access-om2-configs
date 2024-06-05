@@ -7,17 +7,40 @@ on:
         required: true
         description: Tag associated with a config branch that is used in the reproducibility run
 jobs:
+  config:
+    name: Read CI Testing Configuration
+    runs-on: ubuntu-latest
+    outputs:
+      markers: ${{ steps.scheduled-config.outputs.markers }}
+      python-version: ${{ steps.scheduled-config.outputs.python-version }}
+      model-config-tests-version: ${{ steps.scheduled-config.outputs.model-config-tests-version }}
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Read scheduled tests config
+        id: scheduled-config
+        uses: access-nri/access-om2-configs/.github/actions/parse-ci-config@main
+        with:
+          check: scheduled
+          branch-or-tag: ${{ inputs.config-tag }}
+          config-filepath: "config/ci.json"
+
   repro-ci:
     # Run the given config on the deployment Github Environment (`environment-name`) and upload
     # the test results and checksum.
+    needs:
+      - config
     uses: access-nri/reproducibility/.github/workflows/checks.yml@main
     with:
       model-name: access-om2
       environment-name: Gadi
       config-tag: ${{ inputs.config-tag }}
-      test-markers: checksum
-      model-config-tests-version: "0.0.1"
-      python-version: "3.11.0"
+      test-markers: ${{ needs.config.outputs.markers }}
+      model-config-tests-version: ${{ needs.config.outputs.model-config-tests-version }}
+      python-version: ${{ needs.config.outputs.python-version }}
     secrets: inherit
     permissions:
       contents: write
