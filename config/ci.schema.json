@@ -1,0 +1,77 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Model Configuration CI Testing Configuration",
+    "description": "Settings for Continuous Integration (CI) tests for model configurations repositories",
+    "type": "object",
+    "$defs": {
+        "config": {
+            "type": "object",
+            "properties": {
+                "markers": {
+                    "type": "string",
+                    "description": "A python expression of markers to pass to model-config-tests pytests"
+                },
+                "model-config-tests-version": {
+                    "type": "string",
+                    "description": "A version of the model-config-tests package"
+                },
+                "python-version": {
+                    "type": "string",
+                    "description": "The python version used to create test virtual environment."
+                }
+            },
+            "additionalProperties": false
+        },
+        "check": {
+            "type": "object",
+            "patternProperties": {
+                "^.*$": {
+                    "$ref": "#/$defs/config",
+                    "description": "The name of the git branch or tag"
+                },
+                "default": {
+                    "$ref": "#/$defs/config",
+                    "required": [
+                        "markers"
+                    ]
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        "scheduled": {
+            "$ref": "#/$defs/check",
+            "description": "Scheduled reproducibility checks"
+        },
+        "reproducibility": {
+            "$ref": "#/$defs/check",
+            "description": "Reproducibility checks"
+        },
+        "qa": {
+            "$ref": "#/$defs/check",
+            "description": "Quick quality assurance checks"
+        },
+        "default": {
+            "$ref": "#/$defs/config",
+            "required": [
+                "model-config-tests-version",
+                "python-version"
+            ]
+        }
+    },
+    "required": [
+        "$schema",
+        "scheduled",
+        "reproducibility",
+        "qa",
+        "default"
+    ],
+    "additionalProperties": false
+}
