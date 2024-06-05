@@ -17,7 +17,7 @@
                 },
                 "python-version": {
                     "type": "string",
-                    "description": "The python version used to create test virtual environment."
+                    "description": "The python version used to create test virtual environment"
                 }
             },
             "additionalProperties": false
@@ -33,7 +33,8 @@
                     "$ref": "#/$defs/config",
                     "required": [
                         "markers"
-                    ]
+                    ],
+                    "description": "The default configuration for this check"
                 }
             },
             "required": [
@@ -48,22 +49,23 @@
         },
         "scheduled": {
             "$ref": "#/$defs/check",
-            "description": "Scheduled reproducibility checks"
+            "description": "Scheduled reproducibility checks. The keys are config tags to run scheduled checks on"
         },
         "reproducibility": {
             "$ref": "#/$defs/check",
-            "description": "Reproducibility checks"
+            "description": "Reproducibility checks. The keys are the target branch names for pull requests"
         },
         "qa": {
             "$ref": "#/$defs/check",
-            "description": "Quick quality assurance checks"
+            "description": "Quick quality assurance checks. The keys are the target branch names for pull requests"
         },
         "default": {
             "$ref": "#/$defs/config",
             "required": [
                 "model-config-tests-version",
                 "python-version"
-            ]
+            ],
+            "description": "Global default configuration"
         }
     },
     "required": [

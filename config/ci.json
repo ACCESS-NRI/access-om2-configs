@@ -14,7 +14,7 @@
     },
     "qa": {
         "default": {
-            "markers": "access-om2 or config"
+            "markers": "access_om2 or config"
         }
     },
     "default": {
