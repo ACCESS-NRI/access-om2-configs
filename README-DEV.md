@@ -134,24 +134,12 @@ This is the `config/ci.json` configuration file for specifying different test ma
 - `reproducibility`: These are reproducibility tests are run as part of [`pr-1-ci.yml`](#repro-ci). The keys under these tests represent the target branches into which pull requests are being merged.
 - `qa` - These are quick QA tests are run as part of [`pr-1-ci.yml`](#qa-ci). The keys under these tests represent the target branches into which pull requests are being merged.
 
-As most of the tests use the same test and python versions, and similar markers, there are two levels of defaults. There's a default at test type level which is useful for defining test markers - this selects certain pytests to run in `model-config-tests`. There is an outer global default, which is used if a property is not defined for a given branch/tag and it is not defined for the test default.
-
-#### parse-ci-config
-
-This action parses the CI testing configuration file. The caller of the action needs to checkout the branch where the config file is defined before running this action.
-
-#### Inputs
-
-| Name | Type | Description | Required | Example |
-| ---- | ---- | ----------- | -------- | ------- |
-| check | `string` | The type of check/test to run | true | `scheduled` |
-| branch-or-tag | `string` | The name of git branch or tag | true | 'release-1deg_jra55_ryf-2.0' |
-| config-filepath | `string` | Path to configuration file | true | `config/ci.json` |
-
-#### Outputs
+The configuration properties needed to run the tests are:
 
 | Name | Type | Description |  Example |
 | ---- | ---- | ----------- | -------- |
 | markers | `string` | Markers used for the pytest checks, in the python format | `checksum` |
 | model-config-tests-version | `string` | The version of the model-config-tests | `0.0.1` |
 | python-version | `string` | The python version used to create test virtual environment | `3.11.0` |
+
+As most of the tests use the same test and python versions, and similar markers, there are two levels of defaults. There's a default at test type level which is useful for defining test markers - this selects certain pytests to run in `model-config-tests`. There is an outer global default, which is used if a property is not defined for a given branch/tag, and it is not defined for the test default. The `parse-ci-config` action applies the fall-back default logic. For more information on using this action see [`parse-ci-config` README.md](./.github/actions/parse-ci-config/README.md).
