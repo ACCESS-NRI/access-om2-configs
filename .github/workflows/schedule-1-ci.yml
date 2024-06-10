@@ -16,7 +16,7 @@ jobs:
 
       - name: Get all released configs
         id: get-released-config
-        run: echo "tags=$(jq --compact-output --raw-output '.tags' config/released-configs.json)" >> $GITHUB_OUTPUT
+        run: echo "tags=$(jq --compact-output --raw-output '.scheduled | del(.default) | keys[]' config/ci.json)" >> $GITHUB_OUTPUT
 
   repro-ci:
     # We use this reusable workflow with a matrix strategy rather than calling repro-ci.yml, as

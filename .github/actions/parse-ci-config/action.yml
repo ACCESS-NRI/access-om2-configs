@@ -1,0 +1,53 @@
+name: Parse CI Config File
+description: Action to parse model-config-tests configurations for CI tests
+inputs:
+  check:
+    required: true
+    description: Type of check/test to run (e.g. "reproducibility", "qa" or "scheduled")
+  branch-or-tag:
+    required: true
+    description: Name of Git branch or tag to run CI testing on
+  config-filepath:
+    required: true
+    description: Path to CI configuration file
+outputs:
+  model-config-tests-version:
+    value: ${{ steps.read-config.outputs.model-config-tests-version }}
+    description: A version of the model-config-tests package
+  python-version:
+    value: ${{ steps.read-config.outputs.python-version }}
+    description: The python version used to create test virtual environment
+  markers:
+    value: ${{ steps.read-config.outputs.markers }}
+    description: A python expression of markers to pass to model-config-tests pytests
+runs:
+  using: "composite" 
+  steps:         
+    - name: Read Configuration File
+      shell: bash
+      id: read-config
+      run: |
+        # Fall back to default config values if not defined for a given branch or tag
+        output=$(jq --arg branch "${{ inputs.branch-or-tag }}" --arg check "${{ inputs.check }}" '
+        {
+          "model-config-tests-version": (
+            .[$check][$branch]["model-config-tests-version"] //
+            .[$check].default["model-config-tests-version"] // 
+            .default["model-config-tests-version"]
+          ),
+          "python-version": (
+            .[$check][$branch]["python-version"] // 
+            .[$check].default["python-version"] // 
+            .default["python-version"]
+          ),
+          "markers": (
+            .[$check][$branch].markers // 
+            .[$check].default.markers //
+            .default.markers
+          ),
+        }
+        ' "${{ inputs.config-filepath }}")
+        
+        echo "markers=$(echo "$output" | jq -r '.["markers"]')" >> $GITHUB_OUTPUT
+        echo "python-version=$(echo "$output" | jq -r '.["python-version"]')" >> $GITHUB_OUTPUT
+        echo "model-config-tests-version=$(echo "$output" | jq -r '.["model-config-tests-version"]')" >> $GITHUB_OUTPUT

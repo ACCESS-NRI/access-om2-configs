@@ -22,13 +22,6 @@ Merge: `pr-3-bump-tag.yml`
 #### The PR CI Lifecycle: `pr-1-ci.yml`
 
 This file does the bulk of the handling of the PR.
-It contains the following inputs, when the PR-triggered `call-pr-1-ci.yml` calls it:
-
-| Name | Type | Description | Required | Default | Example |
-| ---- | ---- | ----------- | -------- | ------- | ------- |
-| `qa-pytest-markers` | `string` | Markers used for the pytest QA CI checks, in the python format | `false` | `config or metadata` | `config or metadata or highres` |
-| `qa-pytest-add-model-markers` | `boolean` | Markers used for the pytest QA CI checks, in the python format | `false` | `false` | `true` |
-| `repro-pytest-markers` | `string` | Markers used for the pytest repro CI checks, in the python format | `false` | `checksum` | `checksum or performance` |
 
 ##### `commit-check`
 
@@ -39,6 +32,10 @@ The first job, `commit-check`, is used to short-circuit execution of this workfl
 ##### `branch-check`
 
 This job is used as a check before running [`repro-ci`](#repro-ci) checks, which are only run on PRs `dev-*` -> `release-*`. It also makes sure that the branches are formatted correctly.
+
+##### `config`
+
+This job reads configuration file `config/ci.json`  to obtain pytest markers, `model-config-tests` version and python version for running QA and reproducibility tests.
 
 ##### `qa-ci`
 
@@ -99,11 +96,14 @@ schedule-1-ci ---- schedule-2-start [release-1deg_jra55_iaf-1.1]
 
 #### Matrix Creation: `schedule-1-ci.yml`
 
-This workflow is responsible for getting all the config tags that require monthly checks (defined in `config/released-configs.json`) and spawning a matrix job for each of those.
+This workflow is responsible for getting all the config tags that require monthly checks (defined in `config/ci.json` under `scheduled`) and spawning a matrix job for each of those.
 
 As an aside, the reason that we call the reusable workflow `schedule-2-start.yml` with a matrix strategy is that matrix strategies only work at the `job` level. So, if you need a matrix to work across multiple jobs (for example, one job does a task with a particular matrix value, and one reports the result of that task), you need a job that calls a reusable workflow, which in turn contains multiple jobs.
 
 #### Config Tag Specific Checks: `schedule-2-start.yml`
+
+##### `config`
+Similar to the [`pr-1-ci.yml` counterpart](#config) - parses the CI configuration file for markers, `model-config-tests` and python versions for scheduled reproducibility checks.
 
 ##### `repro-ci`
 
@@ -126,3 +126,20 @@ This workflow is used to check that modifications to `*.json` files are in line 
 #### Initial Checksum Creation: `generate-initial-checksums.yml`
 
 This `workflow_dispatch`-triggered workflow generates checksums of a given config branch, and optionally commits them. This is useful for generating checksums for an entirely new config branch, so the workflows above have something to compare against.
+
+### CI Configuration File
+
+This is the `config/ci.json` configuration file for specifying different test markers, or test versions based on type of the test to run, and the name of the git branch or tag. The different types of test are defined as:
+- `scheduled`: These are scheduled monthly reproducibility tests that are run as part of [`schedule-2-start.yml`](#repro-ci-1). The keys under these tests represent released config tags to run scheduled checks on.
+- `reproducibility`: These are reproducibility tests are run as part of [`pr-1-ci.yml`](#repro-ci). The keys under these tests represent the target branches into which pull requests are being merged.
+- `qa` - These are quick QA tests are run as part of [`pr-1-ci.yml`](#qa-ci). The keys under these tests represent the target branches into which pull requests are being merged.
+
+The configuration properties needed to run the tests are:
+
+| Name | Type | Description |  Example |
+| ---- | ---- | ----------- | -------- |
+| markers | `string` | Markers used for the pytest checks, in the python format | `checksum` |
+| model-config-tests-version | `string` | The version of the model-config-tests | `0.0.1` |
+| python-version | `string` | The python version used to create test virtual environment | `3.11.0` |
+
+As most of the tests use the same test and python versions, and similar markers, there are two levels of defaults. There's a default at test type level which is useful for defining test markers - this selects certain pytests to run in `model-config-tests`. There is an outer global default, which is used if a property is not defined for a given branch/tag, and it is not defined for the test default. The `parse-ci-config` action applies the fall-back default logic. For more information on using this action see [`parse-ci-config` README.md](./.github/actions/parse-ci-config/README.md).
