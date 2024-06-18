@@ -66,7 +66,6 @@ jobs:
       - config
     uses: access-nri/model-config-tests/.github/workflows/generate-checksums.yml@main
     with:
-      model-name: access-om2
       config-branch-name: ${{ inputs.config-branch-name }}
       commit-checksums: ${{ inputs.commit-checksums }}
       committed-checksum-location: ${{ inputs.committed-checksum-location }}
