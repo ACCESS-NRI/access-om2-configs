@@ -1,0 +1,51 @@
+name: CI
+run-name: CI (${{ github.event_name }}) for ${{ github.ref_name }}
+on:
+  pull_request:
+    branches:
+      - 'release-*'
+      - 'dev-*'
+    paths-ignore:
+      # These are ignored because they don't have anything to do with the model itself
+      - .github/**
+      - tools/**
+      - doc/**
+      - config/**
+      - .*
+      - README.md
+  push:
+    branches:
+      - 'release-*'
+    paths:
+      - 'metadata.yaml'
+  issue_comment:
+    types:
+      - created
+      - edited
+jobs:
+  pr:
+    name: PR
+    if: github.event_name == 'pull_request'
+    uses: access-nri/model-config-tests/.github/workflows/config-pr-1-ci.yml@main
+    secrets: inherit
+    permissions:
+      contents: write
+      pull-requests: write  # For pull request comments denoting failure of the workflow
+      checks: write
+
+  pr-comment:
+    name: Comment
+    if: github.event_name == 'issue_comment'
+    uses: access-nri/model-config-tests/.github/workflows/config-pr-2-confirm.yml@main
+    secrets: inherit
+    permissions:
+      contents: write  # For updating metadata.yaml version and committing checksums
+      pull-requests: write  # For commenting on PR
+
+  bump-tag:
+    name: Tag Bump
+    if: github.event_name == 'push'
+    uses: access-nri/model-config-tests/.github/workflows/config-pr-3-bump-tag.yml@main
+    secrets: inherit
+    permissions:
+      contents: write  # For creating a new release
