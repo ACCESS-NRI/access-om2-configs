@@ -26,7 +26,7 @@ Config branches are entirely separate from the `main` history in this repository
 
 ### Brand new configuration
 
-If you are creating a brand new configuration, and don't have the config stored in another repository, just checkout a `dev-*` branch from `main` and delete everything except `.github/workflows/ci.yml` and `.github/workflows/schedule.yml`, then add your config.
+If you are creating a brand new configuration, and don't have the config stored in another repository, just checkout a `dev-*` branch from `main` and delete everything except `.github/workflows/ci.yml`, then add your config.
 
 ### Config is Stored in Another Repository
 
@@ -35,7 +35,7 @@ Create a `dev-*` branch by adding the config repository as a remote and checking
 ```bash
 git remote add <config_repo> <config_repo_url>  # ex. git remote add config git@github.com/my/configs.git
 git checkout <config_repo>/<config_branch> -b dev-<config_name>  # checkout config from new remote + add to branch, ex. git checkout config/main -b dev-1deg_abc_def
-git checkout main -- .github/workflows/ci.yml .github/workflows/schedule.yml
+git checkout main -- .github/workflows/ci.yml
 git add .
 git commit -m "Initial commit for config branch"
 git push  # might require admin permissions for pushes to dev-* branch
