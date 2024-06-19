@@ -2,7 +2,7 @@
 
 ## Changes to the CI Infrastructure
 
-Changes to the CI Infrastructure are made to the `main` branch in this repository. Config branches use the `call-*.yml` workflows to `workflow_call` the equivalent workflow that is on the `main` branch.
+Changes to the CI Infrastructure are made to the `main` branch in this repository. Config branches use the `ci.yml` workflows to `workflow_call` the equivalent workflow that is in [`model-config-tests`](https://github.com/ACCESS-NRI/model-config-tests).
 
 Since the logic in the CI infrastructure is quite involved, it would be a good idea to read the [README-DEV.md](./README-DEV.md).
 
