@@ -155,7 +155,7 @@ work/ocean/INPUT/csiro_bgc.res.nc:
 work/ocean/INPUT/csiro_bgc_sediment.res.nc:
   fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/csiro_bgc_sediment.res.nc
   hashes:
-    binhash: 5dcf7a15477f488cd7d2f85a1d39a176
+    binhash: fff3375ad2ae36b7d0521dd67912a9fd
     md5: 12488f7cf8f9c2f714c0ff2dbbb33a9b
 work/ocean/INPUT/dust.nc:
   fullpath: /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/dust.nc
