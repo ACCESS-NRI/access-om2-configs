@@ -31,7 +31,7 @@ input:
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26=2023.10.26-ltfg7jcn6t4cefotvj3kjnyu5nru26xo/bin/yatm.exe
+      exe: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26_2023.10.26-xarvbgn4yf4mxy5hxixm4gfbp7rbzsfh/bin/yatm.exe
       input:
           - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
           - /g/data/qv56/replicas/input4MIPs/CMIP6/OMIP/MRI/MRI-JRA55-do-1-4-0/atmos/3hr/rsds/gr/v20190429
@@ -49,7 +49,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-64l5azdtcoxhrgb5ynn2vued5lmjvn33/bin/fms_ACCESS-OM-BGC.x
+      exe: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2024.06.27_2024.06.27-q6bpwu526xql2gm6dbpnvf36yvnfxynj/bin/fms_ACCESS-OM-BGC.x
       input: 
           - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/bgc_param.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/co2_iaf.nc
@@ -74,12 +74,12 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19=2023.10.19-v3zncpqjj2gyseudbwiudolcjq3k3leo/bin/cice_auscom_360x300_24x1_24p.exe
+      exe: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19_2023.10.19-4tttbvaxg4afg3hjcrfaah6qngp43e5e/bin/cice_auscom_360x300_24x1_24p.exe
       input: 
+          - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/grid.nc
+          - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
           - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions_biogeochemistry/global.1deg/2022.02.24/i2o.nc
           - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions_biogeochemistry/global.1deg/2022.02.24/o2i.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2020.05.30/grid.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2020.10.22/kmt.nc
           - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/u_star.nc
           - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/monthly_sstsss.nc
       ncpus: 24
@@ -91,7 +91,7 @@ collate:
   mem: 30GB
   ncpus: 4
   queue: normal
-  exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-64l5azdtcoxhrgb5ynn2vued5lmjvn33/bin/mppnccombine.spack
+  exe: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2024.06.27_2024.06.27-q6bpwu526xql2gm6dbpnvf36yvnfxynj/bin/mppnccombine.spack
 
 manifest:
   reproduce:
