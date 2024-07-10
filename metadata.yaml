@@ -34,5 +34,5 @@ nominal_resolution: 25 km
 reference: https://doi.org/10.5194/gmd-13-401-2020
 license: CC-BY-4.0
 model: ACCESS-OM2
-version: '2.0'
+version: '3.0'
 url: https://github.com/ACCESS-NRI/access-om2-configs.git
