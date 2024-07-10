@@ -17,7 +17,7 @@ keywords:
   - JRA55
   - repeat-year
   - access-om2-01
-version: "2.0"
+version: "3.0"
 realm:
   - ocean
   - seaIce
