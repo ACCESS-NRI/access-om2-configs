@@ -25,7 +25,7 @@ jobs:
     name: Read Testing Configuration
     runs-on: ubuntu-latest
     outputs:
-      python-version: ${{ steps.repro-config.outputs.python-version }}
+      payu-version: ${{ steps.repro-config.outputs.payu-version }}
       model-config-tests-version: ${{ steps.repro-config.outputs.model-config-tests-version }}
     steps:
       - name: Checkout main
@@ -57,7 +57,7 @@ jobs:
     steps:
       - run: |
           echo '::notice::This deployment is using the following inputs: `config-branch-name`=`${{ inputs.config-branch-name }}`, `commit-checksums`=`${{ inputs.commit-checksums }}`, `committed-checksum-location`=`${{ inputs.committed-checksum-location }}`,`committed-checksum-tag-version`=`${{ inputs.committed-checksum-tag-version }}`.'
-          echo '::notice::This deployment is using Python Version ${{ needs.config.outputs.python-version }} and Model Config Tests Version ${{ needs.config.outputs.model-config-tests-version }}'
+          echo '::notice::This deployment is using Payu Version ${{ needs.config.outputs.payu-version }} and Model Config Tests Version ${{ needs.config.outputs.model-config-tests-version }}'
 
   generate-checksums:
     name: Generate Checksums
@@ -72,7 +72,7 @@ jobs:
       committed-checksum-tag: "${{ inputs.config-branch-name }}-${{ inputs.committed-checksum-tag-version }}"
       environment-name: "Gadi Initial Checksum"
       model-config-tests-version: ${{ needs.config.outputs.model-config-tests-version }}
-      python-version: ${{ needs.config.outputs.python-version }}
+      payu-version: ${{ needs.config.outputs.payu-version }}
     permissions:
       contents: write
     secrets: inherit
