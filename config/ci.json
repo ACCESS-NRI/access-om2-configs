@@ -20,6 +20,6 @@
     "default": {
         "model-config-tests-version": "0.0.1",
         "python-version": "3.11.0",
-        "payu-version": "1.1.4"
+        "payu-version": "1.1.5"
     }
 }
