@@ -23,55 +23,55 @@ sync:
 name: common
 model: access-om2
 input:
-    - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/JRA55_MOM1_conserve2nd.nc
-    - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/JRA55_MOM1_patch.nc
-    - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_1st_conserve.nc
-    - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_2nd_conserve.nc
-    - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_patch.nc
+    - inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/JRA55_MOM1_conserve2nd.nc
+    - inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/JRA55_MOM1_patch.nc
+    - inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_1st_conserve.nc
+    - inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_2nd_conserve.nc
+    - inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_patch.nc
 submodels:
     - name: atmosphere
       model: yatm
       exe: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26_2023.10.26-xarvbgn4yf4mxy5hxixm4gfbp7rbzsfh/bin/yatm.exe
       input:
-          - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
-          - /g/data/vk83/experiments/inputs/JRA-55/RYF/v1-4/data
+          - inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
+          - inputs/JRA-55/RYF/v1-4/data
       ncpus: 1
 
     - name: ocean
       model: mom
       exe: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2024.06.27_2024.06.27-q6bpwu526xql2gm6dbpnvf36yvnfxynj/bin/fms_ACCESS-OM-BGC.x
       input:
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/bgc_param.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/co2_iaf.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/co2_ryf.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/csiro_bgc.res.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/csiro_bgc_sediment.res.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/dust.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/grid_spec.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_hgrid.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_mosaic.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.1deg/2020.10.22/topog.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.1deg/2020.10.22/ocean_mask.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/vertical/global.1deg/2020.10.22/ocean_vgrid.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/processor_masks/global.1deg/216.16x15/2020.05.30/ocean_mask_table
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/chlorophyll/global.1deg/2020.05.30/chl.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/initial_conditions/global.1deg/2020.10.22/ocean_temp_salt.res.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/tideamp.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_amp.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_cdbot.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/surface_salt_restoring/global.1deg/2020.05.30/salt_sfc_restore.nc
+          - inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/bgc_param.nc
+          - inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/co2_iaf.nc
+          - inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/co2_ryf.nc
+          - inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/csiro_bgc.res.nc
+          - inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/csiro_bgc_sediment.res.nc
+          - inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/dust.nc
+          - inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/grid_spec.nc
+          - inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_hgrid.nc
+          - inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_mosaic.nc
+          - inputs/access-om2/ocean/grids/bathymetry/global.1deg/2020.10.22/topog.nc
+          - inputs/access-om2/ocean/grids/bathymetry/global.1deg/2020.10.22/ocean_mask.nc
+          - inputs/access-om2/ocean/grids/vertical/global.1deg/2020.10.22/ocean_vgrid.nc
+          - inputs/access-om2/ocean/processor_masks/global.1deg/216.16x15/2020.05.30/ocean_mask_table
+          - inputs/access-om2/ocean/chlorophyll/global.1deg/2020.05.30/chl.nc
+          - inputs/access-om2/ocean/initial_conditions/global.1deg/2020.10.22/ocean_temp_salt.res.nc
+          - inputs/access-om2/ocean/tides/global.1deg/2020.05.30/tideamp.nc
+          - inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_amp.nc
+          - inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_cdbot.nc
+          - inputs/access-om2/ocean/surface_salt_restoring/global.1deg/2020.05.30/salt_sfc_restore.nc
       ncpus: 216
 
     - name: ice
       model: cice5
       exe: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19_2023.10.19-4tttbvaxg4afg3hjcrfaah6qngp43e5e/bin/cice_auscom_360x300_24x1_24p.exe
       input: 
-          - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/grid.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions_biogeochemistry/global.1deg/2022.02.24/i2o.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions_biogeochemistry/global.1deg/2022.02.24/o2i.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/u_star.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/monthly_sstsss.nc
+          - inputs/access-om2/ice/grids/global.1deg/2024.04.17/grid.nc
+          - inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
+          - inputs/access-om2/ice/initial_conditions_biogeochemistry/global.1deg/2022.02.24/i2o.nc
+          - inputs/access-om2/ice/initial_conditions_biogeochemistry/global.1deg/2022.02.24/o2i.nc
+          - inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/u_star.nc
+          - inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/monthly_sstsss.nc
       ncpus: 24
 
 # Collation
