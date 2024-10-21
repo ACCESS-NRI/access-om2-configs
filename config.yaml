@@ -13,6 +13,13 @@ walltime: 5:00:00
 jobname: 1deg_jra55_ryf
 mem: 1000GB
 
+# Modules for loading model executables
+modules:
+  use:
+      - /g/data/vk83/prerelease/modules
+  load:
+      - access-om2/pr76-26
+
 # Sync options for automatically copying data from ephemeral scratch space to
 # longer term storage
 sync:
@@ -31,7 +38,7 @@ input:
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data/tm70/ds0092/software/release/linux-rocky8-x86_64_v4/intel-19.0.5.281/libaccessom2-git.2023.10.26_2023.10.26-amcozzabls6htcegplvynw4hjxtgw3gs/bin/yatm.exe
+      exe: yatm.exe
       input:
           - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
           - /g/data/vk83/experiments/inputs/JRA-55/RYF/v1-4/data
@@ -39,7 +46,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/tm70/ds0092/software/release/linux-rocky8-x86_64_v4/intel-19.0.5.281/mom5-git.2023.11.09_2023.11.09-3aryi2uol3zxlgrtfxgset6bh5xv6ckg/bin/fms_ACCESS-OM.x
+      exe: fms_ACCESS-OM.x
       input:
           - /g/data/tm70/ds0092/model/inputs/access-om2/ocean_wombatlite.res.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/dust.nc
@@ -60,7 +67,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: /g/data/tm70/ds0092/software/release/linux-rocky8-x86_64_v4/intel-19.0.5.281/cice5-git.2023.10.19_2023.10.19-7vgkgisko6tczk6lwt4ibmldronggihe/bin/cice_auscom_360x300_24x1_24p.exe
+      exe: cice_auscom_360x300_24x1_24p.exe
       input: 
           - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/grid.nc
           - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
@@ -77,7 +84,7 @@ collate:
   mem: 30GB
   ncpus: 4
   queue: normal
-  exe: /g/data/tm70/ds0092/software/release/linux-rocky8-x86_64_v4/intel-19.0.5.281/mom5-git.2023.11.09_2023.11.09-3aryi2uol3zxlgrtfxgset6bh5xv6ckg/bin/mppnccombine.spack
+  exe: mppnccombine.spack
 
 manifest:
   reproduce:
