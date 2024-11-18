@@ -47,6 +47,16 @@ jobs:
       contents: write  # For updating metadata.yaml version and committing checksums
       pull-requests: write  # For commenting on PR
 
+  pr-comment-test:
+    name: '!test'
+    if: github.event_name == 'issue_comment' && startsWith(github.event.comment.body, '!test') && github.repository != 'ACCESS-NRI/model-configs-template'
+    uses: access-nri/model-config-tests/.github/workflows/config-comment-test.yml@main
+    secrets: inherit
+    permissions:
+      contents: write  # for committing the result of the repro test
+      pull-requests: write  # for writing comments on pull requests
+      checks: write # for adding a status badge next to the commit we are testing
+
   bump-tag:
     name: Tag Bump
     if: (github.event_name == 'push' || github.event_name == 'create' && github.ref_type == 'branch' && startsWith(github.ref_name, 'release-')) && github.repository != 'ACCESS-NRI/model-configs-template'
