@@ -7,10 +7,10 @@ work/atmosphere/yatm.exe:
     binhash: 4e8b4ef76e971c4af3b26cfac632e160
     md5: 5baa1d417fe6708fc30cbeaa57d82f96
 work/ice/cice_auscom_3600x2700_90x90_722p.exe:
-  fullpath: /g/data/vk83/prerelease/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19_2023.10.19-i5krrcaxu6i3elyb4e3pcgzkvotybsoj/bin/cice_auscom_360x300_24x1_24p.exe
+  fullpath: /g/data/vk83/prerelease/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19_2023.10.19-i5krrcaxu6i3elyb4e3pcgzkvotybsoj/bin/cice_auscom_3600x2700_90x90_722p.exe
   hashes:
     binhash: 67dd37413d389fc240c8ca24e3337fba
-    md5: 1e287495268abe6b82af2368b7f4c24c
+    md5: b7463d2f84aee76b16cab6b5443ef4d6
 work/ocean/fms_ACCESS-OM.x:
   fullpath: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-qji4nlmr6utrribaiyhewe4je6mifguz/bin/fms_ACCESS-OM.x
   hashes:
