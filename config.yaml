@@ -92,4 +92,4 @@ userscripts:
     sync: /g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh
 manifest:
   reproduce:
-    exe: true
+    exe: false
