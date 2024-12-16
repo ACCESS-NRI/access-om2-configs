@@ -65,7 +65,7 @@ configurations at once.
 In most cases only a single experiment is required. If that is the case choose which experiment and then run
 
 ```sh
-git clone -b <experiment> https://github.com/ACCESS-NRI/accessom2-configs/ <experiment>
+git clone -b <experiment> https://github.com/ACCESS-NRI/access-om2-configs/ <experiment>
 ```
 
 and replace `<experiment>` with the branch name or tag of the experiment you wish to run.
