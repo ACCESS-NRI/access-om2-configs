@@ -1,6 +1,7 @@
 name: CI
 run-name: CI (${{ github.event_name }}) for ${{ github.ref_name }}
 on:
+  # For config-pr-1-ci.yml
   pull_request:
     branches:
       - 'release-*'
@@ -13,38 +14,51 @@ on:
       - config/**
       - .*
       - README.md
+  # For config-pr-2-confirm.yml
+  issue_comment:
+    types:
+      - created
+      - edited
+  # For config-pr-3-bump-tag.yml
   push:
     branches:
       - 'release-*'
     paths:
       - 'metadata.yaml'
-  issue_comment:
-    types:
-      - created
-      - edited
+
 jobs:
   pr:
     name: PR
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' && github.repository != 'ACCESS-NRI/model-configs-template'
     uses: access-nri/model-config-tests/.github/workflows/config-pr-1-ci.yml@main
     secrets: inherit
     permissions:
       contents: write
       pull-requests: write  # For pull request comments denoting failure of the workflow
-      checks: write
+      checks: write  # For results of tests as a check
 
   pr-comment:
     name: Comment
-    if: github.event_name == 'issue_comment'
+    if: github.event_name == 'issue_comment' && github.repository != 'ACCESS-NRI/model-configs-template'
     uses: access-nri/model-config-tests/.github/workflows/config-pr-2-confirm.yml@main
     secrets: inherit
     permissions:
       contents: write  # For updating metadata.yaml version and committing checksums
       pull-requests: write  # For commenting on PR
 
+  pr-comment-test:
+    name: '!test'
+    if: github.event_name == 'issue_comment' && startsWith(github.event.comment.body, '!test') && github.repository != 'ACCESS-NRI/model-configs-template'
+    uses: access-nri/model-config-tests/.github/workflows/config-comment-test.yml@main
+    secrets: inherit
+    permissions:
+      contents: write  # for committing the result of the repro test
+      pull-requests: write  # for writing comments on pull requests
+      checks: write # for adding a status badge next to the commit we are testing
+
   bump-tag:
     name: Tag Bump
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.repository != 'ACCESS-NRI/model-configs-template'
     uses: access-nri/model-config-tests/.github/workflows/config-pr-3-bump-tag.yml@main
     secrets: inherit
     permissions:
