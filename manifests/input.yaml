@@ -99,10 +99,10 @@ work/ice/RESTART/grid.nc:
     md5: 7dd9ee5bce7f2eaeb75355684ddba599
 work/ice/RESTART/i2o.nc:
   copy: true
-  fullpath: /g/data/tm70/ds0092/model/inputs/access-om2/i2o.nc
+  fullpath: /g/data/vk83/prerelease/configurations/inputs/access-om2/ice/initial_conditions/global.1deg/2025.02.05/i2o.nc
   hashes:
-    binhash: 32307cfaffdc8721312359f1e2b5bfb1
-    md5: ae6b3de0f48a0780fe6ed5b766464e17
+    binhash: 6b32b7632f3f73d6922bda04fb6d94d9
+    md5: 6fb2344444a97cd26f4962678a5390bd
 work/ice/RESTART/kmt.nc:
   copy: true
   fullpath: /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
