@@ -35,7 +35,7 @@
 
 &fms_nml
     clock_grain       = 'LOOP'
-    domains_stack_size = 115200
+    domains_stack_size = 20000000
 /
 
 &mom_oasis3_interface_nml

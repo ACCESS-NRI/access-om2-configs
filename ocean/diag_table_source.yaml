@@ -140,27 +140,27 @@ diag_table:
             output_freq_units: years  # time units for output: years, months, days, hours, minutes, or seconds
         fields:
             age_global:
-            aiso_bih:
-            buoyfreq2_wt:
-            diff_cbt_t:
-            pot_rho_0:
-            pot_rho_2:
-            pot_temp:
-            salt:
-            temp_xflux_adv:
-            temp_yflux_adv:
-            temp:
-            tx_trans_rho:
-            tx_trans:
-            ty_trans_nrho_submeso:
-            ty_trans_rho_gm:
-            ty_trans_rho:
-            ty_trans_submeso:
-            ty_trans:
-            u:
-            v:
-            vert_pv:
-            wt:
+            #aiso_bih:
+            #buoyfreq2_wt:
+            #diff_cbt_t:
+            #pot_rho_0:
+            #pot_rho_2:
+            #pot_temp:
+            #salt:
+            #temp_xflux_adv:
+            #temp_yflux_adv:
+            #temp:
+            #tx_trans_rho:
+            #tx_trans:
+            #ty_trans_nrho_submeso:
+            #ty_trans_rho_gm:
+            #ty_trans_rho:
+            #ty_trans_submeso:
+            #ty_trans:
+            #u:
+            #v:
+            #vert_pv:
+            #wt:
     'yearly 3d squared fields':  # for calculating EKE etc
         defaults:  # these can be overridden for individual fields below
             file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
@@ -168,8 +168,8 @@ diag_table:
             output_freq_units: years  # time units for output: years, months, days, hours, minutes, or seconds
             reduction_method: pow02  # mean, snap, rms, pow##, min, max, or diurnal##
         fields:
-            u:
-            v:
+            #u:
+            #v:
     'monthly 3d fields':
         defaults:  # these can be overridden for individual fields below
             file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
@@ -180,8 +180,8 @@ diag_table:
             # neutral_diffusion_temp:
             # neutral_gm_temp:
             # neutral_temp:
-            # pot_temp:
-            # salt:
+            pot_temp:
+            salt:
             # temp_advection:
             # temp_eta_smooth:
             # temp_nonlocal_KPP:
@@ -195,7 +195,7 @@ diag_table:
             # temp_vdiffuse_impl:
             # temp_vdiffuse_k33:
             # temp_vdiffuse_sbc:
-            # temp:
+            temp:
             # u:
             # v:
     'monthly 2d fields':
@@ -204,50 +204,50 @@ diag_table:
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
         fields:
-            agm:
-            aredi:
-            bmf_u:
-            bmf_v:
-            eta_t:
-            evap_heat:
-            evap:
-            fprec_melt_heat:
-            fprec:
-            frazil_3d_int_z:
-            lprec:
-            lw_heat:
-            melt:
-            mld:
-            # net_sfc_heating:  # disabled - incorrect - see https://github.com/COSIMA/access-om2/issues/139
-            pbot_t:
-            pme_net:
-            pme_river:
-            river:
-            runoff:
-            sea_level_sq:
-            sea_level:
-            sens_heat:
-            sfc_hflux_coupler:
-            sfc_hflux_from_runoff:
-            sfc_hflux_pme:
-            sfc_salt_flux_coupler:
-            sfc_salt_flux_ice:
-            sfc_salt_flux_restore:
-            surface_salt:
-            surface_temp:
-            sw_heat:
-            swflx:
-            tau_x:
-            tau_y:
-            temp_int_rhodz:
-            temp_xflux_adv_int_z:
-            temp_xflux_submeso_int_z:
-            temp_yflux_adv_int_z:
-            temp_yflux_submeso_int_z:
-            tx_trans_int_z:
-            ty_trans_int_z:
-            wfiform:
-            wfimelt:
+            #agm:
+            #aredi:
+            #bmf_u:
+            #bmf_v:
+            #eta_t:
+            #evap_heat:
+            #evap:
+            #fprec_melt_heat:
+            #fprec:
+            #frazil_3d_int_z:
+            #lprec:
+            #lw_heat:
+            #melt:
+            #mld:
+            ## net_sfc_heating:  # disabled - incorrect - see https://github.com/COSIMA/access-om2/issues/139
+            #pbot_t:
+            #pme_net:
+            #pme_river:
+            #river:
+            #runoff:
+            #sea_level_sq:
+            #sea_level:
+            #sens_heat:
+            #sfc_hflux_coupler:
+            #sfc_hflux_from_runoff:
+            #sfc_hflux_pme:
+            #sfc_salt_flux_coupler:
+            #sfc_salt_flux_ice:
+            #sfc_salt_flux_restore:
+            #surface_salt:
+            #surface_temp:
+            #sw_heat:
+            #swflx:
+            #tau_x:
+            #tau_y:
+            #temp_int_rhodz:
+            #temp_xflux_adv_int_z:
+            #temp_xflux_submeso_int_z:
+            #temp_yflux_adv_int_z:
+            #temp_yflux_submeso_int_z:
+            #tx_trans_int_z:
+            #ty_trans_int_z:
+            #wfiform:
+            #wfimelt:
     'monthly 2d fields with different reduction methods':
         defaults:  # these can be overridden for individual fields below
             file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
@@ -263,17 +263,17 @@ diag_table:
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
         fields:
-            eta_t:
-            frazil_3d_int_z:
-            mld:
-            pme_river:
-            sfc_hflux_coupler:
-            sfc_hflux_from_runoff:
-            sfc_hflux_pme:
-            surface_salt:
-            surface_temp:
-            u_surf:
-            v_surf:
+            #eta_t:
+            #frazil_3d_int_z:
+            #mld:
+            #pme_river:
+            #sfc_hflux_coupler:
+            #sfc_hflux_from_runoff:
+            #sfc_hflux_pme:
+            #surface_salt:
+            #surface_temp:
+            #u_surf:
+            #v_surf:
     'monthly scalar timeseries':
         defaults:  # these can be overridden for individual fields below
             file_name_dimension: scalar  # descriptor for filename, e.g. 3d, 2d, scalar
@@ -289,39 +289,51 @@ diag_table:
             output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
             packing: 1  # double precision
         fields:
-            eta_global:
-            ke_tot:
-            pe_tot:
-            rhoave:
+            #eta_global:
+            #ke_tot:
+            #pe_tot:
+            #rhoave:
             salt_global_ave:
             salt_surface_ave:
             temp_global_ave:
             temp_surface_ave:
+            no3_global_ave:
+            o2_global_ave:
+            fe_global_ave:
+            dic_global_ave:
+            dicr_global_ave:
+            dicp_global_ave:
+            alk_global_ave:
+            caco3_global_ave:
+            phy_global_ave:
+            pchl_global_ave:
+            zoo_global_ave:
+            det_global_ave:
             # total_net_sfc_heating:  # disabled - incorrect - see https://github.com/COSIMA/access-om2/issues/139
-            total_ocean_calving_heat:
-            total_ocean_calving_melt_heat:
-            total_ocean_calving:
-            total_ocean_evap_heat:
-            total_ocean_evap:
-            total_ocean_fprec_melt_heat:
-            total_ocean_fprec:
-            total_ocean_heat:
-            total_ocean_hflux_coupler:
-            total_ocean_hflux_evap:
-            total_ocean_hflux_prec:
-            total_ocean_lprec:
-            total_ocean_lw_heat:
-            total_ocean_melt:
-            total_ocean_pme_river:
-            total_ocean_river_heat:
-            total_ocean_river:
-            total_ocean_runoff_heat:
-            total_ocean_runoff:
-            total_ocean_salt:
-            total_ocean_sens_heat:
-            total_ocean_sfc_salt_flux_coupler:
-            total_ocean_swflx_vis:
-            total_ocean_swflx:
+            #total_ocean_calving_heat:
+            #total_ocean_calving_melt_heat:
+            #total_ocean_calving:
+            #total_ocean_evap_heat:
+            #total_ocean_evap:
+            #total_ocean_fprec_melt_heat:
+            #total_ocean_fprec:
+            #total_ocean_heat:
+            #total_ocean_hflux_coupler:
+            #total_ocean_hflux_evap:
+            #total_ocean_hflux_prec:
+            #total_ocean_lprec:
+            #total_ocean_lw_heat:
+            #total_ocean_melt:
+            #total_ocean_pme_river:
+            #total_ocean_river_heat:
+            #total_ocean_river:
+            #total_ocean_runoff_heat:
+            #total_ocean_runoff:
+            #total_ocean_salt:
+            #total_ocean_sens_heat:
+            #total_ocean_sfc_salt_flux_coupler:
+            #total_ocean_swflx_vis:
+            #total_ocean_swflx:
     'monthly 2d snapshots':
         defaults:  # these can be overridden for individual fields below
             file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
@@ -348,16 +360,45 @@ diag_table:
             output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
             file_name_date: "y%4yr"  # run date/time of file opening; format: %, 1 digit (#digits), one of (yr, mo, dy, hr, mi, sc); date/time components will be separated by _ in filename.
         fields:
-            adic:
             alk:
             caco3:
             det:
+            detfe:
             dic:
+            dicr:
+            dicp:
             fe:
             no3:
             o2:
             phy:
+            phyfe:
+            pchl:
             zoo:
+            zoofe:
+    'daily 3d prognostic BGC fields':
+        defaults:  # these can be overridden for individual fields below
+            module_name: generic_wombatlite
+            file_name_prefix: oceanbgc
+            file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
+            file_name_date: "y%4yr"  # run date/time of file opening; format: %, 1 digit (#digits), one of (yr, mo, dy, hr, mi, sc); date/time components will be separated by _ in filename.
+        fields:
+            #alk:
+            #caco3:
+            #det:
+            #detfe:
+            #dic:
+            #dicr:
+            #dicp:
+            #fe:
+            #no3:
+            #o2:
+            #phy:
+            #phyfe:
+            #pchl:
+            #zoo:
+            #zoofe:
     'monthly 3d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
             module_name: generic_wombatlite
@@ -370,7 +411,59 @@ diag_table:
             npp3d:
             pprod_gross:
             zprod_gross:
-            radbio3d:
+            radbio:
+            radmid:
+            radmld:
+            phy_mu:
+            phy_mumax:
+            pchl_mu:
+            pchl_lpar:
+            phy_kni:
+            phy_kfe:
+            phy_lpar:
+            phy_lnit:
+            phy_lfer:
+            phy_dfeupt:
+            phy_feupreg:
+            phy_fedoreg:
+            feIII:
+            felig:
+            fecol:
+            fesources:
+            fesinks:
+            feprecip:
+            fescaven:
+            fescadet:
+            feloss:
+            fecoag2det:
+            htotal:
+            ahtotal:
+            omega_ara:
+            omega_cal:
+            co3:
+            co2_star:
+            pic2poc:
+            phygrow:
+            phyresp:
+            phymort:
+            zooeps:
+            zoograzphy:
+            zoograzdet:
+            zooresp:
+            zoomort:
+            zooslopphy:
+            zooslopdet:
+            zooexcrphy:
+            zooexcrdet:
+            reminr:
+            detremi:
+            dissrat:
+            caldiss:
+            det_vmove:
+            detfe_vmove:
+            caco3_vmove:
+            alk_correct:
+            dic_correct:
     'monthly 2d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
             module_name: generic_wombatlite
@@ -386,14 +479,16 @@ diag_table:
             radbio1:
             det_sed_remin:
             det_sed_depst:
+            detfe_sed_remin:
+            detfe_sed_depst:
             caco3_sed_remin:
             caco3_sed_depst:
+            fbury:
             wdet100:
             npp2d:
             npp1:
             pprod_gross_2d:
             dic_intmld:
-            adic_intmld:
             o2_intmld:
             no3_intmld:
             fe_intmld:
@@ -403,7 +498,6 @@ diag_table:
             npp_intmld:
             radbio_intmld:
             dic_int100:
-            adic_int100:
             o2_int100:
             no3_int100:
             fe_int100:
@@ -412,16 +506,55 @@ diag_table:
             pprod_gross_int100:
             npp_int100:
             radbio_int100:
-            no3_stf:
-            no3_vstf:
             o2_stf:
             dic_stf:
-            dic_vstf:
-            adic_stf:
-            adic_vstf:
-            alk_stf:
-            alk_vstf:
+            dicp_stf:
             fe_stf:
             wdet100:
             det_sediment:
+            detfe_sediment:
             caco3_sediment:
+            zeuphot:
+            alk_correct:
+            dic_correct:
+            seddep:
+            sedmask:
+            sedtemp:
+            sedsalt:
+            sedno3:
+            seddic:
+            sedalk:
+            sedhtotal:
+            sedco3:
+            sedomega_cal:
+    'daily 2d diagnostic BGC fields':
+        defaults:  # these can be overridden for individual fields below
+            module_name: generic_wombatlite
+            file_name_prefix: oceanbgc
+            file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
+            file_name_date: "y%4yr"  # run date/time of file opening; format: %, 1 digit (#digits), one of (yr, mo, dy, hr, mi, sc); date/time components will be separated by _ in filename.
+        fields:
+            #det_sed_remin:
+            #det_sed_depst:
+            #detfe_sed_remin:
+            #detfe_sed_depst:
+            #caco3_sed_remin:
+            #caco3_sed_depst:
+            #det_sediment:
+            #detfe_sediment:
+            #caco3_sediment:
+            #zeuphot:
+            #o2_stf:
+            #no3_stf:
+            #alk_stf:
+            #dic_stf:
+            #fe_stf:
+            #o2_btf:
+            #no3_btf:
+            #alk_btf:
+            #dic_btf:
+            #fe_btf:
+            #paco2:
+            #pco2:
