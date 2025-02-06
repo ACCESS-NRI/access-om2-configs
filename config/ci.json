@@ -2,7 +2,6 @@
     "$schema": "https://github.com/ACCESS-NRI/schema/tree/main/au.org.access-nri/model/configuration/ci/2-0-0.json",
     "scheduled": {
         "release-1deg_jra55_ryf-2.0": {},
-        "release-1deg_jra55_iaf_bgc-3.0": {},
         "default": {
             "markers": "checksum"
         }
