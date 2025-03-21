@@ -17,6 +17,13 @@ sync:
     enable: False # set path below and change to true
     path: null # Set to location on /g/data or a remote server and path (rsync syntax)
 
+# Modules for loading model executables
+modules:
+  use:
+      - /g/data/vk83/modules
+  load:
+      - access-om2-bgc/2024.07.0
+
 # Model configuration
 name: common
 model: access-om2
@@ -27,7 +34,7 @@ input:
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26_2023.10.26-xarvbgn4yf4mxy5hxixm4gfbp7rbzsfh/bin/yatm.exe
+      exe: yatm.exe
       input:
             - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.025deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
             - /g/data/vk83/experiments/inputs/JRA-55/RYF/v1-4/data
@@ -35,7 +42,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2024.06.27_2024.06.27-q6bpwu526xql2gm6dbpnvf36yvnfxynj/bin/fms_ACCESS-OM-BGC.x
+      exe: fms_ACCESS-OM-BGC.x
       input:
         - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.025deg/2020.05.30/grid_spec.nc
         - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.025deg/2020.05.30/ocean_hgrid.nc
@@ -60,7 +67,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19_2023.10.19-4tttbvaxg4afg3hjcrfaah6qngp43e5e/bin/cice_auscom_1440x1080_48x40_480p.exe
+      exe: cice_auscom_1440x1080_48x40_480p.exe
       input:
         - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.025deg/2024.04.17/grid.nc
         - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.025deg/2024.04.17/kmt.nc
