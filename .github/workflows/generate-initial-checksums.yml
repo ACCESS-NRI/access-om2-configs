@@ -28,7 +28,7 @@ on:
       test-markers:
         type: string
         required: false
-        default: repro
+        default: repro_historical
         description: Test markers to generate checksums, in the form of pytest test marker strings
 jobs:
   generate-checksums:
