@@ -39,4 +39,4 @@ nominal_resolution: 10 km
 reference: https://doi.org/10.5194/gmd-13-401-2020
 license: CC-BY-4.0
 url: https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_iaf
-model: access-om2-01
+model: ACCESS-OM2
