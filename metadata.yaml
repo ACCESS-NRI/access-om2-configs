@@ -4,14 +4,21 @@ created: Add the date you started the experiment here (YYYY-MM-DD)
 description: "1 degree ACCESS-OM2 global model configuration under the RYF9091 Repeat\nYear Forcing strategy outlined by Stewart et al. (2020), \nhttps://doi.org/10.1016/j.ocemod.2019.101557.\nThe configuration is based on that described in Kiss et al. (2020),\nhttps://doi.org/10.5194/gmd-13-401-2020, but with many improvements.\nInitial conditions are WOA13v2 potential temperature and practical salinity.\nRun with JRA55-do v1.4.0 RYF9091 (1 May 1990 - 30 April 1991) repeated forcing\nwith all solid runoff converted to liquid runoff with no heat transfer.\nSpin up starts from a nominal year of 1 Jan 1900."
 notes: |-
   COSIMA request that users of this or other ACCESS-OM2 model code or output data:
-  (a) consider citing Kiss et al. (2020) [http://doi.org/10.5194/gmd-13-401-2020]
-  (b) include an acknowledgement such as the following:
-  "The authors thank the Consortium for Ocean-Sea Ice Modelling in Australia (COSIMA; http://www.cosima.org.au)
-  for making the ACCESS-OM2 suite of models available at https://github.com/COSIMA/access-om2.
-  Model runs were undertaken with the assistance of resources from the National Computational Infrastructure (NCI),
-  which is supported by the Australian Government."
-  (c) let COSIMA know of any publications which use these models or data so they can add them to their list:
+  (a) add a project description to COSIMA's list:
+  https://docs.google.com/spreadsheets/d/18BDyZlHTSy6EOaf_5o9CwGBOu4pBj88XsS2vNW4R_2o
+  (b) consider citing Kiss et al. (2020) [http://doi.org/10.5194/gmd-13-401-2020] and papers describing relevant
+  configuration updates - see https://forum.access-hive.org.au/t/access-om2-control-experiments/258
+  (c) include an acknowledgement such as the following (replacing/deleting text in angle brackets as needed):
+  "This work was supported by computational resources provided by the Australian Government through the
+  National Computational Infrastructure (NCI) under the <National Computational Merit Allocation Scheme>
+  and/or <ANU Merit Allocation Scheme>. We thank the vibrant communities of the Consortium for Ocean–Sea Ice
+  Modelling in Australia (COSIMA; cosima.org.au) and the Australian Community Climate and Earth System Simulator
+  National Research Infrastructure (ACCESS-NRI; access-nri.org.au) for making the ACCESS-OM2 <models> and/or
+  <outputs> and/or <analysis tools> available through the NCI. COSIMA is funded through the Australian Research
+  Council grant LP200100406."
+  (d) let COSIMA know of any publications which use these models or data so they can add them to their list:
   https://scholar.google.com/citations?hl=en&user=inVqu_4AAAAJ
+  (e) Tell ACCESS-NRI that you are using ACCESS-NRI infrastructure: https://www.access-nri.org.au/resources/user-reporting/
 keywords:
   - JRA55
   - access-om2
