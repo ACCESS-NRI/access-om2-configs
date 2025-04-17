@@ -24,7 +24,7 @@ modules:
     use:
         - /g/data/vk83/prerelease/modules
     load:
-        - access-om2-bgc/pr22-2
+        - access-om2-bgc/pr22-3
 
 name: common
 model: access-om2
