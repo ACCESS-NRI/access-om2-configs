@@ -64,9 +64,6 @@ elon = 360.0
 /
 "namelists","ocean_mod","generic_wombatlite"
 init = f
-caco3_dynamics = .true.
-burial = .true.
-conservetracers = .true.
 dic_min = 1000.0
 dic_max = 3000.0
 alk_min = 1000.0
