@@ -18,7 +18,7 @@ modules:
   use:
       - /g/data/vk83/prerelease/modules
   load:
-      - access-om2/pr102-3
+      - access-om2/pr102-4
 
 # Sync options for automatically copying data from ephemeral scratch space to
 # longer term storage
