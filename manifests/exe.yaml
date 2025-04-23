@@ -12,7 +12,7 @@ work/ice/cice_auscom_360x300_24x1_24p.exe:
     binhash: 432d10c9f10536a6e30b54ed2d60282a
     md5: 0e25017af3916f930ea35d4e4d815798
 work/ocean/fms_ACCESS-OM-BGC.x:
-  fullpath: /g/data/vk83/prerelease/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.be7047af8686d7d057b9779a1f06c9559f08c7dd_access-om2-u5cb6mewoqyshanawdmcvqtu5lmzmnw6/bin/fms_ACCESS-OM-BGC.x
+  fullpath: /g/data/vk83/prerelease/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.dev-2025.04.001_legacy-access-om2-bgc-amedzjfe46xhcfly6mcgh5myy3o3nym7/bin/fms_ACCESS-OM-BGC.x
   hashes:
-    binhash: 5bc3df0178affc9c555d6191ad3e49b5
-    md5: ab7052a78e8c9fa60f8948e9e3150f8e
+    binhash: 9fcfdfee203f7d4ae591b0ab8e56d89b
+    md5: aa74b65401f35babc47eb5b845a1a2b9
