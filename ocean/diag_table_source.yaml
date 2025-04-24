@@ -353,7 +353,7 @@ diag_table:
             # v:
     'monthly 3d prognostic BGC fields':
         defaults:  # these can be overridden for individual fields below
-            module_name: generic_wombatlite
+            module_name: generic_wombatmid
             file_name_prefix: oceanbgc
             file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
@@ -377,7 +377,7 @@ diag_table:
             zoofe:
     'daily 3d prognostic BGC fields':
         defaults:  # these can be overridden for individual fields below
-            module_name: generic_wombatlite
+            module_name: generic_wombatmid
             file_name_prefix: oceanbgc
             file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
@@ -401,7 +401,7 @@ diag_table:
             #zoofe:
     'monthly 3d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
-            module_name: generic_wombatlite
+            module_name: generic_wombatmid
             file_name_prefix: oceanbgc
             file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
@@ -466,7 +466,7 @@ diag_table:
             dic_correct:
     'monthly 2d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
-            module_name: generic_wombatlite
+            module_name: generic_wombatmid
             file_name_prefix: oceanbgc
             file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
@@ -529,7 +529,7 @@ diag_table:
             sedomega_cal:
     'daily 2d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
-            module_name: generic_wombatlite
+            module_name: generic_wombatmid
             file_name_prefix: oceanbgc
             file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)

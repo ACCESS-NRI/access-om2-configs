@@ -1,7 +1,7 @@
-# 1deg_jra55_ryf with WOMBATlite
+# 1deg_jra55_ryf with WOMBATmid
 Standard configuration for 1 degree global [ACCESS-OM2](https://github.com/ACCESS-NRI/access-om2) experiment (ACCESS-OM2) with JRA55-do 1 May 1990 - 30 April 1991 repeat-year forcing (RYF9091) and coupled biogeochemistry in the ocean and sea ice.
 
-This is the BGC version **using WOMBATlite implemented via the generic tracers framework**. This setup includes ocean BGC but does not include sea ice BGC.
+This is the BGC version **using WOMBATmid implemented via the generic tracers framework**. This setup includes ocean BGC but does not include sea ice BGC.
 
 For usage instructions, see the [ACCESS-Hive docs](https://access-hive.org.au/models/run-a-model/run-access-om/).
 

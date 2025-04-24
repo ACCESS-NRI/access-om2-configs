@@ -14,11 +14,11 @@ jobname: 1deg_jra55_ryf
 mem: 1000GB
 
 # Modules for loading model executables
-modules:
-  use:
-      - /g/data/vk83/prerelease/modules
-  load:
-      - access-om2/pr86-23
+# modules:
+#   use:
+#       - /g/data/vk83/prerelease/modules
+#   load:
+#       - access-om2/pr86-23
 
 # Sync options for automatically copying data from ephemeral scratch space to
 # longer term storage
@@ -38,7 +38,7 @@ input:
 submodels:
     - name: atmosphere
       model: yatm
-      exe: yatm.exe
+      exe: /g/data/tm70/ds0092/software/spack/v0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26_access-om2-x7dud7bdjikzmharfzc5orm5jjlfanja/bin/yatm.exe
       input:
           - /g/data/vk83/configurations/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
           - /g/data/vk83/configurations/inputs/JRA-55/RYF/v1-4/data
@@ -46,9 +46,9 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: fms_ACCESS-OM.x
+      exe: /g/data/tm70/ds0092/software/spack/v0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.dev-2025.04.001_access-om2-eyoue6w634qf776un3qwf7coou5sn5gn/bin/fms_ACCESS-OM.x
       input:
-          - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2025.02.05/ocean_wombatlite.res.nc
+          - /g/data/tm70/ds0092/model/inputs/access-om2/ocean_wombatmid.res.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/dust.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/grid_spec.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_hgrid.nc
@@ -67,7 +67,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: cice_auscom_360x300_24x1_24p.exe
+      exe: /g/data/tm70/ds0092/software/spack/v0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19_access-om2-4cy245xma7xr7x37a7sbavycyhiikbjl/bin/cice_auscom_360x300_24x1_24p.exe
       input: 
           - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.1deg/2024.04.17/grid.nc
           - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
@@ -84,7 +84,7 @@ collate:
   mem: 30GB
   ncpus: 4
   queue: normal
-  exe: mppnccombine.spack
+  exe: /g/data/tm70/ds0092/software/spack/v0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.dev-2025.04.001_access-om2-eyoue6w634qf776un3qwf7coou5sn5gn/bin/mppnccombine.spack
 
 manifest:
   reproduce:
