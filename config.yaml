@@ -19,6 +19,12 @@ sync:
     path: null # Set to location on /g/data or a remote server and path (rsync syntax)
 
 # Model configuration
+modules:
+    use:
+        - /g/data/vk83/prerelease/modules
+    load:
+        - access-om2/pr103-2
+
 name: common
 model: access-om2
 input:
@@ -30,7 +36,7 @@ input:
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26=2023.10.26-ltfg7jcn6t4cefotvj3kjnyu5nru26xo/bin/yatm.exe
+      exe: yatm.exe
       input:
             - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
             - /g/data/vk83/experiments/inputs/JRA-55/RYF/v1-4/data
@@ -38,7 +44,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-qji4nlmr6utrribaiyhewe4je6mifguz/bin/fms_ACCESS-OM.x
+      exe: fms_ACCESS-OM.x
       input:
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/grid_spec.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_hgrid.nc
@@ -57,7 +63,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19=2023.10.19-v3zncpqjj2gyseudbwiudolcjq3k3leo/bin/cice_auscom_360x300_24x1_24p.exe
+      exe: cice_auscom_360x300_24x1_24p.exe
       input:
         - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/grid.nc
         - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
@@ -74,10 +80,10 @@ collate:
   mem: 30GB
   ncpus: 4
   queue: normal
-  exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-qji4nlmr6utrribaiyhewe4je6mifguz/bin/mppnccombine.spack
+  exe: mppnccombine.spack
 
 # Misc
-runlog: true
+runlog: false
 stacksize: unlimited
 restart_freq: 5YS
 mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
@@ -87,7 +93,9 @@ env:
 
 manifest:
   reproduce:
-    exe: True
+    exe: False
+metadata:
+  enable: False
 
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
