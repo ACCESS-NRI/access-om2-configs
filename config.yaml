@@ -20,6 +20,12 @@ sync:
     path: null # Set to location on /g/data or a remote server and path (rsync syntax)
 
 # Model configuration
+modules:
+    use:
+        - /g/data/vk83/prerelease/modules
+    load:
+        - access-om2-bgc/pr24-2
+
 name: common
 model: access-om2
 input:
@@ -31,7 +37,7 @@ input:
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26_2023.10.26-xarvbgn4yf4mxy5hxixm4gfbp7rbzsfh/bin/yatm.exe
+      exe: yatm.exe
       input:
           - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
           - /g/data/vk83/experiments/inputs/JRA-55/RYF/v1-4/data
@@ -39,7 +45,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2024.06.27_2024.06.27-q6bpwu526xql2gm6dbpnvf36yvnfxynj/bin/fms_ACCESS-OM-BGC.x
+      exe: mom5_access_om
       input:
           - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/bgc_param.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/co2_iaf.nc
@@ -64,7 +70,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: /g/data/vk83/apps/spack/0.22/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19_2023.10.19-4tttbvaxg4afg3hjcrfaah6qngp43e5e/bin/cice_auscom_360x300_24x1_24p.exe
+      exe: cice_auscom_360x300_24x1_24p.exe
       input: 
           - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/grid.nc
           - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
@@ -85,10 +91,12 @@ collate:
 
 manifest:
   reproduce:
-    exe: true
+    exe: False
+metadata:
+  enable: False
 
 # Misc
-runlog: true
+runlog: False
 stacksize: unlimited
 restart_freq: 5YS
 mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
