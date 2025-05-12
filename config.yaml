@@ -18,7 +18,7 @@ modules:
   use:
       - /g/data/vk83/prerelease/modules
   load:
-      - access-om2/pr86-23
+      - access-om2/pr106-3
 
 # Sync options for automatically copying data from ephemeral scratch space to
 # longer term storage
@@ -46,7 +46,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: fms_ACCESS-OM.x
+      exe: mom5_access_om
       input:
           - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2025.02.05/ocean_wombatlite.res.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/dust.nc
