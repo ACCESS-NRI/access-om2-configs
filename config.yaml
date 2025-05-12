@@ -24,7 +24,7 @@ modules:
     use:
         - /g/data/vk83/prerelease/modules
     load:
-        - access-om2-bgc/pr24-2
+        - access-om2-bgc/pr24-4
 
 name: common
 model: access-om2
