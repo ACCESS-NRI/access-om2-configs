@@ -23,7 +23,7 @@ modules:
     use:
         - /g/data/vk83/prerelease/modules
     load:
-        - access-om2/pr106-9
+        - access-om2/pr106-11
 
 name: common
 model: access-om2
@@ -44,7 +44,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: fms_ACCESS-OM.x
+      exe: mom5_access_om # fms_ACCESS-OM.x
       input:
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/grid_spec.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_hgrid.nc
