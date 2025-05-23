@@ -24,7 +24,7 @@ modules:
     use:
         - /g/data/vk83/prerelease/modules
     load:
-        - access-om2-bgc/pr24-10
+        - access-om2-bgc/pr24-15
 
 name: common
 model: access-om2
@@ -45,7 +45,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: fms_ACCESS-OM-BGC.x
+      exe: mom5_access_om  # fms_ACCESS-OM-BGC.x
       input:
           - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/bgc_param.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/biogeochemistry/global.1deg/2022.02.24/co2_iaf.nc
