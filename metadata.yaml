@@ -17,14 +17,7 @@ notes: |-
   https://docs.google.com/spreadsheets/d/18BDyZlHTSy6EOaf_5o9CwGBOu4pBj88XsS2vNW4R_2o
   (b) consider citing Kiss et al. (2020) [http://doi.org/10.5194/gmd-13-401-2020] and papers describing relevant
   configuration updates - see https://forum.access-hive.org.au/t/access-om2-control-experiments/258
-  (c) include an acknowledgement such as the following (replacing/deleting text in angle brackets as needed):
-  "This work was supported by computational resources provided by the Australian Government through the
-  National Computational Infrastructure (NCI) under the <National Computational Merit Allocation Scheme>
-  and/or <ANU Merit Allocation Scheme>. We thank the vibrant communities of the Consortium for Ocean–Sea Ice
-  Modelling in Australia (COSIMA; cosima.org.au) and the Australian Community Climate and Earth System Simulator
-  National Research Infrastructure (ACCESS-NRI; access-nri.org.au) for making the ACCESS-OM2 <models> and/or
-  <outputs> and/or <analysis tools> available through the NCI. COSIMA is funded through the Australian Research
-  Council grant LP200100406."
+  (c) include an acknowledgement such as that suggested here: https://cosima.org.au/index.php/get-involved/
   (d) let COSIMA know of any publications which use these models or data so they can add them to their list:
   https://scholar.google.com/citations?hl=en&user=inVqu_4AAAAJ
   (e) Tell ACCESS-NRI that you are using ACCESS-NRI infrastructure: https://www.access-nri.org.au/resources/user-reporting/
