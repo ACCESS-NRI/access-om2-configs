@@ -17,7 +17,7 @@
         }
     },
     "default": {
-        "model-config-tests-version": "0.1.0",
+        "model-config-tests-version": "0.2.0",
         "python-version": "3.11.0",
         "payu-version": "1.1.5"
     }
