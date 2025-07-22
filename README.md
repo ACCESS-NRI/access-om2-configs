@@ -1,7 +1,6 @@
-# 025deg_jra55_iaf
-Standard configuration for 0.25 degree [ACCESS-OM2](https://github.com/ACCESS-NRI/access-om2) experiment (ACCESS-OM2-025) with JRA55-do interannual forcing (IAF).
+# 025deg_jra55_iaf with WOMBATlite
 
-This is the physics-only version.
+Standard configuration for 0.25 degree global [ACCESS-OM2](https://github.com/ACCESS-NRI/access-om2) experiment with JRA55-do interannual forcing (IAF) and WOMBATlite ocean biogeochemistry (BGC). This configuration includes ocean BGC but does not include sea ice BGC.
 
 For usage instructions, see the [ACCESS-Hive docs](https://access-hive.org.au/models/run-a-model/run-access-om/)
 

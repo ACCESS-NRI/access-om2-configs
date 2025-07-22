@@ -8,7 +8,7 @@
 # shortpath: /scratch/PROJECT_CODE
 
 queue: normal
-walltime: 5:00:00
+walltime: 6:00:00
 jobname: 025deg_jra55_iaf
 
 # Sync options for automatically copying data from ephemeral scratch space to 
@@ -68,6 +68,9 @@ submodels:
           - /g/data/vk83/configurations/inputs/access-om2/ocean/tides/global.025deg/2020.05.30/roughness_amp.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/tides/global.025deg/2020.05.30/roughness_cdbot.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/surface_salt_restoring/global.025deg/2020.05.30/salt_sfc_restore.nc
+          - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.025deg/2026.01.09/SFe_Hamiltonetal2020_monthly_clim.nc
+          - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.025deg/2026.01.09/CO2_gm_1750-2024.nc
+          - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.025deg/2026.01.09/ocean_wombatlite.res.nc
       ncpus: 1456
 
     - name: ice
@@ -76,7 +79,7 @@ submodels:
       input:
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.025deg/2024.04.17/grid.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.025deg/2024.04.17/kmt.nc
-        - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.025deg/2020.05.30/i2o.nc
+        - /g/data/vk83/prerelease/configurations/inputs/access-om2/ice/initial_conditions/global.025deg/2026.01.09/i2o.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.025deg/2020.10.22/o2i.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.025deg/2020.05.30/u_star.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.025deg/2020.05.30/monthly_sstsss.nc
@@ -86,7 +89,7 @@ submodels:
 collate:
   restart: true
   mpi: true
-  walltime: 1:00:00
+  walltime: 2:00:00
   mem: 30GB
   ncpus: 4
   queue: normal
