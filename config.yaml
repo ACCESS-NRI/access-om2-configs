@@ -23,7 +23,7 @@ modules:
   use:
       - /g/data/vk83/prerelease/modules
   load:
-      - access-om2/pr112-1
+      - access-om2/pr112-2
 
 # Model configuration
 name: common
