@@ -16,7 +16,7 @@
 ### 11 fields  atm -> ice
 ### 17 fields  ice -> ocn
 ###  7 fields  ocn -> ice
-   35
+   36
  $END
 #########################################################################
 # $JOBNAME
@@ -264,6 +264,11 @@ NA NA
 # Field 28 : land ice heatflux
 ##########
 licefh_io liceht -1 -1 0 i2o.nc IGNORED
+NA NA
+##########
+# Field 29 : 10 m winds
+##########
+wnd10_io wnd_io -1 -1 0 i2o.nc IGNORED
 NA NA
 ############################################################################
 #

@@ -6,8 +6,9 @@ description: |-
   Year Forcing strategy outlined by Stewart et al. (2020),
   https://doi.org/10.1016/j.ocemod.2019.101557.
   The configuration is based on that described in Kiss et al. (2020),
-  https://doi.org/10.5194/gmd-13-401-2020, but with many improvements.
-  Initial conditions are WOA13v2 potential temperature and practical salinity.
+  https://doi.org/10.5194/gmd-13-401-2020, but with many improvements and WOMBATlite
+  ocean biogeochemistry. Initial conditions are WOA13v2 potential temperature and
+  practical salinity and BGC tracers as in https://github.com/COSIMA/input_om2-bgc/tree/9d28b5f.
   Run with JRA55-do v1.4.0 RYF9091 (1 May 1990 - 30 April 1991) repeated forcing
   with all solid runoff converted to liquid runoff with no heat transfer.
   Spin up starts from a nominal year of 1 Jan 1900.
@@ -29,9 +30,10 @@ keywords:
 realm:
   - ocean
   - seaIce
+  - ocnBgchem
 nominal_resolution: 100 km
 reference: https://doi.org/10.5194/gmd-13-401-2020
 license: CC-BY-4.0
 model: ACCESS-OM2
 version: "2.0"
-url: https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_ryf
+url: https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_ryf+wombatlite
