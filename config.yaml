@@ -8,7 +8,7 @@
 # shortpath: /scratch/PROJECT_CODE
 
 queue: normal
-walltime: 3:00:00
+walltime: 6:00:00
 jobname: 1deg_jra55_iaf
 mem: 1000GB
 
@@ -71,6 +71,9 @@ submodels:
           - /g/data/vk83/configurations/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_amp.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_cdbot.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/surface_salt_restoring/global.1deg/2020.05.30/salt_sfc_restore.nc
+          - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2026.01.08/SFe_Hamiltonetal2020_monthly_clim.nc
+          - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2026.01.09/CO2_gm_1750-2024.nc
+          - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2026.01.08/ocean_wombatlite.res.nc
       ncpus: 216
 
     - name: ice
@@ -79,7 +82,7 @@ submodels:
       input:
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.1deg/2024.04.17/grid.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
-        - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/i2o.nc
+        - /g/data/vk83/prerelease/configurations/inputs/access-om2/ice/initial_conditions/global.1deg/2026.01.08/i2o.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/o2i.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/u_star.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/monthly_sstsss.nc

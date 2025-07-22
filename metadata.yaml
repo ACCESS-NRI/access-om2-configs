@@ -4,8 +4,21 @@ created: Add the date you started the experiment here (YYYY-MM-DD)
 description: |-
   1 degree ACCESS-OM2 global model configuration under interannual forcing.
   The configuration is based on that described in Kiss et al. (2020),
-  https://doi.org/10.5194/gmd-13-401-2020, but with many improvements.
-  Initial conditions are WOA13v2 conservative temperature and practical salinity.
+  https://doi.org/10.5194/gmd-13-401-2020, but with many improvements and WOMBATlite
+  ocean biogeochemistry. Initial conditions are WOA13v2 conservative temperature and
+  practical salinity. Initial BGC tracer concentrations are the same as the legacy WOMBAT
+  configuration "1deg_jra55_ryf_bgc" (see
+  https://github.com/COSIMA/input_om2-bgc/tree/9d28b5f) with the following additional
+  WOMBATlite tracers:
+  - pchl = phy * 0.02
+  - phyfe = phy * 7e-6
+  - zoofe = zoo * 7e-6
+  - detfe = det * 7e-6
+  - dicp = 0.0
+  - dicr = 0.0
+  - detfe_sediment = 0.0
+  - detbury = 0.0
+  - caco3bury = 0.0
   Run with JRA55-do v1.4.0 interannually-varying forcing with all solid runoff
   converted to liquid runoff with no heat transfer.
   Spin up starts 1 Jan 1958 and runs to 1 Jan 2019.
@@ -27,9 +40,10 @@ keywords:
 realm:
   - ocean
   - seaIce
+  - ocnBgchem
 nominal_resolution: 100 km
 reference: https://doi.org/10.5194/gmd-13-401-2020
 license: CC-BY-4.0
 model: ACCESS-OM2
-version: "3.0"
-url: https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_iaf
+version: "1.0"
+url: https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_iaf+wombatlite
