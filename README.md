@@ -70,7 +70,7 @@ git clone -b <experiment> https://github.com/ACCESS-NRI/access-om2-configs/ <exp
 
 and replace `<experiment>` with the branch name or tag of the experiment you wish to run.
 
-[ACCESS-Hive](https://access-hive.org.au/) contains [detailed instructions for how to configure and run ACCESS-OM2 with `payu`](https://access-hive.org.au/models/run-a-model/run-access-om/).
+[ACCESS-Hive](https://access-hive.org.au/) contains [detailed instructions for how to configure and run ACCESS-OM2 with `payu`](https://docs.access-hive.org.au/models/run-a-model/run-access-om2/).
 
 ## CI and Reproducibility Checks
 
