@@ -1,0 +1,176 @@
+# This file uses the following environment variables set within the build workflow:
+# - SITE_URL: the URL of the site (Falls back to the default URL)
+# For example, for PR-previews, SITE_URL is set to <default_URL>/pr-preview-NUM
+site_name: ACCESS-OM3-configs
+
+# Site URL
+site_url: !ENV [SITE_URL, "http://access-nri.github.io/access-om3-configs/"]
+
+# Git repository (Adds a link to the GitHub repository at the top)
+repo_url: https://github.com/ACCESS-NRI/access-om3-configs
+repo_name: ACCESS-NRI/access-om3-configs
+edit_uri: blob/main/documentation/docs/ #hopefully will fix the edit button from 404'ing, https://github.com/mkdocs/mkdocs/issues/2416
+
+# Theme
+theme:
+  name: material
+  custom_dir: overrides
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: custom-light
+      primary: none
+      accent: none
+      toggle:
+        icon: material/theme-light-dark
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      primary: none
+      accent: none
+      scheme: custom-dark
+      toggle:
+        icon: material/theme-light-dark
+        name: Switch to light mode
+
+  features:
+    - content.action.edit       # if works, will turn on the "edit on GitHub feature" https://github.com/squidfunk/mkdocs-material/issues/5261
+    - navigation.instant
+    - navigation.tracking       # The URL in the address bar is automatically updated with active anchor
+    - navigation.indexes
+    # - navigation.tabs         # Tabs at the top
+    # - navigation.tabs.sticky
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy         # for displaying copy icon at top right in code snippets
+    - toc.follow                # the sidebar is automatically scrolled to the active anchor
+
+  logo: assets/ACCESS_icon_HIVE.png
+  favicon: assets/ACCESS_icon_HIVE.png
+  icon:
+    edit: material/pencil
+    view: material/eye
+copyright: Copyright &copy; 2025 ACCESS-NRI
+
+plugins:
+  - include-configuration-stubs:
+      repo: ACCESS-NRI/access-om3-configs
+      main_website:
+        pattern: "dev-* release-*"
+        ref_type: branch
+      preview_website:
+        pattern: ""
+        ref_type: branch
+      stubs_parent_url: pages/configurations
+      stubs_nav_path: Configurations
+      stubs_dir: documentation/stub
+
+  - git-revision-date-localized:
+      type: date
+      enable_creation_date: false
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  - macros
+  - bibtex:
+      bib_file: references.bib
+      csl_file: https://raw.githubusercontent.com/citation-style-language/styles/26eccff9e537f71494a4da7b91afac1adf571dc9/apa.csl
+  - events:
+      events_dir: community_resources/events/events
+
+markdown_extensions: 
+  - attr_list
+  - abbr
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.snippets
+  - pymdownx.highlight
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - pymdownx.keys
+  - pymdownx.arithmatex:
+      generic: true
+  - def_list
+  - footnotes
+  - tables
+  - toc:
+      title: On this page
+
+# Navigation
+nav:
+  - Home:                  index.md
+  - Contributing:          
+        - Contributing overview:     pages/contributing/index.md   
+        - Edit this Documentation: pages/contributing/Edit-Config-Docs.md
+        - Add Supported Config:      pages/contributing/Add-Supported-Config.md      
+  - Inputs:
+        - Forcing data models:   pages/inputs/Forcing-data-models.md
+        - Grids:                 pages/inputs/Grids.md
+        - Topography generation: pages/inputs/Topography-generation.md
+        - Initial condition generation: pages/inputs/Initial-conditions-generation.md
+        - WW3 workflow and input files: pages/inputs/WW3_setup_and_workflow.md
+
+  - Configurations:
+        - Overview: pages/configurations/Overview.md
+        # At build time other configurations are added here by the mkdocs-include-configurations plugin
+        - WW3 config: pages/configurations/MOM6-CICE6-WW3-quickstart.md
+        - WW3 parameter choices: pages/configurations/WW3_parameter_choices.md
+
+  - Infrastructure:
+        - Architecture:          pages/infrastructure/Architecture.md
+        - NUOPC driver:          pages/infrastructure/NUOPC-driver.md
+# Anton is fixing these up here: https://github.com/ACCESS-NRI/access-om3-configs/pull/702
+#        - Building:              pages/infrastructure/Building.md
+#        - Updating components:   pages/infrastructure/Updating-components.md
+#        - Releases:              pages/infrastructure/Releases.md
+        - MOM6 generic tracers:  pages/infrastructure/MOM6-generic-tracers.md
+        - Optimisation:          pages/infrastructure/Optimisation.md
+        - Git practices:         pages/infrastructure/Git-practices.md
+  #placeholder for @minghangli-uni https://github.com/ACCESS-NRI/access-om3-configs/issues/691#issue-3291638235
+  #- Tips and Tricks:       pages/Tips-and-tricks.md
+  - Online Resources:      pages/Online-resources.md
+
+# Footer
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/access-nri.bsky.social
+      name: ACCESS-NRI on Bluesky
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/access-nri
+      name: ACCESS-NRI on Linkedin
+
+extra_css:
+  - "https://fonts.googleapis.com/icon?family=Material+Icons"   # Material Icons Reference - https://material.io/resources/icons/?style=baseline
+  - fontello/css/fontello-codes.css
+  - fontello/css/fontello-ie7-codes.css
+  - fontello/css/fontello-ie7.css
+  - fontello/css/fontello.css
+  - css/custom.css
+
+extra_javascript:
+  - javascripts/mathjax.js # For pymdownx.arithmatex extension
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js # For pymdownx.arithmatex extension
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js     # For tablesort functionality 
+  - https://cdn.jsdelivr.net/gh/atteggiani/animated-terminal@3.0/animated-terminal.min.js # Terminal animations
+  # - js/custom-tags.js
+  # - js/miscellaneous.js
+
+# Automatically reload page when running `mkdocs serve`, for any 
+# of the following files outside of the 'docs' directory
+watch:
+  - mkdocs.yml
+  - overrides/
+
+hooks:
+  - hooks/hide_pages_url_segment.py
