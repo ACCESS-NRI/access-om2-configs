@@ -1,49 +1,30 @@
-## Getting involved in ACCESS-OM3
 
-There are several ways we welcome feedback and contributions on ACCESS-OM3 development. Contributions from people of all career stages and backgrounds is highly encouraged. All the models and configurations we develop are open source. Development is led by ACCESS-NRI and the [COSIMA working group](https://cosima.org.au/) where we follow an open development model building on the work of international modelling consortia.
+Welcome to **ACCESS-OM2** &mdash; a coupled ocean-ice model and collection of [configurations](http://cosima.org.au/index.php/models/) developed by the [Consortium for Ocean-Sea Ice Modelling in Australia (COSIMA)](http://cosima.org.au/).
 
-### Interact with developers in person
+ACCESS-OM2 consists of the [MOM 5.1](https://mom-ocean.github.io) ocean model, [CICE 5.1.2](https://github.com/CICE-Consortium/CICE-svn-trunk/tree/cice-5.1.2) sea ice model, and a file-based atmosphere called [YATM](https://github.com/COSIMA/libaccessom2) coupled together using the [OASIS3-MCT v2.0](https://portal.enes.org/oasis) coupler. Regridding is done using [ESMF](https://www.earthsystemcog.org/projects/esmf/) and [KDTREE2](https://github.com/jmhodges/kdtree2).
 
-If you would like to interact in person with [the development team](https://www.access-nri.org.au/ocean-model-team/), we have fortnightly technical working group meetings on Wednesdays at 3pm. They are announced [on the access hive forum](https://forum.access-hive.org.au/t/cosima-twg-announce/401/69) (subscribe to this thread for notifications) and the meeting minutes are [in the TWG category](https://forum.access-hive.org.au/c/cosima/twg/39). Everyone is welcome to suggest agenda items and participate.
+The configurations available here are updated from the version 1.0 configurations described in [Kiss et al. (2020)](https://doi.org/10.5194/gmd-13-401-2020). Further details are given in the [ACCESS-OM2 technical report](https://github.com/COSIMA/ACCESS-OM2-1-025-010deg-report).
 
-We also have an active and vibrant user community: [the COSIMA working group](https://cosima.org.au/). They have meetings on Thursday at 11:30am. Announced [here](https://forum.access-hive.org.au/t/cosima-working-group-announce/238/156). More information about getting involved is [here](https://cosima.org.au/index.php/get-involved/).
+## How to access existing ACCESS-OM2 output
 
-We also manage most of our development openly on GitHub, we track OM3 work on a [GitHub project board here](https://github.com/orgs/ACCESS-NRI/projects/24). If you'd like to have your issue considered for OM3 development, please [open an issue and add it to the project board using this template](https://github.com/access-nri/access-om3-configs/issues/new?template=osit-issue-template-for-om3-work---project-board.md).
+[NCI](http://nci.org.au) users can access model output via the [COSIMA Cookbook](https://github.com/COSIMA/cosima-cookbook). A good place to start is the [data explorer](https://nbviewer.jupyter.org/github/COSIMA/cosima-recipes/blob/master/Tutorials/Using_Explorer_tools.ipynb), which will give an overview of the data available. Also see this [overview of 0.1° IAF outputs](http://cosima.org.au/index.php/2020/07/29/data-available-0-1-1958-2018-access-om2-iaf-run/).
 
-### Report a bug or make a suggestion
+Non-NCI users can access a subset of the ACCESS-OM2 output via the [COSIMA Model Output Collection](https://dx.doi.org/10.4225/41/5a2dc8543105a).
 
-Technical issues related to OM3 are best posted to [github.com/ACCESS-NRI/access-om3-configs/issues](https://github.com/ACCESS-NRI/access-om3-configs/issues). If you would like to discuss the issue first, feel free to post it on the [ACCESS-HIVE forum](https://forum.access-hive.org.au/c/cosima/29).
+## How to run ACCESS-OM2
 
-### How to add a community supported ACCESS-OM3 configuration documentation
-We provide protocol and guidance on how apply to have your regional configuration supported by ACCESS-NRI. More details to be added soon (@helenmacdonald ; https://github.com/ACCESS-NRI/access-om3-configs/pull/574)
+Start by reading the [[Quick start\|Getting-started#quick-start]] guide. If you are using [gadi.nci.org.au](http://nci.org.au/our-systems/hpc-systems) at the [NCI National Facility](http://nci.org.au/) and are happy to use our pre-compiled executables then this should be all you need. The page also provides instructions for building your own executables.
 
-### Contribute to one of ACCESS-OM3's components
+**NOTE:** All ACCESS-OM2 model components and configurations are undergoing continual improvement. We strongly recommend that you "watch" this repo (see button at top of screen; ask to be notified of all conversations) and also watch all the [component models](https://github.com/COSIMA/access-om2/tree/master/src), whichever [configuration(s)](https://github.com/COSIMA/access-om2/tree/master/control) you are using, and [payu](https://github.com/payu-org/payu) to be kept informed of updates, problems and bug fixes as they arise.
 
-There are several different ways to do this depending on the kind of contribution and the component. Best to get in touch on the [ACCESS-HIVE forum](https://forum.access-hive.org.au/c/cosima/29) or email chris.bull@anu.edu.au.
+## Getting help and reporting issues
 
-## ACCESS-OM3-configs documentation contributions welcome 🙏
-This documentation is a work in progress, and we welcome any contributions, including corrections and suggestions.
+For all help requests and error reports please create a "GitHub issue" at [ACCESS-OM2 issues](https://github.com/COSIMA/access-om2/issues).
 
-All contributions are welcome but we would particularly appreciate text suggestions (below). Contributions can be made in a few ways:
+### For self-help
 
-### Quick contributions 
-!!! tip
-    This method has the advantage is that it's *very quick* (<1 minute!). The caveat is that, unless you have write access to the `access-om3-configs` repository, you will not be able to preview the changes rendered into a website or create whole new pages. <br>
+Setting up and running the model is primarily supported via the [[ACCESS-OM2 wiki|Home]] (that you are already reading). _It is a "wiki" so feel free to correct and contribute_.
 
-The simplest and fastest way to make a change to an _existing_ page is to click the edit "pencil" on the top-right corner. This will go to the relevant GitHub markdown file and clicking the top-right pencil again on GitHub will allow you to edit the file. Once complete, click `Commit changes...`. There are then _two_ possibilities, depending on whether you have  write access to [`access-om3-configs`](https://github.com/ACCESS-NRI/access-om3-configs): 
+## How to update this wiki
 
-1.  **No write access** (e.g. you are not part of the `ACCESS-NRI` GitHub organisation): this will prompt you to make a fork and then a pull request (less than 1 minute!). 
-1.  **You have write access**: please commit changes on a new branch and then use a pull request (this relates to the next option). 
-
-### Larger contributions (online PR-previews)
-!!! tip
-    This method allows you create whole new pages, and to preview the changes rendered into a website. It does not require you to install any software, but is **only available for people with write access to [`access-om3-configs`](https://github.com/ACCESS-NRI/access-om3-configs)**.<br>
-
-Create a new branch, e.g. `jblogs/doc-update`, make doc changes (the documentation sources are in [github.com/ACCESS-NRI/access-om3-configs/tree/main/documentation](https://github.com/ACCESS-NRI/access-om3-configs/tree/main/documentation)), then open a related PR and a GitHub preview will be made automatically.
-
-### Larger contributions (`mkdocs` offline)
-!!! tip
-    Similar to the above, this method allows you create whole new pages and to preview the changes rendered into a website. It works whether or not you have write access to [`access-om3-configs`](https://github.com/ACCESS-NRI/access-om3-configs), but requires you to install `mkdocs` and takes the longest to set up.<br>
-
-Following [these instructions](https://docs.access-hive.org.au/about/contribute/contribute_on_github/) but noting the documentation sources are in [github.com/ACCESS-NRI/access-om3-configs/tree/main/documentation](https://github.com/ACCESS-NRI/access-om3-configs/tree/main/documentation). You'll need to fork and clone [github.com/ACCESS-NRI/access-om3-configs](https://github.com/ACCESS-NRI/access-om3-configs) if you want to [write your own content](https://docs.access-hive.org.au/about/contribute/contribute_on_github/) (`mkdocs serve` should be invoked from within the `documentation` directory).
-
+The wiki attached to a public repository can be edited by anyone. Just navigate to the page you wish to edit and click on the 'edit' button on the top right hand side.

@@ -1,0 +1,1 @@
+This is a README for when C.Bull did the cosima wiki conversion to ACCESS NRI mkdoc/config doc. These two files were orphans but will commit them before deleting as maybe something has been missed..? 22/08/2025
