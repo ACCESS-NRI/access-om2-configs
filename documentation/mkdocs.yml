@@ -1,14 +1,14 @@
 # This file uses the following environment variables set within the build workflow:
 # - SITE_URL: the URL of the site (Falls back to the default URL)
 # For example, for PR-previews, SITE_URL is set to <default_URL>/pr-preview-NUM
-site_name: ACCESS-OM3-configs
+site_name: ACCESS-OM2-configs
 
 # Site URL
-site_url: !ENV [SITE_URL, "http://access-nri.github.io/access-om3-configs/"]
+site_url: !ENV [SITE_URL, "http://access-nri.github.io/access-om2-configs/"]
 
 # Git repository (Adds a link to the GitHub repository at the top)
-repo_url: https://github.com/ACCESS-NRI/access-om3-configs
-repo_name: ACCESS-NRI/access-om3-configs
+repo_url: https://github.com/ACCESS-NRI/access-om2-configs
+repo_name: ACCESS-NRI/access-om2-configs
 edit_uri: blob/main/documentation/docs/ #hopefully will fix the edit button from 404'ing, https://github.com/mkdocs/mkdocs/issues/2416
 
 # Theme
@@ -55,7 +55,7 @@ copyright: Copyright &copy; 2025 ACCESS-NRI
 
 plugins:
   - include-configuration-stubs:
-      repo: ACCESS-NRI/access-om3-configs
+      repo: ACCESS-NRI/access-om2-configs
       main_website:
         pattern: "dev-* release-*"
         ref_type: branch
