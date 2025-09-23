@@ -22,56 +22,58 @@ sync:
 modules:
   use:
       - /g/data/vk83/modules
+      - /g/data/vk83/prerelease/modules
   load:
-      - access-om2/2024.03.0
+      - access-om2/pr112-13
+      - model-tools/fre-nctools/2024.05-1
 
 # Model configuration
 name: common
 model: access-om2
 input:
-  - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/JRA55_MOM1_conserve2nd.nc
-  - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/JRA55_MOM1_patch.nc
-  - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_1st_conserve.nc
-  - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_2nd_conserve.nc
-  - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_patch.nc
+  - /g/data/vk83/configurations/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/JRA55_MOM1_conserve2nd.nc
+  - /g/data/vk83/configurations/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/JRA55_MOM1_patch.nc
+  - /g/data/vk83/configurations/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_1st_conserve.nc
+  - /g/data/vk83/configurations/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_2nd_conserve.nc
+  - /g/data/vk83/configurations/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_patch.nc
 submodels:
     - name: atmosphere
       model: yatm
       exe: yatm.exe
       input:
-            - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
-            - /g/data/vk83/experiments/inputs/JRA-55/RYF/v1-4/data
+            - /g/data/vk83/configurations/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
+            - /g/data/vk83/configurations/inputs/JRA-55/RYF/v1-4/data
       ncpus: 1
 
     - name: ocean
       model: mom
-      exe: fms_ACCESS-OM.x
+      exe: mom5_access_om
       input:
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/grid_spec.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_hgrid.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_mosaic.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.1deg/2020.10.22/topog.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.1deg/2020.10.22/ocean_mask.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/vertical/global.1deg/2020.10.22/ocean_vgrid.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/processor_masks/global.1deg/216.16x15/2020.05.30/ocean_mask_table
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/chlorophyll/global.1deg/2020.05.30/chl.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/initial_conditions/global.1deg/2020.10.22/ocean_temp_salt.res.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/tideamp.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_amp.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_cdbot.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/surface_salt_restoring/global.1deg/2020.05.30/salt_sfc_restore.nc
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/grid_spec.nc
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_hgrid.nc
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_mosaic.nc
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/grids/bathymetry/global.1deg/2020.10.22/topog.nc
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/grids/bathymetry/global.1deg/2020.10.22/ocean_mask.nc
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/grids/vertical/global.1deg/2020.10.22/ocean_vgrid.nc
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/processor_masks/global.1deg/216.16x15/2020.05.30/ocean_mask_table
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/chlorophyll/global.1deg/2020.05.30/chl.nc
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/initial_conditions/global.1deg/2020.10.22/ocean_temp_salt.res.nc
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/tideamp.nc
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_amp.nc
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_cdbot.nc
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/surface_salt_restoring/global.1deg/2020.05.30/salt_sfc_restore.nc
       ncpus: 216
 
     - name: ice
       model: cice5
       exe: cice_auscom_360x300_24x1_24p.exe
       input:
-        - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/grid.nc
-        - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
-        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/i2o.nc
-        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/o2i.nc
-        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/u_star.nc
-        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/monthly_sstsss.nc
+        - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.1deg/2024.04.17/grid.nc
+        - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
+        - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/i2o.nc
+        - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/o2i.nc
+        - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/u_star.nc
+        - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/monthly_sstsss.nc
       ncpus: 24
 
 # Collation
@@ -81,7 +83,7 @@ collate:
   mem: 30GB
   ncpus: 4
   queue: normal
-  exe: mppnccombine.spack
+  exe: mppnccombine
 
 # Misc
 runlog: true
