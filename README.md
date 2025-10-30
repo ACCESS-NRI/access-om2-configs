@@ -6,7 +6,7 @@
 This repo contains standard global configurations for
 [ACCESS-OM2](https://github.com/ACCESS-NRI/ACCESS-OM2), the ACCESS Ocean-Sea Ice model.
 
-All confgurations were developed by [COSIMA](https://cosima.org) and adapted by ACCESS-NRI.
+All confgurations were developed by [COSIMA](https://github.com/COSIMA/access-om2) and adapted by ACCESS-NRI.
 
 This is an "omnibus repository": it contains multiple related configurations, and each
 configuration is stored in a separate branch.
