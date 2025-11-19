@@ -64,7 +64,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: cice_auscom_360x300_24x1_24p.exe
+      exe: /g/data/tm70/as2285/model-code/cice5/Release/bin/cice_auscom_360x300_24x1.exe
       input:
         - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/grid.nc
         - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
