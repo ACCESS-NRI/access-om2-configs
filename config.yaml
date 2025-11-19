@@ -94,7 +94,7 @@ env:
 
 manifest:
   reproduce:
-    exe: True
+    exe: False
 
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
