@@ -21,9 +21,10 @@ sync:
 # Modules for loading model executables
 modules:
   use:
-      - /g/data/vk83/prerelease/modules
+      - /g/data/vk83/modules
   load:
-      - access-om2/pr112-1
+      - access-om2/2025.09.000
+      - model-tools/fre-nctools/2024.05-1
 
 # Model configuration
 name: common
@@ -83,7 +84,7 @@ collate:
   mem: 30GB
   ncpus: 4
   queue: normal
-  exe: mppnccombine.spack
+  exe: mppnccombine
 
 # Misc
 runlog: true
