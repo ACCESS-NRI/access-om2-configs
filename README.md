@@ -114,6 +114,5 @@ For more information on the manually running the pytests that are run as part of
 COSIMA request that users of this or other ACCESS-OM2 model code:
 
 1. consider citing Kiss et al. (2020) ([http://doi.org/10.5194/gmd-13-401-2020](http://doi.org/10.5194/gmd-13-401-2020))
-2. include an acknowledgement such as the following:
-*The authors thank the Consortium for Ocean-Sea Ice Modelling in Australia (COSIMA; [http://www.cosima.org.au](http://www.cosima.org.au)) for making the ACCESS-OM2 suite of models available at [https://github.com/COSIMA/access-om2](https://github.com/COSIMA/access-om2).*
+2. include an acknowledgement such as that suggested [here](https://cosima.org.au/index.php/get-involved/)
 3. let COSIMA know of any publications which use these models or data so they can add them to [their list](https://scholar.google.com/citations?hl=en&user=inVqu_4AAAAJ).
