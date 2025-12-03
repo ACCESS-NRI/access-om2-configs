@@ -1,6 +1,6 @@
-contact: Add your name here
-email: Add your email address here
-created: Add the date you started the experiment here (YYYY-MM-DD)
+contact: anton-seaice
+email: anton.steketee@anu.edu.au
+created: '2025-12-04'
 description: |-
   1 degree ACCESS-OM2 global model configuration under the RYF9091 Repeat
   Year Forcing strategy outlined by Stewart et al. (2020),
@@ -33,5 +33,7 @@ nominal_resolution: 100 km
 reference: https://doi.org/10.5194/gmd-13-401-2020
 license: CC-BY-4.0
 model: ACCESS-OM2
-version: "2.0"
-url: https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_ryf
+version: '2.0'
+url: https://github.com/ACCESS-NRI/access-om2-configs
+experiment_uuid: 7f423c78-8534-4fd7-8cbf-f03113c6581a
+name: 205-cice5-cmake-baseline-7f423c78
