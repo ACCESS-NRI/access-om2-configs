@@ -18,12 +18,11 @@ sync:
     enable: False # set path below and change to true
     path: null # Set to location on /g/data or a remote server and path (rsync syntax)
 
-# Modules for loading model executables
 modules:
-  use:
-      - /g/data/vk83/modules
-  load:
-      - access-om2/2024.03.0
+    use: 
+        - /g/data/vk83/prerelease/modules
+    load: 
+        - access-om2/pr125-18/2025.12.000-360x300
 
 # Model configuration
 name: common
@@ -45,7 +44,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: fms_ACCESS-OM.x
+      exe: mom5_access_om
       input:
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/grid_spec.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_hgrid.nc
@@ -64,7 +63,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: cice_auscom_360x300_24x1_24p.exe
+      exe: cice_auscom_360x300_15x300.exe
       input:
         - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/grid.nc
         - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
@@ -94,7 +93,7 @@ env:
 
 manifest:
   reproduce:
-    exe: True
+    exe: False
 
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
