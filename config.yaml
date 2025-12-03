@@ -22,7 +22,7 @@ modules:
     use: 
         - /g/data/vk83/prerelease/modules
     load: 
-        - access-om2/pr125-18/2025.12.000-360x300
+        - access-om2/pr127-2/2025.12.000-360x300
 
 # Model configuration
 name: common
