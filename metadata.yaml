@@ -6,8 +6,8 @@ description: |-
   The configuration is based on that described in Kiss et al. (2020),
   https://doi.org/10.5194/gmd-13-401-2020, but with many improvements.
   Initial conditions are WOA13v2 conservative temperature and practical salinity.
-  Run with JRA55-do v1.4.0 interannually-varying forcing with all solid runoff
-  converted to liquid runoff with no heat transfer.
+  Run with JRA55-do v1.4.0 RYF9091 (1 May 1990 - 30 April 1991) repeated forcing
+  with all solid runoff converted to liquid runoff with no heat transfer.
   Spin up starts from a nominal year of 1 Jan 1900.
 notes: |-
   COSIMA request that users of this or other ACCESS-OM2 model code or output data:
