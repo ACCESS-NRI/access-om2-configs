@@ -23,7 +23,7 @@ modules:
   use:
       - /g/data/vk83/modules
   load:
-      - access-om2/2024.03.0
+      - access-om2/2025.12.000
       - model-tools/fre-nctools/2024.05-1
 
 # Model configuration
@@ -56,7 +56,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: fms_ACCESS-OM.x
+      exe: mom5_access_om
       input:
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/grid_spec.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_hgrid.nc
