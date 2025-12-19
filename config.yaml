@@ -24,6 +24,7 @@ modules:
       - /g/data/vk83/modules
   load:
       - access-om2/2024.03.0
+      - model-tools/mppnccombine-fast/2025.07.000
 
 # Model configuration
 name: common
@@ -80,7 +81,8 @@ collate:
   mem: 16GB
   ncpus: 4
   queue: normal
-  exe: /g/data/vk83/apps/mppnccombine-fast/0.2/bin/mppnccombine-fast
+  exe: mppnccombine-fast
+
 # Misc
 runlog: true
 stacksize: unlimited
