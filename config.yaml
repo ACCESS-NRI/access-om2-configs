@@ -23,7 +23,8 @@ modules:
   use:
       - /g/data/vk83/modules
   load:
-      - access-om2/2024.03.0
+      - access-om2/2025.12.000
+      - model-tools/mppnccombine-fast/2025.07.000
 
 # Model configuration
 name: common
@@ -43,7 +44,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: fms_ACCESS-OM.x
+      exe: mom5_access_om
       input: 
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.01deg/2020.05.30/grid_spec.nc
           - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.01deg/2020.05.30/ocean_hgrid.nc
@@ -80,12 +81,15 @@ collate:
   mem: 16GB
   ncpus: 4
   queue: normal
-  exe: /g/data/vk83/apps/mppnccombine-fast/0.2/bin/mppnccombine-fast
+  exe: mppnccombine-fast
+
 # Misc
 runlog: true
 stacksize: unlimited
 restart_freq: '1YS'  # use tidy_restarts.py instead
-mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
+mpi:
+  flags:
+    - --mca io ompio --mca io_ompio_num_aggregators 1
 qsub_flags: -W umask=027
 env:
     UCX_LOG_LEVEL: 'error'
