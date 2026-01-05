@@ -22,8 +22,9 @@ sync:
 modules:
   use:
       - /g/data/vk83/modules
+      - /g/data/vk83/prerelease/modules
   load:
-      - access-om2/2025.12.000
+      - access-om2/pr131-3
       - model-tools/fre-nctools/2024.05-1
 
 # Model configuration
@@ -97,7 +98,7 @@ env:
 
 manifest:
   reproduce:
-    exe: True
+    exe: False
 
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
