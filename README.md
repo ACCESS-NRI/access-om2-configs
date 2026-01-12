@@ -31,7 +31,7 @@ Some examples of possible values of the specifiers:
 
 ## Supported configurations
 
-All available configurations are browsable under [the list of branches](https://github.com/ACCESS-NRI/accessom2-configs/branches).
+All available configurations are browsable under [the list of branches](https://github.com/ACCESS-NRI/access-om2-configs/branches).
 
 and should also be listed below:
 
