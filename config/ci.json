@@ -8,7 +8,7 @@
     },
     "reproducibility": {
         "default": {
-            "markers": "repro and (not slow)"
+            "markers": "repro"
         }
     },
     "qa": {
