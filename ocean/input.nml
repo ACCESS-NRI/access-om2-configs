@@ -253,7 +253,8 @@
     agm_closure_scaling = 0.07
     agm_closure_upper_depth = 100.0
     aredi             = 200.0
-    aredi_diffusivity_grid_scaling = .false.
+    aredi_diffusivity_grid_scaling = .true.
+    agm_read_restart  = .true.
     aredi_equal_agm   = .false.
     drhodz_mom4p1     = .true.
     nphysics_util_zero_init = .true.
