@@ -24,7 +24,7 @@ modules:
       - /g/data/vk83/modules
       - /g/data/vk83/prerelease/modules
   load:
-      - access-om2/pr131-13
+      - access-om2/pr131-14
       - model-tools/fre-nctools/2024.05-1
 
 # Model configuration
