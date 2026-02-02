@@ -21,7 +21,7 @@ mem: 1000GB
 model: access-om2
 modules:
   load:
-  - access-om2/pr133-6
+  - access-om2/pr133-6/2026.02.000-360x300
   - model-tools/fre-nctools/2024.05-1
   use:
   - /g/data/vk83/modules
@@ -64,7 +64,7 @@ submodels:
   model: mom
   name: ocean
   ncpus: 216
-- exe: cice_auscom_360x300_24x1_24p.exe
+- exe: cice_auscom_360x300_15x300.exe
   input:
   - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.1deg/2024.04.17/grid.nc
   - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
