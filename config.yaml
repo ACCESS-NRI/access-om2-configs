@@ -8,7 +8,7 @@
 # shortpath: /scratch/PROJECT_CODE
 
 queue: normal
-walltime: 5:00:00
+walltime: 1:00:00
 jobname: 025deg_jra55_ryf
 
 # Sync options for automatically copying data from ephemeral scratch space to 
