@@ -6,11 +6,11 @@ work/atmosphere/yatm.exe:
   hashes:
     binhash: 16561fece20fccc8de9b0fb8927d95f5
     md5: 8b84e4b6fd25660e183debf2efa32798
-work/ice/cice_auscom_3600x2700_18x15.exe:
-  fullpath: /g/data/vk83/prerelease/apps/spack/0.22/release/linux-rocky8-x86_64_v4/oneapi-2025.2.0/cice5-2026.01.000-ucy6xqtbi2ome7s5celebqmpi7l7c6z3/bin/cice_auscom_3600x2700_18x15.exe
+work/ice/cice_auscom_3600x2700_40x30.exe:
+  fullpath: /g/data/vk83/prerelease/apps/spack/0.22/release/linux-rocky8-x86_64_v4/oneapi-2025.2.0/cice5-2026.01.000-tawioxpa744dz2kekeqeqvgle3fprnca/bin/cice_auscom_3600x2700_40x30.exe
   hashes:
-    binhash: dab457218e8e10e344e84fd1953e50d8
-    md5: 7629d6309ccd468cdd90f66fd27d35f4
+    binhash: 883a69823f69b447221c816b1f2b0215
+    md5: 5e6c47fa8db4d75b0faa9f3c32fd00fe
 work/ocean/mom5_access_om:
   fullpath: /g/data/vk83/prerelease/apps/spack/0.22/release/linux-rocky8-x86_64_v4/oneapi-2025.2.0/mom5-git.2025.08.000_access-om2-tu35goxkxunzvq2t2nqtlyatcxnghswl/bin/mom5_access_om
   hashes:

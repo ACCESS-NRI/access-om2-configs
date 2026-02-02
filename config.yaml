@@ -9,7 +9,7 @@
 # shortpath: /scratch/v45
 
 queue: normal
-walltime: 1:00:00
+walltime: 00:30:00
 jobname: 01deg_jra55_ryf
 
 # Sync options for automatically copying data from ephemeral scratch space to 
@@ -24,7 +24,7 @@ modules:
       - /g/data/vk83/modules
       - /g/data/vk83/prerelease/modules
   load:
-      - access-om2/pr133-6/2026.02.000-3600x2700
+      - access-om2/pr133-8/2026.02.000-3600x2700
       - model-tools/mppnccombine-fast/2025.07.000
 
 # Model configuration
@@ -64,7 +64,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: cice_auscom_3600x2700_18x15.exe
+      exe: cice_auscom_3600x2700_40x30.exe
       input:
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.01deg/2024.04.17/grid.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.01deg/2024.04.17/kmt.nc
