@@ -31,6 +31,7 @@
     restart_dir       = './RESTART/'
     restart_ext       = .false.
     restart_file      = 'iced'
+    restart_format    = 'pio'
     runtype           = 'initial'
     use_leap_years    = .false.
     use_restart_time  = .true.
