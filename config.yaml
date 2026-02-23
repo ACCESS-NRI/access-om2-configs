@@ -120,6 +120,5 @@ platform:
 userscripts:
     error: tools/resub.sh
     run: rm -f resubmit.count
-    sync: /g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh
 
 payu_minimum_version: 1.3.0
