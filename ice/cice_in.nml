@@ -6,8 +6,8 @@
     diagfreq          = 960
     dt                = 300
     dump_last         = .true.
-    dumpfreq          = 'm'
-    dumpfreq_n        = 3
+    dumpfreq          = 'x' !only for extra restarts, payu sets `dump_last=.true.`
+    dumpfreq_n        = 1
     hist_avg          = .true.
     histfreq          = 'd', 'm', 'x', 'x', 'x'
     histfreq_n        = 1, 1, 1, 1, 1
