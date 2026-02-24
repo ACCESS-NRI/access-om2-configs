@@ -24,7 +24,7 @@ modules:
   - /g/data/vk83/modules
   - /g/data/vk83/prerelease/modules
   load:
-  - access-om2/pr136-8
+  - access-om2/pr136-11
   - model-tools/fre-nctools/2024.05-1
 name: common
 model: access-om2
