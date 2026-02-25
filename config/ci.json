@@ -5,15 +5,27 @@
         "default": {
             "markers": "repro and (not slow)"
         }
+        "release-.*": {
+            "model-config-tests-version": "0.2.3",
+            "payu-version": "1.2.1"
+        }
     },
     "reproducibility": {
         "default": {
             "markers": "repro"
         }
+        "release-.*": {
+            "model-config-tests-version": "0.2.3",
+            "payu-version": "1.2.1"
+        }
     },
     "qa": {
         "default": {
             "markers": "access_om2 or config"
+        }
+        "release-.*": {
+            "model-config-tests-version": "0.2.3",
+            "payu-version": "1.2.1"
         }
     },
     "default": {
