@@ -109,6 +109,20 @@ More information on submitting a Pull Request and on the specifics of this pipel
 For more information on the manually running the pytests that are run as part of the reproducibility CI checks, see
 [model-config-tests](https://github.com/ACCESS-NRI/model-config-tests/).
 
+## Automated Cherry Picking
+
+There is a workflow which enables semi-automated cherry-picking from one branch into another, using the !cherry-pick keyword in a pull-request. This is useful when a change needs to be applied across multiple branches.
+
+For example, if a pull-request changes `dev-1deg_jra55_ryf`, to apply the change to `dev-1deg_jra55_iaf`:
+- First finalise and merge the pull-request into `dev-1deg_jra55_ryf`
+- Second, as a standalone comment in the pull-request, use the keyword as follows:
+    ` !cherry-pick <commit> into <branch> `
+
+<commit> must exist in `dev-1deg_jra55_ryf`. This can be one or multiple commit hashes seperated by spaces.
+<branch> would be `dev-1deg_jra55_iaf` in this example
+
+This will attempt to make a new pull-request with the request commit(s), and leave a comment on the initial pull-request with the outcome.
+
 ## Conditions of use
 
 COSIMA request that users of this or other ACCESS-OM2 model code:
