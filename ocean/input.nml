@@ -57,6 +57,7 @@
 &mpp_io_nml
     deflate_level     = -1
     shuffle           = 1
+    cf_compliance     = .true.
 /
 
 &ocean_adv_vel_diag_nml
