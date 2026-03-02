@@ -23,7 +23,7 @@ modules:
   use:
       - /g/data/vk83/modules
   load:
-      - access-om2/2025.12.000
+      - access-om2/2026.02.001
       - model-tools/fre-nctools/2024.05-1
 
 # Model configuration
@@ -75,7 +75,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: cice_auscom_360x300_24x1_24p.exe
+      exe: cice_auscom_360x300_15x300.exe
       input:
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.1deg/2024.04.17/grid.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.1deg/2024.04.17/kmt.nc
