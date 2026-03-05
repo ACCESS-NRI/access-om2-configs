@@ -6,11 +6,12 @@
     diagfreq          = 960
     dt                = 1800
     dump_last         = .true.
-    dumpfreq          = 'y'
+    dumpfreq          = 'x' !only for extra restarts, payu sets `dump_last=.true.`
     dumpfreq_n        = 1
     hist_avg          = .true.
     histfreq          = 'd', 'm', 'x', 'x', 'x'
     histfreq_n        = 1, 1, 1, 1, 1
+    hist_file_freq    = 'm', 'y', 'x', 'x', 'x'
     history_chunksize_x = 720
     history_chunksize_y = 540
     history_deflate_level = 1
@@ -31,6 +32,7 @@
     restart_dir       = './RESTART/'
     restart_ext       = .false.
     restart_file      = 'iced'
+    restart_format    = 'pio'
     runtype           = 'initial'
     use_leap_years    = .false.
     use_restart_time  = .true.

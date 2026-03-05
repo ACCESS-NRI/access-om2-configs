@@ -22,7 +22,7 @@ modules:
   use:
       - /g/data/vk83/modules
   load:
-      - access-om2/2025.12.000
+      - access-om2/2026.02.001
       - model-tools/mppnccombine-fast/2025.07.000
 
 # Model configuration
@@ -62,7 +62,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: cice_auscom_1440x1080_48x40_480p.exe
+      exe: cice_auscom_1440x1080_30x27.exe
       input:
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.025deg/2024.04.17/grid.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.025deg/2024.04.17/kmt.nc
@@ -105,4 +105,3 @@ platform:
 userscripts:
     error: tools/resub.sh
     run: rm -f resubmit.count
-    sync: /g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh
