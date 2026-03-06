@@ -17,8 +17,6 @@ description: |-
   - dicp = 0.0
   - dicr = 0.0
   - detfe_sediment = 0.0
-  - detbury = 0.0
-  - caco3bury = 0.0
   Run with JRA55-do v1.6.0 interannually-varying forcing with all solid runoff
   converted to liquid runoff with no heat transfer.
   Spin up starts 1 Jan 1958 and runs to 1 Jan 2024.

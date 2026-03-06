@@ -73,7 +73,7 @@ submodels:
           - /g/data/vk83/configurations/inputs/access-om2/ocean/surface_salt_restoring/global.1deg/2020.05.30/salt_sfc_restore.nc
           - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2026.01.08/SFe_Hamiltonetal2020_monthly_clim.nc
           - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2026.01.09/CO2_gm_1750-2024.nc
-          - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2026.01.08/ocean_wombatlite.res.nc
+          - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2026.03.06/ocean_wombatlite.res.nc
       ncpus: 216
 
     - name: ice
