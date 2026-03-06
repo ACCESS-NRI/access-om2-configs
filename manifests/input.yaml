@@ -173,10 +173,10 @@ work/ocean/INPUT/ocean_vgrid.nc:
     binhash: 4fd591112647a35b9450058070ce92ad
     md5: 339ff716e3019a86fc861498e674250a
 work/ocean/INPUT/ocean_wombatlite.res.nc:
-  fullpath: /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2026.01.08/ocean_wombatlite.res.nc
+  fullpath: /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2026.03.06/ocean_wombatlite.res.nc
   hashes:
-    binhash: 3020d4e173ba27129a5f76ba405bca26
-    md5: 734bd895876ea98496600d36f883ef19
+    binhash: 72252e9fa669ef52644af4251ebddc32
+    md5: 1bc9a6e024cf7fd96295e2d7ac173ff3
 work/ocean/INPUT/roughness_amp.nc:
   fullpath: /g/data/vk83/configurations/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_amp.nc
   hashes:
