@@ -89,10 +89,10 @@ work/ice/RESTART/grid.nc:
     md5: ab3458bf0c16cc5e2e72f59b705de313
 work/ice/RESTART/i2o.nc:
   copy: true
-  fullpath: /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.01deg/2020.05.30/i2o.nc
+  fullpath: /g/data/vk83/prerelease/configurations/inputs/access-om2/ice/initial_conditions/global.01deg/2026.03.06/i2o.nc
   hashes:
-    binhash: 629d52261991b0416d0657c8f320e41d
-    md5: a118ccf1a07bf31676e038e3c2b6c964
+    binhash: 43631fc3b08da7a823c9b12ff3d4cd65
+    md5: 82815747a0636c5653f6322412a51c22
 work/ice/RESTART/kmt.nc:
   copy: true
   fullpath: /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.01deg/2024.04.17/kmt.nc
@@ -117,6 +117,11 @@ work/ice/RESTART/u_star.nc:
   hashes:
     binhash: b0fa2f57ceef0fd228656d6f22e7cf57
     md5: e34bf0c92d0585cfc2d90de32af35e43
+work/ocean/INPUT/SFe_Hamiltonetal2020_monthly_clim.nc:
+  fullpath: /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.01deg/2026.03.06/SFe_Hamiltonetal2020_monthly_clim.nc
+  hashes:
+    binhash: c75d457c12b4c0bb0af1a59e41a897a5
+    md5: 753cc5d2d781fb4fd3eb47a63d8efebe
 work/ocean/INPUT/chl.nc:
   fullpath: /g/data/vk83/configurations/inputs/access-om2/ocean/chlorophyll/global.01deg/2020.05.30/chl.nc
   hashes:
@@ -157,6 +162,11 @@ work/ocean/INPUT/ocean_vgrid.nc:
   hashes:
     binhash: 1d44582b3ffd2f708e0b708ae172ae43
     md5: 31d7de8345a0bab0ee004915aa36027a
+work/ocean/INPUT/ocean_wombatlite.res.nc:
+  fullpath: /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.01deg/2026.03.06/ocean_wombatlite.res.nc
+  hashes:
+    binhash: 25affd8c7266b65ffd7a825ac771868f
+    md5: 4250b755cf9ea88db5c5f306782d6909
 work/ocean/INPUT/roughness_amp.nc:
   fullpath: /g/data/vk83/configurations/inputs/access-om2/ocean/tides/global.01deg/2020.05.30/roughness_amp.nc
   hashes:
