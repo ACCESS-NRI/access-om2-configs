@@ -12,6 +12,126 @@ restart_file  = ocean_temp_salt.res.nc
 ppm_hlimiter = 3
 ppm_vlimiter = 3
 /
+"prog_tracers","ocean_mod","no3"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = ocean_wombatlite.res.nc
+longname = Nitrate
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
+"prog_tracers","ocean_mod","phy"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = ocean_wombatlite.res.nc
+longname = Phytoplankton
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
+"prog_tracers","ocean_mod","pchl"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = ocean_wombatlite.res.nc
+longname = Phytoplankton chlorophyll
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
+"prog_tracers","ocean_mod","phyfe"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = ocean_wombatlite.res.nc
+longname = Phytoplankton iron content
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
+"prog_tracers","ocean_mod","o2"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = ocean_wombatlite.res.nc
+longname = Oxygen
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
+"prog_tracers","ocean_mod","zoo"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = ocean_wombatlite.res.nc
+longname = Zooplankton
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
+"prog_tracers","ocean_mod","zoofe"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = ocean_wombatlite.res.nc
+longname = Zooplankton iron content
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
+"prog_tracers","ocean_mod","det"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = ocean_wombatlite.res.nc
+longname = Detritus
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
+"prog_tracers","ocean_mod","detfe"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = ocean_wombatlite.res.nc
+longname = Detrital iron content
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
+"prog_tracers","ocean_mod","caco3"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = ocean_wombatlite.res.nc
+longname = CaCO3
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
+"prog_tracers","ocean_mod","dic"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = ocean_wombatlite.res.nc
+longname = Dissolved Inorganic Carbon
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
+"prog_tracers","ocean_mod","dicp"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = ocean_wombatlite.res.nc
+longname = Preformed Dissolved Inorganic Carbon
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
+"prog_tracers","ocean_mod","dicr"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = ocean_wombatlite.res.nc
+longname = Remineralised Dissolved Inorganic Carbon
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
+"prog_tracers","ocean_mod","alk"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = ocean_wombatlite.res.nc
+longname = Alkalinity
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
+"prog_tracers","ocean_mod","fe"
+horizontal-advection-scheme = mdppm
+vertical-advection-scheme = mdppm
+restart_file  = ocean_wombatlite.res.nc
+longname = Dissolved Iron
+ppm_hlimiter = 3
+ppm_vlimiter = 3
+/
 "tracer_packages","ocean_mod","ocean_age_tracer"
 names = global
 const_init_tracer = .true.
@@ -120,5 +240,135 @@ elon = 360.0
 "rayleigh","KaraStr","itable=3342,jtable=2383,ktable_1=1,ktable_2=22,rayleigh_damp_table=5400"
 "rayleigh","KaraStr","itable=3343,jtable=2383,ktable_1=1,ktable_2=22,rayleigh_damp_table=5400"
 "rayleigh","KaraStr","itable=3344,jtable=2383,ktable_1=1,ktable_2=22,rayleigh_damp_table=5400"
+/
+"namelists","ocean_mod","generic_wombatlite/*global*"
+/
+"namelists","ocean_mod","generic_wombatlite"
+# The following src_info are required for the model to run but are not used in OM2
+no3_src_file = none
+no3_src_var_name = none
+no3_src_var_unit = none
+no3_src_var_record = 1
+no3_src_var_gridspec =none
+no3_valid_min = 0.0
+#
+phy_src_file = none
+phy_src_var_name = none
+phy_src_var_unit = none
+phy_src_var_record = 1
+phy_src_var_gridspec = none
+phy_valid_min = 0.0
+#
+phyfe_src_file = none
+phyfe_src_var_name = none
+phyfe_src_var_unit = none
+phyfe_src_var_record = 1
+phyfe_src_var_gridspec = none
+phyfe_valid_min = 0.0
+#
+zoofe_src_file = none
+zoofe_src_var_name = none
+zoofe_src_var_unit = none
+zoofe_src_var_record = 1
+zoofe_src_var_gridspec = none
+zoofe_valid_min = 0.0
+#
+detfe_src_file = none
+detfe_src_var_name = none
+detfe_src_var_unit = none
+detfe_src_var_record = 1
+detfe_src_var_gridspec = none
+detfe_valid_min = 0.0
+#
+pchl_src_file = none
+pchl_src_var_name = none
+pchl_src_var_unit = none
+pchl_src_var_record = 1
+pchl_src_var_gridspec = none
+pchl_valid_min = 0.0
+#
+o2_src_file = none
+o2_src_var_name = none
+o2_src_var_unit = none
+o2_src_var_record = 1
+o2_src_var_gridspec = none
+o2_valid_min = 0.0
+#
+zoo_src_file = none
+zoo_src_var_name = none
+zoo_src_var_unit = none
+zoo_src_var_record = 1
+zoo_src_var_gridspec = none
+zoo_valid_min = 0.0
+#
+det_src_file = none
+det_src_var_name = none
+det_src_var_unit = none
+det_src_var_record = 1
+det_src_var_gridspec = none
+det_valid_min = 0.0
+#
+caco3_src_file = none
+caco3_src_var_name = none
+caco3_src_var_unit = none
+caco3_src_var_record = 1
+caco3_src_var_gridspec = none
+caco3_valid_min = 0.0
+#
+dicp_src_file = none
+dicp_src_var_name = none
+dicp_src_var_unit = none
+dicp_src_var_record = 1
+dicp_src_var_gridspec = none
+dicp_valid_min = 0.0
+#
+dicr_src_file = none
+dicr_src_var_name = none
+dicr_src_var_unit = none
+dicr_src_var_record = 1
+dicr_src_var_gridspec = none
+dicr_valid_min = 0.0
+#
+dic_src_file = none
+dic_src_var_name = none
+dic_src_var_unit = none
+dic_src_var_record = 1
+dic_src_var_gridspec = none
+dic_valid_min = 0.0
+#
+alk_src_file = none
+alk_src_var_name = none
+alk_src_var_unit = none
+alk_src_var_record = 1
+alk_src_var_gridspec = none
+alk_valid_min = 0.0
+#
+fe_src_file = none
+fe_src_var_name = none
+fe_src_var_unit = none
+fe_src_var_record = 1
+fe_src_var_gridspec = none
+fe_valid_min = 0.0
+#
+caco3_sediment_src_file = none
+caco3_sediment_src_var_name = none
+caco3_sediment_src_var_unit = none
+caco3_sediment_src_var_record = 1
+caco3_sediment_src_var_gridspec = none
+caco3_sediment_valid_min = 0.0
+#
+det_sediment_src_file = none
+det_sediment_src_var_name = none
+det_sediment_src_var_unit = none
+det_sediment_src_var_record = 1
+det_sediment_src_var_gridspec = none
+det_sediment_valid_min = 0.0
+#
+detfe_sediment_src_file = none
+detfe_sediment_src_var_name = none
+detfe_sediment_src_var_unit = none
+detfe_sediment_src_var_record = 1
+detfe_sediment_src_var_gridspec = none
+detfe_sediment_valid_min = 0.0
 /
 
