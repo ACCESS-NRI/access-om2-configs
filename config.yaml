@@ -7,10 +7,9 @@
 # Force payu to always find, and save, files in this scratch project directory
 # shortpath: /scratch/PROJECT_CODE
 
-queue: normal
+queue: normalsr
 walltime: 6:00:00
 jobname: 1deg_jra55_iaf
-mem: 1000GB
 
 # Sync options for automatically copying data from ephemeral scratch space to 
 # longer term storage
@@ -64,7 +63,7 @@ submodels:
           - /g/data/vk83/configurations/inputs/access-om2/ocean/grids/bathymetry/global.1deg/2020.10.22/topog.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/grids/bathymetry/global.1deg/2020.10.22/ocean_mask.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/grids/vertical/global.1deg/2020.10.22/ocean_vgrid.nc
-          - /g/data/vk83/configurations/inputs/access-om2/ocean/processor_masks/global.1deg/216.16x15/2020.05.30/ocean_mask_table
+          - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/processor_masks/global.1deg/390.18x25/2026.03.11/ocean_mask_table
           - /g/data/vk83/configurations/inputs/access-om2/ocean/chlorophyll/global.1deg/2020.05.30/chl.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/initial_conditions/global.1deg/2020.10.22/ocean_temp_salt.res.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/tideamp.nc
@@ -74,7 +73,7 @@ submodels:
           - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2026.01.08/SFe_Hamiltonetal2020_monthly_clim.nc
           - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2026.01.09/CO2_gm_1750-2024.nc
           - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.1deg/2026.03.06/ocean_wombatlite.res.nc
-      ncpus: 216
+      ncpus: 390
 
     - name: ice
       model: cice5
@@ -114,7 +113,8 @@ manifest:
 
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
-    nodesize: 48
+  nodesize: 104
+  nodemem: 512
 
 # sweep and resubmit on specific errors - see https://github.com/payu-org/payu/issues/241#issuecomment-610739771
 userscripts:
