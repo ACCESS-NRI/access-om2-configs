@@ -183,167 +183,131 @@ elon = 360.0
 "namelists","ocean_mod","generic_wombatlite/*global*"
 /
 "namelists","ocean_mod","generic_wombatlite"
-#
-no3_src_file = INPUT/ocean_wombatlite.res.nc
-no3_src_var_name = no3
+# The following src_info are required for the model to run but are not used in OM2
+no3_src_file = none
+no3_src_var_name = none
 no3_src_var_unit = none
-no3_dest_var_name = no3
-no3_dest_var_unit = mol kg-1
 no3_src_var_record = 1
-no3_src_var_gridspec = NONE
+no3_src_var_gridspec =none
 no3_valid_min = 0.0
 #
-phy_src_file = INPUT/ocean_wombatlite.res.nc
-phy_src_var_name = phy
+phy_src_file = none
+phy_src_var_name = none
 phy_src_var_unit = none
-phy_dest_var_name = phy
-phy_dest_var_unit = mol kg-1
 phy_src_var_record = 1
-phy_src_var_gridspec = NONE
+phy_src_var_gridspec = none
 phy_valid_min = 0.0
 #
-phyfe_src_file = INPUT/ocean_wombatlite.res.nc
-phyfe_src_var_name = phyfe
+phyfe_src_file = none
+phyfe_src_var_name = none
 phyfe_src_var_unit = none
-phyfe_dest_var_name = phyfe
-phyfe_dest_var_unit = mol kg-1
 phyfe_src_var_record = 1
-phyfe_src_var_gridspec = NONE
+phyfe_src_var_gridspec = none
 phyfe_valid_min = 0.0
 #
-zoofe_src_file = INPUT/ocean_wombatlite.res.nc
-zoofe_src_var_name = zoofe
+zoofe_src_file = none
+zoofe_src_var_name = none
 zoofe_src_var_unit = none
-zoofe_dest_var_name = zoofe
-zoofe_dest_var_unit = mol kg-1
 zoofe_src_var_record = 1
-zoofe_src_var_gridspec = NONE
+zoofe_src_var_gridspec = none
 zoofe_valid_min = 0.0
 #
-detfe_src_file = INPUT/ocean_wombatlite.res.nc
-detfe_src_var_name = detfe
+detfe_src_file = none
+detfe_src_var_name = none
 detfe_src_var_unit = none
-detfe_dest_var_name = detfe
-detfe_dest_var_unit = mol kg-1
 detfe_src_var_record = 1
-detfe_src_var_gridspec = NONE
+detfe_src_var_gridspec = none
 detfe_valid_min = 0.0
 #
-pchl_src_file = INPUT/ocean_wombatlite.res.nc
-pchl_src_var_name = pchl
+pchl_src_file = none
+pchl_src_var_name = none
 pchl_src_var_unit = none
-pchl_dest_var_name = pchl
-pchl_dest_var_unit = mol kg-1
 pchl_src_var_record = 1
-pchl_src_var_gridspec = NONE
+pchl_src_var_gridspec = none
 pchl_valid_min = 0.0
 #
-o2_src_file = INPUT/ocean_wombatlite.res.nc
-o2_src_var_name = o2
+o2_src_file = none
+o2_src_var_name = none
 o2_src_var_unit = none
-o2_dest_var_name = o2
-o2_dest_var_unit = mol kg-1
 o2_src_var_record = 1
-o2_src_var_gridspec = NONE
+o2_src_var_gridspec = none
 o2_valid_min = 0.0
 #
-zoo_src_file = INPUT/ocean_wombatlite.res.nc
-zoo_src_var_name = zoo
+zoo_src_file = none
+zoo_src_var_name = none
 zoo_src_var_unit = none
-zoo_dest_var_name = zoo
-zoo_dest_var_unit = mol kg-1
 zoo_src_var_record = 1
-zoo_src_var_gridspec = NONE
+zoo_src_var_gridspec = none
 zoo_valid_min = 0.0
 #
-det_src_file = INPUT/ocean_wombatlite.res.nc
-det_src_var_name = det
+det_src_file = none
+det_src_var_name = none
 det_src_var_unit = none
-det_dest_var_name = det
-det_dest_var_unit = mol kg-1
 det_src_var_record = 1
-det_src_var_gridspec = NONE
+det_src_var_gridspec = none
 det_valid_min = 0.0
 #
-caco3_src_file = INPUT/ocean_wombatlite.res.nc
-caco3_src_var_name = caco3
+caco3_src_file = none
+caco3_src_var_name = none
 caco3_src_var_unit = none
-caco3_dest_var_name = caco3
-caco3_dest_var_unit = mol kg-1
 caco3_src_var_record = 1
-caco3_src_var_gridspec = NONE
+caco3_src_var_gridspec = none
 caco3_valid_min = 0.0
 #
-dicp_src_file = INPUT/ocean_wombatlite.res.nc
-dicp_src_var_name = dicp
+dicp_src_file = none
+dicp_src_var_name = none
 dicp_src_var_unit = none
-dicp_dest_var_name = dicp
-dicp_dest_var_unit = mol kg-1
 dicp_src_var_record = 1
-dicp_src_var_gridspec = NONE
+dicp_src_var_gridspec = none
 dicp_valid_min = 0.0
 #
-dicr_src_file = INPUT/ocean_wombatlite.res.nc
-dicr_src_var_name = dicr
+dicr_src_file = none
+dicr_src_var_name = none
 dicr_src_var_unit = none
-dicr_dest_var_name = dicr
-dicr_dest_var_unit = mol kg-1
 dicr_src_var_record = 1
-dicr_src_var_gridspec = NONE
+dicr_src_var_gridspec = none
 dicr_valid_min = 0.0
 #
-dic_src_file = INPUT/ocean_wombatlite.res.nc
-dic_src_var_name = dic
+dic_src_file = none
+dic_src_var_name = none
 dic_src_var_unit = none
-dic_dest_var_name = dic
-dic_dest_var_unit = mol kg-1
 dic_src_var_record = 1
-dic_src_var_gridspec = NONE
+dic_src_var_gridspec = none
 dic_valid_min = 0.0
 #
-alk_src_file = INPUT/ocean_wombatlite.res.nc
-alk_src_var_name = alk
+alk_src_file = none
+alk_src_var_name = none
 alk_src_var_unit = none
-alk_dest_var_name = alk
-alk_dest_var_unit = mol kg-1
 alk_src_var_record = 1
-alk_src_var_gridspec = NONE
+alk_src_var_gridspec = none
 alk_valid_min = 0.0
 #
-fe_src_file = INPUT/ocean_wombatlite.res.nc
-fe_src_var_name = fe
+fe_src_file = none
+fe_src_var_name = none
 fe_src_var_unit = none
-fe_dest_var_name = fe
-fe_dest_var_unit = mol kg-1
 fe_src_var_record = 1
-fe_src_var_gridspec = NONE
+fe_src_var_gridspec = none
 fe_valid_min = 0.0
 #
-caco3_sediment_src_file = INPUT/ocean_wombatlite.res.nc
-caco3_sediment_src_var_name = caco3_sediment
+caco3_sediment_src_file = none
+caco3_sediment_src_var_name = none
 caco3_sediment_src_var_unit = none
-caco3_sediment_dest_var_name = caco3_sediment
-caco3_sediment_dest_var_unit = mol m-2
 caco3_sediment_src_var_record = 1
-caco3_sediment_src_var_gridspec = NONE
+caco3_sediment_src_var_gridspec = none
 caco3_sediment_valid_min = 0.0
 #
-det_sediment_src_file = INPUT/ocean_wombatlite.res.nc
-det_sediment_src_var_name = det_sediment
+det_sediment_src_file = none
+det_sediment_src_var_name = none
 det_sediment_src_var_unit = none
-det_sediment_dest_var_name = det_sediment
-det_sediment_dest_var_unit = mol m-2
 det_sediment_src_var_record = 1
-det_sediment_src_var_gridspec = NONE
+det_sediment_src_var_gridspec = none
 det_sediment_valid_min = 0.0
 #
-detfe_sediment_src_file = INPUT/ocean_wombatlite.res.nc
-detfe_sediment_src_var_name = detfe_sediment
+detfe_sediment_src_file = none
+detfe_sediment_src_var_name = none
 detfe_sediment_src_var_unit = none
-detfe_sediment_dest_var_name = detfe_sediment
-detfe_sediment_dest_var_unit = mol m-2
 detfe_sediment_src_var_record = 1
-detfe_sediment_src_var_gridspec = NONE
+detfe_sediment_src_var_gridspec = none
 detfe_sediment_valid_min = 0.0
 /
 
