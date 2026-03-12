@@ -6,6 +6,13 @@ For usage instructions, see the [ACCESS-Hive docs](https://access-hive.org.au/mo
 
 Run length and timestep are set in `accessom2.nml`. The default timestep for this configuration is 5400 seconds, and the model is stable with this timestep right from the start. However if you alter the configuration you may need a shorter timestep during the first year or two of model equilibration.
 
+## Performance
+
+The approximate cost of running this configuration without modification is:
+- Compute usage: 350 SU/year
+- Model throughput: 57.6 years/day
+- Total CPUs: 416
+
 ## Conditions of use
 
 COSIMA request that users of this or other ACCESS-OM2 model code:
