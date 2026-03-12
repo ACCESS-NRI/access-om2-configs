@@ -143,10 +143,10 @@ work/ocean/INPUT/ocean_mask.nc:
     binhash: a7eebb34e6279a2a045b896ab5b20602
     md5: ee07436042b71df2938726854be5a9aa
 work/ocean/INPUT/ocean_mask_table:
-  fullpath: /g/data/vk83/configurations/inputs/access-om2/ocean/processor_masks/global.025deg/1456.48x40/2023.05.15/ocean_mask_table
+  fullpath: /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/processor_masks/global.025deg/2129.48x60/2026.03.11/ocean_mask_table
   hashes:
-    binhash: e3bdbe3f28928063d63077ef13eb8701
-    md5: 7a2fcdfbb9b331161c7d8874e2b7e6f9
+    binhash: 2ec64ad20a14bdc75d73ffd247dba0a0
+    md5: ce790e0f0446f6d862d41abbfa801200
 work/ocean/INPUT/ocean_mosaic.nc:
   fullpath: /g/data/vk83/configurations/inputs/access-om2/ocean/grids/mosaic/global.025deg/2020.05.30/ocean_mosaic.nc
   hashes:

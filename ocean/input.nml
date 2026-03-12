@@ -225,8 +225,8 @@
     barotropic_split  = 80
     cmip_units        = .true.
     debug             = .false.
-    io_layout         = 6, 5
-    layout            = 48, 40
+    io_layout         = 6, 6
+    layout            = 48, 60
     surface_height_split = 1
     time_tendency     = 'twolevel'
     vertical_coordinate = 'zstar'
