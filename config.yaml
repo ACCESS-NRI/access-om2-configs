@@ -15,8 +15,8 @@ mem: 1000GB
 # Sync options for automatically copying data from ephemeral scratch space to 
 # longer term storage
 sync:
-    enable: False # set path below and change to true
-    path: null # Set to location on /g/data or a remote server and path (rsync syntax)
+    enable: False # set base_path below and change to true
+    base_path: null # Set to location on /g/data or a remote server and path (rsync syntax)
 
 # Modules for loading model executables
 modules:
