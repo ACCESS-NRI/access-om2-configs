@@ -113,3 +113,5 @@ userscripts:
 manifest:
   reproduce:
     exe: true
+
+payu_minimum_version: 1.3.0
