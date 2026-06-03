@@ -100,22 +100,6 @@ longname = Dissolved Inorganic Carbon
 ppm_hlimiter = 3
 ppm_vlimiter = 3
 /
-"prog_tracers","ocean_mod","dicp"
-horizontal-advection-scheme = mdppm
-vertical-advection-scheme = mdppm
-restart_file  = ocean_wombatlite.res.nc
-longname = Preformed Dissolved Inorganic Carbon
-ppm_hlimiter = 3
-ppm_vlimiter = 3
-/
-"prog_tracers","ocean_mod","dicr"
-horizontal-advection-scheme = mdppm
-vertical-advection-scheme = mdppm
-restart_file  = ocean_wombatlite.res.nc
-longname = Remineralised Dissolved Inorganic Carbon
-ppm_hlimiter = 3
-ppm_vlimiter = 3
-/
 "prog_tracers","ocean_mod","alk"
 horizontal-advection-scheme = mdppm
 vertical-advection-scheme = mdppm
@@ -262,20 +246,6 @@ caco3_src_var_unit = none
 caco3_src_var_record = 1
 caco3_src_var_gridspec = none
 caco3_valid_min = 0.0
-#
-dicp_src_file = none
-dicp_src_var_name = none
-dicp_src_var_unit = none
-dicp_src_var_record = 1
-dicp_src_var_gridspec = none
-dicp_valid_min = 0.0
-#
-dicr_src_file = none
-dicr_src_var_name = none
-dicr_src_var_unit = none
-dicr_src_var_record = 1
-dicr_src_var_gridspec = none
-dicr_valid_min = 0.0
 #
 dic_src_file = none
 dic_src_var_name = none
