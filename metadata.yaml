@@ -7,7 +7,7 @@ description: |-
   https://doi.org/10.5194/gmd-13-401-2020, but with many improvements and WOMBATlite
   ocean biogeochemistry. Initial conditions are WOA13v2 conservative temperature and
   practical salinity. Initial BGC tracer concentrations are the same as the legacy WOMBAT
-  configuration "1deg_jra55_ryf_bgc" (see
+  configuration "1deg_jra55_iaf_bgc" (see
   https://github.com/COSIMA/input_om2-bgc/tree/9d28b5f) with the following additional
   WOMBATlite tracers:
   - pchl = phy * 0.02
