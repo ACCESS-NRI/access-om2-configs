@@ -9,8 +9,8 @@ Run length and timestep are set in `accessom2.nml`. The configuration is supplie
 ## Performance
 
 The approximate cost of running this configuration without modification is:
-- Compute usage: 462 kSU/year
-- Model throughput: 0.7 years/day
+- Compute usage: 420 kSU/year
+- Model throughput: 0.8 years/day
 - Total CPUs: 6448
 
 ## Conditions of use
