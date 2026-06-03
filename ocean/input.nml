@@ -72,9 +72,6 @@
 /
 
 &generic_wombatlite_nml
-    co2_calc='mocsy'
-    do_caco3_dynamics=.true.
-    do_burial=.true.
 /
 
 &ocean_advection_velocity_nml
