@@ -382,12 +382,6 @@ ACCESS-OM2-01
 "oceanbgc-3d-dic-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "months"
 "generic_wombatlite", "dic", "dic", "oceanbgc-3d-dic-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
 
-"oceanbgc-3d-dicr-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "months"
-"generic_wombatlite", "dicr", "dicr", "oceanbgc-3d-dicr-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
-
-"oceanbgc-3d-dicp-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "months"
-"generic_wombatlite", "dicp", "dicp", "oceanbgc-3d-dicp-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
-
 "oceanbgc-3d-fe-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "months"
 "generic_wombatlite", "fe", "fe", "oceanbgc-3d-fe-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
 
@@ -427,12 +421,6 @@ ACCESS-OM2-01
 "oceanbgc-2d-surface_dic-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "months"
 "ocean_model", "surface_dic", "surface_dic", "oceanbgc-2d-surface_dic-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
 
-"oceanbgc-2d-surface_dicr-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "months"
-"ocean_model", "surface_dicr", "surface_dicr", "oceanbgc-2d-surface_dicr-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
-
-"oceanbgc-2d-surface_dicp-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "months"
-"ocean_model", "surface_dicp", "surface_dicp", "oceanbgc-2d-surface_dicp-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
-
 "oceanbgc-2d-surface_fe-1-monthly-mean-ym%4yr%2mo", 1, "months", 1, "days", "time", 1, "months"
 "ocean_model", "surface_fe", "surface_fe", "oceanbgc-2d-surface_fe-1-monthly-mean-ym%4yr%2mo", "all", "average", "none", 2
 
@@ -459,8 +447,6 @@ ACCESS-OM2-01
 "ocean_model", "caco3_global_ave", "caco3_global_ave", "oceanbgc-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
 "ocean_model", "det_global_ave", "det_global_ave", "oceanbgc-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
 "ocean_model", "dic_global_ave", "dic_global_ave", "oceanbgc-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "dicr_global_ave", "dicr_global_ave", "oceanbgc-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
-"ocean_model", "dicp_global_ave", "dicp_global_ave", "oceanbgc-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
 "ocean_model", "fe_global_ave", "fe_global_ave", "oceanbgc-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
 "ocean_model", "no3_global_ave", "no3_global_ave", "oceanbgc-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1
 "ocean_model", "o2_global_ave", "o2_global_ave", "oceanbgc-scalar-1-monthly-ym%4yr%2mo", "all", "average", "none", 1

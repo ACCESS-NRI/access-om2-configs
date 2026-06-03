@@ -368,8 +368,8 @@ diag_table:
             det:
             detfe:
             dic:
-            dicr:
-            dicp:
+            #dicr:
+            #dicp:
             fe:
             no3:
             o2:
@@ -389,8 +389,8 @@ diag_table:
             surface_caco3:
             surface_det:
             surface_dic:
-            surface_dicr:
-            surface_dicp:
+            #surface_dicr:
+            #surface_dicp:
             surface_fe:
             surface_no3:
             surface_o2:
@@ -417,8 +417,8 @@ diag_table:
             caco3_global_ave:
             det_global_ave:
             dic_global_ave:
-            dicr_global_ave:
-            dicp_global_ave:
+            #dicr_global_ave:
+            #dicp_global_ave:
             fe_global_ave:
             no3_global_ave:
             o2_global_ave:
@@ -478,6 +478,8 @@ diag_table:
             #zooegesdet:
             #zoomorl:
             #zoomorq:
+            #zooprefphy:
+            #zooprefdet:
             #reminr:
             detremi:
             #dissratcal:
@@ -489,6 +491,11 @@ diag_table:
             #pocdiss:
             det_vmove:
             caco3_vmove:
+            #tri_mumax:
+            #tri_lpar:
+            #tri_lfer:
+            #nitrfix:
+            #ligK:
     'monthly 2d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
             module_name: generic_wombatlite
@@ -504,7 +511,9 @@ diag_table:
             #detfe_sed_depst:
             #caco3_sed_remin:
             #caco3_sed_depst:
+            #det_sed_denit:
             #fbury:
+            #fdenit:
             o2_stf:
             #no3_stf:
             #fe_stf:
@@ -536,6 +545,7 @@ diag_table:
             #sedhtotal:
             #sedco3:
             #sedomega_cal:
+            #sedo2:
     'daily 2d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
             module_name: generic_wombatlite
