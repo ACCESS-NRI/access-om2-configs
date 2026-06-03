@@ -9,8 +9,8 @@ Run length and timestep are set in `accessom2.nml`. The default timestep for thi
 ## Performance
 
 The approximate cost of running this configuration without modification is:
-- Compute usage: 14.1 kSU/year
-- Model throughput: 8.5 years/day
+- Compute usage: 13.5 kSU/year
+- Model throughput: 9 years/day
 - Total CPUs: 2496
 
 ## Conditions of use
