@@ -14,7 +14,7 @@
  $NFIELDS
 # This is the total number of fields being exchanged. 
 ### 11 fields  atm -> ice
-### 17 fields  ice -> ocn
+### 18 fields  ice -> ocn
 ###  7 fields  ocn -> ice
    36
  $END

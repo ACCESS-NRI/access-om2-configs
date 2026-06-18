@@ -19,8 +19,6 @@ description: |-
   - dicp = 0.0
   - dicr = 0.0
   - detfe_sediment = 0.0
-  - detbury = 0.0
-  - caco3bury = 0.0
   Run with JRA55-do v1.4.0 RYF9091 (1 May 1990 - 30 April 1991) repeated forcing
   with all solid runoff converted to liquid runoff with no heat transfer.
   Spin up starts from a nominal year of 1 Jan 1900.
