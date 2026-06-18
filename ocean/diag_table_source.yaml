@@ -25,10 +25,10 @@ global_defaults:
         - file_name_dimension
         - field_name  # substituted by field name in diag_table section below
         - output_freq
-        - output_freq_units
+        - '':
+            - output_freq_units
         - reduction_method
         - file_name_date
-        # - file_name_date_section
     output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
     output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
     file_format: 1  # integer, must be 1, specifying NetCDF (the only format currently supported)
@@ -63,26 +63,20 @@ global_defaults:
     #     8: packed 1-byte (not tested)
 # extra things for constructing filename:
     file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
-    file_name_prefix: ocean
-    file_name_date: "ym%4yr%2mo"  # run date/time of file opening; format: %, 1 digit (#digits), one of (yr, mo, dy, hr, mi, sc); date/time components will be separated by _ in filename.
-    file_name_separator: "-"  # used to separate filename components; best not to use "_" to avoid confusion with fields and dates
+    file_name_prefix: access-om2.mom5
+    file_name_date: "%4yr"  # run date/time of file opening; format: %, 1 digit (#digits), one of (yr, mo, dy, hr, mi, sc); date/time components will be separated by _ in filename.
+    file_name_separator: "."  # used to separate filename components; best not to use "_" to avoid confusion with fields and dates
     file_name_omit_empty: true  # whether to omit empty filename components to avoid duplicate file_name_separator
     file_name_substitutions:  # string replacements for filename components
-        years: yearly
-        months: monthly
-        days: daily
-        hours: hourly
+        years: yr
+        months: mon
+        days: day
+        hours: hr
         none: snap  # careful! will apply to both reduction_method and regional_section
         'False': snap
         average: mean
         'True': mean
         None: ""  # for empty items
-    file_name_date_section:  # These are separated by "_". If file_name_date is used, it must be the last item.
-        - output_freq
-        - output_freq_units
-        - reduction_method
-        - file_name_date
-
 
 #######################################################################################################
 # diag_table section - this defines the diagnostics that will appear in diag_table.
@@ -114,6 +108,8 @@ diag_table:
                 - file_name_prefix
                 - file_name_dimension
                 - field_name  # substituted by field name in fields section below
+                - file_name_frequency # this is a hack to get 'fx' in the filename
+            file_name_frequency: fx
             reduction_method: snap  # mean, snap, rms, pow##, min, max, or diurnal##
             output_freq: -1  # Output frequency in output_freq_units (0: every timestep; -1: only at end of run)
             new_file_freq:  # optional integer: frequency (in new_file_freq_units) for closing the existing file, and creating a new file
@@ -285,7 +281,9 @@ diag_table:
                 - file_name_prefix
                 - file_name_dimension
                 - output_freq
-                - output_freq_units
+                - '':
+                    - output_freq_units
+                - reduction_method
                 - file_name_date
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
@@ -344,7 +342,6 @@ diag_table:
     'monthly 3d prognostic BGC fields':
         defaults:  # these can be overridden for individual fields below
             module_name: generic_wombatlite
-            file_name_prefix: oceanbgc
             file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
@@ -366,7 +363,6 @@ diag_table:
             zoofe:
     'monthly 2d prognostic BGC surface fields':
         defaults:  # these can be overridden for individual fields below
-            file_name_prefix: oceanbgc
             file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
@@ -385,7 +381,6 @@ diag_table:
             surface_zoo:
     'monthly scalar prognostic BGC fields':
         defaults:  # these can be overridden for individual fields below
-            file_name_prefix: oceanbgc
             file_name_dimension: scalar  # descriptor for filename, e.g. 3d, 2d, scalar
             file_name:  # file name (without trailing ".nc") is constructed from these components,
             # separated by file_name_separator, as per https://github.com/COSIMA/access-om2/issues/185
@@ -393,7 +388,9 @@ diag_table:
                 - file_name_prefix
                 - file_name_dimension
                 - output_freq
-                - output_freq_units
+                - '':
+                    - output_freq_units
+                - reduction_method
                 - file_name_date
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
@@ -414,7 +411,6 @@ diag_table:
     'monthly 3d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
             module_name: generic_wombatlite
-            file_name_prefix: oceanbgc
             file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
@@ -485,7 +481,6 @@ diag_table:
     'monthly 2d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
             module_name: generic_wombatlite
-            file_name_prefix: oceanbgc
             file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
@@ -535,7 +530,6 @@ diag_table:
     'daily 2d diagnostic BGC fields':
         defaults:  # these can be overridden for individual fields below
             module_name: generic_wombatlite
-            file_name_prefix: oceanbgc
             file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
