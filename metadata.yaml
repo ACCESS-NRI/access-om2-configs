@@ -2,12 +2,14 @@ contact: Add your name here
 email: Add your email address here
 created: Add the date you started the experiment here (YYYY-MM-DD)
 description: |-
-  0.25 degree ACCESS-OM2 global model configuration under interannual forcing.
+  0.25 degree ACCESS-OM2 global model configuration under the RYF9091 Repeat
+  Year Forcing strategy outlined by Stewart et al. (2020),
+  https://doi.org/10.1016/j.ocemod.2019.101557.
   The configuration is based on that described in Kiss et al. (2020),
   https://doi.org/10.5194/gmd-13-401-2020, but with many improvements and WOMBATlite
   ocean biogeochemistry. Initial conditions are WOA13v2 conservative temperature and
   practical salinity. Initial BGC tracer concentrations are the same as the legacy WOMBAT
-  configuration "1deg_jra55_ryf_bgc" (see
+  configuration "025deg_jra55_ryf_bgc" (see
   https://github.com/COSIMA/input_om2-bgc/tree/9d28b5f) with the following additional
   WOMBATlite tracers:
   - pchl = phy * 0.02
@@ -17,8 +19,6 @@ description: |-
   - dicp = 0.0
   - dicr = 0.0
   - detfe_sediment = 0.0
-  - detbury = 0.0
-  - caco3bury = 0.0
   Run with JRA55-do v1.4.0 RYF9091 (1 May 1990 - 30 April 1991) repeated forcing
   with all solid runoff converted to liquid runoff with no heat transfer.
   Spin up starts from a nominal year of 1 Jan 1900.

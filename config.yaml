@@ -7,7 +7,7 @@
 # Force payu to always find, and save, files in this scratch project directory
 # shortpath: /scratch/PROJECT_CODE
 
-queue: normal
+queue: normalsr
 walltime: 6:00:00
 jobname: 025deg_jra55_ryf
 
@@ -22,7 +22,7 @@ modules:
   use:
       - /g/data/vk83/modules
   load:
-      - access-om2/2025.12.000
+      - access-om2/2026.05.000
       - model-tools/mppnccombine-fast/2025.07.000
 
 # Model configuration
@@ -51,24 +51,24 @@ submodels:
           - /g/data/vk83/configurations/inputs/access-om2/ocean/grids/bathymetry/global.025deg/2023.05.15/topog.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/grids/bathymetry/global.025deg/2023.05.15/ocean_mask.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/grids/vertical/global.025deg/2020.11.02/ocean_vgrid.nc
-          - /g/data/vk83/configurations/inputs/access-om2/ocean/processor_masks/global.025deg/1456.48x40/2023.05.15/ocean_mask_table
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/processor_masks/global.025deg/2129.48x60/2026.03.11/ocean_mask_table
           - /g/data/vk83/configurations/inputs/access-om2/ocean/chlorophyll/global.025deg/2020.05.30/chl.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/initial_conditions/global.025deg/2020.10.22/ocean_temp_salt.res.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/tides/global.025deg/2020.05.30/tideamp.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/tides/global.025deg/2020.05.30/roughness_amp.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/tides/global.025deg/2020.05.30/roughness_cdbot.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/surface_salt_restoring/global.025deg/2020.05.30/salt_sfc_restore.nc
-          - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.025deg/2026.01.09/SFe_Hamiltonetal2020_monthly_clim.nc
-          - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.025deg/2026.01.09/ocean_wombatlite.res.nc
-      ncpus: 1456
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/biogeochemistry/global.025deg/2026.01.09/SFe_Hamiltonetal2020_monthly_clim.nc
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/biogeochemistry/global.025deg/2026.03.06/ocean_wombatlite.res.nc
+      ncpus: 2129
 
     - name: ice
       model: cice5
-      exe: cice_auscom_1440x1080_48x40_480p.exe
+      exe: cice_auscom_1440x1080_30x27.exe
       input:
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.025deg/2024.04.17/grid.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.025deg/2024.04.17/kmt.nc
-        - /g/data/vk83/prerelease/configurations/inputs/access-om2/ice/initial_conditions/global.025deg/2026.01.09/i2o.nc
+        - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.025deg/2026.01.09/i2o.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.025deg/2020.10.22/o2i.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.025deg/2020.05.30/u_star.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/initial_conditions/global.025deg/2020.05.30/monthly_sstsss.nc
@@ -101,12 +101,13 @@ manifest:
 
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
-    nodesize: 48
+  nodesize: 104
+  nodemem: 512
 
 # sweep and resubmit on specific errors - see https://github.com/payu-org/payu/issues/241#issuecomment-610739771
 userscripts:
+    archive: /usr/bin/bash /g/data/vk83/apps/om3-scripts/payu_config/archive.sh
     error: tools/resub.sh
     run: rm -f resubmit.count
-    sync: /g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh
 
 payu_minimum_version: 1.3.0
