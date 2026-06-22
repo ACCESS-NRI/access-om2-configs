@@ -1,12 +1,17 @@
-# 0.1deg_jra55_ryf
+# 0.1deg_jra55_ryf with WOMBATlite
 
-Standard configuration for 0.1 degree global [ACCESS-OM2](https://github.com/ACCESS-NRI/access-om2) experiment (ACCESS-OM2) with JRA55-do 1 May 1990 - 30 April 1991 repeat-year forcing (RYF9091).
-
-This is the physics-only version.
+Standard configuration for 0.1 degree global [ACCESS-OM2](https://github.com/ACCESS-NRI/access-om2) experiment with JRA55-do 1 May 1990 - 30 April 1991 repeat-year forcing (RYF9091) and WOMBATlite ocean biogeochemistry (BGC). This configuration includes ocean BGC but does not include sea ice BGC.
 
 For usage instructions, see the [ACCESS-Hive docs](https://access-hive.org.au/models/run-a-model/run-access-om/)
 
 Run length and timestep are set in `accessom2.nml`. The default timestep for this configuration is 300 seconds, and the model is stable with this timestep right from the start. However if you alter the configuration you may need a shorter timestep during the first year or two of model equilibration.
+
+## Performance
+
+The approximate cost of running this configuration without modification is:
+- Compute usage: 420 kSU/year
+- Model throughput: 0.8 years/day
+- Total CPUs: 6448
 
 ## Conditions of use
 
