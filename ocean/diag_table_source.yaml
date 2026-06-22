@@ -25,16 +25,16 @@ global_defaults:
         - file_name_dimension
         - field_name  # substituted by field name in diag_table section below
         - output_freq
-        - output_freq_units
+        - '':
+            - output_freq_units
         - reduction_method
         - file_name_date
-        # - file_name_date_section
     output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
     output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
     file_format: 1  # integer, must be 1, specifying NetCDF (the only format currently supported)
     time_axis_units: days  # time units for the output file time axis: years, months, days, hours, minutes, or seconds
     time_axis_name: time  # must be "time" (case-insensitive)
-    new_file_freq: 3  # optional integer: frequency (in new_file_freq_units) for closing the existing file, and creating a new file
+    new_file_freq: 1  # optional integer: frequency (in new_file_freq_units) for closing the existing file, and creating a new file
     new_file_freq_units: months  # time units for new_file_freq: years, months, days, hours, minutes, or seconds (optional; required if and only if new_file_freq specified)
     start_time:  # Time to start the file for the first time. The format of this string is the same as base_date (optional; requires new_file_freq, new_file_freq_units)
     file_duration:  # integer: How long file should receive data after start time (optional; requires new_file_freq, new_file_freq_units, start_time)
@@ -63,26 +63,20 @@ global_defaults:
     #     8: packed 1-byte (not tested)
 # extra things for constructing filename:
     file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
-    file_name_prefix: ocean
-    file_name_date: "ym%4yr%2mo"  # run date/time of file opening; format: %, 1 digit (#digits), one of (yr, mo, dy, hr, mi, sc); date/time components will be separated by _ in filename.
-    file_name_separator: "-"  # used to separate filename components; best not to use "_" to avoid confusion with fields and dates
+    file_name_prefix: access-om2.mom5
+    file_name_date: "%4yr%2mo"  # run date/time of file opening; format: %, 1 digit (#digits), one of (yr, mo, dy, hr, mi, sc); date/time components will be separated by _ in filename.
+    file_name_separator: "."  # used to separate filename components; best not to use "_" to avoid confusion with fields and dates
     file_name_omit_empty: true  # whether to omit empty filename components to avoid duplicate file_name_separator
     file_name_substitutions:  # string replacements for filename components
-        years: yearly
-        months: monthly
-        days: daily
-        hours: hourly
+        years: yr
+        months: mon
+        days: day
+        hours: hr
         none: snap  # careful! will apply to both reduction_method and regional_section
         'False': snap
         average: mean
         'True': mean
         None: ""  # for empty items
-    file_name_date_section:  # These are separated by "_". If file_name_date is used, it must be the last item.
-        - output_freq
-        - output_freq_units
-        - reduction_method
-        - file_name_date
-
 
 #######################################################################################################
 # diag_table section - this defines the diagnostics that will appear in diag_table.
@@ -114,6 +108,8 @@ diag_table:
                 - file_name_prefix
                 - file_name_dimension
                 - field_name  # substituted by field name in fields section below
+                - file_name_frequency # this is a hack to get 'fx' in the filename
+            file_name_frequency: fx
             reduction_method: snap  # mean, snap, rms, pow##, min, max, or diurnal##
             output_freq: -1  # Output frequency in output_freq_units (0: every timestep; -1: only at end of run)
             new_file_freq:  # optional integer: frequency (in new_file_freq_units) for closing the existing file, and creating a new file
@@ -298,7 +294,9 @@ diag_table:
                 - file_name_prefix
                 - file_name_dimension
                 - output_freq
-                - output_freq_units
+                - '':
+                    - output_freq_units
+                - reduction_method
                 - file_name_date
             output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
             output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
@@ -355,3 +353,199 @@ diag_table:
             # u:
             # v:
             # vorticity_z:
+    'monthly 3d prognostic BGC fields':
+        defaults:  # these can be overridden for individual fields below
+            module_name: generic_wombatlite
+            file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+        fields:
+            alk:
+            caco3:
+            det:
+            detfe:
+            dic:
+            #dicr:
+            #dicp:
+            fe:
+            no3:
+            o2:
+            phy:
+            phyfe:
+            pchl:
+            zoo:
+            zoofe:
+    'monthly 2d prognostic BGC surface fields':
+        defaults:  # these can be overridden for individual fields below
+            file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+        fields:
+            surface_alk:
+            surface_caco3:
+            surface_det:
+            surface_dic:
+            #surface_dicr:
+            #surface_dicp:
+            surface_fe:
+            surface_no3:
+            surface_o2:
+            surface_phy:
+            surface_pchl:
+            surface_zoo:
+    'monthly scalar prognostic BGC fields':
+        defaults:  # these can be overridden for individual fields below
+            file_name_dimension: scalar  # descriptor for filename, e.g. 3d, 2d, scalar
+            file_name:  # file name (without trailing ".nc") is constructed from these components,
+            # separated by file_name_separator, as per https://github.com/COSIMA/access-om2/issues/185
+            # All these components (other than field_name) must be names that exist in global_defaults.
+                - file_name_prefix
+                - file_name_dimension
+                - output_freq
+                - '':
+                    - output_freq_units
+                - reduction_method
+                - file_name_date
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+            packing: 1  # double precision
+        fields:
+            alk_global_ave:
+            caco3_global_ave:
+            det_global_ave:
+            dic_global_ave:
+            #dicr_global_ave:
+            #dicp_global_ave:
+            fe_global_ave:
+            no3_global_ave:
+            o2_global_ave:
+            phy_global_ave:
+            pchl_global_ave:
+            zoo_global_ave:
+    'monthly 3d diagnostic BGC fields':
+        defaults:  # these can be overridden for individual fields below
+            module_name: generic_wombatlite
+            file_name_dimension: 3d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+        fields:
+            npp3d:
+            zsp3d:
+            radbio:
+            #radmid:
+            #radmld:
+            phy_mu:
+            #phy_muax:
+            #phy_kni:
+            #phy_kfe:
+            phy_lpar:
+            phy_lnit:
+            phy_lfer:
+            phy_dfeupt:
+            #phy_feupreg:
+            #phy_fedoreg:
+            phygrow:
+            phymorl:
+            phymorq:
+            pchl_mu:
+            #feIII:
+            #felig:
+            #fecol:
+            #feprecip:
+            #fescaven:
+            #fescadet:
+            #fescoag2det:
+            fesources:
+            fesinks:
+            htotal:
+            omega_ara:
+            omega_cal:
+            #co3:
+            #co2_star:
+            pic2poc:
+            zooeps:
+            zoograzphy:
+            zoograzdet:
+            #zooassiphy:
+            #zooassidet:
+            #zooexcrphy:
+            #zooexcrdet:
+            #zooegesphy:
+            #zooegesdet:
+            #zoomorl:
+            #zoomorq:
+            #zooprefphy:
+            #zooprefdet:
+            #reminr:
+            detremi:
+            #dissratcal:
+            #dissratara:
+            #dissratpoc:
+            #zoodiss:
+            #caldiss:
+            #aradiss:
+            #pocdiss:
+            det_vmove:
+            caco3_vmove:
+            #tri_mumax:
+            #tri_lpar:
+            #tri_lfer:
+            #nitrfix:
+            #ligK:
+    'monthly 2d diagnostic BGC fields':
+        defaults:  # these can be overridden for individual fields below
+            module_name: generic_wombatlite
+            file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: months  # time units for output: years, months, days, hours, minutes, or seconds
+        fields:
+            pco2:
+            #det_sed_remin:
+            #det_sed_depst:
+            #detfe_sed_remin:
+            #detfe_sed_depst:
+            #caco3_sed_remin:
+            #caco3_sed_depst:
+            #det_sed_denit:
+            #fbury:
+            #fdenit:
+            o2_stf:
+            #no3_stf:
+            #fe_stf:
+            dic_stf:
+            dic_csurf:
+            #dicp_stf:
+            #dicp_csurf:
+            #alk_stf:
+            #o2_btf:
+            #no3_btf:
+            #fe_btf:
+            #dic_btf:
+            #alk_btf:
+            #no3_vstf:
+            #dic_vstf:
+            #dicp_vstf:
+            #alk_vstf:
+            det_sediment:
+            detfe_sediment:
+            caco3_sediment:
+            zeuphot:
+            #sedtemp:
+            #seddep:
+            #sedmask:
+            #sedsalt:
+            #sedno3:
+            #seddic:
+            #sedalk:
+            #sedhtotal:
+            #sedco3:
+            #sedomega_cal:
+            #sedo2:
+    'daily 2d diagnostic BGC fields':
+        defaults:  # these can be overridden for individual fields below
+            module_name: generic_wombatlite
+            file_name_dimension: 2d  # descriptor for filename, e.g. 3d, 2d, scalar
+            output_freq: 1  # integer: output sampling frequency in output_freq_units (0: every timestep; -1: only at end of run)
+            output_freq_units: days  # time units for output: years, months, days, hours, minutes, or seconds
+        fields:
+            #zeuphot:

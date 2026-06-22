@@ -21,8 +21,8 @@
     debug_diag_manager = .false.
     issue_oor_warnings = .true.
     max_axes          = 400
-    max_files         = 200
-    max_num_axis_sets = 200
+    max_files         = 400
+    max_num_axis_sets = 400
 /
 
 &fms_io_nml
@@ -34,17 +34,17 @@
 
 &fms_nml
     clock_grain       = 'ROUTINE'
-    domains_stack_size = 115200
+    domains_stack_size = 20000000
 /
 
 &mom_oasis3_interface_nml
     fields_in         = 'u_flux', 'v_flux', 'lprec', 'fprec', 'salt_flx',
                         'mh_flux', 'sw_flux', 'q_flux', 't_flux', 'lw_flux',
                         'runof', 'p', 'aice', 'wfimelt', 'wfiform', 'licefw',
-                        'liceht'
+                        'liceht', 'wnd_io'
     fields_out        = 't_surf', 's_surf', 'u_surf', 'v_surf', 'dssldx',
                         'dssldy', 'frazil'
-    num_fields_in     = 17
+    num_fields_in     = 18
     num_fields_out    = 7
     send_after_ocean_update = .true.
     send_before_ocean_update = .false.
@@ -64,6 +64,14 @@
     large_cfl_value   = 10.0
     max_cfl_value     = 100.0
     verbose_cfl       = .true.
+/
+
+&generic_tracer_nml
+    do_generic_tracer = .true.
+    do_generic_WOMBATlite = .true.
+/
+
+&generic_wombatlite_nml
 /
 
 &ocean_advection_velocity_nml
@@ -214,8 +222,8 @@
     barotropic_split  = 80
     cmip_units        = .true.
     debug             = .false.
-    io_layout         = 5, 5
-    layout            = 80, 75
+    io_layout         = 5, 10
+    layout            = 80, 100
     surface_height_split = 1
     time_tendency     = 'twolevel'
     vertical_coordinate = 'zstar'

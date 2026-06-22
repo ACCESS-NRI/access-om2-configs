@@ -11,3 +11,12 @@
 #B "OCN", "t_flux","","",.false.,0.0
 #B "OCN", "q_flux","","",.false.,0.0
 #B "OCN", "p","","",.false.,0.0
+"OCN", "co2_flux_pcair_atm", "co2", "./INPUT/CO2_gm_1750-2024.nc", "none", 1e-06
+"OCN", "co2_flux_psurf_atm", "", "", "none", 101325
+"OCN", "o2_flux_pcair_atm", "", "", "none", 0.21
+"OCN", "o2_flux_psurf_atm", "", "", "none", 101325
+"OCN", "dry_dep_fe_flux_ice_ocn" , "SFe", "./INPUT/SFe_Hamiltonetal2020_monthly_clim.nc", "none", -1.0
+"OCN", "runoff_no3_flux_ice_ocn", "", "", "none", 0.1e-4
+"OCN", "runoff_det_flux_ice_ocn", "", "", "none", 0.1e-5
+"OCN", "runoff_dic_flux_ice_ocn", "", "", "none", 1.0e-3  # BLING: 0.96e-3
+"OCN", "runoff_alk_flux_ice_ocn", "", "", "none", 1.2e-3  # BLING: 0.5932e-3
