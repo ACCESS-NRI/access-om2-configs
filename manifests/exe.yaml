@@ -2,17 +2,17 @@ format: yamanifest
 version: 1.0
 ---
 work/atmosphere/yatm.exe:
-  fullpath: /g/data/vk83/apps/spack/1.1/release/linux-x86_64_v4/libaccessom2-git.2026.02.000_access-om2-r3azt3fmu7nvbyl5qwqxy6ptyooekm57/bin/yatm.exe
+  fullpath: /g/data/vk83/apps/spack/1.1/release/linux-x86_64_v4/libaccessom2-git.2026.02.000_access-om2-ufu526k572oolu2fgvqfkmhjmoyv3nul/bin/yatm.exe
   hashes:
-    binhash: 28322108e7828d81d3eca60d3a0a3fa6
-    md5: 55cab0f7f507c6425818fee5f109168a
+    binhash: 173d9ad62ba9fee420b0847361c227aa
+    md5: 2010d006893c0a0d369871b382a00caa
 work/ice/cice_auscom_360x300_15x300.exe:
-  fullpath: /g/data/vk83/apps/spack/1.1/release/linux-x86_64_v4/cice5-2026.01.000-d6y75tbsvjsa6gc3uh4aq4gtqmssvvgm/bin/cice_auscom_360x300_15x300.exe
+  fullpath: /g/data/vk83/apps/spack/1.1/release/linux-x86_64_v4/cice5-2026.01.000-ejgeocvmftheyzq4bfxktpjghv44adfp/bin/cice_auscom_360x300_15x300.exe
   hashes:
-    binhash: 59a57986766a5665ccfc9c7c4df7086c
-    md5: 6fc037f6bf7f1c1f699ce83a6a40a319
+    binhash: 82a21183430b9f91956eb8bb7055a4cf
+    md5: 0221880db26223e3d580ab0c384efedd
 work/ocean/mom5_access_om:
-  fullpath: /g/data/vk83/apps/spack/1.1/release/linux-x86_64_v4/mom5-git.2026.02.000_access-om2-4urwevrv4wqd3ol6ogaplg6rd4r6biag/bin/mom5_access_om
+  fullpath: /g/data/vk83/apps/spack/1.1/release/linux-x86_64_v4/mom5-git.2026.02.000_access-om2-vxwlyl73pevmx7n7xvjpoaq4h2c4z7yy/bin/mom5_access_om
   hashes:
-    binhash: 93696b2298f35daff4db7dc3b66fec89
-    md5: 80748c44ebae5ade99e30698f53f7fc3
+    binhash: eb9a1bfad744b38ecd3484c998cee9f3
+    md5: 15b1ca2e30aadedaa769cba79226a74b
