@@ -1,4 +1,6 @@
 # 025deg_jra55_ryf with BGC
+**This configuration uses a legacy version of WOMBAT and has been superseded by the equivalent `*+wombatlite` branch**
+
 Standard configuration for 0.25 degree [ACCESS-OM2](https://github.com/ACCESS-NRI/access-om2) experiment (ACCESS-OM2-025) with JRA55-do 1 May 1990 - 30 April 1991 repeat-year forcing (RYF9091) and coupled biogeochemistry in the ocean and sea ice.
 
 This BGC setup includes both ocean and sea ice BGC. To turn off the sea ice BGC and have BGC only in the ocean, set `skl_bgc = .false.` in `ice/cice_input.nml`.
