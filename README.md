@@ -6,20 +6,20 @@
 This repo contains standard global configurations for
 [ACCESS-OM2](https://github.com/ACCESS-NRI/ACCESS-OM2), the ACCESS Ocean-Sea Ice model.
 
-All confgurations were developed by [COSIMA](https://github.com/COSIMA/access-om2) and adapted by ACCESS-NRI.
+All configurations were originally developed by [COSIMA](https://github.com/COSIMA/access-om2) and adapted/extended by ACCESS-NRI.
 
 This is an "omnibus repository": it contains multiple related configurations, and each
 configuration is stored in a separate branch.
 
-Branches utilise a naming scheme of specifiers separated by underscores (`_`):
+Branches utilise a naming scheme of specifiers separated by delimiters:
 
 ```txt
-{resolution}_{atmosforcing}_{forcingmode}[_{option}]
+{resolution}_{atmosforcing}_{forcingmode}[+{modifier}]
 ```
 
 Where `resolution` is a representative "nominal resolution" because resolution typically
 varies across a global domain; `atmosforcing` is the atmospheric forcing product being
-used; `forcingmode` is how the forcing is applied over time; and `option` is additional
+used; `forcingmode` is how the forcing is applied over time; and `modifier` is additional
 options that are necessary to uniquely identify a configuration.
 
 Some examples of possible values of the specifiers:
@@ -27,32 +27,45 @@ Some examples of possible values of the specifiers:
 - **`resolution`**: `1deg` (1&deg;), `025deg` (0.25&deg;), `01deg` (0.1&deg;)
 - **`atmosforcing`**: `jra55`, `era5`
 - **`forcingmode`**: `iaf` (interannual forcing), `ryf` (repeat year forcing)
-- **`option`**: `bgc` (Biogeochemistry)
+- **`modifier`**: `wombatlite` (ocean biogeochemistry model)
 
 ## Supported configurations
 
-All available configurations are browsable under [the list of branches](https://github.com/ACCESS-NRI/access-om2-configs/branches).
-
-and should also be listed below:
+All available configurations are browsable under [the list of branches](https://github.com/ACCESS-NRI/access-om2-configs/branches). Supported configurations are listed below:
 
 | Branch | Configuration Description |
 | ------ | ------------------------- |
 | [`release-1deg_jra55_ryf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_ryf) | Global 1&deg; model forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
 | [`release-1deg_jra55_iaf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_iaf)| Global 1&deg; model forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
-| [`release-1deg_jra55_ryf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_ryf_bgc) | Global 1&deg; model with BGC forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
-| [`release-1deg_jra55_iaf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_iaf_bgc)| Global 1&deg; model with BGC forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
+| [`release-1deg_jra55_ryf+wombatlite`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_ryf+wombatlite) | Global 1&deg; model with WOMBATlite BGC forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
+| [`release-1deg_jra55_iaf+wombatlite`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_iaf+wombatlite)| Global 1&deg; model with WOMBATlite BGC forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
 | [`release-025deg_jra55_ryf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-025deg_jra55_ryf) | Global 0.25&deg; model forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
 | [`release-025deg_jra55_iaf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-025deg_jra55_iaf)| Global 0.25&deg; model forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
-| [`release-025deg_jra55_ryf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-025deg_jra55_ryf_bgc) | Global 0.25&deg; model with BGC forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
-| [`release-025deg_jra55_iaf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-025deg_jra55_iaf_bgc)| Global 0.25&deg; model with BGC forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
+| [`release-025deg_jra55_ryf+wombatlite`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-025deg_jra55_ryf+wombatlite) | Global 0.25&deg; model with WOMBATlite BGC forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
+| [`release-025deg_jra55_iaf+wombatlite`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-025deg_jra55_iaf+wombatlite)| Global 0.25&deg; model with WOMBATlite BGC forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
 | [`release-01deg_jra55_ryf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_ryf) | Global 0.1&deg; model forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
 | [`release-01deg_jra55_iaf`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_iaf)| Global 0.1&deg; model forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
-| [`release-01deg_jra55_ryf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_ryf_bgc) | Global 0.1&deg; model with BGC forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
-| [`release-01deg_jra55_iaf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_iaf_bgc)| Global 0.1&deg; model with BGC forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
+| [`release-01deg_jra55_ryf+wombatlite`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_ryf+wombatlite) | Global 0.1&deg; model with WOMBATlite BGC forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
+| [`release-01deg_jra55_iaf+wombatlite`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_iaf+wombatlite)| Global 0.1&deg; model with WOMBATlite BGC forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
 
 There are more detailed notes contained in the respective branches for each configuration.
 
-More supported configurations will be added over time.
+More supported configurations may be added over time.
+
+## Archived configurations
+
+Archived configurations are no longer maintained or supported.
+
+The following configurations use a legacy version of the WOMBAT BGC model and have been superseded by the `release-*+wombatlite` configurations listed above.
+
+| Branch | Configuration Description |
+| ------ | ------------------------- |
+| [`release-1deg_jra55_ryf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_ryf_bgc) | Global 1&deg; model with WOMBAT legacy BGC forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
+| [`release-1deg_jra55_iaf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-1deg_jra55_iaf_bgc)| Global 1&deg; model with WOMBAT legacy BGC forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
+| [`release-025deg_jra55_ryf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-025deg_jra55_ryf_bgc) | Global 0.25&deg; model with WOMBAT legacy BGC forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
+| [`release-025deg_jra55_iaf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-025deg_jra55_iaf_bgc)| Global 0.25&deg; model with WOMBAT legacy BGC forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
+| [`release-01deg_jra55_ryf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_ryf_bgc) | Global 0.1&deg; model with WOMBAT legacy BGC forced with JRA55-do atmospheric reanalysis in repeat-year forcing mode|
+| [`release-01deg_jra55_iaf_bgc`](https://github.com/ACCESS-NRI/access-om2-configs/tree/release-01deg_jra55_iaf_bgc)| Global 0.1&deg; model with WOMBAT legacy BGC forced with JRA55-do atmospheric reanalysis in interannual forcing mode|
 
 ## How to use this repository to run a model
 
