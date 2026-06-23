@@ -1,4 +1,6 @@
 # 01deg_jra55_iaf with BGC
+**This configuration uses a legacy version of WOMBAT and has been superseded by the equivalent `*+wombatlite` branch**
+
 Standard configuration for 0.1 degree [ACCESS-OM2](https://github.com/COSIMA/access-om2) experiment (ACCESS-OM2-01) with JRA55-do interannual forcing (IAF) and coupled biogeochemistry in the ocean and sea ice.
 
 This is the BGC version.
