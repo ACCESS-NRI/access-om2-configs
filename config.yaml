@@ -22,8 +22,9 @@ sync:
 modules:
   use:
       - /g/data/vk83/modules
+      - /g/data/vk83/prerelease/modules
   load:
-      - access-om2/2026.05.000
+      - access-om2/pr151-1
       - model-tools/fre-nctools/2024.05-1
 
 # Model configuration
