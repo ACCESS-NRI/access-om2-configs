@@ -54,6 +54,7 @@
 &mpp_io_nml
     deflate_level     = 5
     shuffle           = 1
+    cf_compliance     = .true.
 /
 
 &ocean_adv_vel_diag_nml
@@ -254,6 +255,7 @@
     agm_closure_upper_depth = 100.0
     aredi             = 200.0
     aredi_diffusivity_grid_scaling = .true.
+    agm_read_restart  = .true.
     aredi_equal_agm   = .false.
     drhodz_mom4p1     = .true.
     nphysics_util_zero_init = .true.
