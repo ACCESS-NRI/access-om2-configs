@@ -6,7 +6,7 @@
             "markers": "repro and (not slow)"
         },
         "release-.*": {
-            "model-config-tests-version": "0.2.3",
+            "model-config-tests-version": "0.2.4",
             "payu-version": "1.3.2"
         }
     },
@@ -15,7 +15,7 @@
             "markers": "repro"
         },
         "release-.*": {
-            "model-config-tests-version": "0.2.3",
+            "model-config-tests-version": "0.2.4",
             "payu-version": "1.3.2"
         }
     },
@@ -24,7 +24,7 @@
             "markers": "access_om2 or config"
         },
         "release-.*": {
-            "model-config-tests-version": "0.2.3",
+            "model-config-tests-version": "0.2.4",
             "payu-version": "1.3.2"
         }
     },
