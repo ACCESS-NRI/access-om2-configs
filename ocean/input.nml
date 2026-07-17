@@ -236,6 +236,7 @@
     baroclinic_split  = 1
     barotropic_split  = 80
     cmip_units        = .true.
+    cmip_version      = 6
     debug             = .false.
     io_layout         = 3, 5
     layout            = 18, 25
