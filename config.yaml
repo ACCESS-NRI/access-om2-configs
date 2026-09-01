@@ -21,10 +21,10 @@ sync:
 # Modules for loading model executables
 modules:
   use:
-      - /g/data/vk83/modules
+      - /g/data/vk83/prerelease/modules
   load:
-      - access-om2/2026.05.000
-      - model-tools/mppnccombine-fast/2025.07.000
+      - access-om2/pr160-1
+      - model-tools/fre-nctools/pr19-6/2024.05-1
 
 # Model configuration
 name: common
@@ -73,7 +73,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: cice_auscom_3600x2700_40x30.exe
+      exe: cice_auscom.exe
       input:
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.01deg/2024.04.17/grid.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.01deg/2024.04.17/kmt.nc
@@ -113,6 +113,6 @@ userscripts:
     run: rm -f resubmit.count
 manifest:
   reproduce:
-    exe: true
+    exe: True
 
 payu_minimum_version: 1.3.0
