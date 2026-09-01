@@ -55,6 +55,11 @@
     maskhalo_bound    = .true.
     maskhalo_dyn      = .true.
     maskhalo_remap    = .true.
+    nx_global    = 1440
+    ny_global    = 1080
+    block_size_x = 30
+    block_size_y = 27
+    max_blocks   = -1   ! -1 => derive from the above and nprocs
     nprocs            = 361
     ns_boundary_type  = 'tripole'
     processor_shape   = 'square-ice'
