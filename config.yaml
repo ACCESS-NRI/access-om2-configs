@@ -113,6 +113,6 @@ userscripts:
     run: rm -f resubmit.count
 manifest:
   reproduce:
-    exe: false
+    exe: True
 
 payu_minimum_version: 1.3.0
