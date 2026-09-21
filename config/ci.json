@@ -7,7 +7,7 @@
         "release-1deg_jra55_ryf+wombatlite": {},
         "release-025deg_jra55_iaf": {},
         "release-.*": {
-            "model-config-tests-version": "0.2.4",
+            "model-config-tests-version": "0.2.5",
             "payu-version": "1.3.6"
         }
     },
@@ -15,8 +15,12 @@
         "default": {
             "markers": "repro"
         },
+        "dev-01deg_.*": {
+            "model-config-tests-version": "0.2.5",
+            "payu-version": "1.3.6"
+        }
         "release-.*": {
-            "model-config-tests-version": "0.2.4",
+            "model-config-tests-version": "0.2.5",
             "payu-version": "1.3.6"
         }
     },
@@ -25,7 +29,7 @@
             "markers": "access_om2 or config"
         },
         "release-.*": {
-            "model-config-tests-version": "0.2.4",
+            "model-config-tests-version": "0.2.5",
             "payu-version": "1.3.6"
         }
     },
