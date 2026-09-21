@@ -70,7 +70,7 @@ submodels:
           - /g/data/vk83/configurations/inputs/access-om2/ocean/tides/global.01deg/2020.05.30/roughness_cdbot.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/surface_salt_restoring/global.01deg/2020.05.30/salt_sfc_restore.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/biogeochemistry/global.01deg/2026.03.06/SFe_Hamiltonetal2020_monthly_clim.nc
-          - /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.01deg/2026.03.16/CO2_gm_1750-2024.nc
+          - /g/data/vk83/configurations/inputs/access-om2/ocean/biogeochemistry/global.01deg/2026.03.16/CO2_gm_1750-2024.nc
           - /g/data/vk83/configurations/inputs/access-om2/ocean/biogeochemistry/global.01deg/2026.03.06/ocean_wombatlite.res.nc
       ncpus: 5725
 
