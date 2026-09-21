@@ -23,6 +23,8 @@
     max_axes          = 400
     max_files         = 400
     max_num_axis_sets = 400
+    wildcard_filename_prefix=''
+    wildcard_filename_separator='-'
 /
 
 &fms_io_nml
