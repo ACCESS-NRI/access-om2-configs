@@ -3743,9 +3743,9 @@ work/ice/RESTART/u_star.nc:
     binhash: b0fa2f57ceef0fd228656d6f22e7cf57
     md5: e34bf0c92d0585cfc2d90de32af35e43
 work/ocean/INPUT/CO2_gm_1750-2024.nc:
-  fullpath: /g/data/vk83/prerelease/configurations/inputs/access-om2/ocean/biogeochemistry/global.01deg/2026.03.16/CO2_gm_1750-2024.nc
+  fullpath: /g/data/vk83/configurations/inputs/access-om2/ocean/biogeochemistry/global.01deg/2026.03.16/CO2_gm_1750-2024.nc
   hashes:
-    binhash: ba7caceae3d2cc04d79c76960950dd83
+    binhash: e82ccb682065b5fb4a7b109c69f67fe9
     md5: c0f8e2b14c4d2f1834275f4d0a465181
 work/ocean/INPUT/SFe_Hamiltonetal2020_monthly_clim.nc:
   fullpath: /g/data/vk83/configurations/inputs/access-om2/ocean/biogeochemistry/global.01deg/2026.03.06/SFe_Hamiltonetal2020_monthly_clim.nc
