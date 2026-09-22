@@ -22,7 +22,7 @@ modules:
   use:
       - /g/data/vk83/modules
   load:
-      - access-om2/2026.05.000
+      - access-om2/2026.08.001
       - model-tools/fre-nctools/2024.05-1
 
 # Model configuration
@@ -118,7 +118,6 @@ platform:
 
 # sweep and resubmit on specific errors - see https://github.com/payu-org/payu/issues/241#issuecomment-610739771
 userscripts:
-    archive: /usr/bin/bash /g/data/vk83/apps/om3-scripts/payu_config/archive.sh
     error: tools/resub.sh
     run: rm -f resubmit.count
 
