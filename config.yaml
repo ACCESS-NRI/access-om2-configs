@@ -22,8 +22,8 @@ modules:
   use:
       - /g/data/vk83/modules
   load:
-      - access-om2/2026.08.001
-      - model-tools/mppnccombine-fast/2025.07.000
+      - access-om2/2026.08.002
+      - model-tools/mppnccombine-fast/2026.10.000-1
 
 # Model configuration
 name: common
@@ -62,7 +62,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: cice_auscom_1440x1080_30x27.exe
+      exe: cice_auscom.exe
       input:
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.025deg/2024.04.17/grid.nc
         - /g/data/vk83/configurations/inputs/access-om2/ice/grids/global.025deg/2024.04.17/kmt.nc
