@@ -31,7 +31,7 @@
     },
     "default": {
         "model-config-tests-version": "main",
-        "python-version": "3.11.0",
+        "python-version": "3.11",
         "payu-version": "dev"
     }
 }
